@@ -3,7 +3,6 @@ import type { RegisterResult } from '@/app/api/auth/register/route';
 import { FormEvent, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { registerSchema } from '@/lib/validators/schemas';
-import { set } from 'zod';
 
 type FormProps = {
   createItem: (formData: FormData) => Promise<RegisterResult>;
