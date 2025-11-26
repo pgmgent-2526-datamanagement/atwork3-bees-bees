@@ -2,9 +2,8 @@
 import bcrypt from 'bcrypt';
 import prisma from '@/lib/client';
 import { registerSchema } from '@/lib/validators/schemas';
-import { Role } from '@prisma/client';
-// avoid importing Prisma error class which can have typing issues in this environment
 
+// avoid importing Prisma error class which can have typing issues in this environment
 export type RegisterResult =
   | { ok: true }
   | { ok: false; errors: Record<string, string[]> }; // is a utility type in TypeScript dat describes an object type.

@@ -1,5 +1,5 @@
 'use client';
-import type { RegisterResult } from '@/app/api/auth/register/route';
+import type { RegisterResult } from '@/app/actions/register';
 import { FormEvent, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { registerSchema } from '@/lib/validators/schemas';
