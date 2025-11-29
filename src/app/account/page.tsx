@@ -1,13 +1,15 @@
-import { getServerSession } from "next-auth";
-import { redirect } from "next/navigation";
-import Link from "next/link";
-import prisma from "@/lib/client";
+import { getServerSession } from 'next-auth';
+import { redirect } from 'next/navigation';
+import Link from 'next/link';
+import prisma from '@/lib/client';
+
+export const dynamic = 'force-dynamic';
 
 export default async function AccountPage() {
   const session = await getServerSession();
 
   if (!session?.user?.email) {
-    redirect("/auth/login");
+    redirect('/auth/login');
   }
 
   // Haal gebruiker op met alle bijenstanden, kasten en observaties
@@ -19,7 +21,7 @@ export default async function AccountPage() {
           hives: {
             include: {
               observations: {
-                orderBy: { createdAt: "desc" },
+                orderBy: { createdAt: 'desc' },
                 take: 5, // Laatste 5 observaties per kast
               },
             },
@@ -30,7 +32,7 @@ export default async function AccountPage() {
   });
 
   if (!user) {
-    redirect("/auth/login");
+    redirect('/auth/login');
   }
 
   const totalApiaries = user.apiaries.length;
@@ -114,7 +116,7 @@ export default async function AccountPage() {
           <div className="apiaries-overview">
             <h2 className="section__title">Uw bijenstanden</h2>
             <div className="apiaries-list">
-              {user.apiaries.map((apiary) => (
+              {user.apiaries.map(apiary => (
                 <div key={apiary.id} className="apiary-card">
                   <div className="apiary-card__header">
                     <h3 className="card__title">{apiary.name}</h3>

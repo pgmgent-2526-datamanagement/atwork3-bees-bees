@@ -1,11 +1,13 @@
-import { getServerSession } from "next-auth";
-import { redirect } from "next/navigation";
-import Link from "next/link";
-import prisma from "@/lib/client";
+import { getServerSession } from 'next-auth';
+import { redirect } from 'next/navigation';
+import Link from 'next/link';
+import prisma from '@/lib/client';
+
+export const dynamic = 'force-dynamic';
 
 export default async function AccountHivesPage() {
   const session = await getServerSession();
-  if (!session?.user?.email) redirect("/auth/login");
+  if (!session?.user?.email) redirect('/auth/login');
 
   const user = await prisma.user.findUnique({
     where: { email: session.user.email },
@@ -18,10 +20,10 @@ export default async function AccountHivesPage() {
     },
   });
 
-  if (!user) redirect("/auth/login");
+  if (!user) redirect('/auth/login');
 
-  const allHives = user.apiaries.flatMap((apiary) =>
-    apiary.hives.map((hive) => ({
+  const allHives = user.apiaries.flatMap(apiary =>
+    apiary.hives.map(hive => ({
       ...hive,
       apiaryName: apiary.name,
       apiaryId: apiary.id,
@@ -37,7 +39,7 @@ export default async function AccountHivesPage() {
 
         {allHives.length > 0 ? (
           <div className="hives-list">
-            {allHives.map((hive) => (
+            {allHives.map(hive => (
               <Link
                 key={hive.id}
                 href={`/account/apiaries/${hive.apiaryId}/hives/${hive.id}`}

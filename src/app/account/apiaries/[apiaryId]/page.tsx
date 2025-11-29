@@ -1,7 +1,9 @@
-import { getServerSession } from "next-auth";
-import { redirect } from "next/navigation";
-import Link from "next/link";
-import prisma from "@/lib/client";
+import { getServerSession } from 'next-auth';
+import { redirect } from 'next/navigation';
+import Link from 'next/link';
+import prisma from '@/lib/client';
+
+export const dynamic = 'force-dynamic';
 
 export default async function AccountApiaryPage({
   params,
@@ -10,7 +12,7 @@ export default async function AccountApiaryPage({
 }) {
   const { apiaryId } = await params;
   const session = await getServerSession();
-  if (!session?.user?.email) redirect("/auth/login");
+  if (!session?.user?.email) redirect('/auth/login');
 
   const apiary = await prisma.apiary.findUnique({
     where: { id: parseInt(apiaryId) },
@@ -18,7 +20,7 @@ export default async function AccountApiaryPage({
       hives: {
         include: {
           observations: {
-            orderBy: { createdAt: "desc" },
+            orderBy: { createdAt: 'desc' },
             take: 3,
           },
         },
@@ -26,7 +28,7 @@ export default async function AccountApiaryPage({
     },
   });
 
-  if (!apiary) redirect("/account");
+  if (!apiary) redirect('/account');
 
   return (
     <section className="section section--standard bg-alt">
@@ -46,7 +48,7 @@ export default async function AccountApiaryPage({
 
         {apiary.hives.length > 0 ? (
           <div className="hives-grid">
-            {apiary.hives.map((hive) => (
+            {apiary.hives.map(hive => (
               <div key={hive.id} className="card">
                 <h3 className="card__title">
                   {hive.type} - {hive.colonyType}

@@ -1,11 +1,13 @@
-import { getServerSession } from "next-auth";
-import { redirect } from "next/navigation";
-import Link from "next/link";
-import prisma from "@/lib/client";
+import { getServerSession } from 'next-auth';
+import { redirect } from 'next/navigation';
+import Link from 'next/link';
+import prisma from '@/lib/client';
+
+export const dynamic = 'force-dynamic';
 
 export default async function AccountObservationsPage() {
   const session = await getServerSession();
-  if (!session?.user?.email) redirect("/auth/login");
+  if (!session?.user?.email) redirect('/auth/login');
 
   const user = await prisma.user.findUnique({
     where: { email: session.user.email },
@@ -16,7 +18,7 @@ export default async function AccountObservationsPage() {
             include: {
               observations: {
                 orderBy: {
-                  createdAt: "desc",
+                  createdAt: 'desc',
                 },
               },
             },
@@ -26,11 +28,11 @@ export default async function AccountObservationsPage() {
     },
   });
 
-  if (!user) redirect("/auth/login");
+  if (!user) redirect('/auth/login');
 
-  const allObservations = user.apiaries.flatMap((apiary) =>
-    apiary.hives.flatMap((hive) =>
-      hive.observations.map((observation) => ({
+  const allObservations = user.apiaries.flatMap(apiary =>
+    apiary.hives.flatMap(hive =>
+      hive.observations.map(observation => ({
         ...observation,
         hiveName: hive.type,
         hiveId: hive.id,
@@ -49,7 +51,7 @@ export default async function AccountObservationsPage() {
 
         {allObservations.length > 0 ? (
           <div className="observations-list">
-            {allObservations.map((observation) => (
+            {allObservations.map(observation => (
               <Link
                 key={observation.id}
                 href={`/account/apiaries/${observation.apiaryId}/hives/${observation.hiveId}/observations/${observation.id}`}
@@ -58,7 +60,7 @@ export default async function AccountObservationsPage() {
                 <div className="observation-card__header">
                   <h3 className="card__title">
                     {new Date(observation.createdAt).toLocaleDateString(
-                      "nl-BE"
+                      'nl-BE'
                     )}
                   </h3>
                   <span className="badge">{observation.beeCount} bijen</span>

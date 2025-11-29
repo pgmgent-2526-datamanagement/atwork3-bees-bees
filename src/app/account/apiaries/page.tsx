@@ -1,11 +1,13 @@
-import { getServerSession } from "next-auth";
-import { redirect } from "next/navigation";
-import Link from "next/link";
-import prisma from "@/lib/client";
+import { getServerSession } from 'next-auth';
+import { redirect } from 'next/navigation';
+import Link from 'next/link';
+import prisma from '@/lib/client';
+
+export const dynamic = 'force-dynamic';
 
 export default async function AccountApiariesPage() {
   const session = await getServerSession();
-  if (!session?.user?.email) redirect("/auth/login");
+  if (!session?.user?.email) redirect('/auth/login');
 
   const user = await prisma.user.findUnique({
     where: { email: session.user.email },
@@ -18,7 +20,7 @@ export default async function AccountApiariesPage() {
     },
   });
 
-  if (!user) redirect("/auth/login");
+  if (!user) redirect('/auth/login');
 
   return (
     <section className="section section--standard bg-alt">
@@ -32,7 +34,7 @@ export default async function AccountApiariesPage() {
 
         {user.apiaries.length > 0 ? (
           <div className="apiaries-list">
-            {user.apiaries.map((apiary) => (
+            {user.apiaries.map(apiary => (
               <Link
                 key={apiary.id}
                 href={`/account/apiaries/${apiary.id}`}

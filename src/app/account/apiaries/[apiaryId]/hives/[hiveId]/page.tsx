@@ -1,7 +1,9 @@
-import { getServerSession } from "next-auth";
-import { redirect } from "next/navigation";
-import Link from "next/link";
-import prisma from "@/lib/client";
+import { getServerSession } from 'next-auth';
+import { redirect } from 'next/navigation';
+import Link from 'next/link';
+import prisma from '@/lib/client';
+
+export const dynamic = 'force-dynamic';
 
 export default async function AccountApiaryHivePage({
   params,
@@ -10,20 +12,20 @@ export default async function AccountApiaryHivePage({
 }) {
   const { apiaryId, hiveId } = await params;
   const session = await getServerSession();
-  if (!session?.user?.email) redirect("/auth/login");
+  if (!session?.user?.email) redirect('/auth/login');
 
   const hive = await prisma.hive.findUnique({
     where: { id: parseInt(hiveId) },
     include: {
       apiary: true,
       observations: {
-        orderBy: { createdAt: "desc" },
+        orderBy: { createdAt: 'desc' },
         take: 10,
       },
     },
   });
 
-  if (!hive) redirect("/account");
+  if (!hive) redirect('/account');
 
   return (
     <section className="section section--standard bg-alt">
@@ -65,11 +67,11 @@ export default async function AccountApiaryHivePage({
             </h2>
             {hive.observations.length > 0 ? (
               <div className="observations-list">
-                {hive.observations.map((obs) => (
+                {hive.observations.map(obs => (
                   <div key={obs.id} className="observation-card">
                     <div className="observation-card__header">
                       <span className="observation-card__date">
-                        {new Date(obs.createdAt).toLocaleDateString("nl-BE")}
+                        {new Date(obs.createdAt).toLocaleDateString('nl-BE')}
                       </span>
                       <span className="badge">{obs.beeCount} bijen</span>
                     </div>
