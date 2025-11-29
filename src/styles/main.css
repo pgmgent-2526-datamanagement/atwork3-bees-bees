@@ -22,9 +22,16 @@
 @import "./components/subtitle.css";
 @import "./components/card.css";
 @import "./components/icon.css";
+@import "./components/feature-card.css";
+@import "./components/benefits.css";
+@import "./components/workflow.css";
+@import "./components/stats.css";
 
 /* Utilities */
 @import "./utilities/backgrounds.css";
 @import "./utilities/spacing.css";
 @import "./utilities/text.css";
 @import "./utilities/dev-hide.css";
+
+/* Pages */
+@import "./pages/about.css";
