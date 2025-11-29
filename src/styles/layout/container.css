@@ -1,5 +1,3 @@
-/* Container Layout - BEM */
-
 .container {
   max-width: var(--container-max-width);
   margin: 0 auto;

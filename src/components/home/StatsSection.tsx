@@ -10,7 +10,7 @@ export default function StatsSection({
   totalHives,
 }: StatsSectionProps) {
   return (
-    <section className="section section--compact bg-surface">
+    <section className="stats-section">
       <div className="container">
         <div className="stats">
           <div className="stat">

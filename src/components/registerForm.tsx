@@ -1,8 +1,8 @@
-'use client';
-import type { RegisterResult } from '@/app/actions/register';
-import { FormEvent, useState } from 'react';
-import { useRouter } from 'next/navigation';
-import { registerSchema } from '@/lib/validators/schemas';
+"use client";
+import type { RegisterResult } from "@/app/actions/register";
+import { FormEvent, useState } from "react";
+import { useRouter } from "next/navigation";
+import { registerSchema } from "@/lib/validators/schemas";
 
 type FormProps = {
   createItem: (formData: FormData) => Promise<RegisterResult>;
@@ -39,37 +39,43 @@ export function RegisterForm({ createItem }: FormProps) {
     try {
       const res = await createItem(fd);
       if (!res.ok) {
-        console.log('Registration errors:', res.errors);
+        console.log("Registration errors:", res.errors);
         setErrors(res.errors);
         setLoading(false);
         return;
       }
       // success: redirect to login
-      router.push('/auth/login');
+      router.push("/auth/login");
     } catch (err) {
       console.error(err);
-      setErrors({ form: ['Er is iets misgegaan. Probeer later opnieuw.'] });
+      setErrors({ form: ["Er is iets misgegaan. Probeer later opnieuw."] });
       setLoading(false);
     }
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <div>
-        {errors?.form?.map((msg, i) => (
-          <p key={i} style={{ color: 'red', fontSize: '0.9em', margin: 0 }}>
-            {msg}
-          </p>
-        ))}
-        <label htmlFor="">Naam</label>
+    <form onSubmit={handleSubmit} className="form">
+      {errors?.form && (
+        <div className="form-error form-error--general">
+          {errors.form.map((msg, i) => (
+            <p key={i}>{msg}</p>
+          ))}
+        </div>
+      )}
+
+      <div className="form-group">
+        <label htmlFor="name" className="form-label">
+          Naam
+        </label>
         <input
+          id="name"
           type="text"
           name="name"
-          placeholder="John Doe"
-          //remove the name error when user starts typing
-          onChange={e => {
+          className="form-input"
+          placeholder="Voornaam Achternaam"
+          onChange={(e) => {
             if (errors?.name) {
-              setErrors(prev => {
+              setErrors((prev) => {
                 if (!prev) return null;
                 const { name, ...rest } = prev;
                 return Object.keys(rest).length ? rest : null;
@@ -77,23 +83,28 @@ export function RegisterForm({ createItem }: FormProps) {
             }
           }}
         />
-
-        {errors?.name?.map((msg, i) => (
-          <p key={i} style={{ color: 'red', fontSize: '0.9em', margin: 0 }}>
-            {msg}
-          </p>
-        ))}
+        {errors?.name && (
+          <div className="form-error">
+            {errors.name.map((msg, i) => (
+              <p key={i}>{msg}</p>
+            ))}
+          </div>
+        )}
       </div>
 
-      <div>
-        <label htmlFor="">E-mail</label>
+      <div className="form-group">
+        <label htmlFor="email" className="form-label">
+          E-mailadres
+        </label>
         <input
+          id="email"
           type="email"
           name="email"
-          placeholder="john.doe@example.com" //remove the name error when user starts typing
-          onChange={e => {
+          className="form-input"
+          placeholder="uw.naam@voorbeeld.be"
+          onChange={(e) => {
             if (errors?.email) {
-              setErrors(prev => {
+              setErrors((prev) => {
                 if (!prev) return null;
                 const { email, ...rest } = prev;
                 return Object.keys(rest).length ? rest : null;
@@ -101,21 +112,28 @@ export function RegisterForm({ createItem }: FormProps) {
             }
           }}
         />
-        {errors?.email?.map((msg, i) => (
-          <p key={i} style={{ color: 'red', fontSize: '0.9em', margin: 0 }}>
-            {msg}
-          </p>
-        ))}
+        {errors?.email && (
+          <div className="form-error">
+            {errors.email.map((msg, i) => (
+              <p key={i}>{msg}</p>
+            ))}
+          </div>
+        )}
       </div>
-      <div>
-        <label htmlFor="">Paswoord</label>
+
+      <div className="form-group">
+        <label htmlFor="password" className="form-label">
+          Wachtwoord
+        </label>
         <input
+          id="password"
           type="password"
           name="password"
-          placeholder="test@123!" //remove the name error when user starts typing
-          onChange={e => {
+          className="form-input"
+          placeholder="Minimaal 8 tekens"
+          onChange={(e) => {
             if (errors?.password) {
-              setErrors(prev => {
+              setErrors((prev) => {
                 if (!prev) return null;
                 const { password, ...rest } = prev;
                 return Object.keys(rest).length ? rest : null;
@@ -123,14 +141,21 @@ export function RegisterForm({ createItem }: FormProps) {
             }
           }}
         />
-        {errors?.password?.map((msg, i) => (
-          <p key={i} style={{ color: 'red', fontSize: '0.9em', margin: 0 }}>
-            {msg}
-          </p>
-        ))}
+        {errors?.password && (
+          <div className="form-error">
+            {errors.password.map((msg, i) => (
+              <p key={i}>{msg}</p>
+            ))}
+          </div>
+        )}
       </div>
-      <button type="submit" disabled={loading}>
-        {loading ? 'Bezig...' : 'Verstuur'}
+
+      <button
+        type="submit"
+        disabled={loading}
+        className="button button--primary button--large button--full-width"
+      >
+        {loading ? "Account aanmaken..." : "Account aanmaken"}
       </button>
     </form>
   );

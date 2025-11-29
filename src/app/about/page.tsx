@@ -4,214 +4,162 @@ export default function AboutPage() {
   return (
     <>
       {/* Hero Section */}
-      <section className="section bg-alt">
-        <div className="container container--medium">
-          <h1 className="title title--xl text-center">Over Ons</h1>
-          <p className="subtitle text-center">
-            Een digitale oplossing voor biodynamische imkers
+      <section className="section section--standard bg-alt">
+        <div className="container container--narrow text-center">
+          <h1 className="title">Over Ons Platform</h1>
+          <p className="subtitle subtitle--centered">
+            Digitale innovatie voor de moderne imker, gebouwd op decennia aan
+            ervaring
           </p>
         </div>
       </section>
 
-      {/* Wie zijn wij - Biodyn Imkers geschiedenis */}
-      <section className="section">
-        <div className="container container--medium">
-          <h2 className="section__title">Wie zijn wij?</h2>
-          <div className="about__content">
-            <p>
-              Biodyn Imkers is een vereniging van biodynamische imkers die sinds 
-              1980 actief is in Vlaanderen. Wij geloven in een respectvolle 
-              omgang met bijen en streven naar een natuurlijke manier van imkeren.
-            </p>
-            <p>
-              Onze leden delen hun kennis en ervaringen om samen te leren en 
-              te groeien. Door jarenlange ervaring hebben we een schat aan 
-              observaties verzameld over bijenstanden, drachtplanten en 
-              imkerpraktijken.
-            </p>
-            <p>
-              Meer weten over onze geschiedenis?{" "}
-              <a 
-                href="https://www.biodynimkers.be/geschiedenis/" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="link"
-              >
-                Bezoek onze website
-              </a>
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Waarom deze webapp? */}
-      <section className="section bg-alt">
-        <div className="container container--medium">
-          <h2 className="section__title">Waarom deze webapp?</h2>
-          <div className="about__reasons">
-            <div className="reason">
-              <h3 className="reason__title">Kennis Behouden</h3>
-              <p className="reason__text">
-                Door decennia verzamelen onze imkers waardevolle observaties. 
-                Deze kennis verdwijnt vaak of blijft in notitieboekjes. 
-                Met deze webapp bewaren we alles digitaal en toegankelijk.
-              </p>
+      {/* Missie met foto */}
+      <section className="section section--standard bg-white">
+        <div className="container">
+          <div className="content-with-image">
+            <div className="image-placeholder image-placeholder--vertical">
+              [Foto: Close-up van bijenraat met honing]
             </div>
-            <div className="reason">
-              <h3 className="reason__title">Samen Leren</h3>
-              <p className="reason__text">
-                Elke imker heeft unieke ervaringen. Door observaties te delen 
-                kunnen we van elkaar leren en patronen ontdekken die anders 
-                onopgemerkt blijven.
+            <div className="content-with-image__text">
+              <h2 className="section__title section__title--left">
+                Onze Missie
+              </h2>
+              <p className="text-large">
+                Sinds 1980 streeft Biodyn Imkers naar een harmonieuze
+                samenwerking met de bij. Onze missie is om deze rijke traditie
+                te combineren met moderne technologie.
               </p>
-            </div>
-            <div className="reason">
-              <h3 className="reason__title">Data-gedreven Imkeren</h3>
-              <p className="reason__text">
-                Met een centraal systeem kunnen we trends analyseren, 
-                drachtkalenders opstellen en betere beslissingen nemen 
-                gebaseerd op historische data.
+              <p className="text-large">
+                Dit platform is ontstaan uit een simpele observatie: imkers
+                verzamelen schat aan kennis, maar deze verdwijnt vaak in
+                notitieboekjes of blijft beperkt tot individuele ervaringen.
+              </p>
+              <p className="text-large">
+                Door digitalisering maken we deze waardevolle observaties
+                toegankelijk, deelbaar en bruikbaar voor de hele
+                imkersgemeenschap.
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* 3 types observaties */}
-      <section className="section">
-        <div className="container container--medium">
-          <h2 className="section__title">Drie Types Observaties</h2>
-          <div className="observation-types">
-            <div className="observation-type">
-              <div className="observation-type__number">1</div>
-              <h3 className="observation-type__title">Kast Observaties</h3>
-              <p className="observation-type__text">
-                Noteer de staat van je bijenkasten: populatiegrootte, 
-                broed, honingopbrengst, gezondheid. Volg de ontwikkeling 
-                van elke kast doorheen het seizoen.
+      {/* Waarom deze webapp */}
+      <section className="section section--standard bg-alt">
+        <div className="container">
+          <h2 className="section__title">Voor de moderne imker</h2>
+          <div className="grid grid--2">
+            <article className="card">
+              <h3 className="card__title">Van papier naar digitaal</h3>
+              <p className="card__text">
+                Geen verloren notities meer. Al uw observaties veilig opgeslagen
+                in de cloud, altijd en overal toegankelijk via smartphone,
+                tablet of computer.
               </p>
-            </div>
-            <div className="observation-type">
-              <div className="observation-type__number">2</div>
-              <h3 className="observation-type__title">Planten Observaties</h3>
-              <p className="observation-type__text">
-                Documenteer welke planten bloeien in jouw omgeving. 
-                Bouw een drachtkalender op en ontdek welke planten 
-                belangrijk zijn voor jouw bijenstanden.
+            </article>
+            <article className="card">
+              <h3 className="card__title">Uw privacy gewaarborgd</h3>
+              <p className="card__text">
+                Deel kennis zonder risico. Andere imkers zien uw observaties en
+                trends, maar exacte GPS-locaties van uw standen blijven 100%
+                privé en beveiligd.
               </p>
-            </div>
-            <div className="observation-type">
-              <div className="observation-type__number">3</div>
-              <h3 className="observation-type__title">Imker Observaties</h3>
-              <p className="observation-type__text">
-                Leg je eigen werkzaamheden vast: wanneer heb je wat gedaan, 
-                welke interventies waren nodig, wat waren de resultaten. 
-                Leer van je eigen geschiedenis.
+            </article>
+            <article className="card">
+              <h3 className="card__title">Datagedreven beslissingen</h3>
+              <p className="card__text">
+                Analyseer trends over meerdere seizoenen. Ontdek welke
+                interventies werken en optimaliseer uw imkerpraktijk op basis
+                van feiten, niet vermoedens.
               </p>
-            </div>
+            </article>
+            <article className="card">
+              <h3 className="card__title">Beveiligd persoonlijk account</h3>
+              <p className="card__text">
+                Volledige controle over uw gegevens. Bepaal zelf wat u deelt met
+                de gemeenschap en houd gevoelige informatie privé in uw
+                beveiligde account.
+              </p>
+            </article>
+            <article className="card">
+              <h3 className="card__title">Kennisdeling op uw voorwaarden</h3>
+              <p className="card__text">
+                Leer van andere imkers in uw regio. Vergelijk drachtperiodes en
+                deel ervaringen, zonder dat anderen weten waar uw standen
+                precies staan.
+              </p>
+            </article>
+            <article className="card">
+              <h3 className="card__title">Tijdsbesparing</h3>
+              <p className="card__text">
+                Snelle invoer met slimme formulieren en timers. Automatische
+                rapporten en statistieken. Meer tijd voor uw bijen, minder tijd
+                aan administratie.
+              </p>
+            </article>
           </div>
         </div>
       </section>
 
-      {/* Huidige vs toekomstige workflow */}
-      <section className="section bg-alt">
-        <div className="container container--large">
-          <h2 className="section__title">Van Papier naar Digitaal</h2>
-          <div className="workflow-comparison">
-            <div className="workflow-comparison__column">
-              <h3 className="workflow-comparison__title">Vroeger</h3>
-              <ul className="workflow-comparison__list">
-                <li>Observaties in verschillende notitieboekjes</li>
-                <li>Moeilijk terug te vinden</li>
-                <li>Niet te delen met andere imkers</li>
-                <li>Geen overzicht over meerdere jaren</li>
-                <li>Handmatig grafieken maken</li>
+      {/* Platform features met foto */}
+      <section className="section section--standard bg-white">
+        <div className="container">
+          <h2 className="section__title">Wat kunt u doen?</h2>
+          <div className="feature-section-grid mb-3xl">
+            <div>
+              <h3 className="card__title">Bijenstanden beheren</h3>
+              <p className="card__text">
+                Registreer al uw bijenstanden met GPS-locatie. Koppel
+                automatisch de relevante drachtplanten binnen een straal van 2-7
+                km. Volg de ontwikkeling per stand doorheen het seizoen.
+              </p>
+              <ul className="feature-list">
+                <li>GPS-locatie met kaartweergave</li>
+                <li>Automatische drachtkalender</li>
+                <li>Overzicht per seizoen</li>
               </ul>
             </div>
-            <div className="workflow-comparison__column">
-              <h3 className="workflow-comparison__title">Nu</h3>
-              <ul className="workflow-comparison__list">
-                <li>Alles op één plaats, altijd beschikbaar</li>
-                <li>Zoeken en filteren in seconden</li>
-                <li>Automatisch delen binnen de vereniging</li>
-                <li>Historische trends in één oogopslag</li>
-                <li>Automatische statistieken en grafieken</li>
+            <div className="image-placeholder">
+              [Foto: Smartphone met kaart van bijenstanden]
+            </div>
+          </div>
+
+          <div className="feature-section-grid">
+            <div className="image-placeholder feature-section__image-left">
+              [Foto: Imker noteert met tablet bij bijenkast]
+            </div>
+            <div className="feature-section__text-right">
+              <h3 className="card__title">Observaties registreren</h3>
+              <p className="card__text">
+                Snelle invoer met intelligente formulieren. Tel bijen met de
+                ingebouwde 30-seconden timer. Noteer stuifmeelkleuren,
+                populatiegrootte en bijzonderheden.
+              </p>
+              <ul className="feature-list">
+                <li>30-seconden timer voor bijentelling</li>
+                <li>Stuifmeelkleuren vastleggen</li>
+                <li>Foto's toevoegen aan observaties</li>
               </ul>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Voor wie? */}
-      <section className="section">
-        <div className="container container--medium">
-          <h2 className="section__title">Voor Wie is Deze App?</h2>
-          <div className="about__content">
-            <p>
-              Deze webapp is ontwikkeld voor <strong>leden van Biodyn Imkers</strong>, 
-              maar we hopen in de toekomst ook andere imkersverenigingen te verwelkomen.
-            </p>
-            <p>
-              Of je nu een ervaren imker bent met decennia ervaring, of net 
-              begint met je eerste bijenstand - deze tool helpt je om systematisch 
-              je observaties bij te houden en te leren van anderen.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Toekomstplannen */}
-      <section className="section bg-alt">
-        <div className="container container--medium">
-          <h2 className="section__title">Toekomstplannen</h2>
-          <div className="future-plans">
-            <div className="future-plan">
-              <h3 className="future-plan__title">Mobiele App</h3>
-              <p className="future-plan__text">
-                Een native mobiele applicatie voor iOS en Android, 
-                zodat je direct bij je bijenstanden observaties kan invoeren.
-              </p>
-            </div>
-            <div className="future-plan">
-              <h3 className="future-plan__title">Geavanceerde Analytics</h3>
-              <p className="future-plan__text">
-                Machine learning algoritmes die patronen detecteren en 
-                voorspellingen doen over drachtperiodes en kastontwikkeling.
-              </p>
-            </div>
-            <div className="future-plan">
-              <h3 className="future-plan__title">Community Features</h3>
-              <p className="future-plan__text">
-                Forums, kennisbank en mogelijkheid om vragen te stellen 
-                aan ervaren imkers binnen de vereniging.
-              </p>
-            </div>
-            <div className="future-plan">
-              <h3 className="future-plan__title">Open voor Andere Verenigingen</h3>
-              <p className="future-plan__text">
-                We willen dit platform open stellen voor andere imkersverenigingen 
-                in Vlaanderen en daarbuiten.
-              </p>
             </div>
           </div>
         </div>
       </section>
 
       {/* CTA */}
-      <section className="section">
-        <div className="container container--small text-center">
-          <h2 className="title title--lg">Klaar om te beginnen?</h2>
-          <p className="subtitle">
-            Registreer je account en start vandaag nog met digitale observaties
+      <section className="section section--standard bg-white">
+        <div className="container container--narrow text-center">
+          <h2 className="section__title mb-md">Klaar om te starten?</h2>
+          <p className="text-secondary mb-lg">
+            Sluit u aan bij imkers die hun bijenregistratie vereenvoudigen met
+            ons platform.
           </p>
-          <div className="button-group">
-            <Link href="/auth/register" className="button button--primary">
-              Registreer Nu
-            </Link>
-            <Link href="/" className="button button--secondary">
-              Terug naar Home
-            </Link>
-          </div>
+          <Link
+            href="/auth/register"
+            className="button button--primary button--large"
+          >
+            Gratis account aanmaken
+          </Link>
         </div>
       </section>
     </>
