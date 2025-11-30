@@ -3,6 +3,7 @@ import type { AuthOptions } from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
 import type { JWT } from 'next-auth/jwt';
 import type { Session } from 'next-auth';
+import { Role } from '@prisma/client';
 import prisma from '@/lib/client';
 import bcrypt from 'bcrypt';
 import z from 'zod';
@@ -62,8 +63,13 @@ const authOptions: AuthOptions = {
       return token;
     },
     session({ session, token }: { session: Session; token: JWT }) {
+      if (session.user) {
+        session.user.id = token.id as string;
+        session.user.role = token.role as Role;
+      }
+      // Backwards compatibility
       session.userId = token.id as string;
-      session.role = token.role as any;
+      session.role = token.role as Role;
       return session;
     },
   },
@@ -73,4 +79,4 @@ const authOptions: AuthOptions = {
 };
 
 const handler = NextAuth(authOptions);
-export { handler as GET, handler as POST };
+export { handler as GET, handler as POST, authOptions };
