@@ -10,8 +10,9 @@ export const dynamic = 'force-dynamic';
 export default async function AccountPage({
   params,
 }: {
-  params: { userId: string };
+  params: Promise<{ userId: string }>;
 }) {
+  const { userId } = await params;
   const session = await getServerSession(authOptions);
 
   if (!session?.user?.id) {
@@ -19,13 +20,13 @@ export default async function AccountPage({
   }
 
   // Check authorization: admin or owner
-  if (!hasAccess(session, params.userId)) {
+  if (!hasAccess(session, userId)) {
     redirect('/unauthorized');
   }
 
   // Haal gebruiker op met userId uit params
   const user = await prisma.user.findUnique({
-    where: { id: params.userId },
+    where: { id: userId },
     include: {
       apiaries: {
         include: {
@@ -74,16 +75,22 @@ export default async function AccountPage({
 
         {/* Statistieken */}
         <div className="stats-grid">
-          <Link href={`/account/${params.userId}/apiaries`} className="stat-card stat-card--link">
+          <Link
+            href={`/account/${userId}/apiaries`}
+            className="stat-card stat-card--link"
+          >
             <h3 className="stat-card__number">{totalApiaries}</h3>
             <p className="stat-card__label">Bijenstanden</p>
           </Link>
-          <Link href={`/account/${params.userId}/hives`} className="stat-card stat-card--link">
+          <Link
+            href={`/account/${userId}/hives`}
+            className="stat-card stat-card--link"
+          >
             <h3 className="stat-card__number">{totalHives}</h3>
             <p className="stat-card__label">Kasten</p>
           </Link>
           <Link
-            href={`/account/${params.userId}/observations`}
+            href={`/account/${userId}/observations`}
             className="stat-card stat-card--link"
           >
             <h3 className="stat-card__number">{totalObservations}</h3>
@@ -95,13 +102,16 @@ export default async function AccountPage({
         <div className="quick-actions">
           <h2 className="section__title">Snelle acties</h2>
           <div className="grid grid--2">
-            <Link href={`/account/${params.userId}/apiaries/new`} className="action-card">
+            <Link
+              href={`/account/${userId}/apiaries/new`}
+              className="action-card"
+            >
               <h3 className="card__title">+ Nieuwe bijenstand</h3>
               <p className="card__text">
                 Registreer een nieuwe locatie voor uw bijenkasten
               </p>
             </Link>
-            <Link href={`/account/${params.userId}/apiaries`} className="action-card">
+            <Link href={`/account/${userId}/apiaries`} className="action-card">
               <h3 className="card__title">Beheer bijenstanden</h3>
               <p className="card__text">
                 Bekijk en wijzig uw bestaande bijenstanden
@@ -124,13 +134,13 @@ export default async function AccountPage({
                   <p className="card__text">{apiary.location}</p>
                   <div className="apiary-card__actions">
                     <Link
-                      href={`/account/${params.userId}/apiaries/${apiary.id}`}
+                      href={`/account/${userId}/apiaries/${apiary.id}`}
                       className="button button--outline"
                     >
                       Bekijk details
                     </Link>
                     <Link
-                      href={`/account/${params.userId}/apiaries/${apiary.id}/hives/new`}
+                      href={`/account/${userId}/apiaries/${apiary.id}/hives/new`}
                       className="button button--primary"
                     >
                       + Nieuwe kast
@@ -148,7 +158,7 @@ export default async function AccountPage({
               observaties bij te houden.
             </p>
             <Link
-              href={`/account/${params.userId}/apiaries/new`}
+              href={`/account/${userId}/apiaries/new`}
               className="button button--primary button--large"
             >
               + Eerste bijenstand toevoegen
