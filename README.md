@@ -1,36 +1,129 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🐝 Bees - Bijenwaarnemingen App
 
-## Getting Started
+Een Next.js applicatie voor het beheren en bijhouden van bijenwaarnemingen, bijenkorven en bijenkasten.
 
-First, run the development server:
+## 📋 Project Overzicht
 
+Deze applicatie maakt het mogelijk voor gebruikers om:
+- Bijenkasten (apiaries) te registreren en beheren
+- Bijenkorven (hives) toe te voegen en te monitoren
+- Waarnemingen (observations) bij te houden
+- Planten te koppelen aan bijenkasten
+- Admin functionaliteiten voor het beheren van alle data
+
+## 🚀 Getting Started
+
+### Installatie
+
+1. Clone de repository
+2. Installeer dependencies:
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+3. Configureer de database:
+```bash
+npx prisma generate
+npx prisma migrate dev
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+4. Start de development server:
+```bash
+npm run dev
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+5. Open [http://localhost:3000](http://localhost:3000) in je browser
 
-## Learn More
+## 🔐 Test Accounts
 
-To learn more about Next.js, take a look at the following resources:
+### Gebruiker Account
+- **Email:** lola@test.com
+- **Wachtwoord:** lola123456
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Admin Account
+- **Email:** admin@example.com
+- **Wachtwoord:** test@123
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 🗂️ Project Structuur
 
-## Deploy on Vercel
+```
+├── prisma/
+│   ├── schema.prisma          # Database schema
+│   └── migrations/            # Database migraties
+├── public/
+│   ├── assets/                # Afbeeldingen en media
+│   └── icons/                 # Icons
+├── src/
+│   ├── app/
+│   │   ├── about/            # Over ons pagina
+│   │   ├── account/          # Gebruiker account paginas
+│   │   ├── actions/          # Server actions
+│   │   ├── admin/            # Admin dashboard
+│   │   ├── api/              # API routes
+│   │   └── auth/             # Authenticatie paginas
+│   ├── components/
+│   │   ├── auth/             # Auth componenten
+│   │   ├── forms/            # Formulieren
+│   │   ├── home/             # Home componenten
+│   │   └── shared/           # Gedeelde componenten
+│   ├── lib/
+│   │   ├── auth-helpers.ts   # Auth helper functies
+│   │   ├── auth-options.ts   # NextAuth configuratie
+│   │   ├── client.ts         # Prisma client
+│   │   └── validators/       # Zod schemas
+│   ├── styles/               # CSS bestanden
+│   └── types/                # TypeScript types
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 🛠️ Tech Stack
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- **Framework:** Next.js 15
+- **Database:** PostgreSQL met Prisma ORM
+- **Authenticatie:** NextAuth.js
+- **Validatie:** Zod
+- **Styling:** Custom CSS
+- **TypeScript**
+
+## 📊 Database Schema
+
+Belangrijkste entiteiten:
+- **User** - Gebruikers
+- **Apiary** - Bijenkasten (locaties)
+- **Hive** - Bijenkorven
+- **Observation** - Waarnemingen
+- **Plant** - Planten
+- **ApiaryPlant** - Koppeling tussen apiaries en planten
+
+## 🔒 Authenticatie & Autorisatie
+
+De app gebruikt NextAuth.js met credential-based authenticatie. Er zijn twee rollen:
+- **USER** - Standaard gebruiker
+- **ADMIN** - Administrator met volledige toegang
+
+Middleware beschermt routes op basis van authenticatie en autorisatie.
+
+## 📝 Belangrijke Features
+
+- ✅ User registratie en login
+- ✅ CRUD operaties voor apiaries, hives en observations
+- ✅ Admin dashboard voor alle data
+- ✅ Koppeling van planten aan apiaries
+- ✅ Responsive design
+- ✅ Form validatie met Zod
+- ✅ Protected routes met middleware
+
+## 🧪 Development
+
+```bash
+# Development server
+npm run dev
+
+# Database operations
+npx prisma studio          # Open Prisma Studio
+npx prisma migrate dev     # Run migrations
+npx prisma generate        # Generate Prisma Client
+
+# Build
+npm run build
+npm start
+```
