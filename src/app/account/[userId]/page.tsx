@@ -1,11 +1,12 @@
-import { getServerSession } from 'next-auth';
-import { redirect } from 'next/navigation';
-import Link from 'next/link';
-import prisma from '@/lib/client';
-import { hasAccess } from '@/lib/auth-helpers';
-import { authOptions } from '@/lib/auth-options';
+import { getServerSession } from "next-auth";
+import { redirect } from "next/navigation";
+import Link from "next/link";
+import Image from "next/image";
+import prisma from "@/lib/client";
+import { hasAccess } from "@/lib/auth-helpers";
+import { authOptions } from "@/lib/auth-options";
 
-export const dynamic = 'force-dynamic';
+export const dynamic = "force-dynamic";
 
 export default async function AccountPage({
   params,
@@ -16,12 +17,12 @@ export default async function AccountPage({
   const session = await getServerSession(authOptions);
 
   if (!session?.user?.id) {
-    redirect('/auth/login');
+    redirect("/auth/login");
   }
 
   // Check authorization: admin or owner
   if (!hasAccess(session, userId)) {
-    redirect('/unauthorized');
+    redirect("/unauthorized");
   }
 
   // Haal gebruiker op met userId uit params
@@ -33,7 +34,7 @@ export default async function AccountPage({
           hives: {
             include: {
               observations: {
-                orderBy: { createdAt: 'desc' },
+                orderBy: { createdAt: "desc" },
                 take: 5,
               },
             },
@@ -44,7 +45,7 @@ export default async function AccountPage({
   });
 
   if (!user) {
-    redirect('/unauthorized');
+    redirect("/unauthorized");
   }
 
   const totalApiaries = user.apiaries.length;
@@ -106,65 +107,39 @@ export default async function AccountPage({
               href={`/account/${userId}/apiaries/new`}
               className="action-card"
             >
-              <h3 className="card__title">+ Nieuwe bijenstand</h3>
+              <h3 className="card__title">+ Nieuwe kast</h3>
               <p className="card__text">
-                Registreer een nieuwe locatie voor uw bijenkasten
+                Registreer een nieuwe bijenstand met kasten
               </p>
             </Link>
             <Link href={`/account/${userId}/apiaries`} className="action-card">
-              <h3 className="card__title">Beheer bijenstanden</h3>
+              <h3 className="card__title">+ Nieuwe observatie</h3>
               <p className="card__text">
-                Bekijk en wijzig uw bestaande bijenstanden
+                Voeg een waarneming toe aan uw kasten
               </p>
             </Link>
           </div>
         </div>
 
-        {/* Bijenstanden overzicht */}
-        {user.apiaries.length > 0 ? (
-          <div className="apiaries-overview">
-            <h2 className="section__title">Uw bijenstanden</h2>
-            <div className="apiaries-list">
-              {user.apiaries.map(apiary => (
-                <div key={apiary.id} className="apiary-card">
-                  <div className="apiary-card__header">
-                    <h3 className="card__title">{apiary.name}</h3>
-                    <span className="badge">{apiary.hives.length} kasten</span>
-                  </div>
-                  <p className="card__text">{apiary.location}</p>
-                  <div className="apiary-card__actions">
-                    <Link
-                      href={`/account/${userId}/apiaries/${apiary.id}`}
-                      className="button button--outline"
-                    >
-                      Bekijk details
-                    </Link>
-                    <Link
-                      href={`/account/${userId}/apiaries/${apiary.id}/hives/new`}
-                      className="button button--primary"
-                    >
-                      + Nieuwe kast
-                    </Link>
-                  </div>
-                </div>
-              ))}
-            </div>
+        {/* Foto grid */}
+        <div className="photo-grid">
+          <div className="photo-grid__item">
+            <Image
+              src="/assets/hive-1.jpg"
+              alt="Bijenkast"
+              fill
+              style={{ objectFit: "cover" }}
+            />
           </div>
-        ) : (
-          <div className="empty-state">
-            <h2 className="section__title">Nog geen bijenstanden</h2>
-            <p className="text-secondary mb-lg">
-              Begin met het toevoegen van uw eerste bijenstand om uw kasten en
-              observaties bij te houden.
-            </p>
-            <Link
-              href={`/account/${userId}/apiaries/new`}
-              className="button button--primary button--large"
-            >
-              + Eerste bijenstand toevoegen
-            </Link>
+          <div className="photo-grid__item">
+            <Image
+              src="/assets/hero.jpg"
+              alt="Bijenwaarnemingen"
+              fill
+              style={{ objectFit: "cover" }}
+            />
           </div>
-        )}
+        </div>
       </div>
     </section>
   );

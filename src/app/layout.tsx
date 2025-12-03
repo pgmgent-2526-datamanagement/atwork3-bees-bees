@@ -23,15 +23,15 @@ export default function RootLayout({
         />
       </head>
       <body>
-        <header className="header">
-          <Navigation />
-        </header>
         <SessionWrapper>
+          <header className="header">
+            <Navigation />
+          </header>
           <main>{children}</main>
+          <footer className="footer">
+            <Footer />
+          </footer>
         </SessionWrapper>
-        <footer className="footer">
-          <Footer />
-        </footer>
       </body>
     </html>
   );

@@ -1,11 +1,11 @@
-import { getServerSession } from 'next-auth';
-import { redirect } from 'next/navigation';
-import Link from 'next/link';
-import prisma from '@/lib/client';
-import { authOptions } from '@/lib/auth-options';
-import { hasAccess } from '@/lib/auth-helpers';
+import { getServerSession } from "next-auth";
+import { redirect } from "next/navigation";
+import Link from "next/link";
+import prisma from "@/lib/client";
+import { authOptions } from "@/lib/auth-options";
+import { hasAccess } from "@/lib/auth-helpers";
 
-export const dynamic = 'force-dynamic';
+export const dynamic = "force-dynamic";
 
 export default async function AccountApiaryPage({
   params,
@@ -16,12 +16,12 @@ export default async function AccountApiaryPage({
   const session = await getServerSession(authOptions);
 
   if (!session?.user?.id) {
-    redirect('/auth/login');
+    redirect("/auth/login");
   }
 
   // Check if user has access to this account
   if (!hasAccess(session, userId)) {
-    redirect('/unauthorized');
+    redirect("/unauthorized");
   }
 
   const apiary = await prisma.apiary.findUnique({
@@ -30,7 +30,7 @@ export default async function AccountApiaryPage({
       hives: {
         include: {
           observations: {
-            orderBy: { createdAt: 'desc' },
+            orderBy: { createdAt: "desc" },
             take: 3,
           },
         },
@@ -43,8 +43,8 @@ export default async function AccountApiaryPage({
   }
 
   // Extra check: verify apiary belongs to this user
-  if (apiary.userId !== session.user.id && session.user.role !== 'ADMIN') {
-    redirect('/unauthorized');
+  if (apiary.userId !== session.user.id && session.user.role !== "ADMIN") {
+    redirect("/unauthorized");
   }
 
   return (
@@ -52,7 +52,7 @@ export default async function AccountApiaryPage({
       <div className="container">
         <div className="apiary-detail-header">
           <div>
-            <h1 className="title">{apiary.name}</h1>
+            <h1 className="title">Kasten van {apiary.name}</h1>
             <p className="text-secondary">{apiary.location}</p>
           </div>
           <Link
@@ -65,7 +65,7 @@ export default async function AccountApiaryPage({
 
         {apiary.hives.length > 0 ? (
           <div className="hives-grid">
-            {apiary.hives.map(hive => (
+            {apiary.hives.map((hive) => (
               <div key={hive.id} className="card">
                 <h3 className="card__title">
                   {hive.type} - {hive.colonyType}
