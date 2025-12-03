@@ -19,7 +19,7 @@ export default async function AccountApiaryPage({
     redirect('/auth/login');
   }
 
-  // Check if user has access to this account
+  // Check if user has access to this accountop
   if (!hasAccess(session, userId)) {
     redirect('/unauthorized');
   }
