@@ -5,6 +5,7 @@ Een Next.js applicatie voor het beheren en bijhouden van bijenwaarnemingen, bije
 ## 📋 Project Overzicht
 
 Deze applicatie maakt het mogelijk voor gebruikers om:
+
 - Bijenkasten (apiaries) te registreren en beheren
 - Bijenkorven (hives) toe te voegen en te monitoren
 - Waarnemingen (observations) bij te houden
@@ -17,17 +18,20 @@ Deze applicatie maakt het mogelijk voor gebruikers om:
 
 1. Clone de repository
 2. Installeer dependencies:
+
 ```bash
 npm install
 ```
 
 3. Configureer de database:
+
 ```bash
 npx prisma generate
 npx prisma migrate dev
 ```
 
 4. Start de development server:
+
 ```bash
 npm run dev
 ```
@@ -37,10 +41,12 @@ npm run dev
 ## 🔐 Test Accounts
 
 ### Gebruiker Account
+
 - **Email:** lola@test.com
 - **Wachtwoord:** lola123456
 
 ### Admin Account
+
 - **Email:** admin@example.com
 - **Wachtwoord:** test@123
 
@@ -87,6 +93,7 @@ npm run dev
 ## 📊 Database Schema
 
 Belangrijkste entiteiten:
+
 - **User** - Gebruikers
 - **Apiary** - Bijenkasten (locaties)
 - **Hive** - Bijenkorven
@@ -97,6 +104,7 @@ Belangrijkste entiteiten:
 ## 🔒 Authenticatie & Autorisatie
 
 De app gebruikt NextAuth.js met credential-based authenticatie. Er zijn twee rollen:
+
 - **USER** - Standaard gebruiker
 - **ADMIN** - Administrator met volledige toegang
 
