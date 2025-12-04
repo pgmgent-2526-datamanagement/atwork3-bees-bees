@@ -56,22 +56,32 @@ export function RegisterForm({ createItem }: FormProps) {
   return (
     <form onSubmit={handleSubmit} className="form">
       {errors?.form && (
-        <div className="form-error form-error--general">
+        <div
+          style={{
+            padding: "var(--space-4)",
+            marginBottom: "var(--space-6)",
+            backgroundColor: "#fee",
+            border: "1px solid #fcc",
+            borderRadius: "4px",
+          }}
+        >
           {errors.form.map((msg, i) => (
-            <p key={i}>{msg}</p>
+            <p key={i} style={{ color: "#c33", fontSize: "var(--text-sm)" }}>
+              {msg}
+            </p>
           ))}
         </div>
       )}
 
-      <div className="form-group">
-        <label htmlFor="name" className="form-label">
+      <div className="form__group">
+        <label htmlFor="name" className="form__label">
           Naam
         </label>
         <input
           id="name"
           type="text"
           name="name"
-          className="form-input"
+          className="form__input"
           placeholder="Voornaam Achternaam"
           onChange={(e) => {
             if (errors?.name) {
@@ -84,7 +94,13 @@ export function RegisterForm({ createItem }: FormProps) {
           }}
         />
         {errors?.name && (
-          <div className="form-error">
+          <div
+            style={{
+              marginTop: "var(--space-2)",
+              color: "#c33",
+              fontSize: "var(--text-sm)",
+            }}
+          >
             {errors.name.map((msg, i) => (
               <p key={i}>{msg}</p>
             ))}
@@ -92,15 +108,15 @@ export function RegisterForm({ createItem }: FormProps) {
         )}
       </div>
 
-      <div className="form-group">
-        <label htmlFor="email" className="form-label">
+      <div className="form__group">
+        <label htmlFor="email" className="form__label">
           E-mailadres
         </label>
         <input
           id="email"
           type="email"
           name="email"
-          className="form-input"
+          className="form__input"
           placeholder="uw.naam@voorbeeld.be"
           onChange={(e) => {
             if (errors?.email) {
@@ -113,7 +129,13 @@ export function RegisterForm({ createItem }: FormProps) {
           }}
         />
         {errors?.email && (
-          <div className="form-error">
+          <div
+            style={{
+              marginTop: "var(--space-2)",
+              color: "#c33",
+              fontSize: "var(--text-sm)",
+            }}
+          >
             {errors.email.map((msg, i) => (
               <p key={i}>{msg}</p>
             ))}
@@ -121,15 +143,15 @@ export function RegisterForm({ createItem }: FormProps) {
         )}
       </div>
 
-      <div className="form-group">
-        <label htmlFor="password" className="form-label">
+      <div className="form__group">
+        <label htmlFor="password" className="form__label">
           Wachtwoord
         </label>
         <input
           id="password"
           type="password"
           name="password"
-          className="form-input"
+          className="form__input"
           placeholder="Minimaal 8 tekens"
           onChange={(e) => {
             if (errors?.password) {
@@ -142,7 +164,13 @@ export function RegisterForm({ createItem }: FormProps) {
           }}
         />
         {errors?.password && (
-          <div className="form-error">
+          <div
+            style={{
+              marginTop: "var(--space-2)",
+              color: "#c33",
+              fontSize: "var(--text-sm)",
+            }}
+          >
             {errors.password.map((msg, i) => (
               <p key={i}>{msg}</p>
             ))}
@@ -153,7 +181,21 @@ export function RegisterForm({ createItem }: FormProps) {
       <button
         type="submit"
         disabled={loading}
-        className="button button--primary button--large button--full-width"
+        style={{
+          width: "100%",
+          padding: "var(--space-4) var(--space-6)",
+          fontSize: "var(--text-base)",
+          fontFamily: "var(--font-display)",
+          fontWeight: "500",
+          color: "white",
+          backgroundColor: "var(--color-primary)",
+          border: "none",
+          borderRadius: "4px",
+          cursor: loading ? "not-allowed" : "pointer",
+          transition: "var(--transition-base)",
+          opacity: loading ? 0.7 : 1,
+          marginTop: "var(--space-4)",
+        }}
       >
         {loading ? "Account aanmaken..." : "Account aanmaken"}
       </button>

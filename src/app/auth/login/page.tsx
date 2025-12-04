@@ -5,6 +5,8 @@ import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import Link from "next/link";
+import Hero from "@/components/magazine/Hero";
+import Section from "@/components/magazine/Section";
 
 export default function Login() {
   type Errors = string | undefined | null;
@@ -64,32 +66,64 @@ export default function Login() {
   }
 
   return (
-    <section className="section section--standard bg-alt">
-      <div className="container container--narrow">
-        <div className="auth-container">
-          <div className="auth-header">
-            <h1 className="title">Inloggen</h1>
-            <p className="subtitle subtitle--centered">
-              Welkom terug bij uw bijenwaarnemingen
-            </p>
-          </div>
+    <>
+      <Hero
+        title="Inloggen"
+        subtitle="Welkom terug bij uw bijenwaarnemingen"
+        image="/assets/hero-new.jpg"
+        imageAlt="Login bij BEES Platform"
+        showScroll={false}
+      />
 
+      <Section variant="white" size="lg">
+        <div className="text-center mb-12">
+          <h2
+            className="text-display text-3xl mb-4"
+            style={{ fontWeight: "400", color: "var(--color-primary)" }}
+          >
+            Log in op uw account
+          </h2>
+          <p
+            className="text-base"
+            style={{
+              color: "var(--color-text-light)",
+              lineHeight: "1.6",
+              maxWidth: "700px",
+              margin: "0 auto",
+            }}
+          >
+            Vul uw gegevens in om toegang te krijgen tot uw bijenwaarnemingen en
+            bijenstanden.
+          </p>
+        </div>
+
+        <div style={{ maxWidth: "600px", margin: "0 auto" }}>
           <form onSubmit={handleSubmit} className="form">
             {errors && (
-              <div className="form-error form-error--general">
-                <p>{errors}</p>
+              <div
+                style={{
+                  padding: "var(--space-4)",
+                  marginBottom: "var(--space-6)",
+                  backgroundColor: "#fee",
+                  border: "1px solid #fcc",
+                  borderRadius: "4px",
+                }}
+              >
+                <p style={{ color: "#c33", fontSize: "var(--text-sm)" }}>
+                  {errors}
+                </p>
               </div>
             )}
 
-            <div className="form-group">
-              <label htmlFor="email" className="form-label">
+            <div className="form__group">
+              <label htmlFor="email" className="form__label">
                 E-mailadres
               </label>
               <input
                 id="email"
                 type="email"
                 name="email"
-                className="form-input"
+                className="form__input"
                 placeholder="uw.naam@voorbeeld.be"
                 onChange={(e) => {
                   if (fieldErrors?.email) {
@@ -98,21 +132,27 @@ export default function Login() {
                 }}
               />
               {fieldErrors?.email && (
-                <div className="form-error">
+                <div
+                  style={{
+                    marginTop: "var(--space-2)",
+                    color: "#c33",
+                    fontSize: "var(--text-sm)",
+                  }}
+                >
                   <p>{fieldErrors.email}</p>
                 </div>
               )}
             </div>
 
-            <div className="form-group">
-              <label htmlFor="password" className="form-label">
+            <div className="form__group">
+              <label htmlFor="password" className="form__label">
                 Wachtwoord
               </label>
               <input
                 id="password"
                 type="password"
                 name="password"
-                className="form-input"
+                className="form__input"
                 placeholder="Uw wachtwoord"
                 onChange={(e) => {
                   if (fieldErrors?.password) {
@@ -121,7 +161,13 @@ export default function Login() {
                 }}
               />
               {fieldErrors?.password && (
-                <div className="form-error">
+                <div
+                  style={{
+                    marginTop: "var(--space-2)",
+                    color: "#c33",
+                    fontSize: "var(--text-sm)",
+                  }}
+                >
                   <p>{fieldErrors.password}</p>
                 </div>
               )}
@@ -130,22 +176,50 @@ export default function Login() {
             <button
               type="submit"
               disabled={loading}
-              className="button button--primary button--large button--full-width"
+              style={{
+                width: "100%",
+                padding: "var(--space-4) var(--space-6)",
+                fontSize: "var(--text-base)",
+                fontFamily: "var(--font-display)",
+                fontWeight: "500",
+                color: "white",
+                backgroundColor: "var(--color-primary)",
+                border: "none",
+                borderRadius: "4px",
+                cursor: loading ? "not-allowed" : "pointer",
+                transition: "var(--transition-base)",
+                opacity: loading ? 0.7 : 1,
+                marginTop: "var(--space-4)",
+              }}
             >
               {loading ? "Inloggen..." : "Inloggen"}
             </button>
           </form>
 
-          <div className="auth-footer">
-            <p className="text-secondary">
+          <div style={{ marginTop: "var(--space-8)", textAlign: "center" }}>
+            <p
+              style={{
+                color: "var(--color-text-light)",
+                fontSize: "var(--text-base)",
+              }}
+            >
               Nog geen account?{" "}
-              <Link href="/auth/register" className="auth-link">
+              <Link
+                href="/auth/register"
+                style={{
+                  color: "var(--color-primary)",
+                  textDecoration: "none",
+                  fontWeight: "500",
+                  borderBottom: "1px solid transparent",
+                  transition: "var(--transition-fast)",
+                }}
+              >
                 Registreer hier
               </Link>
             </p>
           </div>
         </div>
-      </div>
-    </section>
+      </Section>
+    </>
   );
 }

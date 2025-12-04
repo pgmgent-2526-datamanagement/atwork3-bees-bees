@@ -2,18 +2,34 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import Image from "next/image";
 import { useSession, signOut } from "next-auth/react";
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 
 export default function Navigation() {
   const pathname = usePathname();
   const { data: session } = useSession();
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target as Node)
+      ) {
+        setIsDropdownOpen(false);
+      }
+    }
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
 
   const navItems = [
     { href: "/", label: "Home" },
-    { href: "/about", label: "Over Ons" },
+    { href: "/vision", label: "Visie" },
+    { href: "/platform", label: "Platform" },
+    { href: "/contact", label: "Contact" },
   ];
 
   const handleLogout = async () => {
@@ -21,94 +37,84 @@ export default function Navigation() {
   };
 
   return (
-    <div className="header__container">
-      <div className="logo">
-        <Link href="/" className="logo__link">
-          <Image
-            src="/assets/logo.png"
-            alt="Bees Logo"
-            width={120}
-            height={40}
-            className="logo__image"
-          />
-        </Link>
-      </div>
-      <nav className="navigation">
-        <ul className="navigation__list">
-          {navItems.map((item) => (
-            <li key={item.href} className="navigation__item">
+    <nav className="nav">
+      <div className="container">
+        <div className="nav__container">
+          <Link href="/" className="nav__logo">
+            Voor Imkers
+          </Link>
+
+          <div className="nav__menu">
+            {navItems.map((item) => (
               <Link
+                key={item.href}
                 href={item.href}
-                className={`navigation__link ${
-                  pathname === item.href ? "navigation__link--active" : ""
+                className={`nav__link ${
+                  pathname === item.href ? "nav__link--active" : ""
                 }`}
               >
                 {item.label}
               </Link>
-            </li>
-          ))}
-          {session?.user ? (
-            <li className="navigation__item navigation__item--profile">
-              <button
-                className="profile-button"
-                onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-                aria-label="Profiel menu"
-              >
-                <div className="avatar"></div>
-              </button>
-              {isDropdownOpen && (
-                <div className="profile-dropdown">
-                  <Link
-                    href={`/account/${session.user.id}`}
-                    className="profile-dropdown__item"
-                    onClick={() => setIsDropdownOpen(false)}
-                  >
-                    Overzicht
-                  </Link>
-                  <Link
-                    href={`/account/${session.user.id}/apiaries`}
-                    className="profile-dropdown__item"
-                    onClick={() => setIsDropdownOpen(false)}
-                  >
-                    Bijenstanden
-                  </Link>
-                  <Link
-                    href={`/account/${session.user.id}/hives`}
-                    className="profile-dropdown__item"
-                    onClick={() => setIsDropdownOpen(false)}
-                  >
-                    Kasten
-                  </Link>
-                  <Link
-                    href={`/account/${session.user.id}/observations`}
-                    className="profile-dropdown__item"
-                    onClick={() => setIsDropdownOpen(false)}
-                  >
-                    Observaties
-                  </Link>
-                  <button
-                    className="profile-dropdown__item profile-dropdown__item--logout"
-                    onClick={handleLogout}
-                  >
-                    Uitloggen
-                  </button>
-                </div>
-              )}
-            </li>
-          ) : (
-            <li className="navigation__item">
-              <Link
-                href="/auth/login"
-                className={`navigation__link ${
-                  pathname === "/auth/login" ? "navigation__link--active" : ""
-                }`}
-              >
+            ))}
+
+            {session?.user ? (
+              <div className="nav__dropdown" ref={dropdownRef}>
+                <button
+                  className="nav__avatar"
+                  onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+                  aria-label="User menu"
+                >
+                  <span className="nav__avatar-circle"></span>
+                </button>
+
+                {isDropdownOpen && (
+                  <div className="nav__dropdown-menu">
+                    <Link
+                      href={`/account/${session.user.id}`}
+                      className="nav__dropdown-item"
+                      onClick={() => setIsDropdownOpen(false)}
+                    >
+                      Overzicht
+                    </Link>
+                    <Link
+                      href={`/account/${session.user.id}/apiaries`}
+                      className="nav__dropdown-item"
+                      onClick={() => setIsDropdownOpen(false)}
+                    >
+                      Bijenstanden
+                    </Link>
+                    <Link
+                      href={`/account/${session.user.id}/hives`}
+                      className="nav__dropdown-item"
+                      onClick={() => setIsDropdownOpen(false)}
+                    >
+                      Kasten
+                    </Link>
+                    <Link
+                      href={`/account/${session.user.id}/observations`}
+                      className="nav__dropdown-item"
+                      onClick={() => setIsDropdownOpen(false)}
+                    >
+                      Observaties
+                    </Link>
+                    <div className="nav__dropdown-divider"></div>
+                    <button
+                      onClick={handleLogout}
+                      className="nav__dropdown-item nav__dropdown-item--danger"
+                    >
+                      Uitloggen
+                    </button>
+                  </div>
+                )}
+              </div>
+            ) : (
+              <Link href="/auth/login" className="nav__link">
                 Login
               </Link>
-            </li>
-          )}
-        </ul>
-      </nav>
-    </div>
+            )}
+          </div>
+        </div>
+      </div>
+    </nav>
   );
 }

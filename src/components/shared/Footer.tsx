@@ -1,5 +1,3 @@
-"use client";
-
 import Link from "next/link";
 
 export default function Footer() {
@@ -9,42 +7,54 @@ export default function Footer() {
     <footer className="footer">
       <div className="container">
         <div className="footer__content">
-          <div className="footer__section footer__section--main">
-            <h4 className="footer__title">Bees Platform</h4>
-            <p className="footer__text">
-              Moderne digitale oplossing voor professioneel bijenbeheer.
-              Ontwikkeld door imkers, voor imkers.
+          <div>
+            <h3 className="footer__section-title">Voor Imkers</h3>
+            <p
+              className="text-sm"
+              style={{
+                color: "rgba(255,255,255,0.7)",
+                maxWidth: "300px",
+                lineHeight: "1.8",
+              }}
+            >
+              Digitaal imkeren voor de moderne bijhouder. Eenvoudig,
+              overzichtelijk, effectief.
             </p>
           </div>
 
-          <div className="footer__section">
-            <h4 className="footer__title">Platform</h4>
-            <nav className="footer__nav">
-              <Link href="/" className="footer__link">
-                Home
+          <div>
+            <h3 className="footer__section-title">Platform</h3>
+            <nav className="footer__links">
+              <Link href="/vision" className="footer__link">
+                Onze Visie
               </Link>
-              <Link href="/about" className="footer__link">
-                Over Ons
+              <Link href="/platform" className="footer__link">
+                Hoe het werkt
               </Link>
-              <Link href="/account/apiaries" className="footer__link">
-                Mijn Kasten
+              <Link href="/auth/register" className="footer__link">
+                Registreren
+              </Link>
+              <Link href="/auth/login" className="footer__link">
+                Inloggen
               </Link>
             </nav>
           </div>
 
-          <div className="footer__section">
-            <h4 className="footer__title">Contact</h4>
-            <a href="mailto:info@bees.be" className="footer__link">
-              info@bees.be
-            </a>
-            <p className="footer__text">Biodyn Imkers vzw</p>
+          <div>
+            <h3 className="footer__section-title">Support</h3>
+            <nav className="footer__links">
+              <Link href="/about" className="footer__link">
+                Over ons
+              </Link>
+              <a href="mailto:info@bees-platform.be" className="footer__link">
+                Contact
+              </a>
+            </nav>
           </div>
         </div>
 
         <div className="footer__bottom">
-          <p className="footer__copyright">
-            © {currentYear} Bees Platform — Alle rechten voorbehouden
-          </p>
+          © {currentYear} Voor Imkers Platform · Alle rechten voorbehouden
         </div>
       </div>
     </footer>

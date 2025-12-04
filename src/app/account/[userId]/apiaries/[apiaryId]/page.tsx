@@ -53,7 +53,7 @@ export default async function AccountApiaryPage({
         <div className="apiary-detail-header">
           <div>
             <h1 className="title">Kasten van {apiary.name}</h1>
-            <p className="text-secondary">{apiary.location}</p>
+            <p className="text-secondary">{apiary.longitude}</p>
           </div>
           <Link
             href={`/account/${userId}/apiaries/${apiary.id}/hives/new`}
