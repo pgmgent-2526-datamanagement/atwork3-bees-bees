@@ -16,11 +16,11 @@ export async function POST(req: Request) {
     }
 
     const body = await req.json();
-    const { name, location } = body;
+    const { name, latitude, longitude } = body;
 
-    if (!name || !location) {
+    if (!name || latitude === undefined || longitude === undefined) {
       return NextResponse.json(
-        { error: 'Naam en locatie zijn verplicht' },
+        { error: 'Naam, latitude en longitude zijn verplicht' },
         { status: 400 }
       );
     }
@@ -36,7 +36,8 @@ export async function POST(req: Request) {
     const apiary = await prisma.apiary.create({
       data: {
         name,
-        location,
+        longitude,
+        latitude,
         userId: userId,
       },
     });

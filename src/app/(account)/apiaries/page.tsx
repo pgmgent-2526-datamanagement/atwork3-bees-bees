@@ -38,14 +38,17 @@ export default async function AccountApiariesPage() {
             {user.apiaries.map(apiary => (
               <Link
                 key={apiary.id}
-                href={`/account/apiaries/${apiary.id}`}
+                href={`/apiaries/${apiary.id}`}
                 className="apiary-card apiary-card--link"
               >
                 <div className="apiary-card__header">
                   <h3 className="card__title">{apiary.name}</h3>
                   <span className="badge">{apiary.hives.length} kasten</span>
                 </div>
-                <p className="card__text">{apiary.location}</p>
+                <p className="card__text">
+                  Locatie: {apiary.latitude?.toFixed(5)},{' '}
+                  {apiary.longitude?.toFixed(5)}
+                </p>
               </Link>
             ))}
           </div>
@@ -56,7 +59,7 @@ export default async function AccountApiariesPage() {
               Begin met het toevoegen van uw eerste bijenstand
             </p>
             <Link
-              href="/account/apiaries/new"
+              href="/apiaries/new"
               className="button button--primary button--large"
             >
               + Eerste bijenstand toevoegen

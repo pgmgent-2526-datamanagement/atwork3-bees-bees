@@ -17,7 +17,7 @@ export default async function AccountNewApiaryPage() {
             </p>
           </div>
 
-          <NewApiaryForm userId={session?.user.id} />
+          <NewApiaryForm />
         </div>
       </div>
     </section>
