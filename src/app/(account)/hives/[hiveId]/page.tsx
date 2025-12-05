@@ -3,7 +3,6 @@ import { redirect } from 'next/navigation';
 import Link from 'next/link';
 import prisma from '@/lib/client';
 import { authOptions } from '@/lib/auth-options';
-import { hasAccess } from '@/lib/auth-helpers';
 
 export const dynamic = 'force-dynamic';
 
@@ -16,9 +15,6 @@ export default async function AccountApiaryHivePage({
 
   const session = await getServerSession(authOptions);
   if (!session?.user?.id) redirect('/auth/login');
-  // if (!hasAccess(session, userId)) {
-  //   redirect('/unauthorized');
-  // }
 
   const hive = await prisma.hive.findUnique({
     where: { id: parseInt(hiveId) },

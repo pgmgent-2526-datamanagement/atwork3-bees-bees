@@ -2,11 +2,6 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 
-// interface NewApiaryFormProps {
-//   userId: string | undefined;
-//   onSuccess?: () => void;
-// }
-
 export default function NewApiaryForm() {
   const [latitude, setLatitude] = useState('');
   const [longitude, setLongitude] = useState('');

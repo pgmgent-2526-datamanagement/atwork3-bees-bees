@@ -3,12 +3,6 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 
-// interface NewHiveFormProps {
-//   userId: string;
-//   apiaryId: string;
-//   apiaryName: string;
-// }
-
 export default function NewHiveForm({
   apiaryId,
   apiaryName,
