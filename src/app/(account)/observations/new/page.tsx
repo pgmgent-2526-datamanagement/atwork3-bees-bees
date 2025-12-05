@@ -3,6 +3,7 @@ import prisma from '@/lib/client';
 import NewObservationForm from '@/components/forms/NewObservationForm';
 
 export default async function AccountApiaryHiveNewObservationPage({
+  params,
   searchParams,
 }: {
   params?: any;

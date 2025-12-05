@@ -3,6 +3,7 @@ import prisma from '@/lib/client';
 import NewHiveForm from '@/components/forms/NewHiveForm';
 
 export default async function AccountApiaryNewHivePage({
+  params,
   searchParams,
 }: {
   params?: any;
