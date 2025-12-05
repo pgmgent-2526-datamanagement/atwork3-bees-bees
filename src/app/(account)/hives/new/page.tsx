@@ -5,10 +5,11 @@ import NewHiveForm from '@/components/forms/NewHiveForm';
 export default async function AccountApiaryNewHivePage({
   searchParams,
 }: {
-  searchParams: { apiaryId?: string; apiaryName?: string };
+  params?: any;
+  searchParams?: { apiaryId?: string; apiaryName?: string };
 }) {
-  const apiaryId = searchParams.apiaryId;
-  const apiaryName = searchParams.apiaryName;
+  const apiaryId = searchParams?.apiaryId;
+  const apiaryName = searchParams?.apiaryName;
   if (!apiaryId) {
     redirect('/account/apiaries');
   }

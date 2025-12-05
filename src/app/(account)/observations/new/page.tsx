@@ -5,6 +5,7 @@ import NewObservationForm from '@/components/forms/NewObservationForm';
 export default async function AccountApiaryHiveNewObservationPage({
   searchParams,
 }: {
+  params?: any;
   searchParams: { hiveId?: string };
 }) {
   const hiveId = searchParams.hiveId;
