@@ -1,0 +1,64 @@
+.card {
+  background-color: var(--color-white);
+  transition: var(--transition-base);
+  border: 1px solid var(--color-soft-gray);
+}
+
+.card__image-wrapper {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  margin-bottom: var(--space-6);
+  border-bottom: 1px solid var(--color-soft-gray);
+}
+
+.card__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: var(--transition-slow);
+}
+
+.card:hover .card__image {
+  transform: scale(1.05);
+}
+
+.card__content {
+  padding: var(--space-8);
+}
+
+.card__category {
+  font-size: var(--text-xs);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin-bottom: var(--space-3);
+}
+
+.card__title {
+  font-family: var(--font-display);
+  font-size: var(--text-2xl);
+  font-weight: 500;
+  line-height: 1.2;
+  margin-bottom: var(--space-4);
+  color: var(--color-text);
+}
+
+.card__description {
+  font-size: var(--text-base);
+  line-height: 1.6;
+  color: var(--color-secondary);
+  margin-bottom: var(--space-6);
+}
+
+.card--elevated {
+  background-color: var(--color-white);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  transition: all 0.25s ease;
+}
+
+.card--elevated:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+}
