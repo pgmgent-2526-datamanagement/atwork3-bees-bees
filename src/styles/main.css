@@ -1,24 +1,40 @@
-/* Base Styles */
-@import "./base/variables.css";
+/* ============================================
+   Design Tokens - CSS Custom Properties
+   ============================================ */
+@import "./base/tokens/colors.css";
+@import "./base/tokens/spacing.css";
+@import "./base/tokens/typography.css";
+@import "./base/tokens/layout.css";
+@import "./base/tokens/effects.css";
+
+/* ============================================
+   Base Styles
+   ============================================ */
 @import "./base/reset.css";
-@import "./base/typography.css";
+@import "./base/base.css";
 
-/* Layout */
-@import "./layout/container.css";
-@import "./layout/section.css";
-@import "./layout/grid.css";
+/* ============================================
+   Layout Primitives
+   ============================================ */
+@import "./primitives/container.css";
+@import "./primitives/section.css";
+@import "./primitives/grid.css";
 
-/* Components */
-@import "./components/navigation.css";
+/* ============================================
+   Components
+   ============================================ */
+@import "./components/nav.css";
+@import "./components/dropdown.css";
 @import "./components/hero.css";
 @import "./components/button.css";
 @import "./components/card.css";
-@import "./components/footer.css";
 @import "./components/form.css";
-@import "./components/stats.css";
+@import "./components/footer.css";
 
-/* Utilities */
-@import "./utilities/helpers.css";
-
-/* Google Fonts */
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Lora:wght@400;500;600;700&display=swap");
+/* ============================================
+   Utilities
+   ============================================ */
+@import "./utilities/text.css";
+@import "./utilities/spacing.css";
+@import "./utilities/flexbox.css";
+@import "./utilities/display.css";

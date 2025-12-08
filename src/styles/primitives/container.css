@@ -1,3 +1,5 @@
+/* Container - Layout Primitive */
+
 .container {
   width: 100%;
   max-width: var(--container-max);

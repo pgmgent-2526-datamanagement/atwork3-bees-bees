@@ -1,16 +1,20 @@
-import { getServerSession } from 'next-auth';
-import { redirect } from 'next/navigation';
-import Link from 'next/link';
-import prisma from '@/lib/client';
-import { authOptions } from '@/lib/auth-options';
+import { getServerSession } from "next-auth";
+import { redirect } from "next/navigation";
+import Link from "next/link";
+import prisma from "@/lib/client";
+import { authOptions } from "@/lib/auth-options";
+import Hero from "@/components/magazine/Hero";
+import Section from "@/components/magazine/Section";
+import Button from "@/components/magazine/Button";
+import Card from "@/components/magazine/Card";
 
-export const dynamic = 'force-dynamic';
+export const dynamic = "force-dynamic";
 
 export default async function AccountPage() {
   const session = await getServerSession(authOptions);
 
   if (!session?.user?.id) {
-    redirect('/auth/login');
+    redirect("/auth/login");
   }
 
   // Haal gebruiker op met userId uit params
@@ -22,7 +26,7 @@ export default async function AccountPage() {
           hives: {
             include: {
               observations: {
-                orderBy: { createdAt: 'desc' },
+                orderBy: { createdAt: "desc" },
                 take: 5,
               },
             },
@@ -33,7 +37,7 @@ export default async function AccountPage() {
   });
 
   if (!user) {
-    redirect('/unauthorized');
+    redirect("/unauthorized");
   }
 
   const totalApiaries = user.apiaries.length;
@@ -51,99 +55,321 @@ export default async function AccountPage() {
     0
   );
 
+  const isNewUser =
+    totalApiaries === 0 && totalHives === 0 && totalObservations === 0;
+
   return (
-    <section className="section section--standard bg-alt">
-      <div className="container">
-        {/* Header met welkom */}
-        <div className="account-header">
-          <h1 className="title">Welkom, {user.name}</h1>
-          <p className="text-secondary">
-            Beheer uw bijenstanden, kasten en observaties op één plek
-          </p>
-        </div>
+    <>
+      <Hero
+        title={`Hallo ${user.name}`}
+        subtitle={
+          isNewUser
+            ? "Welkom bij BEES - Uw digitale platform voor bijenbeheer"
+            : "Beheer uw bijenstanden, kasten en observaties"
+        }
+        image="/assets/hero-new.jpg"
+        imageAlt="BEES Platform Account"
+        showScroll={false}
+      />
 
-        {/* Statistieken */}
-        <div className="stats-grid">
-          <Link href={`/apiaries`} className="stat-card stat-card--link">
-            <h3 className="stat-card__number">{totalApiaries}</h3>
-            <p className="stat-card__label">Bijenstanden</p>
-          </Link>
-          <Link href={`/hives`} className="stat-card stat-card--link">
-            <h3 className="stat-card__number">{totalHives}</h3>
-            <p className="stat-card__label">Kasten</p>
-          </Link>
-          <Link href={`/observations`} className="stat-card stat-card--link">
-            <h3 className="stat-card__number">{totalObservations}</h3>
-            <p className="stat-card__label">Observaties</p>
-          </Link>
-        </div>
-
-        {/* Quick actions */}
-        <div className="quick-actions">
-          <h2 className="section__title">Snelle acties</h2>
-          <div className="grid grid--2">
-            <Link href={`/apiaries/new`} className="action-card">
-              <h3 className="card__title">+ Nieuwe bijenstand</h3>
-              <p className="card__text">
-                Registreer een nieuwe locatie voor uw bijenkasten
+      {isNewUser ? (
+        // Voor nieuwe gebruikers: uitleg en stappenplan
+        <>
+          <Section variant="white" size="lg">
+            <div
+              style={{
+                maxWidth: "800px",
+                margin: "0 auto",
+                textAlign: "center",
+              }}
+            >
+              <h2
+                className="text-display text-3xl mb-6"
+                style={{ fontWeight: "400", color: "var(--color-primary)" }}
+              >
+                Begin met uw digitale bijenlogboek
+              </h2>
+              <p
+                className="text-base mb-8"
+                style={{
+                  color: "var(--color-text-light)",
+                  lineHeight: "1.8",
+                }}
+              >
+                BEES helpt u om alle informatie over uw bijenstanden, kasten en
+                waarnemingen overzichtelijk bij te houden. In drie eenvoudige
+                stappen start u met digitaal bijenhouden.
               </p>
-            </Link>
-            <Link href={`/apiaries`} className="action-card">
-              <h3 className="card__title">Beheer bijenstanden</h3>
-              <p className="card__text">
-                Bekijk en wijzig uw bestaande bijenstanden
-              </p>
-            </Link>
-          </div>
-        </div>
+            </div>
+          </Section>
 
-        {/* Bijenstanden overzicht */}
-        {user.apiaries.length > 0 ? (
-          <div className="apiaries-overview">
-            <h2 className="section__title">Uw bijenstanden</h2>
-            <div className="apiaries-list">
-              {user.apiaries.map(apiary => (
-                <div key={apiary.id} className="apiary-card">
-                  <div className="apiary-card__header">
-                    <h3 className="card__title">{apiary.name}</h3>
-                    <span className="badge">{apiary.hives.length} kasten</span>
-                  </div>
-                  <p className="card__text">{apiary.longitude}</p>
-                  <p className="card__text">{apiary.latitude}</p>
-                  <div className="apiary-card__actions">
-                    <Link
-                      href={`/apiaries/${apiary.id}`}
-                      className="button button--outline"
+          <Section variant="cream" size="lg">
+            <div className="grid grid--3">
+              <div style={{ textAlign: "center" }}>
+                <div
+                  style={{
+                    width: "60px",
+                    height: "60px",
+                    borderRadius: "50%",
+                    backgroundColor: "var(--color-accent)",
+                    color: "white",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    fontSize: "1.5rem",
+                    fontWeight: "600",
+                    margin: "0 auto var(--space-6)",
+                  }}
+                >
+                  1
+                </div>
+                <h3
+                  className="text-display text-xl mb-4"
+                  style={{ fontWeight: "500", color: "var(--color-primary)" }}
+                >
+                  Voeg een bijenstand toe
+                </h3>
+                <p
+                  style={{
+                    color: "var(--color-text-light)",
+                    lineHeight: "1.6",
+                    marginBottom: "var(--space-6)",
+                  }}
+                >
+                  Begin met het registreren van de locatie waar uw bijenkasten
+                  staan. Geef deze een herkenbare naam zoals "Tuin" of
+                  "Boerderij Janssens".
+                </p>
+              </div>
+
+              <div style={{ textAlign: "center" }}>
+                <div
+                  style={{
+                    width: "60px",
+                    height: "60px",
+                    borderRadius: "50%",
+                    backgroundColor: "var(--color-accent)",
+                    color: "white",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    fontSize: "1.5rem",
+                    fontWeight: "600",
+                    margin: "0 auto var(--space-6)",
+                  }}
+                >
+                  2
+                </div>
+                <h3
+                  className="text-display text-xl mb-4"
+                  style={{ fontWeight: "500", color: "var(--color-primary)" }}
+                >
+                  Registreer uw kasten
+                </h3>
+                <p
+                  style={{
+                    color: "var(--color-text-light)",
+                    lineHeight: "1.6",
+                    marginBottom: "var(--space-6)",
+                  }}
+                >
+                  Voeg de bijenkasten toe die op uw bijenstand staan. Noteer het
+                  type kast en de sterkte van het volk.
+                </p>
+              </div>
+
+              <div style={{ textAlign: "center" }}>
+                <div
+                  style={{
+                    width: "60px",
+                    height: "60px",
+                    borderRadius: "50%",
+                    backgroundColor: "var(--color-accent)",
+                    color: "white",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    fontSize: "1.5rem",
+                    fontWeight: "600",
+                    margin: "0 auto var(--space-6)",
+                  }}
+                >
+                  3
+                </div>
+                <h3
+                  className="text-display text-xl mb-4"
+                  style={{ fontWeight: "500", color: "var(--color-primary)" }}
+                >
+                  Start met observaties
+                </h3>
+                <p
+                  style={{
+                    color: "var(--color-text-light)",
+                    lineHeight: "1.6",
+                    marginBottom: "var(--space-6)",
+                  }}
+                >
+                  Registreer uw waarnemingen per kast. Houd de gezondheid,
+                  activiteit en belangrijke momenten overzichtelijk bij.
+                </p>
+              </div>
+            </div>
+
+            <div style={{ textAlign: "center", marginTop: "var(--space-12)" }}>
+              <Button href="/apiaries/new" variant="primary" size="lg">
+                Start nu - Voeg eerste bijenstand toe
+              </Button>
+            </div>
+          </Section>
+        </>
+      ) : (
+        // Voor bestaande gebruikers: statistieken en acties
+        <>
+          <Section variant="white" size="lg">
+            <div className="text-center mb-12">
+              <h2
+                className="text-display text-3xl mb-4"
+                style={{ fontWeight: "400", color: "var(--color-primary)" }}
+              >
+                Uw overzicht
+              </h2>
+            </div>
+
+            <div className="grid grid--3">
+              <Link href="/apiaries" style={{ textDecoration: "none" }}>
+                <div className="card card--elevated">
+                  <div
+                    className="card__content"
+                    style={{ textAlign: "center" }}
+                  >
+                    <h3
+                      className="text-display"
+                      style={{
+                        fontSize: "3rem",
+                        fontWeight: "300",
+                        color: "var(--color-primary)",
+                        marginBottom: "var(--space-3)",
+                      }}
                     >
-                      Bekijk details
-                    </Link>
-                    <Link
-                      href={`/hives/new?apiaryId=${apiary?.id}&apiaryName=${apiary?.name}`}
-                      className="button button--primary"
+                      {totalApiaries}
+                    </h3>
+                    <p
+                      style={{
+                        color: "var(--color-text-light)",
+                        marginBottom: "var(--space-6)",
+                      }}
                     >
-                      + Nieuwe kast
-                    </Link>
+                      Bijenstanden
+                    </p>
+                    <Button variant="secondary" size="sm">
+                      Bekijk alle
+                    </Button>
                   </div>
                 </div>
-              ))}
+              </Link>
+
+              <Link href="/hives" style={{ textDecoration: "none" }}>
+                <div className="card card--elevated">
+                  <div
+                    className="card__content"
+                    style={{ textAlign: "center" }}
+                  >
+                    <h3
+                      className="text-display"
+                      style={{
+                        fontSize: "3rem",
+                        fontWeight: "300",
+                        color: "var(--color-primary)",
+                        marginBottom: "var(--space-3)",
+                      }}
+                    >
+                      {totalHives}
+                    </h3>
+                    <p
+                      style={{
+                        color: "var(--color-text-light)",
+                        marginBottom: "var(--space-6)",
+                      }}
+                    >
+                      Kasten
+                    </p>
+                    <Button variant="secondary" size="sm">
+                      Bekijk alle
+                    </Button>
+                  </div>
+                </div>
+              </Link>
+
+              <Link href="/observations" style={{ textDecoration: "none" }}>
+                <div className="card card--elevated">
+                  <div
+                    className="card__content"
+                    style={{ textAlign: "center" }}
+                  >
+                    <h3
+                      className="text-display"
+                      style={{
+                        fontSize: "3rem",
+                        fontWeight: "300",
+                        color: "var(--color-primary)",
+                        marginBottom: "var(--space-3)",
+                      }}
+                    >
+                      {totalObservations}
+                    </h3>
+                    <p
+                      style={{
+                        color: "var(--color-text-light)",
+                        marginBottom: "var(--space-6)",
+                      }}
+                    >
+                      Observaties
+                    </p>
+                    <Button variant="secondary" size="sm">
+                      Bekijk alle
+                    </Button>
+                  </div>
+                </div>
+              </Link>
             </div>
-          </div>
-        ) : (
-          <div className="empty-state">
-            <h2 className="section__title">Nog geen bijenstanden</h2>
-            <p className="text-secondary mb-lg">
-              Begin met het toevoegen van uw eerste bijenstand om uw kasten en
-              observaties bij te houden.
-            </p>
-            <Link
-              href={`/apiaries/new`}
-              className="button button--primary button--large"
-            >
-              + Eerste bijenstand toevoegen
-            </Link>
-          </div>
-        )}
-      </div>
-    </section>
+          </Section>
+
+          <Section variant="cream" size="lg">
+            <div className="text-center mb-12">
+              <h2
+                className="text-display text-3xl mb-4"
+                style={{ fontWeight: "400", color: "var(--color-primary)" }}
+              >
+                Snelle acties
+              </h2>
+            </div>
+
+            <div className="grid grid--3">
+              <Link href="/apiaries/new" style={{ textDecoration: "none" }}>
+                <Card
+                  category="TOEVOEGEN"
+                  title="+ Bijenstand"
+                  description="Voeg een nieuwe locatie toe voor uw bijenkasten"
+                />
+              </Link>
+              <Link href="/apiaries" style={{ textDecoration: "none" }}>
+                <Card
+                  category="BEHEREN"
+                  title="Bijenstanden beheren"
+                  description="Bekijk en wijzig uw bestaande bijenstanden en voeg kasten toe"
+                />
+              </Link>
+              <Link href="/observations/new" style={{ textDecoration: "none" }}>
+                <Card
+                  category="REGISTREREN"
+                  title="+ Observatie"
+                  description="Maak een nieuwe waarneming bij één van uw bijenkasten"
+                />
+              </Link>
+            </div>
+          </Section>
+        </>
+      )}
+    </>
   );
 }

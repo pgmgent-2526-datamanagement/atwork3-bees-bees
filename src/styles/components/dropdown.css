@@ -1,0 +1,75 @@
+/* Dropdown Component (Avatar Dropdown in Nav) */
+
+.nav__dropdown {
+  position: relative;
+}
+
+.nav__avatar {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav__avatar-circle {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: var(--color-accent);
+  display: block;
+  transition: var(--transition-fast);
+}
+
+.nav__avatar:hover .nav__avatar-circle {
+  background-color: var(--color-primary);
+}
+
+.nav__dropdown-menu {
+  position: absolute;
+  top: calc(100% + 12px);
+  right: 0;
+  background: white;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+  border-radius: 8px;
+  min-width: 200px;
+  overflow: hidden;
+  z-index: 1001;
+}
+
+.nav__dropdown-item {
+  display: block;
+  width: 100%;
+  padding: 12px 20px;
+  text-align: left;
+  background: none;
+  border: none;
+  font-family: var(--font-display);
+  font-size: var(--text-sm);
+  font-weight: 400;
+  color: var(--color-text);
+  cursor: pointer;
+  transition: var(--transition-fast);
+  text-decoration: none;
+}
+
+.nav__dropdown-item:hover {
+  background-color: var(--color-cream);
+}
+
+.nav__dropdown-item--danger {
+  color: #dc2626;
+}
+
+.nav__dropdown-item--danger:hover {
+  background-color: #fee2e2;
+}
+
+.nav__dropdown-divider {
+  height: 1px;
+  background-color: rgba(0, 0, 0, 0.08);
+  margin: 4px 0;
+}

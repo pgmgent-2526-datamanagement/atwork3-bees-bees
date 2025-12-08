@@ -1,0 +1,17 @@
+:root {
+  /* Font Families */
+  --font-display: "Poppins", sans-serif;
+  --font-body: "Lora", serif;
+
+  /* Font Sizes - Fluid Typography */
+  --text-xs: clamp(0.75rem, 0.7vw, 0.875rem);
+  --text-sm: clamp(0.875rem, 0.85vw, 1rem);
+  --text-base: clamp(1rem, 1vw, 1.125rem);
+  --text-lg: clamp(1.125rem, 1.2vw, 1.25rem);
+  --text-xl: clamp(1.25rem, 1.5vw, 1.5rem);
+  --text-2xl: clamp(1.5rem, 2vw, 2rem);
+  --text-3xl: clamp(2rem, 3vw, 3rem);
+  --text-4xl: clamp(2.5rem, 4vw, 4rem);
+  --text-5xl: clamp(2.5rem, 4vw, 4rem);
+  --text-6xl: clamp(3rem, 5vw, 5rem);
+}
