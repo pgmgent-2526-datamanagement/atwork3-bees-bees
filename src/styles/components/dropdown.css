@@ -41,7 +41,9 @@
 }
 
 .nav__dropdown-item {
-  display: block;
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
   width: 100%;
   padding: 12px 20px;
   text-align: left;
@@ -56,8 +58,18 @@
   text-decoration: none;
 }
 
+.nav__dropdown-item svg {
+  flex-shrink: 0;
+  color: var(--color-secondary);
+  transition: var(--transition-fast);
+}
+
 .nav__dropdown-item:hover {
   background-color: var(--color-cream);
+}
+
+.nav__dropdown-item:hover svg {
+  color: var(--color-accent);
 }
 
 .nav__dropdown-item--danger {

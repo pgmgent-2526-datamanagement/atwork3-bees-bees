@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useSession, signOut } from "next-auth/react";
 import { useState, useRef, useEffect } from "react";
+import { User, MapPin, Box, Eye, LogOut, Menu, X } from "lucide-react";
 
 export default function Navigation() {
   const pathname = usePathname();
@@ -74,35 +75,40 @@ export default function Navigation() {
                       className="nav__dropdown-item"
                       onClick={() => setIsDropdownOpen(false)}
                     >
-                      Overzicht
+                      <User size={16} />
+                      <span>Overzicht</span>
                     </Link>
                     <Link
                       href="/apiaries"
                       className="nav__dropdown-item"
                       onClick={() => setIsDropdownOpen(false)}
                     >
-                      Bijenstanden
+                      <MapPin size={16} />
+                      <span>Bijenstanden</span>
                     </Link>
                     <Link
                       href="/hives"
                       className="nav__dropdown-item"
                       onClick={() => setIsDropdownOpen(false)}
                     >
-                      Kasten
+                      <Box size={16} />
+                      <span>Kasten</span>
                     </Link>
                     <Link
                       href="/observations"
                       className="nav__dropdown-item"
                       onClick={() => setIsDropdownOpen(false)}
                     >
-                      Observaties
+                      <Eye size={16} />
+                      <span>Observaties</span>
                     </Link>
                     <div className="nav__dropdown-divider"></div>
                     <button
                       onClick={handleLogout}
                       className="nav__dropdown-item nav__dropdown-item--danger"
                     >
-                      Uitloggen
+                      <LogOut size={16} />
+                      <span>Uitloggen</span>
                     </button>
                   </div>
                 )}

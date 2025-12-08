@@ -7,6 +7,7 @@ import Hero from "@/components/magazine/Hero";
 import Section from "@/components/magazine/Section";
 import Button from "@/components/magazine/Button";
 import Card from "@/components/magazine/Card";
+import { MapPin, Box, Eye } from "lucide-react";
 
 export const dynamic = "force-dynamic";
 
@@ -108,24 +109,23 @@ export default async function AccountPage() {
               <div style={{ textAlign: "center" }}>
                 <div
                   style={{
-                    width: "60px",
-                    height: "60px",
+                    width: "80px",
+                    height: "80px",
                     borderRadius: "50%",
-                    backgroundColor: "var(--color-accent)",
-                    color: "white",
+                    backgroundColor: "var(--color-cream)",
+                    border: "2px solid var(--color-accent)",
+                    color: "var(--color-accent)",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
-                    fontSize: "1.5rem",
-                    fontWeight: "600",
                     margin: "0 auto var(--space-6)",
                   }}
                 >
-                  1
+                  <MapPin size={36} strokeWidth={1.5} />
                 </div>
                 <h3
                   className="text-display text-xl mb-4"
-                  style={{ fontWeight: "500", color: "var(--color-primary)" }}
+                  style={{ fontWeight: "600", color: "var(--color-primary)" }}
                 >
                   Voeg een bijenstand toe
                 </h3>
@@ -145,24 +145,23 @@ export default async function AccountPage() {
               <div style={{ textAlign: "center" }}>
                 <div
                   style={{
-                    width: "60px",
-                    height: "60px",
+                    width: "80px",
+                    height: "80px",
                     borderRadius: "50%",
-                    backgroundColor: "var(--color-accent)",
-                    color: "white",
+                    backgroundColor: "var(--color-cream)",
+                    border: "2px solid var(--color-accent)",
+                    color: "var(--color-accent)",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
-                    fontSize: "1.5rem",
-                    fontWeight: "600",
                     margin: "0 auto var(--space-6)",
                   }}
                 >
-                  2
+                  <Box size={36} strokeWidth={1.5} />
                 </div>
                 <h3
                   className="text-display text-xl mb-4"
-                  style={{ fontWeight: "500", color: "var(--color-primary)" }}
+                  style={{ fontWeight: "600", color: "var(--color-primary)" }}
                 >
                   Registreer uw kasten
                 </h3>
@@ -181,24 +180,23 @@ export default async function AccountPage() {
               <div style={{ textAlign: "center" }}>
                 <div
                   style={{
-                    width: "60px",
-                    height: "60px",
+                    width: "80px",
+                    height: "80px",
                     borderRadius: "50%",
-                    backgroundColor: "var(--color-accent)",
-                    color: "white",
+                    backgroundColor: "var(--color-cream)",
+                    border: "2px solid var(--color-accent)",
+                    color: "var(--color-accent)",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
-                    fontSize: "1.5rem",
-                    fontWeight: "600",
                     margin: "0 auto var(--space-6)",
                   }}
                 >
-                  3
+                  <Eye size={36} strokeWidth={1.5} />
                 </div>
                 <h3
                   className="text-display text-xl mb-4"
-                  style={{ fontWeight: "500", color: "var(--color-primary)" }}
+                  style={{ fontWeight: "600", color: "var(--color-primary)" }}
                 >
                   Start met observaties
                 </h3>
