@@ -99,7 +99,9 @@ export default function Login() {
               />
               {fieldErrors?.email && (
                 <div className="form-error">
-                  <p>{fieldErrors.email}</p>
+                  {fieldErrors.email.map((error, index) => (
+                    <p key={index}>{error}</p>
+                  ))}
                 </div>
               )}
             </div>
@@ -122,7 +124,9 @@ export default function Login() {
               />
               {fieldErrors?.password && (
                 <div className="form-error">
-                  <p>{fieldErrors.password}</p>
+                  {fieldErrors.password.map((error, index) => (
+                    <p key={index}>{error}</p>
+                  ))}
                 </div>
               )}
             </div>
