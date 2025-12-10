@@ -1,31 +1,41 @@
-/* Main CSS - Importeert alles */
+/* ============================================
+   Design Tokens - CSS Custom Properties
+   ============================================ */
+@import "./base/tokens/colors.css";
+@import "./base/tokens/spacing.css";
+@import "./base/tokens/typography.css";
+@import "./base/tokens/layout.css";
+@import "./base/tokens/effects.css";
 
-/* Base */
+/* ============================================
+   Base Styles
+   ============================================ */
 @import "./base/reset.css";
-@import "./base/variables.css";
-@import "./base/typography.css";
+@import "./base/base.css";
 
-/* Layout */
-@import "./layout/header.css";
-@import "./layout/container.css";
-@import "./layout/grid.css";
-@import "./layout/section.css";
-@import "./layout/content-with-image.css";
+/* ============================================
+   Layout Primitives
+   ============================================ */
+@import "./primitives/container.css";
+@import "./primitives/section.css";
+@import "./primitives/grid.css";
 
-/* Shared Components - Herbruikbare UI elementen */
-@import "./shared/buttons.css";
-@import "./shared/button-group.css";
-@import "./shared/card.css";
-@import "./shared/title.css";
-@import "./shared/subtitle.css";
-@import "./shared/forms.css";
-@import "./shared/utilities.css";
-
-/* Components - Page-specifieke elementen */
-@import "./components/logo.css";
-@import "./components/navigation.css";
-@import "./components/footer.css";
+/* ============================================
+   Components
+   ============================================ */
+@import "./components/nav.css";
+@import "./components/dropdown.css";
 @import "./components/hero.css";
+@import "./components/button.css";
+@import "./components/card.css";
+@import "./components/form.css";
 @import "./components/stats.css";
-@import "./components/account.css";
-@import "./components/page-specific.css";
+@import "./components/footer.css";
+
+/* ============================================
+   Utilities
+   ============================================ */
+@import "./utilities/text.css";
+@import "./utilities/spacing.css";
+@import "./utilities/flexbox.css";
+@import "./utilities/display.css";
