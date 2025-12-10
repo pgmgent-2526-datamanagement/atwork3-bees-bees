@@ -12,7 +12,9 @@ export default async function AccountApiaryPage({
   params: Promise<{ apiaryId: string }>;
 }) {
   const session = await getServerSession(authOptions);
+  console.log('params received in AccountApiaryPage:', params);
   const { apiaryId } = await params;
+
   const apiaryOwner = await prisma.apiary.findUnique({
     where: { id: parseInt(apiaryId) },
     select: { userId: true },
@@ -67,7 +69,7 @@ export default async function AccountApiaryPage({
           </Link>
         </div>
 
-        {apiary?.hives ?? [].length > 0 ? (
+        {apiary?.hives?.length ? (
           <div className="hives-grid">
             {apiary?.hives.map((hive) => (
               <div key={hive.id} className="card">
