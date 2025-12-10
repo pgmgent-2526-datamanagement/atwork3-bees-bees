@@ -31,7 +31,12 @@ export default async function AccountApiaryPage({
 
   const apiary = await prisma.apiary.findUnique({
     where: { id: parseInt(apiaryId) },
-    include: {
+    select: {
+      id: true,
+      name: true,
+      latitude: true,
+      longitude: true,
+      userId: true,
       hives: {
         include: {
           observations: {
