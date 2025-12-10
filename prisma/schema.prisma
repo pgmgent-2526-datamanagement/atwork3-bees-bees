@@ -24,13 +24,14 @@ model User {
 }
 
 model Apiary {
-  id       Int           @id @default(autoincrement())
-  name     String
-  location String
-  userId   String
-  user     User          @relation(fields: [userId], references: [id])
-  hives    Hive[]
-  plants   ApiaryPlant[]
+  id        Int           @id @default(autoincrement())
+  name      String
+  latitude  Float         @default(0)
+  longitude Float         @default(0)
+  userId    String
+  user      User          @relation(fields: [userId], references: [id])
+  hives     Hive[]
+  plants    ApiaryPlant[]
 }
 
 model Hive {
