@@ -1,0 +1,12 @@
+/* Display Utilities */
+
+.hidden {
+  display: none;
+}
+
+/* Responsive Display */
+@media (max-width: 768px) {
+  .md\:hidden {
+    display: none;
+  }
+}

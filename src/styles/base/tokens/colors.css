@@ -1,0 +1,24 @@
+:root {
+  /* Brand Colors */
+  --color-ivory: #f5e6c5;
+  --color-organic: #3f422e;
+  --color-apricot: #d78b30;
+  --color-natural: #9f886f;
+
+  /* Semantic Colors */
+  --color-primary: #3f422e;
+  --color-secondary: #9f886f;
+  --color-accent: #d78b30;
+  --color-accent-hover: #c4791f;
+
+  /* Background Colors */
+  --color-white: #ffffff;
+  --color-cream: #fdfcf9;
+  --color-beige: #f5e6c5;
+  --color-soft-gray: #e8e4dd;
+
+  /* Text Colors */
+  --color-text: #3f422e;
+  --color-text-light: #9f886f;
+  --color-text-muted: #c4b5a0;
+}
