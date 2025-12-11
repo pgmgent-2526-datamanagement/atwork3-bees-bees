@@ -37,6 +37,7 @@
 @import "./components/content-block.css";
 @import "./components/footer.css";
 @import "./components/article.css";
+@import "./components/dashboard.css";
 
 /* ============================================
    Pages (specific flows only)

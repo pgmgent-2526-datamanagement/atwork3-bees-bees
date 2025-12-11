@@ -8,6 +8,17 @@
   display: flex;
   flex-direction: column;
   height: 100%;
+  cursor: pointer;
+}
+
+.card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transform: translateY(-4px);
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
 }
 
 /* Card Variants */
@@ -42,13 +53,15 @@
 
 /* Card Sub-components */
 .card-header {
-  padding: var(--space-8);
+  padding: var(--space-5);
   border-bottom: 1px solid rgba(63, 66, 46, 0.06);
+  text-align: center;
 }
 
 .card-content {
-  padding: var(--space-8);
+  padding: var(--space-5);
   flex: 1;
+  text-align: center;
 }
 
 .card-footer {
@@ -90,7 +103,7 @@
 /* Card Title */
 .card-title {
   font-family: var(--font-display);
-  font-size: var(--text-2xl);
+  font-size: var(--text-xl);
   font-weight: var(--font-semibold);
   line-height: var(--leading-tight);
   letter-spacing: var(--tracking-tight);
