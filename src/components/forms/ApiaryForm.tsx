@@ -13,6 +13,7 @@ export default function ApiaryForm({
   const [name, setName] = useState('');
 
   useEffect(() => {
+    if (!initialApiary) return;
     async function fetchApiary() {
       const res = await fetch(`/api/apiaries/${initialApiary}`);
       if (res.ok) {

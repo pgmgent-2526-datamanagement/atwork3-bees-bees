@@ -6,17 +6,14 @@ import { NextRequest } from 'next/server';
 console.log('GET apiaryId route loaded');
 export async function GET(
   _req: NextRequest,
-  { params }: { params: { apiaryId: string } }
+  { params }: { params: Promise<{ apiaryId: string }> }
 ) {
   try {
     console.log('params:', params);
-    const apiaryId = parseInt(params.apiaryId);
-    if (isNaN(apiaryId)) {
-      console.error('apiaryId is not a number:', params.apiaryId);
-      return NextResponse.json({ error: 'Invalid id' }, { status: 400 });
-    }
+    const { apiaryId } = await params;
+    const id = parseInt(apiaryId);
     const apiary = await prisma.apiary.findUnique({
-      where: { id: apiaryId },
+      where: { id },
     });
     if (!apiary) {
       return NextResponse.json({ error: 'Niet gevonden' }, { status: 404 });
@@ -29,8 +26,8 @@ export async function GET(
 }
 
 export async function PUT(
-  req: Request,
-  { params }: { params: { apiaryId: string } }
+  req: NextRequest,
+  { params }: { params: Promise<{ apiaryId: string }> }
 ) {
   try {
     const session = await getServerSession(authOptions);
@@ -45,9 +42,10 @@ export async function PUT(
         { status: 400 }
       );
     }
-    const apiaryId = parseInt(params.apiaryId);
+    const { apiaryId } = await params;
+    const id = parseInt(apiaryId);
     const apiary = await prisma.apiary.findUnique({
-      where: { id: apiaryId },
+      where: { id },
     });
     if (!apiary) {
       return NextResponse.json(
@@ -59,7 +57,7 @@ export async function PUT(
       return NextResponse.json({ error: 'Niet gemachtigd' }, { status: 403 });
     }
     const updatedApiary = await prisma.apiary.update({
-      where: { id: apiaryId },
+      where: { id },
       data: {
         name,
         latitude,
