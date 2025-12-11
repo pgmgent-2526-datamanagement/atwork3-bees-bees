@@ -3,10 +3,6 @@ import { NextResponse } from 'next/server';
 import prisma from '@/lib/client';
 import { authOptions } from '@/lib/auth-options';
 
-// export async function GET(req: Request) {
-//   return new Response('Apiaries endpoint');
-// }
-
 export async function POST(req: Request) {
   try {
     const session = await getServerSession(authOptions);

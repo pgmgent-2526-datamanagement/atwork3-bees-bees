@@ -3,7 +3,6 @@ import { NextResponse } from 'next/server';
 import prisma from '@/lib/client';
 import { authOptions } from '@/lib/auth-options';
 import { NextRequest } from 'next/server';
-console.log('GET apiaryId route loaded');
 export async function GET(
   _req: NextRequest,
   { params }: { params: Promise<{ apiaryId: string }> }
@@ -20,7 +19,6 @@ export async function GET(
     }
     return NextResponse.json(apiary);
   } catch (error) {
-    console.error('Error in GET apiary:', error);
     return NextResponse.json({ error: 'Server error' }, { status: 500 });
   }
 }
