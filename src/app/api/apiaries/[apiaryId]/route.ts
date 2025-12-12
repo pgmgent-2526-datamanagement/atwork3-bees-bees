@@ -8,7 +8,10 @@ export async function GET(
   { params }: { params: Promise<{ apiaryId: string }> }
 ) {
   try {
-    console.log('params:', params);
+    const session = await getServerSession(authOptions);
+    if (!session?.user?.id) {
+      return NextResponse.json({ error: 'Niet ingelogd' }, { status: 401 });
+    }
     const { apiaryId } = await params;
     const id = parseInt(apiaryId);
     const apiary = await prisma.apiary.findUnique({

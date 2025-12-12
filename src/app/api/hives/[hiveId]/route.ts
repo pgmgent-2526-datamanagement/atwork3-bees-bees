@@ -4,6 +4,30 @@ import prisma from '@/lib/client';
 import { authOptions } from '@/lib/auth-options';
 import { NextRequest } from 'next/server';
 
+export async function GET(
+  _req: NextRequest,
+  { params }: { params: Promise<{ hiveId: string }> }
+) {
+  try {
+    const session = await getServerSession(authOptions);
+    if (!session?.user?.id) {
+      return NextResponse.json({ error: 'Niet ingelogd' }, { status: 401 });
+    }
+    const { hiveId } = await params;
+    const id = parseInt(hiveId);
+    const hive = await prisma.hive.findUnique({
+      where: { id },
+    });
+    if (!hive) {
+      return NextResponse.json({ error: 'Niet gevonden' }, { status: 404 });
+    }
+    console.log('NextResponse:', hive);
+    return NextResponse.json(hive);
+  } catch (error) {
+    return NextResponse.json({ error: 'Server error' }, { status: 500 });
+  }
+}
+
 export async function PUT(
   req: NextRequest,
   { params }: { params: Promise<{ hiveId: string }> }

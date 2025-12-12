@@ -2,6 +2,7 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
+import { useEffect } from 'react';
 
 export default function HiveForm({
   apiaryId,
@@ -17,6 +18,22 @@ export default function HiveForm({
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const router = useRouter();
+
+  useEffect(() => {
+    if (!initialHive) return;
+    async function fetchHive() {
+      const res = await fetch(`/api/hives/${initialHive}`);
+      if (res.ok) {
+        const data = await res.json();
+        console.log('Fetched hive data:', data);
+        setType(data.type);
+        setColonyType(data.colonyType);
+      } else {
+        console.error('Failed to fetch hive data');
+      }
+    }
+    fetchHive();
+  }, [initialHive]);
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
