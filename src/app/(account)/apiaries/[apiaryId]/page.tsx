@@ -59,46 +59,42 @@ export default async function AccountApiaryPage({
               {apiary?.longitude.toFixed(6)}
             </p>
           </div>
-          <ul>
-            <li>
-              {' '}
-              <Link
-                href={`/apiaries/${apiary?.id}/edit`}
-                className="button button--primary"
-              >
-                + wijzig de bijenstand
-              </Link>
-            </li>
-            <li>
-              {' '}
-              <Link
-                href={`/hives/new?apiaryId=${apiary?.id}&apiaryName=${apiary?.name}`}
-                className="button button--primary"
-              >
-                + Nieuwe kast
-              </Link>
-            </li>
-          </ul>
+
+          <Link
+            href={`/apiaries/${apiary?.id}/edit`}
+            className="button button--primary"
+          >
+            + wijzig de bijenstand
+          </Link>
         </div>
 
         {apiary?.hives?.length ? (
-          <div className="hives-grid">
-            {apiary?.hives.map(hive => (
-              <div key={hive.id} className="card">
-                <h3 className="card__title">
-                  {hive.type} - {hive.colonyType}
-                </h3>
-                <p className="text-secondary mb-md">
-                  {hive.observations.length} observaties
-                </p>
-                <Link
-                  href={`/hives/${hive.id}`}
-                  className="button button--outline"
-                >
-                  Bekijk details
-                </Link>
-              </div>
-            ))}
+          <div>
+            <h2 className="section__title">Bijenkasten</h2>
+            <div className="hives-grid">
+              {apiary?.hives.map(hive => (
+                <div key={hive.id} className="card">
+                  <h3 className="card__title">
+                    {hive.type} - {hive.colonyType}
+                  </h3>
+                  <p className="text-secondary mb-md">
+                    {hive.observations.length} observaties
+                  </p>
+                  <Link
+                    href={`/hives/${hive.id}`}
+                    className="button button--outline"
+                  >
+                    Bekijk details
+                  </Link>
+                </div>
+              ))}
+            </div>
+            <Link
+              href={`/hives/new?apiaryId=${apiary?.id}&apiaryName=${apiary?.name}`}
+              className="button button--primary"
+            >
+              + Nieuwe kast toevoegen
+            </Link>
           </div>
         ) : (
           <div className="empty-state">
@@ -107,7 +103,7 @@ export default async function AccountApiaryPage({
               Voeg uw eerste bijenkast toe aan deze stand
             </p>
             <Link
-              href={`/hives/new`}
+              href={`/hives/new?apiaryId=${apiary?.id}&apiaryName=${apiary?.name}`}
               className="button button--primary button--large"
             >
               + Eerste kast toevoegen

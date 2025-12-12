@@ -3,12 +3,14 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 
-export default function NewHiveForm({
+export default function HiveForm({
   apiaryId,
   apiaryName,
+  initialHive,
 }: {
-  apiaryId: string;
+  apiaryId?: string | undefined;
   apiaryName?: string;
+  initialHive?: string;
 }) {
   const [type, setType] = useState('');
   const [colonyType, setColonyType] = useState('');
@@ -20,21 +22,26 @@ export default function NewHiveForm({
     e.preventDefault();
     setError('');
     setLoading(true);
+    const hiveData = {
+      type,
+      colonyType,
+      ...(!initialHive && apiaryId && { apiaryId: parseInt(apiaryId) }),
+    };
 
     try {
-      const response = await fetch('/api/hives', {
-        method: 'POST',
+      let response;
+      const url = initialHive ? `/api/hives/${initialHive}` : '/api/hives';
+      const method = initialHive ? 'PUT' : 'POST';
+      response = await fetch(url, {
+        method,
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          type,
-          colonyType,
-          apiaryId: parseInt(apiaryId),
-        }),
+        body: JSON.stringify(hiveData),
       });
 
       if (!response.ok) throw new Error('Kon kast niet aanmaken');
-
-      router.push(`/apiaries/${apiaryId}`);
+      initialHive
+        ? router.push(`/hives/${initialHive}`)
+        : router.push(`/apiaries/${apiaryId}`);
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Er ging iets mis');
       setLoading(false);
@@ -46,10 +53,16 @@ export default function NewHiveForm({
       <div className="container container--narrow">
         <div className="auth-container">
           <div className="auth-header">
-            <h1 className="title">Nieuwe kast toevoegen</h1>
-            <p className="subtitle subtitle--centered">
-              Voor bijenstand: {apiaryName}
-            </p>
+            {apiaryName ? (
+              <h1 className="title">Nieuwe kast toevoegen</h1>
+            ) : (
+              <h1 className="title">Wijzig kastsoort of volk</h1>
+            )}
+            {apiaryName && (
+              <p className="subtitle subtitle--centered">
+                Voor bijenstand: {apiaryName}
+              </p>
+            )}
           </div>
 
           <form onSubmit={handleSubmit} className="form">
@@ -107,7 +120,13 @@ export default function NewHiveForm({
                 disabled={loading}
                 className="button button--primary button--large"
               >
-                {loading ? 'Toevoegen...' : 'Kast toevoegen'}
+                {loading
+                  ? initialHive
+                    ? 'Bewerken...'
+                    : 'Toevoegen...'
+                  : initialHive
+                  ? 'Kast Bewerken'
+                  : 'Kast toevoegen'}
               </button>
               <Link
                 href={`/apiaries/${apiaryId}`}

@@ -44,12 +44,20 @@ export default async function AccountApiaryHivePage({
             <p className="text-secondary">{hive.apiary.longitude}</p>
             <p className="text-secondary">{hive.apiary.latitude}</p>
           </div>
-          <Link
-            href={`/observations/new?hiveId=${hive.id}`}
-            className="button button--primary"
-          >
-            + Nieuwe observatie
-          </Link>
+          <ul>
+            <li>
+              {' '}
+              <Link
+                href={`/observations/new?hiveId=${hive.id}`}
+                className="button button--primary"
+              >
+                + Nieuwe observatie
+              </Link>
+            </li>
+            <li>
+              <Link href={`/hives/${hive.id}/edit`}>Wijzig de kast</Link>
+            </li>
+          </ul>
         </div>
 
         <div className="hive-content">

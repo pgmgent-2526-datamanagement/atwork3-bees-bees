@@ -18,6 +18,7 @@ export default function ApiaryForm({
       const res = await fetch(`/api/apiaries/${initialApiary}`);
       if (res.ok) {
         const data = await res.json();
+        console.log('Fetched apiary data:', data);
         setName(data.name);
         setLatitude(data.latitude.toString());
         setLongitude(data.longitude.toString());

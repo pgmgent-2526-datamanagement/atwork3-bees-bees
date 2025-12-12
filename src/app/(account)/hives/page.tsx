@@ -37,7 +37,6 @@ export default async function AccountHivesPage() {
         <div className="page-header">
           <h1 className="title">Mijn kasten</h1>
         </div>
-
         {allHives.length > 0 ? (
           <div className="hives-list">
             {allHives.map(hive => (

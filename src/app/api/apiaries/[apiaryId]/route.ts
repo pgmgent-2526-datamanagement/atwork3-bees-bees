@@ -17,6 +17,7 @@ export async function GET(
     if (!apiary) {
       return NextResponse.json({ error: 'Niet gevonden' }, { status: 404 });
     }
+    console.log('NextResponse:', apiary);
     return NextResponse.json(apiary);
   } catch (error) {
     return NextResponse.json({ error: 'Server error' }, { status: 500 });
