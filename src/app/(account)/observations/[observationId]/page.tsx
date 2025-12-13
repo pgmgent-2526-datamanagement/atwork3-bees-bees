@@ -1,3 +1,3 @@
 export default function Observation() {
-  return <div>Observation Detail Page</div>;
+  return <div style={{ marginTop: '6rem' }}>Observation Detail Page</div>;
 }

@@ -58,7 +58,7 @@ export default async function AccountObservationsPage() {
             {allObservations.map(observation => (
               <Link
                 key={observation.id}
-                href={`/account/${userId}/apiaries/${observation.apiaryId}/hives/${observation.hiveId}/observations/${observation.id}`}
+                href={`/observations/${observation.id}`}
                 className="observation-card observation-card--link"
               >
                 <div className="observation-card__header">

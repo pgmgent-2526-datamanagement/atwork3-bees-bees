@@ -45,26 +45,32 @@
 
 ### 🏠 Bijenstand Beheer
 
-- [ ] **GET** `/api/apiaries` → Overzicht eigen bijenstanden
-- [ ] **POST** `/api/apiaries` → Nieuwe bijenstand aanmaken
-- [ ] **GET** `/api/apiaries/:id` → Bijenstand details ophalen
-- [ ] **UPDATE** `/api/apiaries/:id` → Bijenstand aanpassen TODO
+- [x] **GET** `/api/apiaries` → Overzicht eigen bijenstanden
+- [x] **GET** `/api/apiaries` → paginering van het overzicht TODO
+- [x] **POST** `/api/apiaries/new` → Nieuwe bijenstand aanmaken
+- [x] **GET** `/api/apiaries/:id` → Bijenstand details ophalen
+- [x] **UPDATE** `/api/apiaries/:id` → Bijenstand aanpassen
 - [ ] **DELETE** `/api/apiaries/:id` → Bijenstand verwijderenTODO
 
 ### 📦 Kast & Observatie Beheer
 
-- [ ] **POST** `/api/hives` → Nieuwe kast toevoegen
-- [ ] **GET** `/api/observations` → Observaties lijst (gepagineerd)
-- [ ] **POST** `/api/observations` → Nieuwe observatie registreren
-- [ ] **UPDATE** `/api/hives/:id` → Bijenkast aanpassen TODO
+- [ ] → Elke kast een unieke naam of nummer geven per bijenstand TODO
+- [x] **GET** `/api/hives` → Overzicht eigen kasten
+- [ ] **GET** `/api/hives` → paginering van het overzicht TODO
+- [x] **POST** `/api/hives/new` → Nieuwe kast toevoegen
+- [x] **GET** `/api/observations` → Observaties lijst
+- [ ] **GET** `/api/observations` → paginering van het overzicht TODO
+- [x] **GET** `/api/observations/:id` → Observatie detail TODO
+- [x] **POST** `/api/observations/new` → Nieuwe observatie registreren
+- [x] **UPDATE** `/api/hives/:id` → Bijenkast aanpassen
 - [ ] **DELETE** `/api/hives/:id` → Bijenkast verwijderenTODO
-- [ ] **UPDATE** `/api/observations/:id` → Observatie aanpassen TODO
+- [x] **UPDATE** `/api/observations/:id` → Observatie aanpassen
 - [ ] **DELETE** `/api/observations/:id` → Observatie verwijderenTODO
 
 ### 👥 Gebruikersbeheer (Beheerder)
 
-- [ ] **GET** `/api/users` → Alle gebruikers tonen (alleen beheerders) TODO
-- [ ] **DELETE** `/api/users/:id` → Gebruiker verwijderen (alleen beheerders)TODO
+- [x] **GET** `/admin/users` → Alle gebruikers tonen (alleen beheerders)
+- [ ] **DELETE** `/admin/users/:id` → Gebruiker verwijderen (alleen beheerders)TODO
 
 ---
 
