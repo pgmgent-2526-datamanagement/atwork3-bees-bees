@@ -41,7 +41,7 @@ export async function PUT(
     const { type, colonyType } = body;
     if (type === undefined || colonyType === undefined) {
       return NextResponse.json(
-        { error: 'Type en Colonietype zijn verplicht' },
+        { error: 'Type en Kolonietype zijn verplicht' },
         { status: 400 }
       );
     }
@@ -57,7 +57,7 @@ export async function PUT(
     });
     if (!hive) {
       return NextResponse.json(
-        { error: 'Bijenstand niet gevonden' },
+        { error: 'Kast niet gevonden' },
         { status: 404 }
       );
     }
@@ -76,7 +76,7 @@ export async function PUT(
     });
     return NextResponse.json(updatedHive, { status: 200 });
   } catch (error) {
-    console.error('Error updating apiary:', error);
+    console.error('Error updating hive:', error);
     return NextResponse.json(
       { error: 'Er ging iets mis bij het bijwerken van de kast' },
       { status: 500 }

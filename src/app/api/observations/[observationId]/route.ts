@@ -3,6 +3,7 @@ import { NextResponse } from 'next/server';
 import prisma from '@/lib/client';
 import { authOptions } from '@/lib/auth-options';
 import { NextRequest } from 'next/server';
+
 export async function GET(
   _req: NextRequest,
   { params }: { params: Promise<{ observationId: string }> }
@@ -37,33 +38,45 @@ export async function PUT(
       return NextResponse.json({ error: 'Niet ingelogd' }, { status: 401 });
     }
     const body = await req.json();
-    const { name, latitude, longitude } = body;
-    if (!name || latitude === undefined || longitude === undefined) {
+    const { beeCount, pollenColor, notes } = body;
+    if (beeCount === undefined || !pollenColor) {
       return NextResponse.json(
-        { error: 'Naam, latitude en longitude zijn verplicht' },
+        { error: 'aantal bijen en pollenkleur zijn verplicht' },
         { status: 400 }
       );
     }
     const { observationId } = await params;
     const id = parseInt(observationId);
-    const apiary = await prisma.apiary.findUnique({
+    const observation = await prisma.observation.findUnique({
       where: { id },
+      include: {
+        hive: {
+          include: {
+            apiary: {
+              select: { userId: true },
+            },
+          },
+        },
+      },
     });
-    if (!apiary) {
+    if (!observation) {
       return NextResponse.json(
         { error: 'Bijenstand niet gevonden' },
         { status: 404 }
       );
     }
-    if (apiary.userId !== session.user.id && session.user.role !== 'ADMIN') {
+    if (
+      observation.hive.apiary.userId !== session.user.id &&
+      session.user.role !== 'ADMIN'
+    ) {
       return NextResponse.json({ error: 'Niet gemachtigd' }, { status: 403 });
     }
-    const updatedApiary = await prisma.apiary.update({
+    const updatedApiary = await prisma.observation.update({
       where: { id },
       data: {
-        name,
-        latitude,
-        longitude,
+        beeCount,
+        pollenColor,
+        notes,
       },
     });
     return NextResponse.json(updatedApiary, { status: 200 });

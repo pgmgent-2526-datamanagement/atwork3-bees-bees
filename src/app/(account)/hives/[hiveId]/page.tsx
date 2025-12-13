@@ -94,6 +94,12 @@ export default async function AccountApiaryHivePage({
                     {obs.notes && (
                       <p className="observation-card__notes">{obs.notes}</p>
                     )}
+                    <Link
+                      href={`../observations/${obs.id}/edit?hiveId=${hive.id}`}
+                      className="observation-card__edit-link"
+                    >
+                      Wijzig observatie
+                    </Link>
                   </div>
                 ))}
               </div>
