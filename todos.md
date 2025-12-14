@@ -71,6 +71,7 @@
 
 - [x] **GET** `/admin/users` → Alle gebruikers tonen (alleen beheerders)
 - [ ] **DELETE** `/admin/users/:id` → Gebruiker verwijderen (alleen beheerders)TODO
+- [ ] → filter gebruikers (alleen beheerders) TODO
 
 ---
 

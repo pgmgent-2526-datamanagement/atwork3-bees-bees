@@ -6,22 +6,35 @@ import { authOptions } from '@/lib/auth-options';
 
 export const dynamic = 'force-dynamic';
 
-export default async function AccountApiariesPage() {
+export default async function AccountApiariesPage({
+  searchParams,
+}: {
+  searchParams?: Promise<{ page?: string }>;
+}) {
+  const searchParamsResult = await searchParams;
+  const currentPage = parseInt(searchParamsResult?.page ?? '1', 10);
+  const apiariesPerPage = 5;
   const session = await getServerSession(authOptions);
   if (!session?.user?.id) redirect('/auth/login');
 
-  const user = await prisma.user.findUnique({
-    where: { id: session?.user?.id },
+  const totalApiaries = await prisma.apiary.count({
+    where: { userId: session?.user?.id },
+  });
+  const totalPages = Math.ceil(totalApiaries / apiariesPerPage);
+  // if (currentPage < 1 || currentPage > totalPages) {
+  //   redirect('/account/apiaries?page=1');
+  // }
+
+  const apiaries = await prisma.apiary.findMany({
+    where: { userId: session?.user?.id },
+    skip: (currentPage - 1) * apiariesPerPage,
+    take: apiariesPerPage,
     include: {
-      apiaries: {
-        include: {
-          hives: true,
-        },
-      },
+      hives: true,
     },
   });
 
-  if (!user) redirect('/auth/login');
+  if (!apiaries) redirect('/auth/login');
 
   return (
     <section className="section section--standard bg-alt">
@@ -33,25 +46,51 @@ export default async function AccountApiariesPage() {
           </Link>
         </div>
 
-        {user.apiaries.length > 0 ? (
-          <div className="apiaries-list">
-            {user.apiaries.map(apiary => (
+        {apiaries.length > 0 ? (
+          <>
+            <div className="apiaries-list">
+              {apiaries.map(apiary => (
+                <Link
+                  key={apiary.id}
+                  href={`/apiaries/${apiary.id}`}
+                  className="apiary-card apiary-card--link"
+                >
+                  <div className="apiary-card__header">
+                    <h3 className="card__title">{apiary.name}</h3>
+                    <span className="badge">{apiary.hives.length} kasten</span>
+                  </div>
+                  <p className="card__text">
+                    Locatie: {apiary.latitude?.toFixed(5)},{' '}
+                    {apiary.longitude?.toFixed(5)}
+                  </p>
+                </Link>
+              ))}
+            </div>
+            <div>
               <Link
-                key={apiary.id}
-                href={`/apiaries/${apiary.id}`}
-                className="apiary-card apiary-card--link"
+                style={{ backgroundColor: 'red', marginRight: '10px' }}
+                href={`/apiaries?page=${
+                  currentPage > 1 ? currentPage - 1 : currentPage
+                }`}
               >
-                <div className="apiary-card__header">
-                  <h3 className="card__title">{apiary.name}</h3>
-                  <span className="badge">{apiary.hives.length} kasten</span>
-                </div>
-                <p className="card__text">
-                  Locatie: {apiary.latitude?.toFixed(5)},{' '}
-                  {apiary.longitude?.toFixed(5)}
-                </p>
+                Vorige pagina
               </Link>
-            ))}
-          </div>
+              <Link
+                style={{ backgroundColor: 'red', marginRight: '10px' }}
+                href={`/apiaries?page=${
+                  currentPage < totalPages ? currentPage + 1 : currentPage
+                }`}
+              >
+                Volgende pagina
+              </Link>
+              <Link
+                style={{ backgroundColor: 'lightBlue' }}
+                href={`/apiaries?page=${currentPage}`}
+              >
+                {`pagina ${currentPage} van ${totalPages} `}
+              </Link>
+            </div>
+          </>
         ) : (
           <div className="empty-state">
             <h2 className="section__title">Nog geen bijenstanden</h2>
