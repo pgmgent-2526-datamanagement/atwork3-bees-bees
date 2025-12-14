@@ -38,7 +38,7 @@ export default async function AccountApiaryPage({
       name: true,
       latitude: true,
       longitude: true,
-      userId: true,      
+      userId: true,
     },
   });
   const searchParamsResult = await searchParams;
@@ -123,12 +123,14 @@ export default async function AccountApiaryPage({
               >
                 Volgende pagina
               </Link>
-              <Link
-                style={{ backgroundColor: 'lightBlue' }}
-                href={`/apiaries/${apiaryId}?page=${currentPage}`}
+              <div
+                style={{
+                  backgroundColor: 'lightBlue',
+                  display: 'inline-block',
+                }}
               >
                 {`pagina ${currentPage} van ${totalPages} `}
-              </Link>
+              </div>
             </div>
           </>
         ) : (

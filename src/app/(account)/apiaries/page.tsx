@@ -20,7 +20,7 @@ export default async function AccountApiariesPage({
   const totalApiaries = await prisma.apiary.count({
     where: { userId: session?.user?.id },
   });
-  const totalPages = Math.ceil(totalApiaries / apiariesPerPage); 
+  const totalPages = Math.ceil(totalApiaries / apiariesPerPage);
 
   const apiaries = await prisma.apiary.findMany({
     where: { userId: session?.user?.id },
@@ -80,12 +80,14 @@ export default async function AccountApiariesPage({
               >
                 Volgende pagina
               </Link>
-              <Link
-                style={{ backgroundColor: 'lightBlue' }}
-                href={`/apiaries?page=${currentPage}`}
+              <div
+                style={{
+                  backgroundColor: 'lightBlue',
+                  display: 'inline-block',
+                }}
               >
                 {`pagina ${currentPage} van ${totalPages} `}
-              </Link>
+              </div>
             </div>
           </>
         ) : (

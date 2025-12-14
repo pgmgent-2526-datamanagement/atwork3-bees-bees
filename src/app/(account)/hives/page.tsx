@@ -77,27 +77,29 @@ export default async function AccountHivesPage({
             <div>
               <Link
                 style={{ backgroundColor: 'red', marginRight: '10px' }}
-                href={`/hives?page=${ currentPage > 1 ? currentPage - 1 : currentPage }`}
+                href={`/hives?page=${
+                  currentPage > 1 ? currentPage - 1 : currentPage
+                }`}
               >
-                Vorige pagina   
+                Vorige pagina
               </Link>
               <Link
-                style={{ backgroundColor: 'red' }}  
+                style={{ backgroundColor: 'red', marginRight: '10px' }}
                 href={`/hives?page=${
                   currentPage < totalPages ? currentPage + 1 : currentPage
                 }`}
-              > 
-
+              >
                 Volgende pagina
               </Link>
-              <Link
-                style={{ backgroundColor: 'lightBlue', marginLeft: '10px' }}
-                href={`/hives?page=${currentPage}`}   
-              >                
+              <div
+                style={{
+                  backgroundColor: 'lightBlue',
+                  display: 'inline-block',
+                }}
+              >
                 {`pagina ${currentPage} van ${totalPages} `}
-              </Link>
-            </div>  
-                
+              </div>
+            </div>
           </>
         ) : (
           <div className="empty-state">

@@ -6,12 +6,15 @@ import { authOptions } from '@/lib/auth-options';
 
 export const dynamic = 'force-dynamic';
 
-export default async function AccountObservationsPage() {
+export default async function AccountObservationsPage(searchParams: {
+  searchParams?: Promise<{ page?: string }>;
+}) {
   const session = await getServerSession(authOptions);
 
   if (!session?.user?.id) {
     redirect('/auth/login');
   }
+
   const userId = session.user.id;
   const user = await prisma.user.findUnique({
     where: { id: userId },
@@ -34,18 +37,56 @@ export default async function AccountObservationsPage() {
 
   if (!user) redirect('/auth/login');
 
-  const allObservations = user.apiaries.flatMap(apiary =>
-    apiary.hives.flatMap(hive =>
-      hive.observations.map(observation => ({
-        ...observation,
-        hiveName: hive.type,
-        hiveId: hive.id,
-        apiaryName: apiary.name,
-        apiaryId: apiary.id,
-      }))
-    )
-  );
+  // const allObservations = user.apiaries.flatMap(apiary =>
+  //   apiary.hives.flatMap(hive =>
+  //     hive.observations.map(observation => ({
+  //       ...observation,
+  //       hiveName: hive.type,
+  //       hiveId: hive.id,
+  //       apiaryName: apiary.name,
+  //       apiaryId: apiary.id,
+  //     }))
+  //   )
+  // );
 
+  const searchParamsResult = await searchParams.searchParams;
+  const currentPage = parseInt(searchParamsResult?.page ?? '1', 10);
+  const observationsPerPage = 5;
+  const totalObservations = await prisma.observation.count({
+    where: {
+      hive: {
+        apiary: {
+          userId: userId,
+        },
+      },
+    },
+  });
+  const totalPages = Math.ceil(totalObservations / observationsPerPage);
+  const observations = await prisma.observation.findMany({
+    where: {
+      hive: {
+        apiary: {
+          userId: userId,
+        },
+      },
+    },
+
+    include: {
+      hive: {
+        select: {
+          type: true,
+          apiary: {
+            select: {
+              name: true,
+            },
+          },
+        },
+      },
+    },
+    orderBy: {
+      createdAt: 'desc',
+    },
+  });
   return (
     <section className="section section--standard bg-alt">
       <div className="container">
@@ -53,33 +94,61 @@ export default async function AccountObservationsPage() {
           <h1 className="title">Mijn observaties</h1>
         </div>
 
-        {allObservations.length > 0 ? (
-          <div className="observations-list">
-            {allObservations.map(observation => (
-              <Link
-                key={observation.id}
-                href={`/observations/${observation.id}`}
-                className="observation-card observation-card--link"
-              >
-                <div className="observation-card__header">
-                  <h3 className="card__title">
-                    {new Date(observation.createdAt).toLocaleDateString(
-                      'nl-BE'
-                    )}
-                  </h3>
-                  <span className="badge">{observation.beeCount} bijen</span>
-                </div>
-                <p className="card__text text-secondary">
-                  {observation.hiveName} - {observation.apiaryName}
-                </p>
-                {observation.pollenColor && (
-                  <p className="card__text">
-                    Stuifmeelkleur: {observation.pollenColor}
+        {observations.length > 0 ? (
+          <>
+            <div className="observations-list">
+              {observations.map(observation => (
+                <Link
+                  key={observation.id}
+                  href={`/observations/${observation.id}`}
+                  className="observation-card observation-card--link"
+                >
+                  <div className="observation-card__header">
+                    <h3 className="card__title">
+                      {new Date(observation.createdAt).toLocaleDateString(
+                        'nl-BE'
+                      )}
+                    </h3>
+                    <span className="badge">{observation.beeCount} bijen</span>
+                  </div>
+                  <p className="card__text text-secondary">
+                    {observation.hive.type} - {observation.hive.apiary.name}
                   </p>
-                )}
+                  {observation.pollenColor && (
+                    <p className="card__text">
+                      Stuifmeelkleur: {observation.pollenColor}
+                    </p>
+                  )}
+                </Link>
+              ))}
+            </div>
+            <div>
+              <Link
+                style={{ backgroundColor: 'red', marginRight: '10px' }}
+                href={`/observations?page=${
+                  currentPage > 1 ? currentPage - 1 : currentPage
+                }`}
+              >
+                Vorige pagina
               </Link>
-            ))}
-          </div>
+              <Link
+                style={{ backgroundColor: 'red', marginRight: '10px' }}
+                href={`/observations?page=${
+                  currentPage < totalPages ? currentPage + 1 : currentPage
+                }`}
+              >
+                Volgende pagina
+              </Link>
+              <div
+                style={{
+                  backgroundColor: 'lightBlue',
+                  display: 'inline-block',
+                }}
+              >
+                {`pagina ${currentPage} van ${totalPages} `}
+              </div>
+            </div>
+          </>
         ) : (
           <div className="empty-state">
             <h2 className="section__title">Nog geen observaties</h2>
