@@ -46,7 +46,7 @@
 ### 🏠 Bijenstand Beheer
 
 - [x] **GET** `/api/apiaries` → Overzicht eigen bijenstanden
-- [x] **GET** `/api/apiaries` → paginering van het overzicht TODO
+- [x] **GET** `/api/apiaries` → paginering van het overzicht
 - [x] **POST** `/api/apiaries/new` → Nieuwe bijenstand aanmaken
 - [x] **GET** `/api/apiaries/:id` → Bijenstand details ophalen
 - [x] **UPDATE** `/api/apiaries/:id` → Bijenstand aanpassen
@@ -56,10 +56,10 @@
 
 - [ ] → Elke kast een unieke naam of nummer geven per bijenstand TODO
 - [x] **GET** `/api/hives` → Overzicht eigen kasten
-- [ ] **GET** `/api/hives` → paginering van het overzicht TODO
+- [x] **GET** `/api/hives` → paginering van het overzicht
 - [x] **POST** `/api/hives/new` → Nieuwe kast toevoegen
 - [x] **GET** `/api/observations` → Observaties lijst
-- [ ] **GET** `/api/observations` → paginering van het overzicht TODO
+- [x] **GET** `/api/observations` → paginering van het overzicht
 - [x] **GET** `/api/observations/:id` → Observatie detail TODO
 - [x] **POST** `/api/observations/new` → Nieuwe observatie registreren
 - [x] **UPDATE** `/api/hives/:id` → Bijenkast aanpassen
