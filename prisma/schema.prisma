@@ -39,14 +39,14 @@ model Hive {
   type         String
   colonyType   String
   apiaryId     Int
-  apiary       Apiary        @relation(fields: [apiaryId], references: [id])
+  apiary       Apiary        @relation(fields: [apiaryId], references: [id], onDelete: Cascade)
   observations Observation[]
 }
 
 model Observation {
   id          Int      @id @default(autoincrement())
   hiveId      Int
-  hive        Hive     @relation(fields: [hiveId], references: [id])
+  hive        Hive     @relation(fields: [hiveId], references: [id], onDelete: Cascade)
   beeCount    Int
   pollenColor String
   notes       String?
