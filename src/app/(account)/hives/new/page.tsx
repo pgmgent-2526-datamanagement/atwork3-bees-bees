@@ -1,6 +1,6 @@
 import { redirect } from 'next/navigation';
 import prisma from '@/lib/client';
-import NewHiveForm from '@/components/forms/NewHiveForm';
+import HiveForm from '@/components/forms/HiveForm';
 
 export default async function AccountApiaryNewHivePage({
   searchParams,
@@ -17,5 +17,5 @@ export default async function AccountApiaryNewHivePage({
   });
   if (apiaryExists === 0) redirect('/account/apiaries');
 
-  return <NewHiveForm apiaryId={apiaryId} apiaryName={apiaryName} />;
+  return <HiveForm apiaryId={apiaryId} apiaryName={apiaryName} />;
 }
