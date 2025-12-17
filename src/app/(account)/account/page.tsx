@@ -70,6 +70,88 @@ export default async function AccountPage() {
         imageAlt="BEES Platform Account"
       />
 
+      <Section variant="default" spacing="medium">
+        <div className="container">
+          <div
+            style={{
+              background: "white",
+              border: "1px solid #e5e7eb",
+              borderRadius: "12px",
+              padding: "20px 28px",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "space-between",
+              gap: "24px",
+              boxShadow: "0 1px 2px rgba(0, 0, 0, 0.05)",
+            }}
+          >
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: "20px",
+                flex: 1,
+              }}
+            >
+              <div
+                style={{
+                  width: "48px",
+                  height: "48px",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  flexShrink: 0,
+                }}
+              >
+                <img
+                  src="/icons/bee-drawing.png"
+                  alt="Bee"
+                  style={{
+                    width: "48px",
+                    height: "48px",
+                    objectFit: "contain",
+                  }}
+                />
+              </div>
+              <div style={{ flex: 1 }}>
+                <h3
+                  style={{
+                    fontSize: "17px",
+                    fontWeight: "600",
+                    marginBottom: "4px",
+                    color: "#1f2937",
+                  }}
+                >
+                  Nieuw bij BEES?
+                </h3>
+                <p
+                  style={{
+                    fontSize: "14px",
+                    lineHeight: "1.5",
+                    color: "#6b7280",
+                    marginBottom: 0,
+                  }}
+                >
+                  Ontdek hoe je het platform gebruikt en leer meer over digitaal
+                  bijenhouden
+                </p>
+              </div>
+            </div>
+            <Button
+              href="/platform"
+              variant="primary"
+              size="medium"
+              style={{
+                flexShrink: 0,
+                whiteSpace: "nowrap",
+              }}
+            >
+              Bekijk Uitleg
+            </Button>
+          </div>
+        </div>
+      </Section>
+
       <Section variant="default" spacing="large">
         <div className="container">
           {isNewUser && (
