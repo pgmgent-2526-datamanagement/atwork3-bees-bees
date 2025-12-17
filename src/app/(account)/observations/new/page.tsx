@@ -1,29 +1,64 @@
-import { redirect } from 'next/navigation';
-import prisma from '@/lib/client';
-import NewObservationForm from '@/components/forms/NewObservationForm';
+import { redirect } from "next/navigation";
+import { getServerSession } from "next-auth";
+import { authOptions } from "@/lib/auth-options";
+import prisma from "@/lib/client";
+import { Hero, Section } from "@/components/layout";
+import { ObservationForm } from "@/components/features/observation";
 
-export default async function AccountApiaryHiveNewObservationPage({
-  searchParams,
-}: {
-  searchParams: Promise<{ hiveId?: string }>;
-}) {
-  const { hiveId } = await searchParams;
+export const dynamic = "force-dynamic";
 
-  if (!hiveId) {
-    throw new Error('hiveId is required');
-  }
+export default async function NewObservationPage() {
+  const session = await getServerSession(authOptions);
+  if (!session?.user?.id) redirect("/auth/login");
 
-  const hive = await prisma.hive.findUnique({
-    where: { id: parseInt(hiveId) },
-    select: { type: true, colonyType: true },
+  // Haal alle hives op van de gebruiker
+  const user = await prisma.user.findUnique({
+    where: { id: session.user.id },
+    include: {
+      apiaries: {
+        include: {
+          hives: {
+            select: {
+              id: true,
+              name: true,
+              type: true,
+              colonyType: true,
+            },
+          },
+        },
+      },
+    },
   });
 
-  if (!hive) redirect(`/apiaries`);
+  if (!user) redirect("/auth/login");
+
+  const allHives = user.apiaries.flatMap((apiary) =>
+    apiary.hives.map((hive) => ({
+      id: hive.id,
+      name: hive.name || `${hive.type} - ${hive.colonyType}`,
+      displayName: `${hive.name || hive.type} (${apiary.name})`,
+    }))
+  );
+
+  // Als er geen hives zijn, redirect naar hives page
+  if (allHives.length === 0) {
+    redirect("/hives");
+  }
 
   return (
-    <NewObservationForm
-      hiveId={hiveId}
-      hiveName={`${hive.type} - ${hive.colonyType}`}
-    />
+    <>
+      <Hero
+        title="Nieuwe observatie"
+        subtitle="Registreer een nieuwe kastcontrole"
+        image="/assets/hero-new.jpg"
+        imageAlt="Nieuwe observatie"
+      />
+
+      <Section variant="default" spacing="large">
+        <div className="container container-narrow">
+          <ObservationForm hives={allHives} />
+        </div>
+      </Section>
+    </>
   );
 }

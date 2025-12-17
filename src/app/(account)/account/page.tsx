@@ -161,7 +161,7 @@ export default async function AccountPage() {
               </Card>
             </Link>
 
-            <Link href="/apiaries">
+            <Link href="/hives/new">
               <Card>
                 <Card.Header>
                   <Card.Title>+ Kast</Card.Title>

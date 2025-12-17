@@ -66,58 +66,123 @@ export default async function AccountApiaryPage({
 
       <Section variant="default" spacing="large">
         <div className="container">
-          {apiary?.hives?.length ? (
-            <>
-              <div
-                style={{
-                  display: "flex",
-                  justifyContent: "space-between",
-                  alignItems: "center",
-                  marginBottom: "var(--space-8)",
-                }}
-              >
-                <h2 style={{ margin: 0 }}>Kasten op deze stand</h2>
-                <Button href="/hives/new" variant="primary" size="medium">
-                  + Nieuwe kast
-                </Button>
-              </div>
-
-              <div className="grid grid-3">
-                {apiary?.hives.map((hive) => (
-                  <Link key={hive.id} href={`/hives/${hive.id}`}>
-                    <Card>
-                      <Card.Header>
-                        <div className="card-icon">
-                          <Box size={20} strokeWidth={1.5} />
-                        </div>
-                        <Card.Title>
-                          {hive.type} - {hive.colonyType}
-                        </Card.Title>
-                      </Card.Header>
-                      <Card.Content>
-                        <Card.Description>
-                          ({hive.observations.length}) Observaties
-                        </Card.Description>
-                      </Card.Content>
-                    </Card>
-                  </Link>
-                ))}
-              </div>
-            </>
-          ) : (
-            <div className="section-header">
-              <h2>Nog geen kasten</h2>
-              <p>Voeg uw eerste bijenkast toe aan deze stand</p>
-              <div
-                className="section-actions"
-                style={{ marginTop: "var(--space-8)" }}
-              >
-                <Button href="/hives/new" variant="primary" size="large">
-                  + Eerste kast toevoegen
-                </Button>
-              </div>
+          <div
+            className="grid grid-2"
+            style={{ gap: "var(--space-8)", alignItems: "start" }}
+          >
+            {/* Linker kolom: Locatie informatie en kaart */}
+            <div>
+              <Card>
+                <Card.Header>
+                  <div className="card-icon">
+                    <MapPin size={20} strokeWidth={1.5} />
+                  </div>
+                  <Card.Title>Locatie</Card.Title>
+                </Card.Header>
+                <Card.Content>
+                  <Card.Description>
+                    <strong>Coördinaten:</strong>
+                    <br />
+                    Breedtegraad: {apiary?.latitude.toFixed(6)}
+                    <br />
+                    Lengtegraad: {apiary?.longitude.toFixed(6)}
+                  </Card.Description>
+                  <div
+                    style={{
+                      marginTop: "var(--space-4)",
+                      width: "100%",
+                      height: "300px",
+                      backgroundColor: "var(--color-bg-secondary)",
+                      borderRadius: "var(--radius-md)",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      border: "1px solid var(--color-border)",
+                    }}
+                  >
+                    <p style={{ color: "var(--color-text-secondary)" }}>
+                      Kaart wordt hier getoond
+                      <br />
+                      <small>
+                        Google Maps met 2km en 7km cirkel rond{" "}
+                        {apiary?.latitude.toFixed(2)},{" "}
+                        {apiary?.longitude.toFixed(2)}
+                      </small>
+                    </p>
+                  </div>
+                  <Card.Description style={{ marginTop: "var(--space-4)" }}>
+                    <strong>Drachtgebied:</strong> De cirkels tonen het bereik
+                    waarin bijen voedsel zoeken (2-7km)
+                  </Card.Description>
+                </Card.Content>
+              </Card>
             </div>
-          )}
+
+            {/* Rechter kolom: Kasten */}
+            <div>
+              {apiary?.hives?.length ? (
+                <>
+                  <div
+                    style={{
+                      display: "flex",
+                      justifyContent: "space-between",
+                      alignItems: "center",
+                      marginBottom: "var(--space-4)",
+                    }}
+                  >
+                    <h2 style={{ margin: 0 }}>Kasten op deze stand</h2>
+                    <Button href="/hives/new" variant="primary" size="medium">
+                      + Nieuwe kast
+                    </Button>
+                  </div>
+
+                  <div
+                    style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      gap: "var(--space-4)",
+                    }}
+                  >
+                    {apiary?.hives.map((hive) => (
+                      <Link key={hive.id} href={`/hives/${hive.id}`}>
+                        <Card>
+                          <Card.Header>
+                            <div className="card-icon">
+                              <Box size={20} strokeWidth={1.5} />
+                            </div>
+                            <Card.Title>
+                              {hive.name || `${hive.type} - ${hive.colonyType}`}
+                            </Card.Title>
+                          </Card.Header>
+                          <Card.Content>
+                            <Card.Description>
+                              {hive.type} • {hive.colonyType}
+                            </Card.Description>
+                            <Card.Description>
+                              ({hive.observations.length}) Observaties
+                            </Card.Description>
+                          </Card.Content>
+                        </Card>
+                      </Link>
+                    ))}
+                  </div>
+                </>
+              ) : (
+                <div className="section-header">
+                  <h2>Nog geen kasten</h2>
+                  <p>Voeg uw eerste bijenkast toe aan deze stand</p>
+                  <div
+                    className="section-actions"
+                    style={{ marginTop: "var(--space-8)" }}
+                  >
+                    <Button href="/hives/new" variant="primary" size="large">
+                      + Eerste kast toevoegen
+                    </Button>
+                  </div>
+                </div>
+              )}
+            </div>
+          </div>
         </div>
       </Section>
     </>

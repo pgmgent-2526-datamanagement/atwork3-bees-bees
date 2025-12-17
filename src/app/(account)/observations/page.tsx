@@ -69,8 +69,8 @@ export default async function AccountObservationsPage() {
                 className="section-actions"
                 style={{ marginTop: "var(--space-8)" }}
               >
-                <Button href="/hives" variant="primary" size="large">
-                  Bekijk mijn kasten
+                <Button href="/observations/new" variant="primary" size="large">
+                  + Nieuwe observatie
                 </Button>
               </div>
             </div>
@@ -85,7 +85,11 @@ export default async function AccountObservationsPage() {
                 }}
               >
                 <h2 style={{ margin: 0 }}>Al uw observaties</h2>
-                <Button href="/hives" variant="primary" size="medium">
+                <Button
+                  href="/observations/new"
+                  variant="primary"
+                  size="medium"
+                >
                   + Nieuwe observatie
                 </Button>
               </div>
