@@ -2,6 +2,8 @@ import prisma from '@/lib/client';
 import { getServerSession } from 'next-auth';
 import { authOptions } from '@/lib/auth-options';
 import { redirect } from 'next/navigation';
+import DeleteEntityButton from '@/components/shared/DeleteEntityButton';
+import Link from 'next/link';
 export default async function Observation({
   params,
 }: {
@@ -26,13 +28,26 @@ export default async function Observation({
   ) {
     redirect('/unauthorized');
   }
-  return <div style={{ marginTop: '6rem' }}><h1>Observation Detail Page</h1>
-  <div>
-    <h2>Observation ID: {observation.id}</h2>
-    <p>Notes: {observation.notes}</p>
-    <p>Date: {observation.createdAt.toDateString()}</p>
-    <p>Hive ID: {observation.hive.id}</p>
-    <p>Apiary Name: {observation.hive.apiary.name}</p>  
-  </div>
-  </div>;
+  return (
+    <div style={{ marginTop: '6rem' }}>
+      <h1>Observation Detail Page</h1>
+      <div>
+        <h2>Observation ID: {observation.id}</h2>
+        <p>Notes: {observation.notes}</p>
+        <p>Date: {observation.createdAt.toDateString()}</p>
+        <p>Hive ID: {observation.hive.id}</p>
+        <p>Apiary Name: {observation.hive.apiary.name}</p>
+      </div>
+      <Link href={`observations/${observationId}/edit`}>
+        Wijzig de observatie
+      </Link>
+      {observation && (
+        <DeleteEntityButton
+          id={observation.id}
+          type="observation"
+          label="Verwijder observatie"
+        />
+      )}
+    </div>
+  );
 }
