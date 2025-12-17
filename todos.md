@@ -63,14 +63,14 @@
 - [x] **GET** `/api/observations/:id` → Observatie detail
 - [x] **POST** `/api/observations/new` → Nieuwe observatie registreren
 - [x] **UPDATE** `/api/hives/:id` → Bijenkast aanpassen
-- [] **DELETE** `/api/hives/:id` → Bijenkast verwijderen TODO
+- [x] **DELETE** `/api/hives/:id` → Bijenkast verwijderen
 - [x] **UPDATE** `/api/observations/:id` → Observatie aanpassen
-- [] **DELETE** `/api/observations/:id` → Observatie verwijderen TODO
+- [x] **DELETE** `/api/observations/:id` → Observatie verwijderen
 
 ### 👥 Gebruikersbeheer (Beheerder)
 
 - [x] **GET** `/admin/users` → Alle gebruikers tonen (alleen beheerders)
-- [ ] **DELETE** `/admin/users/:id` → Gebruiker verwijderen (alleen beheerders) + cascade toevoegen aan UserTODO
+- [ ] **DELETE** `/admin/users/:id` → Gebruiker verwijderen (alleen beheerders) + cascade toevoegen aan Apiary TODO
 - [ ] → filter gebruikers (alleen beheerders) TODO
 
 ---

@@ -1,6 +1,7 @@
 'use client';
 import RemoveButton from '@/components/shared/RemoveButton';
 import { useRouter } from 'next/navigation';
+import { deleteEntity } from '@/app/actions/deleteEntity';
 type DeleteEntityButtonProps = {
   id: number | string;
   type: 'apiary' | 'hive' | 'observation';
@@ -14,22 +15,10 @@ export default function DeleteEntityButton({
 }: DeleteEntityButtonProps) {
   const router = useRouter();
   async function handleDelete() {
-    let endpoint = '';
-    let redirectUrl = '/';
-    if (type === 'apiary') {
-      endpoint = `/api/apiaries/${id}`;
-      redirectUrl = '/apiaries';
-    }
-    if (type === 'hive') {
-      endpoint = `/api/hives/${id}`;
-      redirectUrl = '/hives';
-    }
-    if (type === 'observation') {
-      endpoint = `/api/observations/${id}`;
-      redirectUrl = '/observations';
-    }
-    await fetch(endpoint, { method: 'DELETE' });
-    router.push(redirectUrl);
+    await deleteEntity(Number(id), type);
+    if (type === 'apiary') router.push('/apiaries');
+    if (type === 'hive') router.push('/hives');
+    if (type === 'observation') router.push('/observations');
   }
 
   return (

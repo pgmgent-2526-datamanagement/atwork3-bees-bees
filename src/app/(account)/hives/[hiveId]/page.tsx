@@ -94,11 +94,18 @@ export default async function AccountApiaryHivePage({
                     <div key={obs.id} className="observation-card">
                       <div className="observation-card__header">
                         <span className="observation-card__date">
-                          {new Date(obs.createdAt).toLocaleDateString('nl-BE')}{' '}
-                          {new Date(obs.createdAt).toLocaleTimeString('nl-BE', {
-                            hour: '2-digit',
-                            minute: '2-digit',
-                          })}
+                          <Link href={`../observations/${obs.id}`}>
+                            {new Date(obs.createdAt).toLocaleDateString(
+                              'nl-BE'
+                            )}{' '}
+                            {new Date(obs.createdAt).toLocaleTimeString(
+                              'nl-BE',
+                              {
+                                hour: '2-digit',
+                                minute: '2-digit',
+                              }
+                            )}
+                          </Link>
                         </span>{' '}
                         <br />
                         <span className="badge">{obs.beeCount} bijen</span>
