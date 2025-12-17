@@ -1,5 +1,5 @@
 import prisma from '@/lib/client';
-import Link from 'next/link';
+import DeleteUserButton from '@/components/admin/DeleteUserButton';
 export default async function UserDetailPage({
   params,
 }: {
@@ -50,6 +50,7 @@ export default async function UserDetailPage({
             </div>
           ))}
         </div>
+        <DeleteUserButton userId={user.id} userName={user.name} />
       </div>
     </>
   );
