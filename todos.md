@@ -70,8 +70,8 @@
 ### 👥 Gebruikersbeheer (Beheerder)
 
 - [x] **GET** `/admin/users` → Alle gebruikers tonen (alleen beheerders)
-- [ ] **DELETE** `/admin/users/:id` → Gebruiker verwijderen (alleen beheerders) + cascade toevoegen aan Apiary TODO
-- [ ] → filter gebruikers (alleen beheerders) TODO
+- [x] **DELETE** `/admin/users/:id` → Gebruiker verwijderen (alleen beheerders) + cascade toevoegen aan Apiary TODO
+- [ ] → filter gebruikers (alleen beheerders)
 
 ---
 

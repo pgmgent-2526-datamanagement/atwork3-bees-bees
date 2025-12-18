@@ -44,19 +44,31 @@ export default async function AccountApiaryHivePage({
     <>
       <section className="page-header" data-page="02">
         <div className="container">
-          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end" }}>
+          <div
+            style={{
+              display: 'flex',
+              justifyContent: 'space-between',
+              alignItems: 'flex-end',
+            }}
+          >
             <div>
               <h1 className="page-header__title">{hive.name}</h1>
               <p className="page-header__subtitle">
-                {hive.apiary.name} • {totalObservations} {totalObservations === 1 ? 'observatie' : 'observaties'} • {hive.type} • {hive.colonyType}
+                {hive.apiary.name} • {totalObservations}{' '}
+                {totalObservations === 1 ? 'observatie' : 'observaties'} •{' '}
+                {hive.type} • {hive.colonyType}
               </p>
             </div>
-            <div style={{ display: "flex", gap: "var(--space-3)" }}>
+            <div style={{ display: 'flex', gap: 'var(--space-3)' }}>
               <Link href={`/hives/${hive.id}/edit`}>
-                <button className="btn btn--secondary">
-                  Wijzig kast
-                </button>
+                <button className="btn btn--secondary">Wijzig kast</button>
               </Link>
+              <Link
+                href={`/observations/new?hiveId=${hiveId}&hiveName=${hive.apiary.name}`}
+              >
+                Observatie toevoegen
+              </Link>
+
               {hive && (
                 <DeleteEntityButton
                   id={hive.id}
@@ -71,12 +83,21 @@ export default async function AccountApiaryHivePage({
 
       <section className="section section--default">
         <div className="container">
-          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "var(--space-8)" }}>
-            <h2 style={{ 
-              fontFamily: "var(--font-display)",
-              fontSize: "2rem",
-              fontWeight: "400"
-            }}>
+          <div
+            style={{
+              display: 'flex',
+              justifyContent: 'space-between',
+              alignItems: 'center',
+              marginBottom: 'var(--space-8)',
+            }}
+          >
+            <h2
+              style={{
+                fontFamily: 'var(--font-display)',
+                fontSize: '2rem',
+                fontWeight: '400',
+              }}
+            >
               Observaties bij deze kast
             </h2>
           </div>
@@ -85,8 +106,15 @@ export default async function AccountApiaryHivePage({
             <>
               <div className="grid grid--2">
                 {observations.map(obs => (
-                  <Link key={obs.id} href={`/observations/${obs.id}`} style={{ textDecoration: "none" }}>
-                    <div className="card" style={{ cursor: "pointer", height: "100%" }}>
+                  <Link
+                    key={obs.id}
+                    href={`/observations/${obs.id}`}
+                    style={{ textDecoration: 'none' }}
+                  >
+                    <div
+                      className="card"
+                      style={{ cursor: 'pointer', height: '100%' }}
+                    >
                       <p className="card__category">
                         {new Date(obs.createdAt).toLocaleDateString('nl-BE')}
                       </p>
@@ -96,17 +124,25 @@ export default async function AccountApiaryHivePage({
                           minute: '2-digit',
                         })}
                       </h3>
-                      <div style={{ display: "flex", gap: "var(--space-3)", marginTop: "var(--space-4)" }}>
+                      <div
+                        style={{
+                          display: 'flex',
+                          gap: 'var(--space-3)',
+                          marginTop: 'var(--space-4)',
+                        }}
+                      >
                         <span className="badge">{obs.beeCount} bijen</span>
                         <span className="badge">{obs.pollenColor}</span>
                       </div>
                       {obs.notes && (
-                        <p style={{ 
-                          marginTop: "var(--space-4)",
-                          fontSize: "0.875rem",
-                          color: "var(--color-text-light)",
-                          lineHeight: "1.5"
-                        }}>
+                        <p
+                          style={{
+                            marginTop: 'var(--space-4)',
+                            fontSize: '0.875rem',
+                            color: 'var(--color-text-light)',
+                            lineHeight: '1.5',
+                          }}
+                        >
                           {obs.notes}
                         </p>
                       )}
@@ -114,26 +150,30 @@ export default async function AccountApiaryHivePage({
                   </Link>
                 ))}
               </div>
-              
+
               {totalPages > 1 && (
-                <div style={{ 
-                  display: "flex", 
-                  justifyContent: "center", 
-                  gap: "var(--space-3)",
-                  marginTop: "var(--space-12)"
-                }}>
+                <div
+                  style={{
+                    display: 'flex',
+                    justifyContent: 'center',
+                    gap: 'var(--space-3)',
+                    marginTop: 'var(--space-12)',
+                  }}
+                >
                   {currentPage > 1 && (
                     <Link href={`/hives/${hiveId}?page=${currentPage - 1}`}>
                       <button className="btn btn--secondary">← Vorige</button>
                     </Link>
                   )}
-                  <span style={{ 
-                    display: "flex", 
-                    alignItems: "center",
-                    padding: "0 var(--space-4)",
-                    fontSize: "0.875rem",
-                    color: "var(--color-text-light)"
-                  }}>
+                  <span
+                    style={{
+                      display: 'flex',
+                      alignItems: 'center',
+                      padding: '0 var(--space-4)',
+                      fontSize: '0.875rem',
+                      color: 'var(--color-text-light)',
+                    }}
+                  >
                     Pagina {currentPage} van {totalPages}
                   </span>
                   {currentPage < totalPages && (
@@ -145,8 +185,13 @@ export default async function AccountApiaryHivePage({
               )}
             </>
           ) : (
-            <div className="card" style={{ textAlign: "center", padding: "var(--space-16)" }}>
-              <p style={{ color: "var(--color-text-light)" }}>Nog geen observaties</p>
+            <div
+              className="card"
+              style={{ textAlign: 'center', padding: 'var(--space-16)' }}
+            >
+              <p style={{ color: 'var(--color-text-light)' }}>
+                Nog geen observaties
+              </p>
             </div>
           )}
         </div>
