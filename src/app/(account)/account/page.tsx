@@ -1,17 +1,21 @@
-import { getServerSession } from "next-auth";
-import { redirect } from "next/navigation";
-import Link from "next/link";
-import prisma from "@/lib/client";
-import { authOptions } from "@/lib/auth-options";
-import { MapPin, Box, Eye } from "lucide-react";
+import { getServerSession } from 'next-auth';
+import { redirect } from 'next/navigation';
+import Link from 'next/link';
+import prisma from '@/lib/client';
+import { authOptions } from '@/lib/auth-options';
+import Hero from '@/components/magazine/Hero';
+import Section from '@/components/magazine/Section';
+import Button from '@/components/magazine/Button';
+import Card from '@/components/magazine/Card';
+import { MapPin, Box, Eye } from 'lucide-react';
 
-export const dynamic = "force-dynamic";
+export const dynamic = 'force-dynamic';
 
 export default async function AccountPage() {
   const session = await getServerSession(authOptions);
 
   if (!session?.user?.id) {
-    redirect("/auth/login");
+    redirect('/auth/login');
   }
 
   // Haal gebruiker op met userId uit params
@@ -23,7 +27,7 @@ export default async function AccountPage() {
           hives: {
             include: {
               observations: {
-                orderBy: { createdAt: "desc" },
+                orderBy: { createdAt: 'desc' },
                 take: 5,
               },
             },
@@ -34,7 +38,7 @@ export default async function AccountPage() {
   });
 
   if (!user) {
-    redirect("/unauthorized");
+    redirect('/unauthorized');
   }
 
   const totalApiaries = user.apiaries.length;
@@ -251,8 +255,8 @@ export default async function AccountPage() {
                     </h3>
                     <p
                       style={{
-                        color: "var(--color-text-light)",
-                        marginBottom: "var(--space-6)",
+                        color: 'var(--color-text-light)',
+                        marginBottom: 'var(--space-6)',
                       }}
                     >
                       Bijenstanden
@@ -278,8 +282,8 @@ export default async function AccountPage() {
                     </h3>
                     <p
                       style={{
-                        color: "var(--color-text-light)",
-                        marginBottom: "var(--space-6)",
+                        color: 'var(--color-text-light)',
+                        marginBottom: 'var(--space-6)',
                       }}
                     >
                       Kasten
@@ -305,8 +309,8 @@ export default async function AccountPage() {
                     </h3>
                     <p
                       style={{
-                        color: "var(--color-text-light)",
-                        marginBottom: "var(--space-6)",
+                        color: 'var(--color-text-light)',
+                        marginBottom: 'var(--space-6)',
                       }}
                     >
                       Observaties

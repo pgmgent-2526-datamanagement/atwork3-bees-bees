@@ -16,6 +16,10 @@ export default function HiveForm({
   const [name, setName] = useState('');
   const [type, setType] = useState('');
   const [colonyType, setColonyType] = useState('');
+  const [selectedApiaryId, setSelectedApiaryId] = useState(apiaryId || '');
+  const [apiaries, setApiaries] = useState<Array<{ id: number; name: string }>>(
+    []
+  );
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const router = useRouter();
@@ -37,15 +41,41 @@ export default function HiveForm({
     fetchHive();
   }, [initialHive]);
 
+  // Fetch apiaries when no apiaryId is provided
+  useEffect(() => {
+    if (!apiaryId) {
+      async function fetchApiaries() {
+        try {
+          const res = await fetch('/api/apiaries');
+          if (res.ok) {
+            const data = await res.json();
+            setApiaries(data);
+          }
+        } catch (error) {
+          console.error('Failed to fetch apiaries:', error);
+        }
+      }
+      fetchApiaries();
+    }
+  }, [apiaryId]);
+
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     setError('');
     setLoading(true);
+    const finalApiaryId = apiaryId || selectedApiaryId;
+
+    if (!finalApiaryId) {
+      setError('Selecteer eerst een bijenstand');
+      setLoading(false);
+      return;
+    }
+
     const hiveData = {
       name,
       type,
       colonyType,
-      ...(!initialHive && apiaryId && { apiaryId: parseInt(apiaryId) }),
+      ...(!initialHive && { apiaryId: parseInt(finalApiaryId) }),
     };
 
     try {
@@ -61,7 +91,7 @@ export default function HiveForm({
       if (!response.ok) throw new Error('Kon kast niet aanmaken');
       initialHive
         ? router.push(`/hives/${initialHive}`)
-        : router.push(`/apiaries/${apiaryId}`);
+        : router.push(`/apiaries/${finalApiaryId}`);
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Er ging iets mis');
       setLoading(false);

@@ -9,13 +9,13 @@ export default async function AccountApiaryNewHivePage({
 }) {
   const { apiaryId, apiaryName } = await searchParams;
 
-  if (!apiaryId) {
-    redirect('/account/apiaries');
+  // If apiaryId is provided, validate it exists
+  if (apiaryId) {
+    const apiaryExists = await prisma.apiary.count({
+      where: { id: parseInt(apiaryId) },
+    });
+    if (apiaryExists === 0) redirect('/apiaries');
   }
-  const apiaryExists = await prisma.apiary.count({
-    where: { id: parseInt(apiaryId) },
-  });
-  if (apiaryExists === 0) redirect('/account/apiaries');
 
   return (
     <>

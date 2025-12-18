@@ -1,17 +1,20 @@
 import { redirect } from 'next/navigation';
 import prisma from '@/lib/client';
 import ObservationForm from '@/components/forms/ObservationForm';
-import Link from 'next/link';
 
-export default async function AccountApiaryHiveObservationPage({
+export default async function AccountObservationNewPage({
   searchParams,
 }: {
-  searchParams: Promise<{ hiveId?: string }>;
+  searchParams: Promise<{ hiveId?: string; hiveName?: string }>;
 }) {
-  const { hiveId } = await searchParams;
+  const { hiveId, hiveName } = await searchParams;
 
-  if (!hiveId) {
-    throw new Error('hiveId is required');
+  // If hiveId is provided, validate it exists
+  if (hiveId) {
+    const hiveExists = await prisma.hive.count({
+      where: { id: parseInt(hiveId) },
+    });
+    if (hiveExists === 0) redirect('/hives');
   }
 
   const hive = await prisma.hive.findUnique({
