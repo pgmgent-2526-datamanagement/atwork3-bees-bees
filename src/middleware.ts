@@ -34,7 +34,7 @@ export default withAuth(
 export const config = {
   matcher: [
     '/admin/:path*',
-    '/account',
+    '/account/:path*',
     '/apiaries/:path*',
     '/hives/:path*',
     '/observations/:path*',

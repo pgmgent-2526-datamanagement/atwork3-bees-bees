@@ -1,6 +1,43 @@
 import { getServerSession } from 'next-auth';
 import { NextResponse } from 'next/server';
 import prisma from '@/lib/client';
+import { authOptions } from '@/lib/auth-options';
+
+export async function GET() {
+  try {
+    const session = await getServerSession(authOptions);
+
+    if (!session?.user?.id) {
+      return NextResponse.json({ error: 'Niet ingelogd' }, { status: 401 });
+    }
+
+    const hives = await prisma.hive.findMany({
+      where: {
+        apiary: {
+          userId: session.user.id,
+        },
+      },
+      select: {
+        id: true,
+        name: true,
+        apiary: {
+          select: {
+            name: true,
+          },
+        },
+      },
+      orderBy: [{ apiary: { name: 'asc' } }, { name: 'asc' }],
+    });
+
+    return NextResponse.json(hives);
+  } catch (error) {
+    console.error('Error fetching hives:', error);
+    return NextResponse.json(
+      { error: 'Er ging iets mis bij het ophalen van de kasten' },
+      { status: 500 }
+    );
+  }
+}
 
 export async function POST(req: Request) {
   try {

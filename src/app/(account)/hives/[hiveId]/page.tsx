@@ -25,7 +25,7 @@ export default async function AccountApiaryHivePage({
     },
   });
 
-  if (!hive) redirect('/account');
+  if (!hive) redirect('/apiaries');
   const apiaryId = hive.apiary.id;
   const searchParamsResult = await searchParams;
   const currentPage = parseInt(searchParamsResult?.page ?? '1', 10);
