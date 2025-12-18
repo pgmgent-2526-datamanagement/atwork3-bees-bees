@@ -1,42 +1,24 @@
-import Hero from "@/components/magazine/Hero";
-import Section from "@/components/magazine/Section";
-import Button from "@/components/magazine/Button";
-
 export default function ContactPage() {
   return (
     <>
-      <Hero
-        title="Contact"
-        subtitle="Vragen of feedback? We horen graag van je"
-        image="/assets/hero-new.jpg"
-        imageAlt="Contact met BEES Platform"
-        showScroll={false}
-      />
-
-      <Section variant="white" size="lg">
-        <div className="text-center mb-12">
-          <h2
-            className="text-display text-3xl mb-4"
-            style={{ fontWeight: "400", color: "var(--color-primary)" }}
-          >
-            Neem contact op
-          </h2>
-          <p
-            className="text-base"
-            style={{
-              color: "var(--color-text-light)",
-              lineHeight: "1.6",
-              maxWidth: "700px",
-              margin: "0 auto",
-            }}
-          >
-            Heb je vragen over het platform, suggesties voor verbeteringen of
-            wil je gewoon hallo zeggen? Vul het formulier in en we nemen zo snel
-            mogelijk contact met je op.
-          </p>
+      <section className="page-header" data-page="03">
+        <div className="container">
+          <h1 className="page-header__title">Contact</h1>
+          <p className="page-header__subtitle">Vragen of feedback? We horen graag van je</p>
         </div>
+      </section>
 
-        <div style={{ maxWidth: "600px", margin: "0 auto" }}>
+      <section className="section section--default">
+        <div className="container container--narrow">
+          <div className="section__header section__header--center">
+            <h2 className="section__title">Neem contact op</h2>
+            <p className="section__description">
+              Heb je vragen over het platform, suggesties voor verbeteringen of
+              wil je gewoon hallo zeggen? Vul het formulier in en we nemen zo snel
+              mogelijk contact met je op.
+            </p>
+          </div>
+
           <form className="form">
             <div className="form__group">
               <label htmlFor="name" className="form__label">
@@ -92,69 +74,44 @@ export default function ContactPage() {
             </div>
 
             <div className="form__actions form__actions--center">
-              <Button type="submit" variant="primary" size="lg">
+              <button type="submit" className="btn btn--primary btn--large">
                 Verstuur bericht
-              </Button>
+              </button>
             </div>
           </form>
         </div>
-      </Section>
+      </section>
 
-      <Section variant="cream" size="lg">
-        <div className="grid grid--3">
-          <div className="text-center">
-            <h3
-              className="text-display text-xl mb-3"
-              style={{ fontWeight: "500", color: "var(--color-primary)" }}
-            >
-              E-mail
-            </h3>
-            <p
-              className="text-base"
-              style={{ color: "var(--color-text-light)" }}
-            >
-              <a
-                href="mailto:info@bees-platform.be"
-                style={{ color: "var(--color-accent)", textDecoration: "none" }}
-              >
-                info@bees-platform.be
-              </a>
-            </p>
-          </div>
+      <section className="section section--alt">
+        <div className="container">
+          <div className="grid grid--3">
+            <div className="text-center">
+              <h3 className="card__title">E-mail</h3>
+              <p className="card__description">
+                <a href="mailto:info@bees-platform.be">
+                  info@bees-platform.be
+                </a>
+              </p>
+            </div>
 
-          <div className="text-center">
-            <h3
-              className="text-display text-xl mb-3"
-              style={{ fontWeight: "500", color: "var(--color-primary)" }}
-            >
-              Reactietijd
-            </h3>
-            <p
-              className="text-base"
-              style={{ color: "var(--color-text-light)" }}
-            >
-              Binnen 24 uur op werkdagen
-            </p>
-          </div>
+            <div className="text-center">
+              <h3 className="card__title">Reactietijd</h3>
+              <p className="card__description">
+                Binnen 24 uur op werkdagen
+              </p>
+            </div>
 
-          <div className="text-center">
-            <h3
-              className="text-display text-xl mb-3"
-              style={{ fontWeight: "500", color: "var(--color-primary)" }}
-            >
-              Support
-            </h3>
-            <p
-              className="text-base"
-              style={{ color: "var(--color-text-light)" }}
-            >
-              Maandag t/m vrijdag
-              <br />
-              9:00 - 17:00
-            </p>
+            <div className="text-center">
+              <h3 className="card__title">Support</h3>
+              <p className="card__description">
+                Maandag t/m vrijdag
+                <br />
+                9:00 - 17:00
+              </p>
+            </div>
           </div>
         </div>
-      </Section>
+      </section>
     </>
   );
 }

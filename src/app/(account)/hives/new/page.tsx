@@ -17,6 +17,22 @@ export default async function AccountApiaryNewHivePage({
     if (apiaryExists === 0) redirect('/apiaries');
   }
 
-  // Pass apiaryId and apiaryName (can be undefined) to the form
-  return <HiveForm apiaryId={apiaryId} apiaryName={apiaryName} />;
+  return (
+    <>
+      <section className="page-header" data-page="—">
+        <div className="container">
+          <h1 className="page-header__title">Nieuwe kast toevoegen</h1>
+          <p className="page-header__subtitle">
+            {apiaryName ? `Aan bijenstand: ${apiaryName}` : 'Registreer een nieuwe bijenkast'}
+          </p>
+        </div>
+      </section>
+
+      <section className="section section--default">
+        <div className="container container--narrow">
+          <HiveForm apiaryId={apiaryId} apiaryName={apiaryName} />
+        </div>
+      </section>
+    </>
+  );
 }

@@ -1,7 +1,4 @@
-import Hero from "@/components/magazine/Hero";
-import Section from "@/components/magazine/Section";
 import Button from "@/components/magazine/Button";
-import Card from "@/components/magazine/Card";
 import Stats from "@/components/magazine/Stats";
 import prisma from "@/lib/client";
 
@@ -14,22 +11,30 @@ export default async function Home() {
 
   return (
     <>
-      <Hero
-        title="Bijen Observatie Platform"
-        subtitle="Uw digitale assistent voor bijenhouden"
-        text="Volg uw bijenstanden, registreer observaties en krijg inzicht in uw werkwijze. Modern, overzichtelijk, effectief."
-        image="/assets/hero-new.jpg"
-        imageAlt="Bijen in de natuur"
-      >
-        <div className="flex gap-6 mt-12">
-          <Button href="/platform" variant="light" size="lg">
-            Lees meer
-          </Button>
-          <Button href="/auth/register" variant="accent" size="lg">
-            Start nu
-          </Button>
+      <section className="hero hero-home">
+        <div className="hero__image-wrapper">
+          <img
+            src="/assets/hero-new.jpg"
+            alt="Bijen in de natuur"
+            className="hero__image"
+          />
         </div>
-      </Hero>
+        <div className="hero__content">
+          <h1 className="hero__title">Bijen Observatie Platform</h1>
+          <p className="hero__subtitle">
+            Uw digitale assistent voor bijenhouden. Modern, overzichtelijk,
+            effectief.
+          </p>
+          <div className="hero__actions">
+            <Button href="/auth/register" variant="primary" size="lg">
+              Start nu
+            </Button>
+            <Button href="/platform" variant="secondary" size="lg">
+              Lees meer
+            </Button>
+          </div>
+        </div>
+      </section>
 
       <Stats
         totalObservations={totalObservations}
@@ -37,86 +42,103 @@ export default async function Home() {
         totalHives={totalHives}
       />
 
-      <Section variant="white" size="lg">
-        <div className="text-center mb-12">
-          <h2
-            className="text-display text-3xl mb-4"
-            style={{ fontWeight: "400", color: "var(--color-primary)" }}
-          >
-            Voor imkers, door imkers
-          </h2>
-          <p
-            className="text-base"
-            style={{
-              color: "var(--color-text-light)",
-              lineHeight: "1.6",
-              maxWidth: "700px",
-              margin: "0 auto",
-            }}
-          >
-            Een platform dat het bijenhouden eenvoudiger, overzichtelijker en
-            effectiever maakt. Alles wat je nodig hebt, op één plek.
-          </p>
-        </div>
+      <section className="section section--default">
+        <div className="container">
+          <div className="section__header">
+            <h2 className="section__title">Belangrijkste functies</h2>
+            <p className="section__description">
+              Alles wat een moderne imker nodig heeft, zonder overbodige toeters
+              en bellen.
+            </p>
+          </div>
 
-        <div className="grid grid--3">
-          <Card
-            title="Digitaal logboek"
-            description="Geen papieren boekjes meer. Registreer observaties direct vanaf je telefoon of computer."
-            category="Functie"
-            variant="elevated"
-          />
-          <Card
-            title="Privé en veilig"
-            description="Jouw gegevens blijven privé. Locaties van standen zijn alleen voor jou zichtbaar."
-            category="Veiligheid"
-            variant="elevated"
-          />
-          <Card
-            title="Inzicht in trends"
-            description="Vergelijk waarnemingen door de seizoenen heen en optimaliseer je werkwijze."
-            category="Analyse"
-            variant="elevated"
-          />
+          <div className="grid grid--3">
+            <div className="card">
+              <div className="card__header">
+                <h3 className="card__title">Bijenstanden beheren</h3>
+              </div>
+              <div className="card__content">
+                <p className="card__description">
+                  Voeg onbeperkt bijenstanden toe met GPS-coördinaten. Alleen
+                  jij ziet waar je standen zich bevinden.
+                </p>
+              </div>
+            </div>
+            <div className="card">
+              <div className="card__header">
+                <h3 className="card__title">Kasten registreren</h3>
+              </div>
+              <div className="card__content">
+                <p className="card__description">
+                  Houd per kast bij welk type het is, sinds wanneer het er staat
+                  en wat de huidige status is.
+                </p>
+              </div>
+            </div>
+            <div className="card">
+              <div className="card__header">
+                <h3 className="card__title">Observaties loggen</h3>
+              </div>
+              <div className="card__content">
+                <p className="card__description">
+                  Registreer waarnemingen met datum, notities, foto's en acties.
+                  Altijd en overal toegankelijk.
+                </p>
+              </div>
+            </div>
+            <div className="card">
+              <div className="card__header">
+                <h3 className="card__title">Drachtkalender</h3>
+              </div>
+              <div className="card__content">
+                <p className="card__description">
+                  Zie welke planten binnen 2-7 km van je standen bloeien. Handig
+                  voor drachtplanning.
+                </p>
+              </div>
+            </div>
+            <div className="card">
+              <div className="card__header">
+                <h3 className="card__title">Privacybescherming</h3>
+              </div>
+              <div className="card__content">
+                <p className="card__description">
+                  Jouw locaties blijven privé. Andere imkers zien alleen
+                  observaties, nooit je exacte standplaatsen.
+                </p>
+              </div>
+            </div>
+            <div className="card">
+              <div className="card__header">
+                <h3 className="card__title">Multi-device sync</h3>
+              </div>
+              <div className="card__content">
+                <p className="card__description">
+                  Werk op je telefoon, tablet of computer. Al je gegevens worden
+                  gesynchroniseerd.
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
+      </section>
 
-        <div className="text-center mt-12">
-          <Button href="/vision" variant="secondary" size="lg">
-            Ontdek onze visie
-          </Button>
-        </div>
-      </Section>
-
-      <Section variant="cream" size="lg">
-        <div className="text-center">
-          <h2
-            className="text-display text-3xl mb-4"
-            style={{ fontWeight: "400", color: "var(--color-primary)" }}
-          >
-            Klaar om te beginnen?
-          </h2>
-          <p
-            className="text-base mb-10"
-            style={{
-              color: "var(--color-text-light)",
-              lineHeight: "1.6",
-              maxWidth: "600px",
-              margin: "0 auto 2.5rem",
-            }}
-          >
-            Sluit je aan bij imkers die hun bijenhouden al digitaal beheren.
-            Gratis en zonder verplichtingen.
-          </p>
-          <div className="flex gap-6 justify-center">
+      <section className="section section--alt">
+        <div className="container">
+          <div className="section__header section__header--center">
+            <h2 className="section__title">Klaar om te beginnen?</h2>
+            <p className="section__description">
+              Sluit je aan bij imkers die hun bijenhouden al digitaal beheren.
+              Gratis en zonder verplichtingen.
+            </p>
+          </div>
+          <div className="section__actions">
             <Button href="/auth/register" variant="primary" size="lg">
               Gratis account aanmaken
             </Button>
-            <Button href="/platform" variant="link">
-              Bekijk hoe het werkt →
-            </Button>
           </div>
         </div>
-      </Section>
+      </section>
     </>
   );
 }

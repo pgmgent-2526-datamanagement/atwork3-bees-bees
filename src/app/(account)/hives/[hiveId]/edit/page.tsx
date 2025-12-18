@@ -1,4 +1,3 @@
-import Link from 'next/link';
 import HiveForm from '@/components/forms/HiveForm';
 export default async function EditHivePage({
   params,
@@ -7,9 +6,19 @@ export default async function EditHivePage({
 }) {
   const { hiveId } = await params;
   return (
-    <div>
-      <Link href="/hives">Terug naar kasten</Link>
-      <HiveForm initialHive={hiveId} />
-    </div>
+    <>
+      <section className="page-header" data-page="—">
+        <div className="container">
+          <h1 className="page-header__title">Kast aanpassen</h1>
+          <p className="page-header__subtitle">Wijzig type of volk</p>
+        </div>
+      </section>
+
+      <section className="section section--default">
+        <div className="container container--narrow">
+          <HiveForm initialHive={hiveId} />
+        </div>
+      </section>
+    </>
   );
 }

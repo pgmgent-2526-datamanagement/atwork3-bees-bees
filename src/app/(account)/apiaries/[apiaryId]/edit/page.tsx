@@ -7,10 +7,19 @@ export default async function EditApiaryPage({
 }) {
   const { apiaryId } = await params;
   return (
-    <div style={{ marginTop: '6rem' }}>
-      <h1>Naam of locatie aanpassen</h1>
-      <ApiaryForm initialApiary={apiaryId} />
-      <Link href="/apiaries">Terug naar bijenstanden</Link>
-    </div>
+    <>
+      <section className="page-header" data-page="—">
+        <div className="container">
+          <h1 className="page-header__title">Bijenstand aanpassen</h1>
+          <p className="page-header__subtitle">Wijzig naam of locatie</p>
+        </div>
+      </section>
+
+      <section className="section section--default">
+        <div className="container container--narrow">
+          <ApiaryForm initialApiary={apiaryId} />
+        </div>
+      </section>
+    </>
   );
 }

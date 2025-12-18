@@ -6,55 +6,47 @@ export default function Footer() {
   return (
     <footer className="footer">
       <div className="container">
-        <div className="footer__content">
-          <div>
-            <h3 className="footer__section-title">Voor Imkers</h3>
-            <p
-              className="text-sm"
-              style={{
-                color: "rgba(255,255,255,0.7)",
-                maxWidth: "300px",
-                lineHeight: "1.8",
-              }}
-            >
-              Digitaal imkeren voor de moderne bijhouder. Eenvoudig,
-              overzichtelijk, effectief.
+        <div className="footer__top">
+          <div className="footer__brand">
+            <div className="footer__logo">
+              <img src="/assets/logo.png" alt="Logo" className="footer__logo-image" />
+              <span>Biodynamische Imkers</span>
+            </div>
+            <p className="footer__tagline">
+              Digitaal imkeren voor de moderne bijhouder.
             </p>
           </div>
-
-          <div>
-            <h3 className="footer__section-title">Platform</h3>
-            <nav className="footer__links">
-              <Link href="/vision" className="footer__link">
-                Onze Visie
-              </Link>
-              <Link href="/platform" className="footer__link">
-                Hoe het werkt
-              </Link>
-              <Link href="/auth/register" className="footer__link">
-                Registreren
-              </Link>
-              <Link href="/auth/login" className="footer__link">
-                Inloggen
-              </Link>
-            </nav>
-          </div>
-
-          <div>
-            <h3 className="footer__section-title">Support</h3>
-            <nav className="footer__links">
-              <Link href="/about" className="footer__link">
-                Over ons
-              </Link>
-              <a href="mailto:info@bees-platform.be" className="footer__link">
-                Contact
-              </a>
-            </nav>
+          
+          <div className="footer__links">
+            <div className="footer__column">
+              <h3 className="footer__heading">Platform</h3>
+              <nav className="footer__nav">
+                <Link href="/vision" className="footer__link">Onze Visie</Link>
+                <Link href="/platform" className="footer__link">Hoe het werkt</Link>
+                <Link href="/about" className="footer__link">Over ons</Link>
+              </nav>
+            </div>
+            
+            <div className="footer__column">
+              <h3 className="footer__heading">Account</h3>
+              <nav className="footer__nav">
+                <Link href="/auth/register" className="footer__link">Registreren</Link>
+                <Link href="/auth/login" className="footer__link">Inloggen</Link>
+              </nav>
+            </div>
+            
+            <div className="footer__column">
+              <h3 className="footer__heading">Contact</h3>
+              <nav className="footer__nav">
+                <Link href="/contact" className="footer__link">Contact</Link>
+                <a href="mailto:info@bees-platform.be" className="footer__link">Email</a>
+              </nav>
+            </div>
           </div>
         </div>
 
         <div className="footer__bottom">
-          © {currentYear} Voor Imkers Platform · Alle rechten voorbehouden
+          <p>© {currentYear} BEES Platform. Alle rechten voorbehouden.</p>
         </div>
       </div>
     </footer>

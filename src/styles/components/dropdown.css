@@ -4,27 +4,43 @@
   position: relative;
 }
 
-.nav__avatar {
+.nav__user-toggle {
   background: none;
-  border: none;
+  border: 1px solid rgba(0, 0, 0, 0.08);
   cursor: pointer;
-  padding: 0;
+  padding: var(--space-3) var(--space-4);
   display: flex;
   align-items: center;
-  justify-content: center;
+  gap: var(--space-2);
+  border-radius: 8px;
+  transition: all 0.2s ease;
 }
 
-.nav__avatar-circle {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background-color: var(--color-accent);
-  display: block;
-  transition: var(--transition-fast);
+.nav__user-toggle:hover {
+  border-color: rgba(0, 0, 0, 0.12);
+  background: rgba(0, 0, 0, 0.02);
 }
 
-.nav__avatar:hover .nav__avatar-circle {
-  background-color: var(--color-primary);
+.nav__user-greeting {
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  color: var(--color-text-light);
+}
+
+.nav__user-name {
+  font-family: var(--font-display);
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--color-text);
+}
+
+.nav__user-chevron {
+  transition: transform 0.2s ease;
+  color: var(--color-text-light);
+}
+
+.nav__user-chevron--open {
+  transform: rotate(180deg);
 }
 
 .nav__dropdown-menu {

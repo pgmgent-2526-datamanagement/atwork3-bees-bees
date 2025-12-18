@@ -48,75 +48,96 @@ export default async function AccountHivesPage({
   });
 
   return (
-    <section className="section section--standard bg-alt">
-      <div className="container">
-        <div className="page-header">
-          <h1 className="title">Mijn kasten</h1>
+    <>
+      <section className="page-header" data-page="—">
+        <div className="container">
+          <h1 className="page-header__title">Mijn kasten</h1>
+          <p className="page-header__subtitle">
+            {totalHives} {totalHives === 1 ? 'kast' : 'kasten'}
+          </p>
         </div>
-        {hives.length > 0 ? (
-          <>
-            <div className="hives-list">
-              {hives.map(hive => (
-                <Link
-                  key={hive.id}
-                  href={`/hives/${hive.id}`}
-                  className="hive-card hive-card--link"
-                >
-                  <div className="hive-card__header">
-                    <h3 className="card__title">Kast: {hive.name}</h3>
-                    <h2 className="card__title">Type: {hive.type}</h2>
-                    <span className="badge badge--secondary">
-                      {hive.colonyType}
-                    </span>
-                  </div>
-                  <p className="card__text text-secondary">
-                    Bijenstand: {hive.apiary.name}
-                  </p>
-                </Link>
-              ))}
-            </div>
-            <div>
-              <Link
-                style={{ backgroundColor: 'red', marginRight: '10px' }}
-                href={`/hives?page=${
-                  currentPage > 1 ? currentPage - 1 : currentPage
-                }`}
-              >
-                Vorige pagina
-              </Link>
-              <Link
-                style={{ backgroundColor: 'red', marginRight: '10px' }}
-                href={`/hives?page=${
-                  currentPage < totalPages ? currentPage + 1 : currentPage
-                }`}
-              >
-                Volgende pagina
-              </Link>
-              <div
-                style={{
-                  backgroundColor: 'lightBlue',
-                  display: 'inline-block',
-                }}
-              >
-                {`pagina ${currentPage} van ${totalPages} `}
+      </section>
+
+      <section className="section section--default">
+        <div className="container">
+          {hives.length > 0 ? (
+            <>
+              <div className="grid grid--3">
+                {hives.map(hive => (
+                  <Link
+                    key={hive.id}
+                    href={`/hives/${hive.id}`}
+                    style={{ textDecoration: 'none' }}
+                  >
+                    <div className="card">
+                      <p className="card__category">{hive.type}</p>
+                      <h3 className="card__title">{hive.name}</h3>
+                      <p className="card__text" style={{ marginBottom: "var(--space-3)" }}>
+                        {hive.apiary.name}
+                      </p>
+                      <span style={{ 
+                        fontSize: "0.875rem",
+                        padding: "var(--space-2) var(--space-3)",
+                        background: "rgba(0, 0, 0, 0.05)",
+                        borderRadius: "4px",
+                        display: "inline-block"
+                      }}>
+                        {hive.colonyType}
+                      </span>
+                    </div>
+                  </Link>
+                ))}
               </div>
+
+              {totalPages > 1 && (
+                <div style={{ 
+                  display: "flex", 
+                  justifyContent: "center", 
+                  alignItems: "center",
+                  gap: "var(--space-4)",
+                  marginTop: "var(--space-12)"
+                }}>
+                  <Link href={`/hives?page=${currentPage > 1 ? currentPage - 1 : 1}`}>
+                    <button className="btn btn--secondary" disabled={currentPage === 1}>
+                      Vorige
+                    </button>
+                  </Link>
+                  <span style={{ color: "var(--color-text-light)" }}>
+                    Pagina {currentPage} van {totalPages}
+                  </span>
+                  <Link href={`/hives?page=${currentPage < totalPages ? currentPage + 1 : totalPages}`}>
+                    <button className="btn btn--secondary" disabled={currentPage === totalPages}>
+                      Volgende
+                    </button>
+                  </Link>
+                </div>
+              )}
+            </>
+          ) : (
+            <div style={{ textAlign: "center", padding: "var(--space-16) 0" }}>
+              <h2 style={{ 
+                fontFamily: "var(--font-display)",
+                fontSize: "2rem",
+                fontWeight: "400",
+                marginBottom: "var(--space-4)"
+              }}>
+                Nog geen kasten
+              </h2>
+              <p style={{ 
+                color: "var(--color-text-light)",
+                marginBottom: "var(--space-8)"
+              }}>
+                Voeg eerst een bijenstand toe om kasten te kunnen aanmaken
+              </p>
+              <Link href="/apiaries/new">
+                <button className="btn btn--primary btn--lg">
+                  + Bijenstand toevoegen
+                </button>
+              </Link>
             </div>
-          </>
-        ) : (
-          <div className="empty-state">
-            <h2 className="section__title">Nog geen kasten</h2>
-            <p className="text-secondary mb-lg">
-              Voeg eerst een bijenstand toe om kasten te kunnen aanmaken
-            </p>
-            <Link
-              href="/apiaries/new"
-              className="button button--primary button--large"
-            >
-              + Bijenstand toevoegen
-            </Link>
-          </div>
-        )}
-      </div>
-    </section>
+          )}
+        </div>
+      </section>
+    </>
   );
 }
