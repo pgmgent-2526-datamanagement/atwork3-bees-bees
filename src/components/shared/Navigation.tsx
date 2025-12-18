@@ -62,11 +62,27 @@ export default function Navigation() {
             {session?.user ? (
               <div className="nav__dropdown" ref={dropdownRef}>
                 <button
-                  className="nav__avatar"
+                  className="nav__user-toggle"
                   onClick={() => setIsDropdownOpen(!isDropdownOpen)}
                   aria-label="User menu"
                 >
-                  <span className="nav__avatar-circle"></span>
+                  <span className="nav__user-greeting">Hello</span>
+                  <span className="nav__user-name">{session.user.name?.split(' ')[0] || session.user.email?.split('@')[0] || 'User'}</span>
+                  <svg
+                    width="12"
+                    height="12"
+                    viewBox="0 0 12 12"
+                    fill="none"
+                    className={`nav__user-chevron ${isDropdownOpen ? 'nav__user-chevron--open' : ''}`}
+                  >
+                    <path
+                      d="M2 4L6 8L10 4"
+                      stroke="currentColor"
+                      strokeWidth="1.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
                 </button>
 
                 {isDropdownOpen && (
