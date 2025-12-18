@@ -4,6 +4,33 @@ import { NextResponse } from 'next/server';
 import prisma from '@/lib/client';
 import { authOptions } from '@/lib/auth-options';
 
+export async function GET() {
+  try {
+    const session = await getServerSession(authOptions);
+
+    if (!session?.user?.id) {
+      return NextResponse.json({ error: 'Niet ingelogd' }, { status: 401 });
+    }
+
+    const apiaries = await prisma.apiary.findMany({
+      where: { userId: session.user.id },
+      select: {
+        id: true,
+        name: true,
+      },
+      orderBy: { name: 'asc' },
+    });
+
+    return NextResponse.json(apiaries);
+  } catch (error) {
+    console.error('Error fetching apiaries:', error);
+    return NextResponse.json(
+      { error: 'Er ging iets mis bij het ophalen van de bijenstanden' },
+      { status: 500 }
+    );
+  }
+}
+
 export async function POST(req: NextRequest) {
   try {
     const session = await getServerSession(authOptions);

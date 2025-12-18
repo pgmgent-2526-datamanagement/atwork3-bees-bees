@@ -1,42 +1,22 @@
 import { redirect } from 'next/navigation';
 import prisma from '@/lib/client';
 import ObservationForm from '@/components/forms/ObservationForm';
-import Link from 'next/link';
 
-export default async function AccountApiaryHiveObservationPage({
+export default async function AccountObservationNewPage({
   searchParams,
 }: {
-  searchParams: Promise<{ hiveId?: string }>;
+  searchParams: Promise<{ hiveId?: string; hiveName?: string }>;
 }) {
-  const { hiveId } = await searchParams;
+  const { hiveId, hiveName } = await searchParams;
 
-  if (!hiveId) {
-    throw new Error('hiveId is required');
+  // If hiveId is provided, validate it exists
+  if (hiveId) {
+    const hiveExists = await prisma.hive.count({
+      where: { id: parseInt(hiveId) },
+    });
+    if (hiveExists === 0) redirect('/hives');
   }
 
-  const hive = await prisma.hive.findUnique({
-    where: { id: parseInt(hiveId) },
-    select: { type: true, colonyType: true },
-  });
-
-  if (!hive) redirect(`/apiaries`);
-
-  return (
-    <>
-      {/* <Link
-        style={{ marginTop: '6rem' }}
-        href={`/hives/${hiveId}`}
-        className="breadcrumb"
-      >
-        ← Terug naar kast
-      </Link> */}
-      <h1 style={{ marginTop: '6rem' }} className="title">
-        Nieuwe observatie
-      </h1>
-      <ObservationForm
-        hiveId={hiveId}
-        hiveName={`${hive.type} - ${hive.colonyType}`}
-      />
-    </>
-  );
+  // Pass hiveId and hiveName (can be undefined) to the form
+  return <ObservationForm hiveId={hiveId} hiveName={hiveName} />;
 }
