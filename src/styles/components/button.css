@@ -10,41 +10,52 @@
   font-family: var(--font-body);
   font-size: 0.9375rem;
   font-weight: 400;
+  line-height: 1;
   letter-spacing: 0.03em;
   border: 1px solid var(--color-text);
+  border-radius: 2px;
   background: transparent;
   color: var(--color-text);
   cursor: pointer;
   transition: all 0.2s ease;
+  white-space: nowrap;
 }
 
 .btn:hover {
   background: var(--color-text);
   color: white;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .btn--primary {
   background: var(--color-text);
   color: white;
+  border-color: var(--color-text);
 }
 
 .btn--primary:hover {
-  background: transparent;
-  color: var(--color-text);
+  background: rgba(45, 55, 72, 0.9);
+  border-color: rgba(45, 55, 72, 0.9);
 }
 
 .btn--secondary {
-  border: 1px solid rgba(0, 0, 0, 0.2);
-  color: var(--color-text-light);
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  color: var(--color-text);
+  background: white;
 }
 
 .btn--secondary:hover {
   border-color: var(--color-text);
-  color: var(--color-text);
-  background: transparent;
+  background: var(--color-cream);
 }
 
 .btn--large {
   padding: var(--space-5) var(--space-10);
   font-size: 1rem;
+}
+
+.btn--sm {
+  padding: var(--space-2) var(--space-4);
+  font-size: 0.875rem;
 }

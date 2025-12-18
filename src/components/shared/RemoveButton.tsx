@@ -27,18 +27,73 @@ export default function RemoveButton({
   return (
     <>
       <button
-        style={{ background: 'red' }}
+        className="btn btn--secondary"
         onClick={() => setShowConfirm(true)}
+        style={{ 
+          width: "100%",
+          border: "1px solid #dc2626",
+          color: "#dc2626"
+        }}
       >
         {label}
       </button>
       {showConfirm && (
-        <div>
-          {confirmText}
-          <button onClick={handleDelete} disabled={loading}>
-            {loading ? loadingText : 'Ja, verwijderen'}
-          </button>
-          <button onClick={() => setShowConfirm(false)}>Annuleren</button>
+        <div style={{
+          position: "fixed",
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          background: "rgba(0, 0, 0, 0.5)",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          zIndex: 9999
+        }}>
+          <div style={{
+            background: "white",
+            padding: "var(--space-12)",
+            borderRadius: "8px",
+            maxWidth: "400px",
+            width: "90%"
+          }}>
+            <h3 style={{
+              fontFamily: "var(--font-display)",
+              fontSize: "1.5rem",
+              fontWeight: "500",
+              marginBottom: "var(--space-4)"
+            }}>
+              Bevestig verwijdering
+            </h3>
+            <p style={{
+              color: "var(--color-text-light)",
+              marginBottom: "var(--space-8)",
+              lineHeight: "1.6"
+            }}>
+              {confirmText}
+            </p>
+            <div style={{ display: "flex", gap: "var(--space-3)" }}>
+              <button 
+                className="btn btn--secondary" 
+                onClick={() => setShowConfirm(false)}
+                style={{ flex: 1 }}
+              >
+                Annuleren
+              </button>
+              <button 
+                className="btn btn--primary"
+                onClick={handleDelete} 
+                disabled={loading}
+                style={{ 
+                  flex: 1,
+                  background: "#dc2626",
+                  borderColor: "#dc2626"
+                }}
+              >
+                {loading ? loadingText : 'Ja, verwijderen'}
+              </button>
+            </div>
+          </div>
         </div>
       )}
     </>

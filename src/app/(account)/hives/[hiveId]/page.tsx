@@ -41,124 +41,204 @@ export default async function AccountApiaryHivePage({
   });
 
   return (
-    <section className="section section--standard bg-alt">
-      <div className="container">
-        <div className="hive-header">
-          <div>
-            <Link href={`/apiaries/${apiaryId}`} className="breadcrumb">
-              ← {hive.apiary.name}
-            </Link>
-            <h1 className="title">
-              {hive.name}:{hive.type} - {hive.colonyType}
-            </h1>
-            <p className="text-secondary">{hive.apiary.longitude}</p>
-            <p className="text-secondary">{hive.apiary.latitude}</p>
-          </div>
-          <ul>
-            <li>
-              <Link
-                href={`/observations/new?hiveId=${hive.id}`}
-                className="button button--primary"
-              >
-                + Nieuwe observatie
-              </Link>
-            </li>
-            <li>
-              <Link href={`/hives/${hive.id}/edit`}>Wijzig de kast</Link>
-            </li>
-          </ul>
-        </div>
-
-        <div className="hive-content">
-          <div className="map-container">
-            <div className="map-placeholder">
-              <p className="text-secondary">
-                Google Maps met 2km en 7km cirkel rond {hive.apiary.longitude}
-                {hive.apiary.latitude}
+    <>
+      <section className="page-header" data-page="—">
+        <div className="container">
+          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end" }}>
+            <div>
+              <h1 className="page-header__title">{hive.name}</h1>
+              <p className="page-header__subtitle">
+                {hive.apiary.name} • {totalObservations} {totalObservations === 1 ? 'observatie' : 'observaties'} • {hive.type} • {hive.colonyType}
               </p>
             </div>
-            <p className="map-hint">
-              <strong>Drachtgebied:</strong> De cirkels tonen het bereik waarin
-              bijen voedsel zoeken (2-7km)
-            </p>
-          </div>
-
-          <div className="observations-section">
-            <h2 className="section__title section__title--left">
-              Recente observaties
-            </h2>
-            {observations.length > 0 ? (
-              <>
-                <div className="observations-list">
-                  {observations.map(obs => (
-                    <div key={obs.id} className="observation-card">
-                      <div className="observation-card__header">
-                        <span className="observation-card__date">
-                          <Link href={`../observations/${obs.id}`}>
-                            {new Date(obs.createdAt).toLocaleDateString(
-                              'nl-BE'
-                            )}{' '}
-                            {new Date(obs.createdAt).toLocaleTimeString(
-                              'nl-BE',
-                              {
-                                hour: '2-digit',
-                                minute: '2-digit',
-                              }
-                            )}
-                          </Link>
-                        </span>{' '}
-                        <br />
-                        <span className="badge">{obs.beeCount} bijen</span>
-                      </div>
-                      <p className="text-secondary">
-                        Stuifmeelkleur: {obs.pollenColor}
-                      </p>
-                      {obs.notes && (
-                        <p className="observation-card__notes">{obs.notes}</p>
-                      )}
-                      <Link
-                        href={`../observations/${obs.id}/edit?hiveId=${hive.id}`}
-                        className="observation-card__edit-link"
-                      >
-                        Wijzig observatie
-                      </Link>
-                    </div>
-                  ))}
-                </div>
-                <div>
-                  <Link
-                    style={{ backgroundColor: 'red', marginRight: '10px' }}
-                    href={`/hives/${hiveId}?page=${
-                      currentPage > 1 ? currentPage - 1 : currentPage
-                    }`}
-                  >
-                    Vorige pagina
-                  </Link>
-                  <Link
-                    style={{ backgroundColor: 'red', marginRight: '10px' }}
-                    href={`/hives/${hiveId}?page=${
-                      currentPage < totalPages ? currentPage + 1 : currentPage
-                    }`}
-                  >
-                    Volgende pagina
-                  </Link>
-                  <Link
-                    style={{ backgroundColor: 'lightBlue' }}
-                    href={`/hives/${hiveId}?page=${currentPage}`}
-                  >
-                    {`pagina ${currentPage} van ${totalPages} `}
-                  </Link>
-                </div>
-              </>
-            ) : (
-              <p className="text-secondary">Nog geen observaties</p>
-            )}
+            <div style={{ display: "flex", gap: "var(--space-3)" }}>
+              <Link href={`/hives/${hive.id}/edit`}>
+                <button className="btn btn--secondary">
+                  Wijzig kast
+                </button>
+              </Link>
+              {hive && (
+                <DeleteEntityButton
+                  id={hive.id}
+                  type="hive"
+                  label="Verwijder"
+                />
+              )}
+            </div>
           </div>
         </div>
-      </div>
-      {hive && (
-        <DeleteEntityButton id={hive.id} type="hive" label="Verwijder kast" />
-      )}
-    </section>
+      </section>
+
+      <section className="section section--alt">
+        <div className="container">
+
+          <div className="grid grid--2" style={{ alignItems: "flex-start", gap: "var(--space-16)" }}>
+            <div>
+              <h2 style={{ 
+                fontFamily: "var(--font-display)",
+                fontSize: "1.5rem",
+                fontWeight: "500",
+                marginBottom: "var(--space-6)"
+              }}>
+                Locatie details
+              </h2>
+              <div className="card" style={{ marginBottom: "var(--space-8)" }}>
+                <div style={{ marginBottom: "var(--space-4)" }}>
+                  <p style={{ 
+                    fontSize: "0.875rem",
+                    color: "var(--color-text-light)",
+                    marginBottom: "var(--space-2)"
+                  }}>
+                    Coördinaten
+                  </p>
+                  <p style={{ 
+                    fontFamily: "var(--font-display)",
+                    fontSize: "1.125rem"
+                  }}>
+                    {hive.apiary.latitude.toFixed(6)}, {hive.apiary.longitude.toFixed(6)}
+                  </p>
+                </div>
+                <div style={{ marginBottom: "var(--space-4)" }}>
+                  <p style={{ 
+                    fontSize: "0.875rem",
+                    color: "var(--color-text-light)",
+                    marginBottom: "var(--space-2)"
+                  }}>
+                    Drachtgebied
+                  </p>
+                  <p style={{ fontSize: "0.875rem" }}>
+                    Bijen zoeken voedsel binnen 2-7km van deze locatie
+                  </p>
+                </div>
+                <a 
+                  href={`https://www.google.com/maps?q=${hive.apiary.latitude},${hive.apiary.longitude}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{ textDecoration: "none" }}
+                >
+                  <button className="btn btn--secondary btn--sm" style={{ width: "100%" }}>
+                    Open in Google Maps
+                  </button>
+                </a>
+              </div>
+            </div>
+
+            <div>
+              <div 
+                style={{
+                  width: "100%",
+                  height: "400px",
+                  background: "rgba(0, 0, 0, 0.05)",
+                  border: "1px solid rgba(0, 0, 0, 0.08)",
+                  borderRadius: "8px",
+                  overflow: "hidden",
+                  position: "relative"
+                }}
+              >
+                <iframe
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0 }}
+                  loading="lazy"
+                  allowFullScreen
+                  referrerPolicy="no-referrer-when-downgrade"
+                  src={`https://www.google.com/maps/embed/v1/place?key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8&q=${hive.apiary.latitude},${hive.apiary.longitude}&zoom=15&maptype=satellite`}
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="section section--default">
+        <div className="container">
+          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "var(--space-8)" }}>
+            <h2 style={{ 
+              fontFamily: "var(--font-display)",
+              fontSize: "2rem",
+              fontWeight: "400"
+            }}>
+              Observaties bij deze kast
+            </h2>
+            {observations.length > 0 && (
+              <Link href={`/observations/new?hiveId=${hive.id}`}>
+                <button className="btn btn--primary">
+                  + Nieuwe observatie
+                </button>
+              </Link>
+            )}
+          </div>
+
+          {observations.length > 0 ? (
+            <>
+              <div className="grid grid--2">
+                {observations.map(obs => (
+                  <Link key={obs.id} href={`/observations/${obs.id}`} style={{ textDecoration: "none" }}>
+                    <div className="card" style={{ cursor: "pointer", height: "100%" }}>
+                      <p className="card__category">
+                        {new Date(obs.createdAt).toLocaleDateString('nl-BE')}
+                      </p>
+                      <h3 className="card__title">
+                        {new Date(obs.createdAt).toLocaleTimeString('nl-BE', {
+                          hour: '2-digit',
+                          minute: '2-digit',
+                        })}
+                      </h3>
+                      <div style={{ display: "flex", gap: "var(--space-3)", marginTop: "var(--space-4)" }}>
+                        <span className="badge">{obs.beeCount} bijen</span>
+                        <span className="badge">{obs.pollenColor}</span>
+                      </div>
+                      {obs.notes && (
+                        <p style={{ 
+                          marginTop: "var(--space-4)",
+                          fontSize: "0.875rem",
+                          color: "var(--color-text-light)",
+                          lineHeight: "1.5"
+                        }}>
+                          {obs.notes}
+                        </p>
+                      )}
+                    </div>
+                  </Link>
+                ))}
+              </div>
+              
+              {totalPages > 1 && (
+                <div style={{ 
+                  display: "flex", 
+                  justifyContent: "center", 
+                  gap: "var(--space-3)",
+                  marginTop: "var(--space-12)"
+                }}>
+                  {currentPage > 1 && (
+                    <Link href={`/hives/${hiveId}?page=${currentPage - 1}`}>
+                      <button className="btn btn--secondary">← Vorige</button>
+                    </Link>
+                  )}
+                  <span style={{ 
+                    display: "flex", 
+                    alignItems: "center",
+                    padding: "0 var(--space-4)",
+                    fontSize: "0.875rem",
+                    color: "var(--color-text-light)"
+                  }}>
+                    Pagina {currentPage} van {totalPages}
+                  </span>
+                  {currentPage < totalPages && (
+                    <Link href={`/hives/${hiveId}?page=${currentPage + 1}`}>
+                      <button className="btn btn--secondary">Volgende →</button>
+                    </Link>
+                  )}
+                </div>
+              )}
+            </>
+          ) : (
+            <div className="card" style={{ textAlign: "center", padding: "var(--space-16)" }}>
+              <p style={{ color: "var(--color-text-light)" }}>Nog geen observaties</p>
+            </div>
+          )}
+        </div>
+      </section>
+    </>
   );
 }

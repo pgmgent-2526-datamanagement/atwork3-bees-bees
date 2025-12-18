@@ -23,20 +23,21 @@ export default async function AccountApiaryHiveObservationPage({
 
   return (
     <>
-      {/* <Link
-        style={{ marginTop: '6rem' }}
-        href={`/hives/${hiveId}`}
-        className="breadcrumb"
-      >
-        ← Terug naar kast
-      </Link> */}
-      <h1 style={{ marginTop: '6rem' }} className="title">
-        Nieuwe observatie
-      </h1>
-      <ObservationForm
-        hiveId={hiveId}
-        hiveName={`${hive.type} - ${hive.colonyType}`}
-      />
+      <section className="page-header" data-page="—">
+        <div className="container">
+          <h1 className="page-header__title">Nieuwe observatie</h1>
+          <p className="page-header__subtitle">{hive.type} - {hive.colonyType}</p>
+        </div>
+      </section>
+
+      <section className="section section--default">
+        <div className="container container--narrow">
+          <ObservationForm
+            hiveId={hiveId}
+            hiveName={`${hive.type} - ${hive.colonyType}`}
+          />
+        </div>
+      </section>
     </>
   );
 }
