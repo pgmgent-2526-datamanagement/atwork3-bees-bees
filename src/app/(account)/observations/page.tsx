@@ -90,7 +90,7 @@ export default async function AccountObservationsPage(searchParams: {
   });
   return (
     <>
-      <section className="page-header" data-page="04">
+      <section className="page-header" data-page="—">
         <div className="container">
           <h1 className="page-header__title">Mijn observaties</h1>
           <p className="page-header__subtitle">

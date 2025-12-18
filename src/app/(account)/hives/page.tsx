@@ -49,7 +49,7 @@ export default async function AccountHivesPage({
 
   return (
     <>
-      <section className="page-header" data-page="03">
+      <section className="page-header" data-page="—">
         <div className="container">
           <h1 className="page-header__title">Mijn kasten</h1>
           <p className="page-header__subtitle">

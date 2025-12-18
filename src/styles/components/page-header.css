@@ -60,10 +60,11 @@
   font-family: var(--font-display);
   font-size: clamp(8rem, 15vw, 12rem);
   font-weight: 300;
-  color: rgba(0, 0, 0, 0.02);
+  color: rgba(0, 0, 0, 0.08);
   line-height: 1;
   pointer-events: none;
   user-select: none;
+  z-index: 0;
 }
 
 @media (max-width: 768px) {

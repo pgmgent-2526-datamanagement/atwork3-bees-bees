@@ -35,7 +35,7 @@ export default async function AccountApiariesPage({
 
   return (
     <>
-      <section className="page-header" data-page="02">
+      <section className="page-header" data-page="—">
         <div className="container">
           <h1 className="page-header__title">Mijn bijenstanden</h1>
           <p className="page-header__subtitle">

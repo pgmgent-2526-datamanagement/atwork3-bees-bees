@@ -42,7 +42,7 @@ export default async function AccountApiaryHivePage({
 
   return (
     <>
-      <section className="page-header" data-page="—">
+      <section className="page-header" data-page="02">
         <div className="container">
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end" }}>
             <div>
@@ -64,87 +64,6 @@ export default async function AccountApiaryHivePage({
                   label="Verwijder"
                 />
               )}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="section section--alt">
-        <div className="container">
-
-          <div className="grid grid--2" style={{ alignItems: "flex-start", gap: "var(--space-16)" }}>
-            <div>
-              <h2 style={{ 
-                fontFamily: "var(--font-display)",
-                fontSize: "1.5rem",
-                fontWeight: "500",
-                marginBottom: "var(--space-6)"
-              }}>
-                Locatie details
-              </h2>
-              <div className="card" style={{ marginBottom: "var(--space-8)" }}>
-                <div style={{ marginBottom: "var(--space-4)" }}>
-                  <p style={{ 
-                    fontSize: "0.875rem",
-                    color: "var(--color-text-light)",
-                    marginBottom: "var(--space-2)"
-                  }}>
-                    Coördinaten
-                  </p>
-                  <p style={{ 
-                    fontFamily: "var(--font-display)",
-                    fontSize: "1.125rem"
-                  }}>
-                    {hive.apiary.latitude.toFixed(6)}, {hive.apiary.longitude.toFixed(6)}
-                  </p>
-                </div>
-                <div style={{ marginBottom: "var(--space-4)" }}>
-                  <p style={{ 
-                    fontSize: "0.875rem",
-                    color: "var(--color-text-light)",
-                    marginBottom: "var(--space-2)"
-                  }}>
-                    Drachtgebied
-                  </p>
-                  <p style={{ fontSize: "0.875rem" }}>
-                    Bijen zoeken voedsel binnen 2-7km van deze locatie
-                  </p>
-                </div>
-                <a 
-                  href={`https://www.google.com/maps?q=${hive.apiary.latitude},${hive.apiary.longitude}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  style={{ textDecoration: "none" }}
-                >
-                  <button className="btn btn--secondary btn--sm" style={{ width: "100%" }}>
-                    Open in Google Maps
-                  </button>
-                </a>
-              </div>
-            </div>
-
-            <div>
-              <div 
-                style={{
-                  width: "100%",
-                  height: "400px",
-                  background: "rgba(0, 0, 0, 0.05)",
-                  border: "1px solid rgba(0, 0, 0, 0.08)",
-                  borderRadius: "8px",
-                  overflow: "hidden",
-                  position: "relative"
-                }}
-              >
-                <iframe
-                  width="100%"
-                  height="100%"
-                  style={{ border: 0 }}
-                  loading="lazy"
-                  allowFullScreen
-                  referrerPolicy="no-referrer-when-downgrade"
-                  src={`https://www.google.com/maps/embed/v1/place?key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8&q=${hive.apiary.latitude},${hive.apiary.longitude}&zoom=15&maptype=satellite`}
-                />
-              </div>
             </div>
           </div>
         </div>

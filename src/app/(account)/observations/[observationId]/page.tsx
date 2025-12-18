@@ -4,6 +4,9 @@ import { authOptions } from '@/lib/auth-options';
 import { redirect } from 'next/navigation';
 import DeleteEntityButton from '@/components/shared/DeleteEntityButton';
 import Link from 'next/link';
+
+export const dynamic = 'force-dynamic';
+
 export default async function Observation({
   params,
 }: {
@@ -28,26 +31,115 @@ export default async function Observation({
   ) {
     redirect('/unauthorized');
   }
+
   return (
-    <div style={{ marginTop: '6rem' }}>
-      <h1>Observation Detail Page</h1>
-      <div>
-        <h2>Observation ID: {observation.id}</h2>
-        <p>Notes: {observation.notes}</p>
-        <p>Date: {observation.createdAt.toDateString()}</p>
-        <p>Hive ID: {observation.hive.id}</p>
-        <p>Apiary Name: {observation.hive.apiary.name}</p>
-      </div>
-      <Link href={`observations/${observationId}/edit`}>
-        Wijzig de observatie
-      </Link>
-      {observation && (
-        <DeleteEntityButton
-          id={observation.id}
-          type="observation"
-          label="Verwijder observatie"
-        />
-      )}
-    </div>
+    <>
+      <section className="page-header" data-page="03">
+        <div className="container">
+          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end" }}>
+            <div>
+              <h1 className="page-header__title">Observatie</h1>
+              <p className="page-header__subtitle">
+                {observation.hive.name} • {observation.hive.apiary.name} • {new Date(observation.createdAt).toLocaleDateString('nl-BE')}
+              </p>
+            </div>
+            <div style={{ display: "flex", gap: "var(--space-3)" }}>
+              <Link href={`/observations/${observationId}/edit`}>
+                <button className="btn btn--secondary">
+                  Wijzig observatie
+                </button>
+              </Link>
+              {observation && (
+                <DeleteEntityButton
+                  id={observation.id}
+                  type="observation"
+                  label="Verwijder"
+                />
+              )}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="section section--default">
+        <div className="container container--narrow">
+          <div className="card" style={{ marginBottom: "var(--space-8)" }}>
+            <div style={{ marginBottom: "var(--space-6)" }}>
+              <p style={{ 
+                fontSize: "0.875rem",
+                color: "var(--color-text-light)",
+                marginBottom: "var(--space-2)"
+              }}>
+                Datum en tijd
+              </p>
+              <p style={{ 
+                fontFamily: "var(--font-display)",
+                fontSize: "1.125rem"
+              }}>
+                {new Date(observation.createdAt).toLocaleDateString('nl-BE', {
+                  weekday: 'long',
+                  year: 'numeric',
+                  month: 'long',
+                  day: 'numeric'
+                })} om {new Date(observation.createdAt).toLocaleTimeString('nl-BE', {
+                  hour: '2-digit',
+                  minute: '2-digit'
+                })}
+              </p>
+            </div>
+
+            <div style={{ marginBottom: "var(--space-6)" }}>
+              <p style={{ 
+                fontSize: "0.875rem",
+                color: "var(--color-text-light)",
+                marginBottom: "var(--space-2)"
+              }}>
+                Aantal bijen
+              </p>
+              <p style={{ 
+                fontFamily: "var(--font-display)",
+                fontSize: "1.125rem"
+              }}>
+                {observation.beeCount} bijen
+              </p>
+            </div>
+
+            <div style={{ marginBottom: "var(--space-6)" }}>
+              <p style={{ 
+                fontSize: "0.875rem",
+                color: "var(--color-text-light)",
+                marginBottom: "var(--space-2)"
+              }}>
+                Stuifmeelkleur
+              </p>
+              <p style={{ 
+                fontFamily: "var(--font-display)",
+                fontSize: "1.125rem"
+              }}>
+                {observation.pollenColor}
+              </p>
+            </div>
+
+            {observation.notes && (
+              <div>
+                <p style={{ 
+                  fontSize: "0.875rem",
+                  color: "var(--color-text-light)",
+                  marginBottom: "var(--space-2)"
+                }}>
+                  Notities
+                </p>
+                <p style={{ 
+                  fontSize: "0.9375rem",
+                  lineHeight: "1.6"
+                }}>
+                  {observation.notes}
+                </p>
+              </div>
+            )}
+          </div>
+        </div>
+      </section>
+    </>
   );
 }
