@@ -42,7 +42,8 @@ export default function Navigation() {
       <div className="container">
         <div className="nav__container">
           <Link href="/" className="nav__logo">
-            Voor Imkers
+            <img src="/assets/logo.png" alt="Logo" className="nav__logo-image" />
+            <span className="nav__logo-text">Biodynamische Imkers</span>
           </Link>
 
           <div className="nav__menu">

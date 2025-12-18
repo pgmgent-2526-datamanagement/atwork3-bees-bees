@@ -1,207 +1,229 @@
-import Hero from "@/components/magazine/Hero";
-import Section from "@/components/magazine/Section";
-
 export default function VisionPage() {
   return (
     <>
-      <Hero
-        title="Onze Visie"
-        subtitle="Bijenhouden voor de moderne imker"
-        image="/assets/hero-new.jpg"
-        imageAlt="Bijenvolk in de natuur"
-        showScroll={true}
-      />
+      <section className="page-header" data-page="01">
+        <div className="container">
+          <h1 className="page-header__title">Wie we zijn</h1>
+          <p className="page-header__subtitle">
+            Van organische beweging in 2009 tot officiële VZW in 2025
+          </p>
+        </div>
+      </section>
 
-      <Section variant="cream" size="xl">
-        <div style={{ maxWidth: "900px", margin: "0 auto" }}>
-          <article className="editorial">
-            <header
-              className="editorial__header"
-              style={{ marginBottom: "var(--space-16)" }}
-            >
-              <div
-                className="editorial__category"
-                style={{
-                  fontSize: "var(--text-sm)",
-                  fontWeight: "500",
-                  color: "var(--color-accent)",
-                  marginBottom: "var(--space-4)",
-                  letterSpacing: "0.1em",
-                  textTransform: "uppercase",
-                }}
-              >
-                Missie
+      <section className="section section--alt">
+        <div className="container">
+          <div className="grid grid--2" style={{ alignItems: "center", gap: "var(--space-16)" }}>
+            <div>
+              <div style={{ 
+                fontSize: "6rem", 
+                fontFamily: "var(--font-display)", 
+                fontWeight: "300",
+                lineHeight: "1",
+                marginBottom: "var(--space-8)"
+              }}>
+                2009
               </div>
-              <h1
-                className="editorial__title"
-                style={{
-                  fontSize: "var(--text-5xl)",
-                  fontWeight: "300",
-                  lineHeight: "1.2",
-                  marginBottom: "var(--space-6)",
-                }}
-              >
-                Digitaal imkeren, zonder complexiteit
-              </h1>
-              <p
-                className="editorial__subtitle"
-                style={{
-                  fontSize: "var(--text-xl)",
-                  color: "var(--color-text-light)",
-                  lineHeight: "1.6",
-                }}
-              >
-                Wij geloven dat bijenhouden eenvoudig, overzichtelijk en
-                toegankelijk moet zijn. Daarom bouwen we tools die imkers écht
-                helpen.
-              </p>
-            </header>
-
-            <div
-              className="editorial__body"
-              style={{
-                fontSize: "var(--text-lg)",
-                lineHeight: "1.8",
-                color: "var(--color-secondary)",
-              }}
-            >
-              <p style={{ marginBottom: "var(--space-8)" }}>
-                Het bijenhouden is een ambacht dat eeuwenoud is, maar de moderne
-                imker heeft moderne uitdagingen. Van het bijhouden van
-                waarnemingen tot het plannen van interventies: veel imkers
-                werken nog met papieren logboeken, losse notities en geheugen.
-              </p>
-
-              <p style={{ marginBottom: "var(--space-12)" }}>
-                Wij zagen een kans om dit anders te doen. Niet door het
-                bijenhouden te veranderen, maar door het <em>bijhouden</em> te
-                vereenvoudigen. Ons platform is gebouwd met één doel: imkers
-                helpen focussen op wat ze het liefste doen – werken met hun
-                bijen.
-              </p>
-
-              <h2
-                style={{
-                  fontSize: "var(--text-3xl)",
-                  fontWeight: "400",
-                  marginTop: "var(--space-16)",
-                  marginBottom: "var(--space-8)",
-                  color: "var(--color-text)",
-                }}
-              >
-                Voor imkers, door imkers
-              </h2>
-
-              <p>
-                Ons team bestaat uit mensen die zelf imkeren of nauw betrokken
-                zijn bij de bijenwereld. We weten wat er speelt: te weinig tijd,
-                te veel administratie, en de constante wens om beter te worden.
-              </p>
-
-              <p>
-                Daarom is ons platform geen "one-size-fits-all" oplossing. Het
-                is flexibel genoeg voor hobbyimkers met één of twee kasten, maar
-                ook krachtig genoeg voor professionals met tientallen
-                bijenstanden.
-              </p>
-
-              <div
-                className="pullquote"
-                style={{
-                  fontSize: "var(--text-2xl)",
-                  fontWeight: "300",
-                  fontStyle: "italic",
-                  color: "var(--color-accent)",
-                  padding: "var(--space-12) 0",
-                  margin: "var(--space-16) 0",
-                  borderLeft: "3px solid var(--color-accent)",
-                  paddingLeft: "var(--space-8)",
-                }}
-              >
-                "Technologie moet het ambacht ondersteunen, niet overnemen."
+              <div className="quote" style={{ border: "none", padding: 0 }}>
+                "Het bijenvolk was spiegel voor de werking"
               </div>
-
-              <h2
-                style={{
-                  fontSize: "var(--text-3xl)",
-                  fontWeight: "400",
-                  marginTop: "var(--space-16)",
-                  marginBottom: "var(--space-8)",
-                  color: "var(--color-text)",
-                }}
-              >
-                Waar we voor staan
+            </div>
+            
+            <div>
+              <h2 style={{ 
+                fontFamily: "var(--font-display)", 
+                fontSize: "2.5rem",
+                fontWeight: "400",
+                marginBottom: "var(--space-6)"
+              }}>
+                Waar het begon
               </h2>
-
-              <p style={{ marginBottom: "var(--space-6)" }}>
-                <strong
-                  style={{ color: "var(--color-text)", fontWeight: "600" }}
-                >
-                  Eenvoud:
-                </strong>{" "}
-                Geen overbodige functies of complexe workflows. Je registreert
-                wat belangrijk is, wanneer het belangrijk is.
+              <p style={{ fontSize: "1.125rem", lineHeight: "1.8", marginBottom: "var(--space-4)" }}>
+                Een kleine groep imkers vindt elkaar rond het werk van Rudolf Steiner. 
+                Zijn voordrachtcyclus "De Bijen" wordt hun kompas.
               </p>
-
-              <p style={{ marginBottom: "var(--space-6)" }}>
-                <strong
-                  style={{ color: "var(--color-text)", fontWeight: "600" }}
-                >
-                  Privacy:
-                </strong>{" "}
-                Jouw gegevens zijn van jou. We delen geen locaties met andere
-                gebruikers en verkopen geen data aan derden.
-              </p>
-
-              <p style={{ marginBottom: "var(--space-6)" }}>
-                <strong
-                  style={{ color: "var(--color-text)", fontWeight: "600" }}
-                >
-                  Toegankelijkheid:
-                </strong>{" "}
-                Of je nu op je telefoon werkt bij de bijenstal of thuis op je
-                computer: het platform werkt overaleven goed.
-              </p>
-
-              <p style={{ marginBottom: "var(--space-12)" }}>
-                <strong
-                  style={{ color: "var(--color-text)", fontWeight: "600" }}
-                >
-                  Duurzaamheid:
-                </strong>{" "}
-                Door slimmer te werken en beter inzicht te krijgen, kunnen
-                imkers effectiever bijenhouden. Dat is goed voor de imker, en
-                goed voor de bijen.
-              </p>
-
-              <h2
-                style={{
-                  fontSize: "var(--text-3xl)",
-                  fontWeight: "400",
-                  marginTop: "var(--space-16)",
-                  marginBottom: "var(--space-8)",
-                  color: "var(--color-text)",
-                }}
-              >
-                De toekomst
-              </h2>
-
-              <p style={{ marginBottom: "var(--space-8)" }}>
-                We zijn nog maar net begonnen. In de toekomst willen we imkers
-                nog meer tools bieden: van seizoensanalyses tot
-                dracht-voorspellingen op basis van lokale plantengroei. Maar
-                altijd met hetzelfde uitgangspunt: technologie die ondersteunt,
-                niet overheerst.
-              </p>
-
-              <p style={{ marginBottom: "0" }}>
-                Want uiteindelijk gaat het niet om het platform – het gaat om de
-                bijen, en de mensen die voor ze zorgen.
+              <p style={{ fontSize: "1.125rem", lineHeight: "1.8" }}>
+                Maandelijkse bijeenkomsten bij elkaar thuis. Elke sessie start met 
+                dezelfde tekst van Steiner – een ritueel dat vandaag nog bestaat.
               </p>
             </div>
-          </article>
+          </div>
         </div>
-      </Section>
+      </section>
+
+      <section className="section section--default">
+        <div className="container">
+          <div className="section__header" style={{ textAlign: "center" }}>
+            <h2 className="section__title">Van pioniers naar professionals</h2>
+          </div>
+
+          <div className="grid grid--3">
+            <div className="card" style={{ textAlign: "center" }}>
+              <div style={{ 
+                fontSize: "4rem", 
+                fontFamily: "var(--font-display)",
+                fontWeight: "300",
+                color: "var(--color-text)",
+                marginBottom: "var(--space-4)"
+              }}>
+                2010
+              </div>
+              <h3 className="card__title" style={{ fontSize: "1.25rem", marginBottom: "var(--space-3)" }}>
+                Eerste cursus
+              </h3>
+              <p className="card__text">
+                Nederlandse experts Albert Muller en Wim Grasstek leggen de 
+                basis. Hun begeestering werkt aanstekelijk.
+              </p>
+            </div>
+
+            <div className="card" style={{ textAlign: "center" }}>
+              <div style={{ 
+                fontSize: "4rem", 
+                fontFamily: "var(--font-display)",
+                fontWeight: "300",
+                color: "var(--color-text)",
+                marginBottom: "var(--space-4)"
+              }}>
+                2022
+              </div>
+              <h3 className="card__title" style={{ fontSize: "1.25rem", marginBottom: "var(--space-3)" }}>
+                Eigen lesgevers
+              </h3>
+              <p className="card__text">
+                Lutgart Teuwen en Roger Wynants voltooien de lerarenopleiding. 
+                Vlaanderen krijgt eigen stemmen.
+              </p>
+            </div>
+
+            <div className="card" style={{ textAlign: "center" }}>
+              <div style={{ 
+                fontSize: "4rem", 
+                fontFamily: "var(--font-display)",
+                fontWeight: "300",
+                color: "var(--color-text)",
+                marginBottom: "var(--space-4)"
+              }}>
+                2025
+              </div>
+              <h3 className="card__title" style={{ fontSize: "1.25rem", marginBottom: "var(--space-3)" }}>
+                Officiële VZW
+              </h3>
+              <p className="card__text">
+                Van organische beweging naar gestructureerde organisatie. 
+                Barend Weyens haalt meesteropleiding.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+
+      <section className="section section--alt">
+        <div className="container">
+          <div className="section__header">
+            <h2 className="section__title">Wat we doen</h2>
+            <p className="section__subtitle">
+              Vanuit de VZW wordt veel centraal gecoördineerd
+            </p>
+          </div>
+
+          <div className="grid grid--2">
+            <div className="feature-card feature-card--01">
+              <div className="feature-card__number">01</div>
+              <h3 className="feature-card__title">Opleidingen & Workshops</h3>
+              <p className="feature-card__text">
+                Van basiscursussen tot verdiepende opleidingen. Ook workshops
+                zoals korfvlechten, waskaarsen trekken en lezingen van
+                buitenlandse sprekers.
+              </p>
+            </div>
+
+            <div className="feature-card feature-card--02">
+              <div className="feature-card__number">02</div>
+              <h3 className="feature-card__title">Netwerk & Begeleiding</h3>
+              <p className="feature-card__text">
+                BD-Bee Buddies bieden ondersteuning aan imkers. Regionale
+                leesgroepen en een jaarlijks Midwinterevent versterken de
+                gemeenschap.
+              </p>
+            </div>
+
+            <div className="feature-card feature-card--03">
+              <div className="feature-card__number">03</div>
+              <h3 className="feature-card__title">Informatieplatform</h3>
+              <p className="feature-card__text">
+                Website met ledengroep, zwermlijsten en digitale tools om het
+                bijenhouden overzichtelijk bij te houden.
+              </p>
+            </div>
+
+            <div className="feature-card feature-card--04">
+              <div className="feature-card__number">04</div>
+              <h3 className="feature-card__title">Samenwerking & Dialoog</h3>
+              <p className="feature-card__text">
+                Werking naar kinderen en scholen, samenwerking met biodynamische
+                landbouwers en dialoog met wetenschappers en natuurbeschermers.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="section section--default">
+        <div className="container">
+          <div className="grid grid--2" style={{ alignItems: "center", gap: "var(--space-16)" }}>
+            <div>
+              <h2 style={{ 
+                fontFamily: "var(--font-display)", 
+                fontSize: "3rem",
+                fontWeight: "400",
+                lineHeight: "1.2",
+                marginBottom: "var(--space-6)"
+              }}>
+                Imkeren naar de aard en het wezen van de bij
+              </h2>
+              <p style={{ fontSize: "1.25rem", lineHeight: "1.7", marginBottom: "var(--space-6)" }}>
+                Respect voor de honingbij als levend organisme. Zo min mogelijk 
+                ingrijpen op haar natuurlijke levenswijze.
+              </p>
+              <div style={{
+                borderLeft: "4px solid var(--color-text)",
+                paddingLeft: "var(--space-6)",
+                fontStyle: "italic",
+                fontSize: "1.125rem",
+                color: "var(--color-text-light)"
+              }}>
+                Holistische bijenteelt die gezondheid, welzijn en biodiversiteit 
+                centraal stelt.
+              </div>
+            </div>
+
+            <div style={{
+              background: "rgba(0, 0, 0, 0.03)",
+              padding: "var(--space-12)",
+              border: "1px solid rgba(0, 0, 0, 0.06)"
+            }}>
+              <h3 style={{
+                fontFamily: "var(--font-display)",
+                fontSize: "1.5rem",
+                fontWeight: "500",
+                marginBottom: "var(--space-6)"
+              }}>
+                BD-Bee Buddies
+              </h3>
+              <p style={{ lineHeight: "1.7", marginBottom: "var(--space-4)" }}>
+                De praktijk blijft verrassen. Vragen en onzekerheden blijven 
+                komen, hoe goed opgeleid je ook bent.
+              </p>
+              <p style={{ lineHeight: "1.7", fontWeight: "500" }}>
+                Daarom begeleiden ervaren imkers nieuwkomers via het 
+                BD-Bee Buddies programma.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
     </>
   );
 }

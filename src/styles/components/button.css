@@ -1,85 +1,50 @@
+/* ============================================
+   BUTTON - Clean & Minimal
+   ============================================ */
+
 .btn {
-  display: inline-block;
-  padding: var(--space-4) var(--space-10);
-  font-family: var(--font-display);
-  font-size: var(--text-sm);
-  font-weight: 500;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  text-align: center;
-  border: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-4) var(--space-8);
+  font-family: var(--font-body);
+  font-size: 0.9375rem;
+  font-weight: 400;
+  letter-spacing: 0.03em;
+  border: 1px solid var(--color-text);
+  background: transparent;
+  color: var(--color-text);
   cursor: pointer;
-  transition: var(--transition-base);
-  border-radius: 2px;
+  transition: all 0.2s ease;
+}
+
+.btn:hover {
+  background: var(--color-text);
+  color: white;
 }
 
 .btn--primary {
-  background-color: var(--color-primary);
-  color: var(--color-white);
-  border: 1px solid var(--color-primary);
+  background: var(--color-text);
+  color: white;
 }
 
 .btn--primary:hover {
-  background-color: var(--color-secondary);
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-lg);
+  background: transparent;
+  color: var(--color-text);
 }
 
 .btn--secondary {
-  background-color: transparent;
-  color: var(--color-text);
-  border: 1px solid var(--color-text);
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  color: var(--color-text-light);
 }
 
 .btn--secondary:hover {
-  background-color: var(--color-primary);
-  color: var(--color-white);
-  border-color: var(--color-primary);
+  border-color: var(--color-text);
+  color: var(--color-text);
+  background: transparent;
 }
 
-.btn--light {
-  background-color: var(--color-primary);
-  color: var(--color-white);
-  border: 2px solid var(--color-primary);
-}
-
-.btn--light:hover {
-  background-color: transparent;
-  color: var(--color-primary);
-  border-color: var(--color-primary);
-  transform: translateY(-2px);
-}
-
-.btn--accent {
-  background-color: var(--color-accent);
-  color: var(--color-white);
-  border: 2px solid var(--color-accent);
-}
-
-.btn--accent:hover {
-  background-color: var(--color-accent-hover);
-  border-color: var(--color-accent-hover);
-  transform: translateY(-2px);
-}
-
-.btn--link {
-  background: none;
-  border: none;
-  color: var(--color-accent);
-  padding: 0;
-  font-weight: 600;
-}
-
-.btn--link:hover {
-  color: var(--color-accent-hover);
-}
-
-.btn--lg {
-  padding: var(--space-5) var(--space-12);
-  font-size: var(--text-base);
-}
-
-.btn--sm {
-  padding: var(--space-2) var(--space-6);
-  font-size: var(--text-xs);
+.btn--large {
+  padding: var(--space-5) var(--space-10);
+  font-size: 1rem;
 }
