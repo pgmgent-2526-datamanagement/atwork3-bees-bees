@@ -75,7 +75,7 @@ export default function HiveForm({
       name,
       type,
       colonyType,
-      ...(!initialHive && { apiaryId: parseInt(finalApiaryId) }),
+      apiaryId: parseInt(finalApiaryId),
     };
 
     try {
@@ -122,27 +122,25 @@ export default function HiveForm({
               </div>
             )}
 
-            {!apiaryId && (
-              <div className="form-group">
-                <label htmlFor="apiarySelect" className="form-label">
-                  Bijenstand *
-                </label>
-                <select
-                  id="apiarySelect"
-                  className="form-input"
-                  value={selectedApiaryId}
-                  onChange={e => setSelectedApiaryId(e.target.value)}
-                  required
-                >
-                  <option value="">-- Selecteer bijenstand --</option>
-                  {apiaries.map(apiary => (
-                    <option key={apiary.id} value={apiary.id}>
-                      {apiary.name}
-                    </option>
-                  ))}
-                </select>
-              </div>
-            )}
+            <div className="form-group">
+              <label htmlFor="apiarySelect" className="form-label">
+                Bijenstand *
+              </label>
+              <select
+                id="apiarySelect"
+                className="form-input"
+                value={selectedApiaryId}
+                onChange={e => setSelectedApiaryId(e.target.value)}
+                required
+              >
+                <option value="">-- Selecteer bijenstand --</option>
+                {apiaries.map(apiary => (
+                  <option key={apiary.id} value={apiary.id}>
+                    {apiary.name}
+                  </option>
+                ))}
+              </select>
+            </div>
 
             <div className="form-group">
               <div className="form-group">
