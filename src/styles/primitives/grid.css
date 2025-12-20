@@ -1,8 +1,10 @@
-/* Grid - Layout Primitive */
+/* ============================================
+   GRID - Ruime spacing
+   ============================================ */
 
 .grid {
   display: grid;
-  gap: var(--space-12);
+  gap: var(--space-16);
 }
 
 .grid--2 {
@@ -14,10 +16,14 @@
 }
 
 .grid--auto {
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
 }
 
 @media (max-width: 768px) {
+  .grid {
+    gap: var(--space-8);
+  }
+
   .grid--2,
   .grid--3 {
     grid-template-columns: 1fr;

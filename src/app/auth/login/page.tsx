@@ -5,9 +5,6 @@ import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import Link from "next/link";
-import Hero from "@/components/magazine/Hero";
-import Section from "@/components/magazine/Section";
-import Button from "@/components/magazine/Button";
 
 export default function Login() {
   type Errors = string | undefined | null;
@@ -68,16 +65,15 @@ export default function Login() {
 
   return (
     <>
-      <Hero
-        title="Inloggen"
-        subtitle="Welkom terug bij uw bijenwaarnemingen"
-        image="/assets/hero-new.jpg"
-        imageAlt="BEES Platform Login"
-        showScroll={false}
-      />
+      <section className="page-header" data-page="—">
+        <div className="container">
+          <h1 className="page-header__title">Inloggen</h1>
+          <p className="page-header__subtitle">Welkom terug bij uw bijenwaarnemingen</p>
+        </div>
+      </section>
 
-      <Section variant="white" size="lg">
-        <div style={{ maxWidth: "600px", margin: "0 auto" }}>
+      <section className="section section--default">
+        <div className="container container--narrow">
           <form onSubmit={handleSubmit} className="form">
             {errors && (
               <div className="form-error form-error--general">
@@ -135,33 +131,26 @@ export default function Login() {
               )}
             </div>
 
-            <Button
+            <button
               type="submit"
-              variant="primary"
-              size="lg"
+              className="btn btn--primary btn--large"
               disabled={loading}
               style={{ width: "100%" }}
             >
               {loading ? "Inloggen..." : "Inloggen"}
-            </Button>
+            </button>
           </form>
 
-          <div style={{ textAlign: "center", marginTop: "var(--space-8)" }}>
-            <p style={{ color: "var(--color-text-light)" }}>
+          <div className="text-center" style={{ marginTop: "var(--space-8)" }}>
+            <p className="card__description">
               Nog geen account?{" "}
-              <Link
-                href="/auth/register"
-                style={{
-                  color: "var(--color-accent)",
-                  textDecoration: "underline",
-                }}
-              >
+              <Link href="/auth/register" className="text-link">
                 Registreer hier
               </Link>
             </p>
           </div>
         </div>
-      </Section>
+      </section>
     </>
   );
 }

@@ -1,8 +1,24 @@
-export default function EditHivePage() {
+import HiveForm from '@/components/forms/HiveForm';
+export default async function EditHivePage({
+  params,
+}: {
+  params: Promise<{ hiveId: string }>;
+}) {
+  const { hiveId } = await params;
   return (
-    <div>
-      <h1>Hive Bewerken</h1>
-      {/* EditHiveForm component would go here */}
-    </div>
+    <>
+      <section className="page-header" data-page="—">
+        <div className="container">
+          <h1 className="page-header__title">Kast aanpassen</h1>
+          <p className="page-header__subtitle">Wijzig type of volk</p>
+        </div>
+      </section>
+
+      <section className="section section--default">
+        <div className="container container--narrow">
+          <HiveForm initialHive={hiveId} />
+        </div>
+      </section>
+    </>
   );
 }

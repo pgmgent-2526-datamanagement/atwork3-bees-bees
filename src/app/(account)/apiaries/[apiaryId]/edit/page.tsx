@@ -1,8 +1,25 @@
-export default function EditApiaryPage() {
+import ApiaryForm from '@/components/forms/ApiaryForm';
+import Link from 'next/link';
+export default async function EditApiaryPage({
+  params,
+}: {
+  params: Promise<{ apiaryId: string }>;
+}) {
+  const { apiaryId } = await params;
   return (
-    <div>
-      <h1>Bijenstand bewerken</h1>
-      {/* EditApiaryForm component would go here */}
-    </div>
+    <>
+      <section className="page-header" data-page="—">
+        <div className="container">
+          <h1 className="page-header__title">Bijenstand aanpassen</h1>
+          <p className="page-header__subtitle">Wijzig naam of locatie</p>
+        </div>
+      </section>
+
+      <section className="section section--default">
+        <div className="container container--narrow">
+          <ApiaryForm initialApiary={apiaryId} />
+        </div>
+      </section>
+    </>
   );
 }

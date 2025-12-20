@@ -1,19 +1,15 @@
-/* Container - Layout Primitive */
+/* ============================================
+   CONTAINER - Ruim & Clean
+   ============================================ */
 
 .container {
-  width: 100%;
-  max-width: var(--container-max);
+  max-width: 1600px;
   margin: 0 auto;
-  padding: 0 var(--space-8);
+  padding: 0 var(--space-12);
 }
 
 .container--narrow {
-  max-width: var(--container-narrow);
-}
-
-.container--full {
-  max-width: 100%;
-  padding: 0;
+  max-width: 900px;
 }
 
 @media (max-width: 768px) {

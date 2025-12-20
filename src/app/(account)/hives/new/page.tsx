@@ -1,6 +1,6 @@
 import { redirect } from 'next/navigation';
 import prisma from '@/lib/client';
-import NewHiveForm from '@/components/forms/NewHiveForm';
+import HiveForm from '@/components/forms/HiveForm';
 
 export default async function AccountApiaryNewHivePage({
   searchParams,
@@ -9,13 +9,30 @@ export default async function AccountApiaryNewHivePage({
 }) {
   const { apiaryId, apiaryName } = await searchParams;
 
-  if (!apiaryId) {
-    redirect('/account/apiaries');
+  // If apiaryId is provided, validate it exists
+  if (apiaryId) {
+    const apiaryExists = await prisma.apiary.count({
+      where: { id: parseInt(apiaryId) },
+    });
+    if (apiaryExists === 0) redirect('/apiaries');
   }
-  const apiaryExists = await prisma.apiary.count({
-    where: { id: parseInt(apiaryId) },
-  });
-  if (apiaryExists === 0) redirect('/account/apiaries');
 
-  return <NewHiveForm apiaryId={apiaryId} apiaryName={apiaryName} />;
+  return (
+    <>
+      <section className="page-header" data-page="—">
+        <div className="container">
+          <h1 className="page-header__title">Nieuwe kast toevoegen</h1>
+          <p className="page-header__subtitle">
+            {apiaryName ? `Aan bijenstand: ${apiaryName}` : 'Registreer een nieuwe bijenkast'}
+          </p>
+        </div>
+      </section>
+
+      <section className="section section--default">
+        <div className="container container--narrow">
+          <HiveForm apiaryId={apiaryId} apiaryName={apiaryName} />
+        </div>
+      </section>
+    </>
+  );
 }
