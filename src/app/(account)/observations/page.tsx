@@ -123,27 +123,27 @@ export default async function AccountObservationsPage(searchParams: {
                     style={{ textDecoration: 'none' }}
                   >
                     <div className="card">
-                      <p style={{ fontSize: '0.6875rem', textTransform: 'uppercase', letterSpacing: '0.1em', color: 'var(--color-text-light)', marginBottom: 'var(--space-3)', fontWeight: '600' }}>
+                      <p className="card__category">
                         Observatie
                       </p>
-                      <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.25rem', fontWeight: '400', marginBottom: 'var(--space-2)' }}>
+                      <h3 className="card__title">
                         {new Date(observation.createdAt).toLocaleDateString('nl-BE', {
                           day: 'numeric',
                           month: 'long',
                           year: 'numeric'
                         })}
                       </h3>
-                      <p style={{ fontSize: '0.875rem', color: 'var(--color-text-light)', marginBottom: 'var(--space-4)' }}>
+                      <p className="card__date">
                         {new Date(observation.createdAt).toLocaleTimeString('nl-BE', {
                           hour: '2-digit',
                           minute: '2-digit',
                         })}
                       </p>
-                      <div style={{ paddingTop: 'var(--space-4)', borderTop: '1px solid rgba(0, 0, 0, 0.06)' }}>
-                        <p style={{ fontSize: '0.6875rem', textTransform: 'uppercase', letterSpacing: '0.1em', color: 'var(--color-text-light)', marginBottom: 'var(--space-2)', fontWeight: '600' }}>Bijenstand</p>
-                        <p style={{ fontSize: '0.9375rem', marginBottom: 'var(--space-3)' }}>{observation.hive.apiary.name}</p>
-                        <p style={{ fontSize: '0.6875rem', textTransform: 'uppercase', letterSpacing: '0.1em', color: 'var(--color-text-light)', marginBottom: 'var(--space-2)', fontWeight: '600' }}>Kast</p>
-                        <p style={{ fontSize: '0.9375rem' }}>{observation.hive.name}</p>
+                      <div className="card__divider">
+                        <p className="card__label">Bijenstand</p>
+                        <p className="card__value">{observation.hive.apiary.name}</p>
+                        <p className="card__label">Kast</p>
+                        <p className="card__value">{observation.hive.name}</p>
                       </div>
                     </div>
                   </Link>
