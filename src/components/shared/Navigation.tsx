@@ -4,12 +4,13 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useSession, signOut } from "next-auth/react";
 import { useState, useRef, useEffect } from "react";
-import { User, MapPin, Box, Eye, LogOut, Menu, X } from "lucide-react";
+import { User, MapPin, Box, Eye, LogOut } from "lucide-react";
 
 export default function Navigation() {
   const pathname = usePathname();
   const { data: session } = useSession();
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -26,6 +27,17 @@ export default function Navigation() {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isMobileMenuOpen]);
+
   const navItems = [
     { href: "/", label: "Home" },
     { href: "/vision", label: "Visie" },
@@ -37,6 +49,10 @@ export default function Navigation() {
     await signOut({ callbackUrl: "/" });
   };
 
+  const closeMobileMenu = () => {
+    setIsMobileMenuOpen(false);
+  };
+
   return (
     <nav className="nav">
       <div className="container">
@@ -45,6 +61,16 @@ export default function Navigation() {
             <img src="/assets/logo.png" alt="Logo" className="nav__logo-image" />
             <span className="nav__logo-text">Biodynamische Imkers</span>
           </Link>
+
+          <button
+            className={`nav__hamburger ${isMobileMenuOpen ? 'nav__hamburger--open' : ''}`}
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            aria-label="Toggle menu"
+          >
+            <span className="nav__hamburger-line"></span>
+            <span className="nav__hamburger-line"></span>
+            <span className="nav__hamburger-line"></span>
+          </button>
 
           <div className="nav__menu">
             {navItems.map((item) => (
@@ -136,6 +162,84 @@ export default function Navigation() {
               </Link>
             )}
           </div>
+        </div>
+      </div>
+
+      <div 
+        className={`nav__mobile-overlay ${isMobileMenuOpen ? 'nav__mobile-overlay--open' : ''}`}
+        onClick={closeMobileMenu}
+      ></div>
+
+      <div className={`nav__mobile-menu ${isMobileMenuOpen ? 'nav__mobile-menu--open' : ''}`}>
+        <div className="nav__mobile-links">
+          {navItems.map((item) => (
+            <Link
+              key={item.href}
+              href={item.href}
+              className={`nav__mobile-link ${
+                pathname === item.href ? "nav__mobile-link--active" : ""
+              }`}
+              onClick={closeMobileMenu}
+            >
+              {item.label}
+            </Link>
+          ))}
+          
+          {session?.user ? (
+            <>
+              <div className="nav__mobile-divider"></div>
+              <Link
+                href="/account"
+                className="nav__mobile-link"
+                onClick={closeMobileMenu}
+              >
+                Overzicht
+              </Link>
+              <Link
+                href="/apiaries"
+                className="nav__mobile-link"
+                onClick={closeMobileMenu}
+              >
+                Bijenstanden
+              </Link>
+              <Link
+                href="/hives"
+                className="nav__mobile-link"
+                onClick={closeMobileMenu}
+              >
+                Kasten
+              </Link>
+              <Link
+                href="/observations"
+                className="nav__mobile-link"
+                onClick={closeMobileMenu}
+              >
+                Observaties
+              </Link>
+              <div className="nav__mobile-divider"></div>
+              <button
+                onClick={() => {
+                  handleLogout();
+                  closeMobileMenu();
+                }}
+                className="nav__mobile-link"
+                style={{ textAlign: 'left', width: '100%' }}
+              >
+                Uitloggen
+              </button>
+            </>
+          ) : (
+            <>
+              <div className="nav__mobile-divider"></div>
+              <Link
+                href="/auth/login"
+                className="nav__mobile-link"
+                onClick={closeMobileMenu}
+              >
+                Login
+              </Link>
+            </>
+          )}
         </div>
       </div>
     </nav>
