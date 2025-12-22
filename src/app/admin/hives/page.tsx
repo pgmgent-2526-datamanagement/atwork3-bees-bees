@@ -1,4 +1,4 @@
-export function AdminHivesPage() {
+export default function AdminHivesPage() {
   return (
     <div>
       <h1>Overzicht Kasten</h1>
