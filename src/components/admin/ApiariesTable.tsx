@@ -27,7 +27,7 @@ export default function ApiariesTable({
             <td>
               {apiary.latitude}, {apiary.longitude}
             </td>
-            {showUser && <td>{apiary.user.name || apiary.user.email}</td>}
+            {showUser && <td>{apiary.user.name}</td>}
             <td>{apiary._count.hives}</td>
             <td>{new Date(apiary.createdAt).toLocaleDateString('nl-BE')}</td>
           </tr>

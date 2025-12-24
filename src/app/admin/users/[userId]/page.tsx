@@ -2,6 +2,7 @@ import { getServerSession } from 'next-auth';
 import { redirect, notFound } from 'next/navigation';
 import prisma from '@/lib/client';
 import { authOptions } from '@/lib/auth-options';
+import { requireAdmin } from '@/lib/auth-helpers';
 
 export const dynamic = 'force-dynamic';
 
@@ -11,11 +12,8 @@ export default async function UserDetailPage({
   params: Promise<{ userId: string }>;
 }) {
   const { userId } = await params;
-  const session = await getServerSession(authOptions);
 
-  if (!session?.user?.id || session.user.role !== 'ADMIN') {
-    redirect('/unauthorized');
-  }
+  const session = await requireAdmin();
 
   const user = await prisma.user.findUnique({
     where: { id: userId },
