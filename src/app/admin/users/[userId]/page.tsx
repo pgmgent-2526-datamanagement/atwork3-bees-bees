@@ -26,6 +26,13 @@ export default async function UserDetailPage({
       },
     },
   });
+  const totalHives = await prisma.hive.count({
+    where: {
+      apiary: {
+        userId,
+      },
+    },
+  });
 
   if (!user) {
     notFound();
@@ -38,7 +45,7 @@ export default async function UserDetailPage({
         <p className="page-header__subtitle">{user.email}</p>
         <p>
           {' '}
-          {user.name} heeft
+          {user.name} heeft <br />
           {user._count.apiaries === 0
             ? ' nog geen bijenstanden'
             : user._count.apiaries > 1
@@ -52,8 +59,24 @@ export default async function UserDetailPage({
           </Link>
         ) : (
           ''
+        )}{' '}
+        <br />
+        <p>
+          {totalHives === 0
+            ? 'nog geen kasten'
+            : totalHives > 1
+            ? `${totalHives} kasten`
+            : `${totalHives} kast`}
+        </p>
+        <br />
+        {totalHives ? (
+          <Link href={`/admin/users/${userId}/hives`}>
+            Bekijk de {totalHives > 1 ? 'kasten' : 'kast'}
+          </Link>
+        ) : (
+          ''
         )}
-        <Link href={'../../admin/users'}>Terug naar alle imkers</Link>
+        <Link href="/admin/users">Terug naar alle imkers</Link>
       </div>
     </section>
   );

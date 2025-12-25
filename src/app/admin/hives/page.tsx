@@ -1,7 +1,32 @@
-export default function AdminHivesPage() {
+import prisma from '@/lib/client';
+import HivesTable from '@/components/admin/HivesTable';
+import { requireAdmin } from '@/lib/auth-helpers';
+
+export default async function AdminHivesPage() {
+  await requireAdmin();
+
+  const hives = await prisma.hive.findMany({
+    include: {
+      apiary: {
+        include: {
+          user: {
+            select: { name: true },
+          },
+        },
+      },
+      _count: {
+        select: { observations: true },
+      },
+    },
+    orderBy: { createdAt: 'desc' },
+  });
+
   return (
-    <div>
-      <h1>Overzicht Kasten</h1>
+    <div className="container" style={{ marginTop: '6rem' }}>
+      <h1>Alle Kasten</h1>
+      <p className="subtitle">Totaal: {hives.length} kasten</p>
+
+      <HivesTable hives={hives} showApiary={true} showUser={true} />
     </div>
   );
 }
