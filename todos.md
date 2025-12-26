@@ -94,11 +94,11 @@ app/admin/
 - [] **DELETE** `/admin/users/:id` → Gebruiker verwijderen (alleen beheerders) + cascade toevoegen aan Apiary
 - [x] → filter gebruikers (alleen beheerders)
 - [] **GET** `/admin/users/:id` → User overview met stats
-- [] **GET** `/admin/users/:id/apiaries` → Read-only lijst
-- [] **GET** `/admin/users/:id/hives` → Read-only lijst
+- [x] **GET** `/admin/users/:id/apiaries` → Read-only lijst
+- [x] **GET** `/admin/users/:id/hives` → Read-only lijst
 - [] **GET** `/admin/users/:id/observations` → Read-only lijst
 - [x] **GET** `/admin/apiaries` → Read-only lijst
-- [] **GET** `/admin/hives` → Read-only lijst
+- [x] **GET** `/admin/hives` → Read-only lijst
 - [] **GET** `/admin/observations` → Read-only lijst
 
 ---

@@ -220,6 +220,13 @@ export default function Navigation() {
                         >
                           <span>Alle bijenstanden</span>
                         </Link>
+                        <Link
+                          href="/admin/hives"
+                          className="nav__dropdown-item"
+                          onClick={() => setIsDropdownOpen(false)}
+                        >
+                          <span>Alle kasten</span>
+                        </Link>
                       </>
                     )}
                     <div className="nav__dropdown-divider"></div>
@@ -318,6 +325,20 @@ export default function Navigation() {
                     onClick={closeMobileMenu}
                   >
                     Alle gebruikers
+                  </Link>
+                  <Link
+                    href="/admin/hives"
+                    className="nav__mobile-link"
+                    onClick={closeMobileMenu}
+                  >
+                    Alle bijenstanden
+                  </Link>
+                  <Link
+                    href="/admin/hives"
+                    className="nav__mobile-link"
+                    onClick={closeMobileMenu}
+                  >
+                    Alle kasten
                   </Link>
                 </>
               )}
