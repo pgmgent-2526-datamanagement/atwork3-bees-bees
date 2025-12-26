@@ -8,10 +8,10 @@ export default async function AdminHiveDetailPage({
   searchParams,
 }: {
   params: Promise<{ hiveId: string }>;
-  searchParams: { returnUrl?: string };
+  searchParams: Promise<{ returnUrl?: string }>;
 }) {
   await requireAdmin();
-  const returnUrl = searchParams.returnUrl || '/admin/hives';
+  const { returnUrl } = (await searchParams) || '/admin/hives';
   const { hiveId } = await params;
   const hive = await prisma.hive.findUnique({
     where: { id: parseInt(hiveId) },
