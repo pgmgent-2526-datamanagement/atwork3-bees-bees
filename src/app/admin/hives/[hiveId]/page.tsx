@@ -53,14 +53,11 @@ export default async function AdminHiveDetailPage({
           {hive.observations.map(observation => (
             <tr key={observation.id}>
               <td>
-                <Link href={`/admin/observations/${observation.id}`}>
-                  {' '}
-                  {new Date(observation.createdAt).toLocaleDateString('nl-BE', {
-                    year: 'numeric',
-                    month: '2-digit',
-                    day: '2-digit',
-                  })}
-                </Link>
+                {new Date(observation.createdAt).toLocaleDateString('nl-BE', {
+                  year: 'numeric',
+                  month: '2-digit',
+                  day: '2-digit',
+                })}
               </td>
               <td>
                 {new Date(observation.createdAt).toLocaleTimeString('nl-BE', {
