@@ -21,7 +21,7 @@ export default function ObservationsTable({
   showUser = true,
 }: ObservationsTableProps) {
   return (
-    <table className="table" style={{ marginTop: '2rem' }}>
+    <table className="table" style={{ marginTop: '6rem' }}>
       <thead>
         <tr>
           <th>Aantal bijen</th>

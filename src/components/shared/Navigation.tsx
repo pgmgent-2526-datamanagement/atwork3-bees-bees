@@ -227,6 +227,13 @@ export default function Navigation() {
                         >
                           <span>Alle kasten</span>
                         </Link>
+                        <Link
+                          href="/admin/observations"
+                          className="nav__dropdown-item"
+                          onClick={closeMobileMenu}
+                        >
+                          Alle observaties
+                        </Link>
                       </>
                     )}
                     <div className="nav__dropdown-divider"></div>
@@ -327,7 +334,7 @@ export default function Navigation() {
                     Alle gebruikers
                   </Link>
                   <Link
-                    href="/admin/hives"
+                    href="/admin/apiaries"
                     className="nav__mobile-link"
                     onClick={closeMobileMenu}
                   >
@@ -339,6 +346,13 @@ export default function Navigation() {
                     onClick={closeMobileMenu}
                   >
                     Alle kasten
+                  </Link>
+                  <Link
+                    href="/admin/observations"
+                    className="nav__mobile-link"
+                    onClick={closeMobileMenu}
+                  >
+                    Alle observaties
                   </Link>
                 </>
               )}

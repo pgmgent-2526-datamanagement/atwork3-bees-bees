@@ -99,10 +99,10 @@ app/admin/
 - [] **GET** `/admin/users/:id/observations` → Read-only lijst
 - [x] **GET** `/admin/apiaries` → Read-only lijst
 - [x] **GET** `/admin/hives` → Read-only lijst
-- [] **GET** `/admin/observations` → Read-only lijst
+- [x] **GET** `/admin/observations` → Read-only lijst
 - [x] dynamische terugkeerUrls in [hiveId]
-- [] dynamische terugkeerUrls in [apiaryId] TODO
-- [] dynamische terugkeerUrls in [observationsId] TODO
+- [x] dynamische terugkeerUrls in [apiaryId]
+<!-- - [] dynamische terugkeerUrls in [observationsId]--> niet nodig, staan al uitgeschreven onder kasten
 - [] dynamische terugkeerUrls in hives TODO
 - [] dynamische terugkeerUrls in observations TODO
 - [] dynamische terugkeerUrls in apiaries TODO
