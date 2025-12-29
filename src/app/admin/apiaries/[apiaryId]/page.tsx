@@ -27,6 +27,8 @@ export default async function ApiaryDetailPage({
     include: {
       user: { select: { id: true, name: true, email: true } },
       hives: {
+        skip: (currentPage - 1) * hivesPerPage,
+        take: hivesPerPage,
         include: {
           _count: { select: { observations: true } },
         },

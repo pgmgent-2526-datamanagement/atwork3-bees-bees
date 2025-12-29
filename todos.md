@@ -110,6 +110,7 @@ app/admin/
 - [] paginering voorzien voor admin/apiaries TODO
 - [] paginering voorzien voor admin/hives TODO
 - [] paginering voorzien voor admin/observations TODO
+  -[] [userId] voorzien van een terugbutton TODO
 
 ---
 

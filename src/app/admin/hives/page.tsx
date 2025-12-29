@@ -16,6 +16,8 @@ export default async function AdminHivesPage({
   const totalPages = Math.ceil(totalHives / hivesPerPage);
 
   const hives = await prisma.hive.findMany({
+    skip: (currentPage - 1) * hivesPerPage,
+    take: hivesPerPage,
     include: {
       apiary: {
         include: {

@@ -9,13 +9,21 @@ export default async function AdminHiveDetailPage({
   searchParams,
 }: {
   params: Promise<{ hiveId: string }>;
-  searchParams: Promise<{ returnUrl?: string }>;
+  searchParams: Promise<{ returnUrl?: string; page?: string }>;
 }) {
   await requireAdmin();
   const { returnUrl } = (await searchParams) || '/admin/hives';
+  const { page } = await searchParams;
   const { hiveId } = await params;
+  const observationsPerPage = 5;
+  const currentPage = Number(page ?? '1');
+  const totalObservations = await prisma.observation.count({
+    where: { hiveId: parseInt(hiveId) },
+  });
+  const totalPages = Math.ceil(totalObservations / observationsPerPage);
   const hive = await prisma.hive.findUnique({
     where: { id: parseInt(hiveId) },
+
     include: {
       apiary: {
         include: {
@@ -23,6 +31,8 @@ export default async function AdminHiveDetailPage({
         },
       },
       observations: {
+        skip: (currentPage - 1) * observationsPerPage,
+        take: observationsPerPage,
         orderBy: { createdAt: 'desc' },
       },
     },
@@ -50,6 +60,9 @@ export default async function AdminHiveDetailPage({
         showUser={false}
         showHive={false}
         showApiary={false}
+        currentPage={currentPage}
+        totalPages={totalPages}
+        currentPath={`/admin/hives/${hiveId}`}
       />
     </div>
   );

@@ -5,11 +5,22 @@ import { requireAdmin } from '@/lib/auth-helpers';
 import ObservationsTable from '@/components/admin/ObservationsTable';
 export default async function AdminUserObservationsPage({
   params,
+  searchParams,
 }: {
   params: Promise<{ userId: string }>;
+  searchParams: Promise<{ page?: string }>;
 }) {
   await requireAdmin();
   const { userId } = await params;
+  const { page } = await searchParams;
+  const observationsPerPage = 5;
+  const currentPage = Number(page ?? '1');
+  const totalObservations = await prisma.observation.count({
+    where: {
+      hive: { apiary: { userId } },
+    },
+  });
+  const totalPages = Math.ceil(totalObservations / observationsPerPage);
 
   // Check if user exists
   const user = await prisma.user.findUnique({
@@ -23,6 +34,9 @@ export default async function AdminUserObservationsPage({
 
   // Get all observations
   const observations = await prisma.observation.findMany({
+    skip: (currentPage - 1) * observationsPerPage,
+    take: observationsPerPage,
+
     where: {
       hive: {
         apiary: {
@@ -30,6 +44,7 @@ export default async function AdminUserObservationsPage({
         },
       },
     },
+
     include: {
       hive: {
         include: {
@@ -44,7 +59,13 @@ export default async function AdminUserObservationsPage({
         ← Terug naar de imker
       </Link>
       <h1>Observaties van {user.name}</h1>
-      <ObservationsTable observations={observations} showUser={false} />
+      <ObservationsTable
+        observations={observations}
+        showUser={false}
+        currentPage={currentPage}
+        totalPages={totalPages}
+        currentPath={`/admin/users/${userId}/observations`}
+      />
     </div>
   );
 }
