@@ -6,14 +6,25 @@ import UsersFilter from '@/components/admin/UsersFilter';
 
 export const dynamic = 'force-dynamic';
 
-export default async function UsersPage() {
+export default async function UsersPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ page?: string }>;
+}) {
   const session = await getServerSession(authOptions);
 
   if (!session?.user?.id || session.user.role !== 'ADMIN') {
     redirect('/unauthorized');
   }
+  const page = await searchParams;
+  const currentPage = Number(page?.page ?? '1');
+  const usersPerPage = 5;
+  const totalUsers = await prisma.user.count();
+  const totalPages = Math.ceil(totalUsers / usersPerPage);
 
   const users = await prisma.user.findMany({
+    skip: (currentPage - 1) * usersPerPage,
+    take: usersPerPage,
     select: {
       id: true,
       name: true,
@@ -43,10 +54,14 @@ export default async function UsersPage() {
 
       <section className="section section--default">
         <div className="container">
-          <UsersFilter users={users} />
+          <UsersFilter
+            users={users}
+            currentPage={currentPage}
+            totalPages={totalPages}
+            currentPath={'/admin/users'}
+          />
         </div>
       </section>
     </>
   );
 }
-

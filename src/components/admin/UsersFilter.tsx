@@ -9,11 +9,24 @@ interface User {
   email: string;
   role: string;
   _count: { apiaries: number };
+  currentPage?: number;
+  totalPages?: number;
+  currentPath?: string;
 }
 
-export default function UsersFilter({ users }: { users: User[] }) {
+export default function UsersFilter({
+  users,
+  currentPage,
+  totalPages,
+  currentPath,
+}: {
+  users: User[];
+  currentPage: number;
+  totalPages: number;
+  currentPath?: string;
+}) {
   const [search, setSearch] = useState('');
-  const filteredUsers = users.filter(user => 
+  const filteredUsers = users.filter(user =>
     user.name.toLowerCase().includes(search.toLowerCase())
   );
 
@@ -24,7 +37,7 @@ export default function UsersFilter({ users }: { users: User[] }) {
           type="text"
           placeholder="Zoek op naam..."
           value={search}
-          onChange={(e) => setSearch(e.target.value)}
+          onChange={e => setSearch(e.target.value)}
           className="form__input search-input"
         />
       </div>
@@ -47,7 +60,9 @@ export default function UsersFilter({ users }: { users: User[] }) {
                 <td className="table__cell">{user._count.apiaries}</td>
                 <td className="table__cell">
                   <Link href={`/admin/users/${user.id}`}>
-                    <button className="btn btn--secondary btn--sm">Details</button>
+                    <button className="btn btn--secondary btn--sm">
+                      Details
+                    </button>
                   </Link>
                 </td>
               </tr>
@@ -55,6 +70,42 @@ export default function UsersFilter({ users }: { users: User[] }) {
           </tbody>
         </table>
       </div>
+      {totalPages > 1 && (
+        <div
+          style={{
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            gap: 'var(--space-4)',
+            marginTop: 'var(--space-12)',
+          }}
+        >
+          <Link
+            href={`${currentPath}?page=${
+              currentPage > 1 ? currentPage - 1 : 1
+            }`}
+          >
+            <button className="btn btn--secondary" disabled={currentPage === 1}>
+              Vorige
+            </button>
+          </Link>
+          <span style={{ color: 'var(--color-text-light)' }}>
+            Pagina {currentPage} van {totalPages}
+          </span>
+          <Link
+            href={`${currentPath}?page=${
+              currentPage < totalPages ? currentPage + 1 : totalPages
+            }`}
+          >
+            <button
+              className="btn btn--secondary"
+              disabled={currentPage === totalPages}
+            >
+              Volgende
+            </button>
+          </Link>
+        </div>
+      )}
     </>
   );
 }
