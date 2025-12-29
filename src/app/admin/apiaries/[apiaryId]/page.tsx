@@ -8,11 +8,19 @@ export default async function ApiaryDetailPage({
   searchParams,
 }: {
   params: Promise<{ apiaryId: string }>;
-  searchParams: Promise<{ returnUrl?: string }>;
+  searchParams: Promise<{ returnUrl?: string; page?: string }>;
 }) {
   const { apiaryId } = await params;
+  const { page } = await searchParams;
+
   await requireAdmin();
   const { returnUrl } = (await searchParams) || '/admin/apiaries';
+  const hivesPerPage = 5;
+  const currentPage = Number(page ?? '1');
+  const totalHives = await prisma.hive.count({
+    where: { apiaryId: parseInt(apiaryId) },
+  });
+  const totalPages = Math.ceil(totalHives / hivesPerPage);
 
   const apiary = await prisma.apiary.findUnique({
     where: { id: parseInt(apiaryId) },
@@ -51,6 +59,8 @@ export default async function ApiaryDetailPage({
         hives={apiary.hives}
         showApiary={false}
         currentPath={`/admin/apiaries/${apiaryId}`}
+        totalPages={totalPages}
+        currentPage={currentPage}
       />
     </div>
   );
