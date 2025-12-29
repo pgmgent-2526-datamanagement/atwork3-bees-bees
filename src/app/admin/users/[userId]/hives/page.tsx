@@ -49,7 +49,7 @@ export default async function UserHivesPage({
           href={`/admin/users/${userId}`}
           className="button button--outline"
         >
-          ← Terug naar gebruiker
+          ← Terug naar de imker
         </Link>
       </div>
 

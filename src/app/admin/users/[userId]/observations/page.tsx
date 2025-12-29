@@ -40,6 +40,9 @@ export default async function AdminUserObservationsPage({
   });
   return (
     <div style={{ marginTop: '6rem' }}>
+      <Link href={`/admin/users/${userId}`} className="button button--outline">
+        ← Terug naar de imker
+      </Link>
       <h1>Observaties van {user.name}</h1>
       <ObservationsTable observations={observations} showUser={false} />
     </div>

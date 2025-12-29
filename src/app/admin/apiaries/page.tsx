@@ -1,6 +1,13 @@
 import { prisma } from '@/lib/client';
 import ApiariesTable from '@/components/admin/ApiariesTable';
-export default async function AdminApiariesPage() {
+import Link from 'next/link';
+
+export default async function AdminApiariesPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ returnUrl?: string }>;
+}) {
+  const { returnUrl } = (await searchParams) || '/admin';
   const apiaries = await prisma.apiary.findMany({
     include: {
       user: true,
@@ -10,10 +17,13 @@ export default async function AdminApiariesPage() {
     },
   });
   return (
-    <ApiariesTable
-      apiaries={apiaries}
-      showUser={true}
-      currentPath={'/admin/apiaries'}
-    />
+    <div style={{ marginTop: '6rem' }}>
+      <Link href="/admin/">Naar startpagina beheerder</Link>
+      <ApiariesTable
+        apiaries={apiaries}
+        showUser={true}
+        currentPath={'/admin/apiaries'}
+      />
+    </div>
   );
 }

@@ -1,6 +1,7 @@
 import prisma from '@/lib/client';
 import HivesTable from '@/components/admin/HivesTable';
 import { requireAdmin } from '@/lib/auth-helpers';
+import Link from 'next/link';
 
 export default async function AdminHivesPage() {
   await requireAdmin();
@@ -21,6 +22,7 @@ export default async function AdminHivesPage() {
 
   return (
     <div className="container" style={{ marginTop: '6rem' }}>
+      <Link href="/admin/">Naar startpagina beheerder</Link>
       <h1>Alle Kasten</h1>
       <p className="subtitle">Totaal: {hives.length} kasten</p>
 

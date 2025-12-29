@@ -103,9 +103,9 @@ app/admin/
 - [x] dynamische terugkeerUrls in [hiveId]
 - [x] dynamische terugkeerUrls in [apiaryId]
 <!-- - [] dynamische terugkeerUrls in [observationsId]--> niet nodig, staan al uitgeschreven onder kasten
-- [] dynamische terugkeerUrls in hives TODO
-- [] dynamische terugkeerUrls in observations TODO
-- [] dynamische terugkeerUrls in apiaries TODO
+- [] dynamische terugkeerUrls in admin/hives en admin/users/[userId]/hives TODO
+- [] dynamische terugkeerUrls in admin/observations en admin/users/[userId]/observations TODO
+- [x] dynamische terugkeerUrls in admin/apiaries en admin/users/[userId]/apiaries TODO
 
 ---
 
