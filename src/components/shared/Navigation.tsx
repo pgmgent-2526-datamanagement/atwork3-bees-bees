@@ -230,9 +230,9 @@ export default function Navigation() {
                         <Link
                           href="/admin/observations"
                           className="nav__dropdown-item"
-                          onClick={closeMobileMenu}
+                          onClick={() => setIsDropdownOpen(false)}
                         >
-                          Alle observaties
+                          <span>Alle observaties</span>
                         </Link>
                       </>
                     )}
