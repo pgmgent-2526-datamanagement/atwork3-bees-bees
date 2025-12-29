@@ -106,11 +106,11 @@ app/admin/
 - [x] dynamische terugkeerUrls in admin/hives en admin/users/[userId]/hives
 - [x] dynamische terugkeerUrls in admin/observations en admin/users/[userId]/observations
 - [x] dynamische terugkeerUrls in admin/apiaries en admin/users/[userId]/apiaries
-- [] paginering voorzien voor admin/users en admin/users/userId/apiaries TODO
-- [] paginering voorzien voor admin/apiaries TODO
-- [] paginering voorzien voor admin/hives TODO
-- [] paginering voorzien voor admin/observations TODO
-  -[] [userId] voorzien van een terugbutton TODO
+- [x] paginering voorzien voor admin/users en admin/users/userId/apiaries
+- [x] paginering voorzien voor admin/apiaries etc.
+- [x] paginering voorzien voor admin/hives etc.
+- [x] paginering voorzien voor admin/observations etc.
+- [x]admin/users/[userId] voorzien van een terugbutton
 
 ---
 

@@ -50,6 +50,7 @@ export default async function UserDetailPage({
   return (
     <section className="page-header">
       <div className="container">
+        <Link href={'/admin/users'}>Terug naar lijst</Link>
         <h1 className="page-header__title">{user.name}</h1>
         <p className="page-header__subtitle">{user.email}</p>
         <p>
