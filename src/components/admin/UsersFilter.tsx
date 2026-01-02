@@ -15,12 +15,10 @@ export default function UsersFilter({
   users,
   currentPage,
   totalPages,
-  currentPath,
 }: {
   users: User[];
   currentPage: number;
   totalPages: number;
-  currentPath?: string;
 }) {
   const [search, setSearch] = useState('');
   const filteredUsers = users.filter(user =>
@@ -78,9 +76,7 @@ export default function UsersFilter({
           }}
         >
           <Link
-            href={`${currentPath}?page=${
-              currentPage > 1 ? currentPage - 1 : 1
-            }`}
+            href={`/admin/users?page=${currentPage > 1 ? currentPage - 1 : 1}`}
           >
             <button className="btn btn--secondary" disabled={currentPage === 1}>
               Vorige
@@ -90,7 +86,7 @@ export default function UsersFilter({
             Pagina {currentPage} van {totalPages}
           </span>
           <Link
-            href={`${currentPath}?page=${
+            href={`/admin/users?page=${
               currentPage < totalPages ? currentPage + 1 : totalPages
             }`}
           >
