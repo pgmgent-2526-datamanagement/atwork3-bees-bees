@@ -40,6 +40,8 @@
 @import "./components/modal.css";
 @import "./components/display.css";
 @import "./components/info-box.css";
+@import "./components/map.css";
+@import "./components/toggle.css";
 
 /* ============================================
    Utilities
