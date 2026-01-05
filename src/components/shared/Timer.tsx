@@ -5,8 +5,38 @@ const seconds = 30;
 export default function Timer() {
   const [time, setTime] = useState(seconds);
   const [isRunning, setIsRunning] = useState(false);
+  const [countdown, setCountdown] = useState<number | null>(null);
   const audioContextRef = useRef<AudioContext | null>(null);
 
+  // Aftelling effect
+  useEffect(() => {
+    if (countdown === null || countdown === 0) return;
+
+    const timeoutId = setTimeout(() => {
+      // Speel korte beep bij elke tel
+      if (audioContextRef.current) {
+        const ctx = audioContextRef.current;
+        const oscillator = ctx.createOscillator();
+        oscillator.type = 'sine';
+        oscillator.frequency.value = countdown === 1 ? 1100 : 700; // Hogere toon bij laatste tel
+        oscillator.connect(ctx.destination);
+        oscillator.start();
+        setTimeout(() => oscillator.stop(), 150);
+      }
+
+      if (countdown === 1) {
+        // Start de timer na laatste tel
+        setCountdown(null);
+        setIsRunning(true);
+      } else {
+        setCountdown(countdown - 1);
+      }
+    }, 1000);
+
+    return () => clearTimeout(timeoutId);
+  }, [countdown]);
+
+  // Timer effect
   useEffect(() => {
     if (!isRunning) return;
 
@@ -42,24 +72,31 @@ export default function Timer() {
         (window as any).webkitAudioContext)();
     }
     setTime(seconds);
-    setIsRunning(true);
+    setCountdown(3); // Start aftelling
   };
 
   return (
     <>
-      <h2></h2>
       <div
         style={{
-          color: isRunning ? 'var(--color-accent)' : 'var(--color-text-light)',
-
+          color:
+            countdown !== null || isRunning
+              ? 'var(--color-accent)'
+              : 'var(--color-text-light)',
           fontFamily: 'var(--font-mono)',
           marginBottom: 'var(--space-8)',
         }}
       >
-        {time === 0 ? (
+        {countdown !== null ? (
+          <div
+            style={{ fontSize: '3rem', fontWeight: '700', textAlign: 'center' }}
+          >
+            {countdown}
+          </div>
+        ) : time === 0 ? (
           <p>
-            30 seconden voorbij – controleer je waarden en tik op ‘Observatie
-            toevoegen’
+            30 seconden voorbij – controleer je waarden en tik op 'Observatie
+            toevoegen'
           </p>
         ) : (
           <>
@@ -76,11 +113,13 @@ export default function Timer() {
         )}
       </div>
 
-      <button onClick={handleClick} disabled={isRunning}>
-        {isRunning
+      <button onClick={handleClick} disabled={isRunning || countdown !== null}>
+        {countdown !== null
+          ? 'Aftelling loopt...'
+          : isRunning
           ? 'Observatie loopt...'
           : time === 0
-          ? 'Nieuwe observatie'
+          ? 'Nieuwe poging'
           : 'Start observatie'}
       </button>
     </>
