@@ -160,7 +160,7 @@ app/admin/
 ### 10. Formulier Validatie & Feedback TODO
 
 - [ ] **Server-side Validatie**: Zod bibliotheek of custom validatie
-- [ ] **Real-time Feedback**: Client-side validatie met Radix formulieren
+- [ ] **Real-time Feedback**: Client-side validatie
 - [ ] **Gebruiksvriendelijke Meldingen**: Duidelijke foutboodschappen per veld
 
 ### 11. Media & Visuele Elementen
