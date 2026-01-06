@@ -130,6 +130,7 @@ app/admin/
 - [ ] website consistent
 - [ ] leaflet kaart 
 - [ ] API aanvragen via waarnemingen
+- [ ] mobiele breakpoints
 
 ### 6. Openbare Pagina's
 
