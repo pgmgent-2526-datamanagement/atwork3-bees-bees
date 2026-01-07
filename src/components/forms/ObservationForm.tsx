@@ -152,16 +152,25 @@ export default function ObservationForm({
           <label htmlFor="beeCount" className="form__label">
             Aantal bijen *
           </label>
-          <input
-            type="number"
-            id="beeCount"
-            value={beeCount}
-            onChange={e => setBeeCount(e.target.value)}
-            className="form__input"
-            placeholder="Geschat aantal bijen"
-            required
-            min="0"
-          />
+          <div className="bee-counter">
+            <input
+              type="number"
+              id="beeCount"
+              value={beeCount}
+              onChange={e => setBeeCount(e.target.value)}
+              className="form__input bee-counter__input"
+              placeholder="Geschat aantal bijen"
+              required
+              min="0"
+            />
+            <button
+              type="button"
+              className="bee-counter__button"
+              onClick={() => setBeeCount(prev => (parseInt(prev || '0') + 1).toString())}
+            >
+              +1
+            </button>
+          </div>
           <p className="form__help">
             Geef een schatting van het aantal bijen dat je hebt gezien
           </p>

@@ -76,44 +76,31 @@ export default function Timer() {
   };
 
   return (
-    <>
-      <div
-        style={{
-          color:
-            countdown !== null || isRunning
-              ? 'var(--color-accent)'
-              : 'var(--color-text-light)',
-          fontFamily: 'var(--font-mono)',
-          marginBottom: 'var(--space-8)',
-        }}
-      >
+    <div className={`timer ${countdown !== null || isRunning ? 'timer--active' : ''}`}>
+      <div className={`timer__display ${countdown !== null || isRunning ? 'timer__display--active' : ''}`}>
         {countdown !== null ? (
-          <div
-            style={{ fontSize: '3rem', fontWeight: '700', textAlign: 'center' }}
-          >
-            {countdown}
-          </div>
+          <div className="timer__countdown">{countdown}</div>
         ) : time === 0 ? (
-          <p>
-            30 seconden voorbij – controleer je waarden en tik op 'Observatie
-            toevoegen'
+          <p className="timer__label">
+            30 seconden voorbij – controleer je waarden en tik op 'Observatie toevoegen'
           </p>
         ) : (
           <>
-            <p>
-              {' '}
-              Observeer 30 seconden en vul ondertussen de velden in <br />
+            <p className="timer__label">
+              Observeer 30 seconden en vul ondertussen de velden in
             </p>
-            <p style={{ fontSize: '2rem', fontWeight: '600' }}>
-              {' '}
-              00:{time < 10 ? '0' : ''}
-              {time}
-            </p>
+            <div className="timer__time">
+              00:{time < 10 ? '0' : ''}{time}
+            </div>
           </>
         )}
       </div>
 
-      <button onClick={handleClick} disabled={isRunning || countdown !== null}>
+      <button 
+        className="timer__button"
+        onClick={handleClick} 
+        disabled={isRunning || countdown !== null}
+      >
         {countdown !== null
           ? 'Aftelling loopt...'
           : isRunning
@@ -122,6 +109,6 @@ export default function Timer() {
           ? 'Nieuwe poging'
           : 'Start observatie'}
       </button>
-    </>
+    </div>
   );
 }
