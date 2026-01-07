@@ -153,6 +153,13 @@ export default function ObservationForm({
             Aantal bijen *
           </label>
           <div className="bee-counter">
+            <button
+              type="button"
+              className="bee-counter__button"
+              onClick={() => setBeeCount(prev => Math.max(0, parseInt(prev || '0') - 1).toString())}
+            >
+              −1
+            </button>
             <input
               type="number"
               id="beeCount"
