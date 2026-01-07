@@ -7,7 +7,7 @@ export default function Register() {
     <>
       <section className="page-header" data-page="—">
         <div className="container">
-          <h1 className="page-header__title">Account aanmaken</h1>
+          <h1 className="heading-primary">Account aanmaken</h1>
           <p className="page-header__subtitle">Start vandaag met digitale bijenwaarnemingen</p>
         </div>
       </section>

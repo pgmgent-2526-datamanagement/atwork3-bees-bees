@@ -92,7 +92,7 @@ export default async function AccountObservationsPage(searchParams: {
     <>
       <section className="page-header" data-page="—">
         <div className="container">
-          <h1 className="page-header__title">Mijn observaties</h1>
+          <h1 className="heading-primary">Mijn observaties</h1>
           <p className="page-header__subtitle">
             {totalObservations}{' '}
             {totalObservations === 1 ? 'waarneming' : 'waarnemingen'}
@@ -105,7 +105,7 @@ export default async function AccountObservationsPage(searchParams: {
           {observations.length > 0 ? (
             <>
               <div className="section-header">
-                <h2 className="section-header__title">
+                <h2 className="heading-secondary">
                   Overzicht
                 </h2>
                 <Link href="/observations/new">
@@ -126,7 +126,7 @@ export default async function AccountObservationsPage(searchParams: {
                       <p className="card__category">
                         Observatie
                       </p>
-                      <h3 className="card__title">
+                      <h3 className="heading-tertiary">
                         {new Date(observation.createdAt).toLocaleDateString('nl-BE', {
                           day: 'numeric',
                           month: 'long',

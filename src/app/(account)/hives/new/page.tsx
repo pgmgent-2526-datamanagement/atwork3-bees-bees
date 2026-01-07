@@ -21,7 +21,7 @@ export default async function AccountApiaryNewHivePage({
     <>
       <section className="page-header" data-page="—">
         <div className="container">
-          <h1 className="page-header__title">Nieuwe kast toevoegen</h1>
+          <h1 className="heading-primary">Nieuwe kast toevoegen</h1>
           <p className="page-header__subtitle">
             {apiaryName ? `Aan bijenstand: ${apiaryName}` : 'Registreer een nieuwe bijenkast'}
           </p>

@@ -34,7 +34,7 @@ export default function Hero({
         />
       </div>
       <div className="hero__content">
-        <h1 className="hero__title">{title}</h1>
+        <h1 className="heading-primary">{title}</h1>
         {subtitle && <p className="hero__subtitle">{subtitle}</p>}
         {text && <p className="hero__text">{text}</p>}
         {children}

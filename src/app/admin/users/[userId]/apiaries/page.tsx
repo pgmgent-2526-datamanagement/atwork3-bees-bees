@@ -33,7 +33,7 @@ export default async function AdminUserApiariesPage({
     <>
       <section className="page-header">
         <div className="container">
-          <h1 className="page-header__title">Bijenstanden van {user?.name}</h1>
+          <h1 className="heading-primary">Bijenstanden van {user?.name}</h1>
           <p className="page-header__subtitle">
             Totaal: {apiaries.length} {apiaries.length === 1 ? 'bijenstand' : 'bijenstanden'}
           </p>

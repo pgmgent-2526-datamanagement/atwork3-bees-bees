@@ -37,7 +37,7 @@ export default async function AccountApiariesPage({
     <>
       <section className="page-header" data-page="—">
         <div className="container">
-          <h1 className="page-header__title">Mijn bijenstanden</h1>
+          <h1 className="heading-primary">Mijn bijenstanden</h1>
           <p className="page-header__subtitle">
             {totalApiaries} {totalApiaries === 1 ? 'locatie' : 'locaties'}
           </p>
@@ -49,7 +49,7 @@ export default async function AccountApiariesPage({
           {apiaries.length > 0 ? (
             <>
               <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "var(--space-8)" }}>
-                <h2 style={{ 
+                <h2 className="heading-secondary" style={{ 
                   fontFamily: "var(--font-display)",
                   fontSize: "2rem",
                   fontWeight: "400"
@@ -72,7 +72,7 @@ export default async function AccountApiariesPage({
                   >
                     <div className="card">
                       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: "var(--space-4)" }}>
-                        <h3 className="card__title">{apiary.name}</h3>
+                        <h3 className="heading-tertiary">{apiary.name}</h3>
                         <span style={{ 
                           fontSize: "0.875rem",
                           padding: "var(--space-2) var(--space-3)",
@@ -116,7 +116,7 @@ export default async function AccountApiariesPage({
             </>
           ) : (
             <div style={{ textAlign: "center", padding: "var(--space-16) 0" }}>
-              <h2 style={{ 
+              <h2 className="heading-secondary" style={{ 
                 fontFamily: "var(--font-display)",
                 fontSize: "2rem",
                 fontWeight: "400",

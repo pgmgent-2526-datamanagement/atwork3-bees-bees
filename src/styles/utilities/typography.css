@@ -1,16 +1,5 @@
-/* Section Headers */
-.section__header {
-  margin-bottom: var(--space-16);
-  max-width: 800px;
-}
-
-.section__header--center {
-  text-align: center;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.section__title {
+/* Heading Hierarchy - Consistent styling across all pages */
+.heading-primary {
   font-family: var(--font-display);
   font-size: clamp(2rem, 4vw, 3rem);
   font-weight: 400;
@@ -20,7 +9,81 @@
   color: var(--color-text);
 }
 
-.section__description {
+.heading-secondary {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 3vw, 2.25rem);
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  margin-bottom: var(--space-6);
+  color: var(--color-text);
+}
+
+.heading-tertiary {
+  font-family: var(--font-display);
+  font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  margin-bottom: var(--space-4);
+  color: var(--color-text);
+}
+
+/* Section Header - Modern luxe layout */
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: var(--space-16);
+  margin-bottom: var(--space-16);
+  max-width: 100%;
+}
+
+.section-header h1,
+.section-header h2,
+.section-header h3 {
+  flex: 0 0 auto;
+  max-width: 50%;
+  text-align: left;
+  margin-bottom: 0;
+}
+
+.section-header p,
+.section-header .section-subtitle,
+.section-header .section-description {
+  flex: 1;
+  text-align: right;
+  margin-bottom: 0;
+  margin-left: auto;
+}
+
+@media (max-width: 768px) {
+  .section-header {
+    flex-direction: column;
+    gap: var(--space-6);
+  }
+  
+  .section-header h1,
+  .section-header h2,
+  .section-header h3 {
+    max-width: 100%;
+  }
+  
+  .section-header p,
+  .section-header .section-subtitle,
+  .section-header .section-description {
+    text-align: left;
+  }
+}
+
+.section-subtitle {
+  font-family: var(--font-body);
+  font-size: 1.125rem;
+  line-height: 1.7;
+  color: var(--color-text-light);
+}
+
+.section-description {
   font-family: var(--font-body);
   font-size: 1.125rem;
   line-height: 1.8;
@@ -28,12 +91,7 @@
   max-width: 700px;
 }
 
-.section__header--center .section__description {
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.section__actions {
+.section-actions {
   display: flex;
   gap: var(--space-6);
   justify-content: center;

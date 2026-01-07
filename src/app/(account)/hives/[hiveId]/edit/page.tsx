@@ -9,7 +9,7 @@ export default async function EditHivePage({
     <>
       <section className="page-header" data-page="—">
         <div className="container">
-          <h1 className="page-header__title">Kast aanpassen</h1>
+          <h1 className="heading-primary">Kast aanpassen</h1>
           <p className="page-header__subtitle">Wijzig type of volk</p>
         </div>
       </section>

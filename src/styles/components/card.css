@@ -4,11 +4,55 @@
   border: 1px solid rgba(0, 0, 0, 0.06);
   border-radius: 0;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: block;
+  text-decoration: none;
+  color: inherit;
 }
 
 .card:hover {
   border-color: rgba(0, 0, 0, 0.12);
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+}
+
+/* Stat card variant - voor statistieken */
+.card--stat {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-6);
+}
+
+.card--stat .number-large {
+  margin: 0;
+}
+
+.card--stat .card__label {
+  color: var(--color-text-light);
+  font-size: 0.875rem;
+  text-transform: none;
+  letter-spacing: 0;
+  font-weight: 400;
+  margin: 0;
+}
+
+/* Action card variant - voor acties */
+.card--action {
+  text-align: center;
+}
+
+.card--action .card__category {
+  color: var(--color-accent);
+  margin-bottom: var(--space-4);
+}
+
+.card--action .heading-tertiary {
+  margin-bottom: var(--space-3);
+}
+
+.card--action .card__text {
+  margin: 0;
+  font-size: 0.9375rem;
 }
 
 .card__header {

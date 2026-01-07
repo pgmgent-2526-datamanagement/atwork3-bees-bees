@@ -44,7 +44,7 @@ export default async function AdminHiveDetailPage({
     <>
       <section className="page-header">
         <div className="container">
-          <h1 className="page-header__title">{hive.name}</h1>
+          <h1 className="heading-primary">{hive.name}</h1>
           <p className="page-header__subtitle">
             Type: {hive.type} | Volk: {hive.colonyType}
           </p>
@@ -57,7 +57,7 @@ export default async function AdminHiveDetailPage({
       <section className="section ">
         <div className="container">
           <div className="section-header">
-            <h2 className="section-header__title">Observaties</h2>
+            <h2 className="heading-secondary">Observaties</h2>
             <Link href={returnUrl ?? '/admin/hives'}>
               <button className="btn btn--secondary">← Terug</button>
             </Link>

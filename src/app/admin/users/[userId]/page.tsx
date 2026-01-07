@@ -52,7 +52,7 @@ export default async function UserDetailPage({
     <>
       <section className="page-header">
         <div className="container">
-          <h1 className="page-header__title">{user.name}</h1>
+          <h1 className="heading-primary">{user.name}</h1>
           <p className="page-header__subtitle">{user.email}</p>
           <p className="page-header__subtitle">Rol: {user.role}</p>
         </div>
@@ -61,7 +61,7 @@ export default async function UserDetailPage({
       <section className="section ">
         <div className="container">
           <div className="section-header">
-            <h2 className="section-header__title">Overzicht</h2>
+            <h2 className="heading-secondary">Overzicht</h2>
             <Link href="/admin/users">
               <button className="btn btn--secondary">← Terug naar alle imkers</button>
             </Link>
@@ -69,7 +69,7 @@ export default async function UserDetailPage({
 
           <div className="grid grid-three-columns">
             <div className="card">
-              <h3 className="card__title">
+              <h3 className="heading-tertiary">
                 {user._count.apiaries === 0
                   ? 'Geen bijenstanden'
                   : user._count.apiaries > 1
@@ -86,7 +86,7 @@ export default async function UserDetailPage({
             </div>
 
             <div className="card">
-              <h3 className="card__title">
+              <h3 className="heading-tertiary">
                 {totalHives === 0
                   ? 'Geen kasten'
                   : totalHives > 1
@@ -103,7 +103,7 @@ export default async function UserDetailPage({
             </div>
 
             <div className="card">
-              <h3 className="card__title">
+              <h3 className="heading-tertiary">
                 {totalObservations === 0
                   ? 'Geen observaties'
                   : totalObservations > 1

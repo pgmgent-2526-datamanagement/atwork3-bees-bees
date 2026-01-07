@@ -21,7 +21,7 @@ export default function ContentBlock({
   return (
     <div className={`content-block ${reverse ? "content-block--reverse" : ""}`}>
       <div className="content-block__text">
-        <h2 className="content-block__title">{title}</h2>
+        <h2 className="heading-secondary">{title}</h2>
         <p className="content-block__description">{description}</p>
         {children}
       </div>

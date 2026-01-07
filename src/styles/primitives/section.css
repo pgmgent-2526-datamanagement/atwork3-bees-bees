@@ -2,15 +2,15 @@
   padding: var(--space-24) 0;
 }
 
-.section--first {
+.section-first {
   margin-top: 120px;
 }
 
-.section--default {
+.section-default {
   background-color: white;
 }
 
-.section--alt {
+.section-alternate {
   background-color: #fafafa;
 }
 

@@ -65,7 +65,7 @@ export default async function AccountApiaryPage({
         <div className="container">
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: "var(--space-12)" }}>
             <div>
-              <h1 className="page-header__title">{apiary?.name}</h1>
+              <h1 className="heading-primary">{apiary?.name}</h1>
               <div className="page-header__meta">
                 <div className="page-header__meta-item">
                   <span className="page-header__meta-label">Kasten</span>
@@ -91,9 +91,9 @@ export default async function AccountApiaryPage({
         </div>
       </section>
 
-      <section className="section section--alt">
+      <section className="section section-alternate">
         <div className="container">
-          <h2 style={{ 
+          <h2 className="heading-secondary" style={{ 
             fontFamily: "var(--font-display)",
             fontSize: "1.5rem",
             fontWeight: "500",
@@ -251,7 +251,7 @@ export default async function AccountApiaryPage({
       <section className="section ">
         <div className="container">
           <div className="section-header">
-            <h2 className="section-header__title">
+            <h2 className="heading-secondary">
               Kasten in deze stand
             </h2>
             {hives.length > 0 && (
@@ -276,7 +276,7 @@ export default async function AccountApiaryPage({
                       <p className="card__category">
                         Kast
                       </p>
-                      <h3 className="card__title">
+                      <h3 className="heading-tertiary">
                         {hive.name}
                       </h3>
                       <div className="card__divider">
@@ -320,7 +320,7 @@ export default async function AccountApiaryPage({
             </>
           ) : (
             <div style={{ textAlign: "center", padding: "var(--space-16) 0" }}>
-              <h2 style={{ 
+              <h2 className="heading-secondary" style={{ 
                 fontFamily: "var(--font-display)",
                 fontSize: "2rem",
                 fontWeight: "400",

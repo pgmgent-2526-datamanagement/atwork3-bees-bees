@@ -46,7 +46,7 @@ export default async function UsersPage({
       <section className="page-header">
         <div className="container">
           <div className="page-header__top">
-            <h1 className="page-header__title">Alle gebruikers</h1>
+            <h1 className="heading-primary">Alle gebruikers</h1>
             <p className="page-header__subtitle">
               Totaal: {totalUsers} {totalUsers === 1 ? "gebruiker" : "gebruikers"}
             </p>

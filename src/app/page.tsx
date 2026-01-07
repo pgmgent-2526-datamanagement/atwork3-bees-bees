@@ -20,7 +20,7 @@ export default async function Home() {
           />
         </div>
         <div className="hero__content">
-          <h1 className="hero__title">Bijen Observatie Platform</h1>
+          <h1 className="heading-primary">Digitaal Bijenhouden - Platform voor Imkers</h1>
           <p className="hero__subtitle">
             Uw digitale assistent voor bijenhouden. Modern, overzichtelijk,
             effectief.
@@ -44,9 +44,9 @@ export default async function Home() {
 
       <section className="section ">
         <div className="container">
-          <div className="section__header">
-            <h2 className="section__title">Belangrijkste functies</h2>
-            <p className="section__description">
+          <div className="section-header">
+            <h2 className="heading-secondary">Belangrijkste functies voor imkers</h2>
+            <p className="section-description">
               Alles wat een moderne imker nodig heeft, zonder overbodige toeters
               en bellen.
             </p>
@@ -55,7 +55,7 @@ export default async function Home() {
           <div className="grid grid-three-columns">
             <div className="card">
               <div className="card__header">
-                <h3 className="card__title">Bijenstanden beheren</h3>
+                <h3 className="heading-tertiary">Bijenstanden beheren</h3>
               </div>
               <div className="card__content">
                 <p className="card__description">
@@ -66,7 +66,7 @@ export default async function Home() {
             </div>
             <div className="card">
               <div className="card__header">
-                <h3 className="card__title">Kasten registreren</h3>
+                <h3 className="heading-tertiary">Kasten registreren</h3>
               </div>
               <div className="card__content">
                 <p className="card__description">
@@ -77,7 +77,7 @@ export default async function Home() {
             </div>
             <div className="card">
               <div className="card__header">
-                <h3 className="card__title">Observaties loggen</h3>
+                <h3 className="heading-tertiary">Observaties loggen</h3>
               </div>
               <div className="card__content">
                 <p className="card__description">
@@ -88,7 +88,7 @@ export default async function Home() {
             </div>
             <div className="card">
               <div className="card__header">
-                <h3 className="card__title">Drachtkalender</h3>
+                <h3 className="heading-tertiary">Drachtkalender</h3>
               </div>
               <div className="card__content">
                 <p className="card__description">
@@ -99,7 +99,7 @@ export default async function Home() {
             </div>
             <div className="card">
               <div className="card__header">
-                <h3 className="card__title">Privacybescherming</h3>
+                <h3 className="heading-tertiary">Privacybescherming</h3>
               </div>
               <div className="card__content">
                 <p className="card__description">
@@ -110,7 +110,7 @@ export default async function Home() {
             </div>
             <div className="card">
               <div className="card__header">
-                <h3 className="card__title">Multi-device sync</h3>
+                <h3 className="heading-tertiary">Multi-device synchronisatie</h3>
               </div>
               <div className="card__content">
                 <p className="card__description">
@@ -123,16 +123,16 @@ export default async function Home() {
         </div>
       </section>
 
-      <section className="section section--alt">
+      <section className="section section-alternate">
         <div className="container">
-          <div className="section__header section__header--center">
-            <h2 className="section__title">Klaar om te beginnen?</h2>
-            <p className="section__description">
+          <div className="section-header section-header">
+            <h2 className="heading-secondary">Gratis account aanmaken</h2>
+            <p className="section-description">
               Sluit je aan bij imkers die hun bijenhouden al digitaal beheren.
               Gratis en zonder verplichtingen.
             </p>
           </div>
-          <div className="section__actions">
+          <div className="section-actions">
             <Button href="/auth/register" variant="primary" size="lg">
               Gratis account aanmaken
             </Button>

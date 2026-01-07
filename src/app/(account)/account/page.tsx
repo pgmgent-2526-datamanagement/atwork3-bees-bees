@@ -3,10 +3,9 @@ import { redirect } from 'next/navigation';
 import Link from 'next/link';
 import prisma from '@/lib/client';
 import { authOptions } from '@/lib/auth-options';
-import Hero from '@/components/magazine/Hero';
-import Section from '@/components/magazine/Section';
-import Button from '@/components/magazine/Button';
-import Card from '@/components/magazine/Card';
+import Section from '@/components/shared/Section';
+import SectionHeader from '@/components/shared/SectionHeader';
+import SectionContent from '@/components/shared/SectionContent';
 import { MapPin, Box, Eye } from 'lucide-react';
 
 export const dynamic = 'force-dynamic';
@@ -61,43 +60,30 @@ export default async function AccountPage() {
 
   return (
     <>
-      <section className="page-header" data-page="—">
+      <Section first>
         <div className="container">
-          <h1 className="page-header__title">Hallo {user.name}</h1>
-          <p className="page-header__subtitle">
-            {isNewUser
-              ? "Welkom bij BEES - Uw digitale platform voor bijenbeheer"
-              : "Beheer uw bijenstanden, kasten en observaties"}
-          </p>
+          <SectionHeader>
+            <h1 className="heading-primary">Hallo {user.name}</h1>
+            <p className="section-description">
+              {isNewUser
+                ? "Begin met uw digitale bijenlogboek"
+                : "Uw bijenstanden en observaties"}
+            </p>
+          </SectionHeader>
         </div>
-      </section>
+      </Section>
 
       {isNewUser ? (
         // Voor nieuwe gebruikers: uitleg en stappenplan
         <>
-          <section className="section ">
-            <div className="container container--narrow">
-              <div className="section__header" style={{ textAlign: "center" }}>
-                <h2 className="section__title">
-                  Begin met uw digitale bijenlogboek
-                </h2>
-                <p className="section__subtitle">
-                  BEES helpt u om alle informatie over uw bijenstanden, kasten en
-                  waarnemingen overzichtelijk bij te houden. In drie eenvoudige
-                  stappen start u met digitaal bijenhouden.
-                </p>
-              </div>
-            </div>
-          </section>
-
-          <section className="section section--alt">
+          <Section variant="alternate">
             <div className="container">
-              <div className="grid grid-three-columns">
+              <SectionContent grid="three">
                 <div className="card">
                   <div className="card__icon">
                     <MapPin size={36} strokeWidth={1.5} />
                   </div>
-                  <h3 className="card__title">Voeg een bijenstand toe</h3>
+                  <h3 className="heading-tertiary">Voeg een bijenstand toe</h3>
                   <p className="card__text">
                     Begin met het registreren van de locatie waar uw bijenkasten
                     staan. Geef deze een herkenbare naam zoals "Tuin" of
@@ -109,7 +95,7 @@ export default async function AccountPage() {
                   <div className="card__icon">
                     <Box size={36} strokeWidth={1.5} />
                   </div>
-                  <h3 className="card__title">Registreer uw kasten</h3>
+                  <h3 className="heading-tertiary">Registreer uw kasten</h3>
                   <p className="card__text">
                     Voeg de bijenkasten toe die op uw bijenstand staan. Noteer het
                     type kast en de sterkte van het volk.
@@ -120,247 +106,80 @@ export default async function AccountPage() {
                   <div className="card__icon">
                     <Eye size={36} strokeWidth={1.5} />
                   </div>
-                  <h3 className="card__title">Start met observaties</h3>
+                  <h3 className="heading-tertiary">Start met observaties</h3>
                   <p className="card__text">
                     Registreer uw waarnemingen per kast. Houd de gezondheid,
                     activiteit en belangrijke momenten overzichtelijk bij.
                   </p>
                 </div>
-              </div>
+              </SectionContent>
 
-              <div style={{ textAlign: "center", marginTop: "var(--space-12)" }}>
-                <Link href="/apiaries/new">
-                  <button className="btn btn--primary btn--lg">
-                    Start nu - Voeg eerste bijenstand toe
-                  </button>
+              <div className="text-center margin-top-large">
+                <Link href="/apiaries/new" className="btn btn--primary btn--large">
+                  Start nu - Voeg eerste bijenstand toe
                 </Link>
               </div>
             </div>
-          </section>
+          </Section>
         </>
       ) : (
         // Voor bestaande gebruikers: statistieken en acties
         <>
-          <section className="section ">
+          <Section variant="alternate">
             <div className="container">
-              <div className="grid grid-two-columns" style={{ alignItems: "center", gap: "var(--space-16)" }}>
-                <div>
-                  <div style={{ marginBottom: "var(--space-6)" }}>
-                    <img 
-                      src="/icons/bee-drawing.png" 
-                      alt="Bee" 
-                      style={{ 
-                        width: "80px", 
-                        height: "auto",
-                        opacity: 0.9
-                      }} 
-                    />
-                  </div>
-                  <h2 style={{ 
-                    fontFamily: "var(--font-display)", 
-                    fontSize: "2.5rem",
-                    fontWeight: "400",
-                    marginBottom: "var(--space-4)"
-                  }}>
-                    Hoe werkt het?
-                  </h2>
-                  <p style={{ 
-                    fontSize: "1.125rem", 
-                    lineHeight: "1.8",
-                    color: "var(--color-text-light)",
-                    marginBottom: "var(--space-8)"
-                  }}>
-                    Ontdek hoe u het platform gebruikt om uw bijenstanden, kasten en 
-                    observaties efficiënt bij te houden. Van eerste setup tot dagelijks gebruik.
-                  </p>
-                  <Link href="/platform">
-                    <button className="btn btn--primary btn--lg">
-                      Bekijk handleiding
-                    </button>
-                  </Link>
-                </div>
+              <SectionHeader>
+                <h2 className="heading-secondary">Uw overzicht</h2>
+              </SectionHeader>
 
-                <div className="card" style={{ background: "rgba(0, 0, 0, 0.02)" }}>
-                  <h3 className="card__title" style={{ marginBottom: "var(--space-4)" }}>
-                    Snel aan de slag
-                  </h3>
-                  <div style={{ display: "flex", flexDirection: "column", gap: "var(--space-4)" }}>
-                    <div style={{ display: "flex", gap: "var(--space-3)" }}>
-                      <span style={{ 
-                        fontFamily: "var(--font-display)",
-                        fontSize: "1.5rem",
-                        fontWeight: "300",
-                        color: "var(--color-text-light)",
-                        minWidth: "32px"
-                      }}>
-                        01
-                      </span>
-                      <p style={{ lineHeight: "1.6" }}>
-                        Voeg uw eerste bijenstand toe met locatie en naam
-                      </p>
-                    </div>
-                    <div style={{ display: "flex", gap: "var(--space-3)" }}>
-                      <span style={{ 
-                        fontFamily: "var(--font-display)",
-                        fontSize: "1.5rem",
-                        fontWeight: "300",
-                        color: "var(--color-text-light)",
-                        minWidth: "32px"
-                      }}>
-                        02
-                      </span>
-                      <p style={{ lineHeight: "1.6" }}>
-                        Registreer uw bijenkasten per stand
-                      </p>
-                    </div>
-                    <div style={{ display: "flex", gap: "var(--space-3)" }}>
-                      <span style={{ 
-                        fontFamily: "var(--font-display)",
-                        fontSize: "1.5rem",
-                        fontWeight: "300",
-                        color: "var(--color-text-light)",
-                        minWidth: "32px"
-                      }}>
-                        03
-                      </span>
-                      <p style={{ lineHeight: "1.6" }}>
-                        Begin met het bijhouden van observaties
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              <SectionContent grid="three">
+                <Link href="/apiaries" className="card card--stat">
+                  <span className="number-large">{totalApiaries}</span>
+                  <p className="card__label">Bijenstanden</p>
+                  <span className="btn btn--secondary btn--small">Bekijk alle</span>
+                </Link>
+
+                <Link href="/hives" className="card card--stat">
+                  <span className="number-large">{totalHives}</span>
+                  <p className="card__label">Kasten</p>
+                  <span className="btn btn--secondary btn--small">Bekijk alle</span>
+                </Link>
+
+                <Link href="/observations" className="card card--stat">
+                  <span className="number-large">{totalObservations}</span>
+                  <p className="card__label">Observaties</p>
+                  <span className="btn btn--secondary btn--small">Bekijk alle</span>
+                </Link>
+              </SectionContent>
             </div>
-          </section>
+          </Section>
 
-          <section className="section section--alt">
+          <Section>
             <div className="container">
-              <div className="section__header" style={{ textAlign: "center" }}>
-                <h2 className="section__title">Uw overzicht</h2>
-              </div>
+              <SectionHeader>
+                <h2 className="heading-secondary">Snelle acties</h2>
+              </SectionHeader>
 
-              <div className="grid grid-three-columns">
-                <Link href="/apiaries" style={{ textDecoration: "none" }}>
-                  <div className="card" style={{ textAlign: "center" }}>
-                    <h3
-                      style={{
-                        fontFamily: "var(--font-display)",
-                        fontSize: "3rem",
-                        fontWeight: "300",
-                        color: "var(--color-text)",
-                        marginBottom: "var(--space-3)",
-                      }}
-                    >
-                      {totalApiaries}
-                    </h3>
-                    <p
-                      style={{
-                        color: 'var(--color-text-light)',
-                        marginBottom: 'var(--space-6)',
-                      }}
-                    >
-                      Bijenstanden
-                    </p>
-                    <button className="btn btn--secondary btn--sm">
-                      Bekijk alle
-                    </button>
-                  </div>
+              <SectionContent grid="three">
+                <Link href="/apiaries/new" className="card card--action">
+                  <span className="card__category">Toevoegen</span>
+                  <h3 className="heading-tertiary">Bijenstand</h3>
+                  <p className="card__text">Nieuwe locatie registreren</p>
                 </Link>
 
-                <Link href="/hives" style={{ textDecoration: "none" }}>
-                  <div className="card" style={{ textAlign: "center" }}>
-                    <h3
-                      style={{
-                        fontFamily: "var(--font-display)",
-                        fontSize: "3rem",
-                        fontWeight: "300",
-                        color: "var(--color-text)",
-                        marginBottom: "var(--space-3)",
-                      }}
-                    >
-                      {totalHives}
-                    </h3>
-                    <p
-                      style={{
-                        color: 'var(--color-text-light)',
-                        marginBottom: 'var(--space-6)',
-                      }}
-                    >
-                      Kasten
-                    </p>
-                    <button className="btn btn--secondary btn--sm">
-                      Bekijk alle
-                    </button>
-                  </div>
+                <Link href="/hives/new" className="card card--action">
+                  <span className="card__category">Toevoegen</span>
+                  <h3 className="heading-tertiary">Kast</h3>
+                  <p className="card__text">Bijenkast koppelen aan stand</p>
                 </Link>
 
-                <Link href="/observations" style={{ textDecoration: "none" }}>
-                  <div className="card" style={{ textAlign: "center" }}>
-                    <h3
-                      style={{
-                        fontFamily: "var(--font-display)",
-                        fontSize: "3rem",
-                        fontWeight: "300",
-                        color: "var(--color-text)",
-                        marginBottom: "var(--space-3)",
-                      }}
-                    >
-                      {totalObservations}
-                    </h3>
-                    <p
-                      style={{
-                        color: 'var(--color-text-light)',
-                        marginBottom: 'var(--space-6)',
-                      }}
-                    >
-                      Observaties
-                    </p>
-                    <button className="btn btn--secondary btn--sm">
-                      Bekijk alle
-                    </button>
-                  </div>
+                <Link href="/observations/new" className="card card--action">
+                  <span className="card__category">Toevoegen</span>
+                  <h3 className="heading-tertiary">Observatie</h3>
+                  <p className="card__text">Waarneming bij kast noteren</p>
                 </Link>
-              </div>
+              </SectionContent>
             </div>
-          </section>
-
-          <section className="section section--alt">
-            <div className="container">
-              <div className="section__header" style={{ textAlign: "center" }}>
-                <h2 className="section__title">Snelle acties</h2>
-              </div>
-
-              <div className="grid grid-three-columns">
-                <Link href="/apiaries/new" style={{ textDecoration: "none" }}>
-                  <div className="card">
-                    <p className="card__category">TOEVOEGEN</p>
-                    <h3 className="card__title">Bijenstand en locatie</h3>
-                    <p className="card__text">
-                      Voeg een nieuwe bijenstand toe met locatie
-                    </p>
-                  </div>
-                </Link>
-                <Link href="/hives/new" style={{ textDecoration: "none" }}>
-                  <div className="card">
-                    <p className="card__category">TOEVOEGEN</p>
-                    <h3 className="card__title">Kast</h3>
-                    <p className="card__text">
-                      Registreer een nieuwe bijenkast op uw stand
-                    </p>
-                  </div>
-                </Link>
-                <Link href="/observations/new" style={{ textDecoration: "none" }}>
-                  <div className="card">
-                    <p className="card__category">TOEVOEGEN</p>
-                    <h3 className="card__title">Observatie</h3>
-                    <p className="card__text">
-                      Maak een nieuwe waarneming bij uw kast
-                    </p>
-                  </div>
-                </Link>
-              </div>
-            </div>
-          </section>
+          </Section>
         </>
       )}
     </>

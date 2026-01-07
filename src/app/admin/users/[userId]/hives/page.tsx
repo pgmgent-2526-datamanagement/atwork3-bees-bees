@@ -59,7 +59,7 @@ export default async function UserHivesPage({
     <>
       <section className="page-header">
         <div className="container">
-          <h1 className="page-header__title">Kasten van {user.name}</h1>
+          <h1 className="heading-primary">Kasten van {user.name}</h1>
           <p className="page-header__subtitle">
             Totaal: {totalHives} {totalHives === 1 ? 'kast' : 'kasten'}
           </p>

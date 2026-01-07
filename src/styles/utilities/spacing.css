@@ -32,6 +32,20 @@
   margin-bottom: var(--space-16);
 }
 
+/* Margin Top */
+.margin-top-small {
+  margin-top: var(--space-4);
+}
+.margin-top-medium {
+  margin-top: var(--space-8);
+}
+.margin-top-large {
+  margin-top: var(--space-12);
+}
+.margin-top-extra-large {
+  margin-top: var(--space-16);
+}
+
 /* Margin Left */
 .ml-xs {
   margin-left: var(--space-2);

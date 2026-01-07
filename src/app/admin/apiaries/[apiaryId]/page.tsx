@@ -42,7 +42,7 @@ export default async function ApiaryDetailPage({
     <>
       <section className="page-header">
         <div className="container">
-          <h1 className="page-header__title">{apiary.name}</h1>
+          <h1 className="heading-primary">{apiary.name}</h1>
           <p className="page-header__subtitle">
             Eigenaar: <Link href={`/admin/users/${apiary.user.id}`}>{apiary.user.name}</Link>
           </p>
@@ -55,7 +55,7 @@ export default async function ApiaryDetailPage({
       <section className="section ">
         <div className="container">
           <div className="section-header">
-            <h2 className="section-header__title">Kasten in deze bijenstand</h2>
+            <h2 className="heading-secondary">Kasten in deze bijenstand</h2>
             <Link href={returnUrl ?? '/admin/apiaries'}>
               <button className="btn btn--secondary">← Terug</button>
             </Link>

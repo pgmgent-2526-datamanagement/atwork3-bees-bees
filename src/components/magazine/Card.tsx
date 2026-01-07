@@ -44,7 +44,7 @@ export default function Card({
       )}
       <div className="card__content">
         {category && <div className="card__category">{category}</div>}
-        <h3 className="card__title">{title}</h3>
+        <h3 className="heading-tertiary">{title}</h3>
         <p className="card__description">{description}</p>
         {link && (
           <Link href={link} className="card__link">
