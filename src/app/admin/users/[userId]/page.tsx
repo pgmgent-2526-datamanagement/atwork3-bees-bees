@@ -47,7 +47,7 @@ export default async function UserDetailPage({
   if (!user) {
     notFound();
   }
-
+  const session = await getServerSession(authOptions);
   return (
     <>
       <section className="page-header">
@@ -63,7 +63,9 @@ export default async function UserDetailPage({
           <div className="section-header">
             <h2 className="section-header__title">Overzicht</h2>
             <Link href="/admin/users">
-              <button className="btn btn--secondary">← Terug naar alle imkers</button>
+              <button className="btn btn--secondary">
+                ← Terug naar alle imkers
+              </button>
             </Link>
           </div>
 
@@ -79,7 +81,8 @@ export default async function UserDetailPage({
               {user._count.apiaries > 0 && (
                 <Link href={`/admin/users/${userId}/apiaries`}>
                   <button className="btn btn--primary mt-4">
-                    Bekijk {user._count.apiaries > 1 ? 'bijenstanden' : 'bijenstand'}
+                    Bekijk{' '}
+                    {user._count.apiaries > 1 ? 'bijenstanden' : 'bijenstand'}
                   </button>
                 </Link>
               )}
@@ -113,7 +116,8 @@ export default async function UserDetailPage({
               {totalObservations > 0 && (
                 <Link href={`/admin/users/${userId}/observations`}>
                   <button className="btn btn--primary mt-4">
-                    Bekijk {totalObservations > 1 ? 'observaties' : 'observatie'}
+                    Bekijk{' '}
+                    {totalObservations > 1 ? 'observaties' : 'observatie'}
                   </button>
                 </Link>
               )}
@@ -121,7 +125,9 @@ export default async function UserDetailPage({
           </div>
 
           <div className="mt-8">
-            <DeleteUserButton userId={userId} userName={user.name} />
+            {session?.user?.role === 'SUPERADMIN' && (
+              <DeleteUserButton userId={userId} userName={user.name} />
+            )}
           </div>
         </div>
       </section>
