@@ -171,62 +171,63 @@ export default function Navigation() {
                       <Eye size={16} />
                       <span>Observaties</span>
                     </Link>
-                    {session.user.role === 'ADMIN' && (
-                      <>
-                        <div className="nav__dropdown-divider"></div>
-                        <div className="nav__dropdown-section-title">
-                          Admin functies
-                        </div>
-                        <Link
-                          href="/admin"
-                          className="nav__dropdown-item"
-                          onClick={() => setIsDropdownOpen(false)}
-                        >
-                          <LayoutDashboard size={16} />
-                          <span>Dashboard</span>
-                        </Link>
-                        <Link
-                          href="/admin/stats"
-                          className="nav__dropdown-item"
-                          onClick={() => setIsDropdownOpen(false)}
-                        >
-                          <BarChart3 size={16} />
-                          <span>Statistieken</span>
-                        </Link>
-                        <Link
-                          href="/admin/users"
-                          className="nav__dropdown-item"
-                          onClick={() => setIsDropdownOpen(false)}
-                        >
-                          <Users size={16} />
-                          <span>Alle gebruikers</span>
-                        </Link>
-                        <Link
-                          href="/admin/apiaries"
-                          className="nav__dropdown-item"
-                          onClick={() => setIsDropdownOpen(false)}
-                        >
-                          <MapPin size={16} />
-                          <span>Alle bijenstanden</span>
-                        </Link>
-                        <Link
-                          href="/admin/hives"
-                          className="nav__dropdown-item"
-                          onClick={() => setIsDropdownOpen(false)}
-                        >
-                          <Box size={16} />
-                          <span>Alle kasten</span>
-                        </Link>
-                        <Link
-                          href="/admin/observations"
-                          className="nav__dropdown-item"
-                          onClick={() => setIsDropdownOpen(false)}
-                        >
-                          <Eye size={16} />
-                          <span>Alle observaties</span>
-                        </Link>
-                      </>
-                    )}
+                    {session.user.role === 'ADMIN' ||
+                      (session.user.role === 'SUPERADMIN' && (
+                        <>
+                          <div className="nav__dropdown-divider"></div>
+                          <div className="nav__dropdown-section-title">
+                            Admin functies
+                          </div>
+                          <Link
+                            href="/admin"
+                            className="nav__dropdown-item"
+                            onClick={() => setIsDropdownOpen(false)}
+                          >
+                            <LayoutDashboard size={16} />
+                            <span>Dashboard</span>
+                          </Link>
+                          <Link
+                            href="/admin/stats"
+                            className="nav__dropdown-item"
+                            onClick={() => setIsDropdownOpen(false)}
+                          >
+                            <BarChart3 size={16} />
+                            <span>Statistieken</span>
+                          </Link>
+                          <Link
+                            href="/admin/users"
+                            className="nav__dropdown-item"
+                            onClick={() => setIsDropdownOpen(false)}
+                          >
+                            <Users size={16} />
+                            <span>Alle gebruikers</span>
+                          </Link>
+                          <Link
+                            href="/admin/apiaries"
+                            className="nav__dropdown-item"
+                            onClick={() => setIsDropdownOpen(false)}
+                          >
+                            <MapPin size={16} />
+                            <span>Alle bijenstanden</span>
+                          </Link>
+                          <Link
+                            href="/admin/hives"
+                            className="nav__dropdown-item"
+                            onClick={() => setIsDropdownOpen(false)}
+                          >
+                            <Box size={16} />
+                            <span>Alle kasten</span>
+                          </Link>
+                          <Link
+                            href="/admin/observations"
+                            className="nav__dropdown-item"
+                            onClick={() => setIsDropdownOpen(false)}
+                          >
+                            <Eye size={16} />
+                            <span>Alle observaties</span>
+                          </Link>
+                        </>
+                      ))}
                     <div className="nav__dropdown-divider"></div>
                     <button
                       onClick={handleLogout}
@@ -308,62 +309,63 @@ export default function Navigation() {
                 <Eye size={16} />
                 <span>Observaties</span>
               </Link>
-              {session.user.role === 'ADMIN' && (
-                <>
-                  <div className="nav__mobile-divider"></div>
-                  <div className="nav__mobile-section-title">
-                    Admin functies
-                  </div>
-                  <Link
-                    href="/admin"
-                    className="nav__mobile-link"
-                    onClick={closeMobileMenu}
-                  >
-                    <LayoutDashboard size={16} />
-                    <span>Dashboard</span>
-                  </Link>
-                  <Link
-                    href="/admin/stats"
-                    className="nav__mobile-link"
-                    onClick={closeMobileMenu}
-                  >
-                    <BarChart3 size={16} />
-                    <span>Statistieken</span>
-                  </Link>
-                  <Link
-                    href="/admin/users"
-                    className="nav__mobile-link"
-                    onClick={closeMobileMenu}
-                  >
-                    <Users size={16} />
-                    <span>Alle gebruikers</span>
-                  </Link>
-                  <Link
-                    href="/admin/apiaries"
-                    className="nav__mobile-link"
-                    onClick={closeMobileMenu}
-                  >
-                    <MapPin size={16} />
-                    <span>Alle bijenstanden</span>
-                  </Link>
-                  <Link
-                    href="/admin/hives"
-                    className="nav__mobile-link"
-                    onClick={closeMobileMenu}
-                  >
-                    <Box size={16} />
-                    <span>Alle kasten</span>
-                  </Link>
-                  <Link
-                    href="/admin/observations"
-                    className="nav__mobile-link"
-                    onClick={closeMobileMenu}
-                  >
-                    <Eye size={16} />
-                    <span>Alle observaties</span>
-                  </Link>
-                </>
-              )}
+              {session.user.role === 'ADMIN' ||
+                (session.user.role === 'SUPERADMIN' && (
+                  <>
+                    <div className="nav__mobile-divider"></div>
+                    <div className="nav__mobile-section-title">
+                      Admin functies
+                    </div>
+                    <Link
+                      href="/admin"
+                      className="nav__mobile-link"
+                      onClick={closeMobileMenu}
+                    >
+                      <LayoutDashboard size={16} />
+                      <span>Dashboard</span>
+                    </Link>
+                    <Link
+                      href="/admin/stats"
+                      className="nav__mobile-link"
+                      onClick={closeMobileMenu}
+                    >
+                      <BarChart3 size={16} />
+                      <span>Statistieken</span>
+                    </Link>
+                    <Link
+                      href="/admin/users"
+                      className="nav__mobile-link"
+                      onClick={closeMobileMenu}
+                    >
+                      <Users size={16} />
+                      <span>Alle gebruikers</span>
+                    </Link>
+                    <Link
+                      href="/admin/apiaries"
+                      className="nav__mobile-link"
+                      onClick={closeMobileMenu}
+                    >
+                      <MapPin size={16} />
+                      <span>Alle bijenstanden</span>
+                    </Link>
+                    <Link
+                      href="/admin/hives"
+                      className="nav__mobile-link"
+                      onClick={closeMobileMenu}
+                    >
+                      <Box size={16} />
+                      <span>Alle kasten</span>
+                    </Link>
+                    <Link
+                      href="/admin/observations"
+                      className="nav__mobile-link"
+                      onClick={closeMobileMenu}
+                    >
+                      <Eye size={16} />
+                      <span>Alle observaties</span>
+                    </Link>
+                  </>
+                ))}
               <div className="nav__mobile-divider"></div>
               <button
                 onClick={() => {

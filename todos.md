@@ -90,7 +90,7 @@ app/admin/
 └── observations/
 └── page.tsx # ALLE observations (flat lijst)
 
-- [] een rol toevoegen in schema.prisma 'SUPERADMIN' TODO
+- [x] een rol toevoegen in schema.prisma 'SUPERADMIN'
 - [] superadmin kan users admin maken: TODO
 - [] enkel superadmin kan user deleten TODO
 
@@ -135,6 +135,8 @@ app/admin/
 - [ ] leaflet kaart
 - [ ] API aanvragen via waarnemingen
 - [ ] mobiele breakpoints
+- [ ] unauthorized page nog text en styling geven
+- [ ] ook bij mobiel tabellen niet veranderen in kaartjes (zie gesprek Barend)
 
 ### 6. Openbare Pagina's
 

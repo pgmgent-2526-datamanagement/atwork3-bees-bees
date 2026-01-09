@@ -14,7 +14,10 @@ export default async function UsersPage({
 }) {
   const session = await getServerSession(authOptions);
 
-  if (!session?.user?.id || session.user.role !== 'ADMIN') {
+  if (
+    !session?.user?.id ||
+    (session.user.role !== 'ADMIN' && session.user.role !== 'SUPERADMIN')
+  ) {
     redirect('/unauthorized');
   }
   const page = await searchParams;
@@ -57,7 +60,9 @@ export default async function UsersPage({
         <div className="container">
           <div className="section-header">
             <Link href="/admin">
-              <button className="btn btn--secondary">← Terug naar dashboard</button>
+              <button className="btn btn--secondary">
+                ← Terug naar dashboard
+              </button>
             </Link>
           </div>
           <UsersFilter
