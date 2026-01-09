@@ -91,8 +91,8 @@ app/admin/
 └── page.tsx # ALLE observations (flat lijst)
 
 - [x] een rol toevoegen in schema.prisma 'SUPERADMIN'
-- [] superadmin kan users admin maken: TODO
-- [] enkel superadmin kan user deleten TODO
+- [x] superadmin kan users admin maken
+- [x] enkel superadmin kan user deleten
 
 - [x] **GET** `/admin/users` → Alle gebruikers tonen (alleen beheerders)
 - [x] **DELETE** `/admin/users/:id` → Gebruiker verwijderen (alleen beheerders) + cascade toevoegen aan Apiary
@@ -137,6 +137,7 @@ app/admin/
 - [ ] mobiele breakpoints
 - [ ] unauthorized page nog text en styling geven
 - [ ] ook bij mobiel tabellen niet veranderen in kaartjes (zie gesprek Barend)
+- [ ] 'gebruikers' vervangen door 'leden'
 
 ### 6. Openbare Pagina's
 

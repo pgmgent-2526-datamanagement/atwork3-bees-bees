@@ -5,6 +5,7 @@ import { authOptions } from '@/lib/auth-options';
 import { requireAdmin } from '@/lib/auth-helpers';
 import Link from 'next/link';
 import DeleteUserButton from '@/components/admin/DeleteUserButton';
+import EditUserButton from '@/components/admin/EditUserButton';
 
 export const dynamic = 'force-dynamic';
 
@@ -126,7 +127,10 @@ export default async function UserDetailPage({
 
           <div className="mt-8">
             {session?.user?.role === 'SUPERADMIN' && (
-              <DeleteUserButton userId={userId} userName={user.name} />
+              <>
+                <DeleteUserButton userId={userId} userName={user.name} />
+                <EditUserButton userId={userId} currentRole={user.role} />
+              </>
             )}
           </div>
         </div>
