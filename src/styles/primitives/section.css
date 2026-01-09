@@ -1,12 +1,16 @@
 .section {
-  padding: var(--space-20) 0;
+  padding: var(--space-24) 0;
 }
 
-.section--default {
+.section-first {
+  margin-top: 120px;
+}
+
+.section-default {
   background-color: white;
 }
 
-.section--alt {
+.section-alternate {
   background-color: #fafafa;
 }
 

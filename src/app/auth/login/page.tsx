@@ -75,12 +75,12 @@ export default function Login() {
     <>
       <section className="page-header" data-page="—">
         <div className="container">
-          <h1 className="page-header__title">Inloggen</h1>
+          <h1 className="heading-primary">Inloggen</h1>
           <p className="page-header__subtitle">Welkom terug bij uw bijenwaarnemingen</p>
         </div>
       </section>
 
-      <section className="section section--default">
+      <section className="section ">
         <div className="container container--narrow">
           <form onSubmit={handleSubmit} className="form">
             {errors && (

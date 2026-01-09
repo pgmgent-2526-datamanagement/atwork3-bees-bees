@@ -5,7 +5,7 @@ export default function AboutPage() {
     <>
       <section className="page-header" data-page="04">
         <div className="container">
-          <h1 className="page-header__title">Over Ons Platform</h1>
+          <h1 className="heading-primary">Over het Platform - Digitaal Imkeren in Vlaanderen</h1>
           <p className="page-header__subtitle">
             Digitale innovatie voor de moderne imker, gebouwd op decennia aan
             ervaring
@@ -13,10 +13,10 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="section section--default">
+      <section className="section ">
         <div className="container">
-          <div className="section__header">
-            <h2 className="section__title">Onze Missie</h2>
+          <div className="section-header">
+            <h2 className="heading-secondary">Onze missie</h2>
           </div>
           <div className="article__body">
             <p>
@@ -38,14 +38,14 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="section section--alt">
+      <section className="section section-alternate">
         <div className="container">
-          <div className="section__header section__header--center">
-            <h2 className="section__title">Voor de moderne imker</h2>
+          <div className="section-header section-header">
+            <h2 className="heading-secondary">Voordelen voor moderne imkers</h2>
           </div>
-          <div className="grid grid--2">
+          <div className="grid grid-two-columns">
             <article className="card">
-              <h3 className="card__title">Van papier naar digitaal</h3>
+              <h3 className="heading-tertiary">Van papier naar digitaal</h3>
               <p className="card__description">
                 Geen verloren notities meer. Al uw observaties veilig opgeslagen
                 in de cloud, altijd en overal toegankelijk via smartphone,
@@ -53,7 +53,7 @@ export default function AboutPage() {
               </p>
             </article>
             <article className="card">
-              <h3 className="card__title">Uw privacy gewaarborgd</h3>
+              <h3 className="heading-tertiary">Uw privacy gewaarborgd</h3>
               <p className="card__description">
                 Deel kennis zonder risico. Andere imkers zien uw observaties en
                 trends, maar exacte GPS-locaties van uw standen blijven 100%
@@ -61,7 +61,7 @@ export default function AboutPage() {
               </p>
             </article>
             <article className="card">
-              <h3 className="card__title">Datagedreven beslissingen</h3>
+              <h3 className="heading-tertiary">Datagedreven beslissingen</h3>
               <p className="card__description">
                 Analyseer trends over meerdere seizoenen. Ontdek welke
                 interventies werken en optimaliseer uw imkerpraktijk op basis
@@ -69,7 +69,7 @@ export default function AboutPage() {
               </p>
             </article>
             <article className="card">
-              <h3 className="card__title">Beveiligd persoonlijk account</h3>
+              <h3 className="heading-tertiary">Beveiligd persoonlijk account</h3>
               <p className="card__description">
                 Volledige controle over uw gegevens. Bepaal zelf wat u deelt met
                 de gemeenschap en houd gevoelige informatie privé in uw
@@ -77,7 +77,7 @@ export default function AboutPage() {
               </p>
             </article>
             <article className="card">
-              <h3 className="card__title">Kennisdeling op uw voorwaarden</h3>
+              <h3 className="heading-tertiary">Kennisdeling op uw voorwaarden</h3>
               <p className="card__description">
                 Leer van andere imkers in uw regio. Vergelijk drachtperiodes en
                 deel ervaringen, zonder dat anderen weten waar uw standen
@@ -85,7 +85,7 @@ export default function AboutPage() {
               </p>
             </article>
             <article className="card">
-              <h3 className="card__title">Tijdsbesparing</h3>
+              <h3 className="heading-tertiary">Tijdsbesparing</h3>
               <p className="card__description">
                 Snelle invoer met slimme formulieren en timers. Automatische
                 rapporten en statistieken. Meer tijd voor uw bijen, minder tijd
@@ -97,14 +97,14 @@ export default function AboutPage() {
       </section>
 
       {/* Platform features met foto */}
-      <section className="section section--default">
+      <section className="section ">
         <div className="container">
-          <div className="section__header section__header--center">
-            <h2 className="section__title">Wat kunt u doen?</h2>
+          <div className="section-header section-header">
+            <h2 className="heading-secondary">Platfom functionaliteiten</h2>
           </div>
-          <div className="grid grid--2">
+          <div className="grid grid-two-columns">
             <div className="card">
-              <h3 className="card__title">Bijenstanden beheren</h3>
+              <h3 className="heading-tertiary">Bijenstanden beheren</h3>
               <p className="card__description">
                 Registreer al uw bijenstanden met GPS-locatie. Koppel
                 automatisch de relevante drachtplanten binnen een straal van 2-7
@@ -112,7 +112,7 @@ export default function AboutPage() {
               </p>
             </div>
             <div className="card">
-              <h3 className="card__title">Observaties registreren</h3>
+              <h3 className="heading-tertiary">Observaties registreren</h3>
               <p className="card__description">
                 Snelle invoer met intelligente formulieren. Tel bijen met de
                 ingebouwde 30-seconden timer. Noteer stuifmeelkleuren,
@@ -123,16 +123,16 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="section section--alt">
+      <section className="section section-alternate">
         <div className="container container--narrow">
-          <div className="section__header section__header--center">
-            <h2 className="section__title">Klaar om te starten?</h2>
-            <p className="section__description">
+          <div className="section-header section-header">
+            <h2 className="heading-secondary">Gratis account aanmaken</h2>
+            <p className="section-description">
               Sluit u aan bij imkers die hun bijenregistratie vereenvoudigen met
               ons platform.
             </p>
           </div>
-          <div className="section__actions">
+          <div className="section-actions">
             <Link href="/auth/register" className="btn btn--primary btn--large">
               Gratis account aanmaken
             </Link>

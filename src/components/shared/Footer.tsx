@@ -19,7 +19,7 @@ export default function Footer() {
           
           <div className="footer__links">
             <div className="footer__column">
-              <h3 className="footer__heading">Platform</h3>
+              <h3 className="heading-tertiary">Platform</h3>
               <nav className="footer__nav">
                 <Link href="/vision" className="footer__link">Onze Visie</Link>
                 <Link href="/platform" className="footer__link">Hoe het werkt</Link>
@@ -28,7 +28,7 @@ export default function Footer() {
             </div>
             
             <div className="footer__column">
-              <h3 className="footer__heading">Account</h3>
+              <h3 className="heading-tertiary">Account</h3>
               <nav className="footer__nav">
                 <Link href="/auth/register" className="footer__link">Registreren</Link>
                 <Link href="/auth/login" className="footer__link">Inloggen</Link>
@@ -36,7 +36,7 @@ export default function Footer() {
             </div>
             
             <div className="footer__column">
-              <h3 className="footer__heading">Contact</h3>
+              <h3 className="heading-tertiary">Contact</h3>
               <nav className="footer__nav">
                 <Link href="/contact" className="footer__link">Contact</Link>
                 <a href="mailto:info@bees-platform.be" className="footer__link">Email</a>

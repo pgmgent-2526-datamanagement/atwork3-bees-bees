@@ -35,7 +35,7 @@ export default function RemoveButton({
       {showConfirm && (
         <div className="modal-overlay">
           <div className="modal">
-            <h3 className="modal__title">
+            <h3 className="heading-tertiary">
               Bevestig verwijdering
             </h3>
             <p className="modal__text">

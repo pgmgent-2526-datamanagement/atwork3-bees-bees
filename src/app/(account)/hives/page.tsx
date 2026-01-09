@@ -51,19 +51,19 @@ export default async function AccountHivesPage({
     <>
       <section className="page-header" data-page="—">
         <div className="container">
-          <h1 className="page-header__title">Mijn kasten</h1>
+          <h1 className="heading-primary">Mijn kasten</h1>
           <p className="page-header__subtitle">
             {totalHives} {totalHives === 1 ? 'kast' : 'kasten'}
           </p>
         </div>
       </section>
 
-      <section className="section section--default">
+      <section className="section ">
         <div className="container">
           {hives.length > 0 ? (
             <>
               <div className="section-header">
-                <h2 className="section-header__title">
+                <h2 className="heading-secondary">
                   Overzicht
                 </h2>
                 <Link href="/hives/new">
@@ -73,7 +73,7 @@ export default async function AccountHivesPage({
                 </Link>
               </div>
 
-              <div className="grid grid--3">
+              <div className="grid grid-three-columns">
                 {hives.map(hive => (
                   <Link
                     key={hive.id}
@@ -84,7 +84,7 @@ export default async function AccountHivesPage({
                       <p className="card__category">
                         Kast
                       </p>
-                      <h3 className="card__title">
+                      <h3 className="heading-tertiary">
                         {hive.name}
                       </h3>
                       <div className="card__divider">
@@ -126,7 +126,7 @@ export default async function AccountHivesPage({
             </>
           ) : (
             <div style={{ textAlign: "center", padding: "var(--space-16) 0" }}>
-              <h2 style={{ 
+              <h2 className="heading-secondary" style={{ 
                 fontFamily: "var(--font-display)",
                 fontSize: "2rem",
                 fontWeight: "400",

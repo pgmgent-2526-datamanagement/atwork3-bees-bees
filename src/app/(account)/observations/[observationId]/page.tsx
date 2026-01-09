@@ -38,7 +38,7 @@ export default async function Observation({
         <div className="container">
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", flexWrap: "wrap", gap: "var(--space-6)" }}>
             <div style={{ flex: "1", minWidth: "300px" }}>
-              <h1 className="page-header__title">Observatie</h1>
+              <h1 className="heading-primary">Observatie</h1>
               <p className="page-header__subtitle">
                 {observation.hive.name} • {observation.hive.apiary.name} • {new Date(observation.createdAt).toLocaleDateString('nl-BE')}
               </p>
@@ -61,12 +61,12 @@ export default async function Observation({
         </div>
       </section>
 
-      <section className="section section--default">
+      <section className="section ">
         <div className="container container--narrow">
-          <div className="grid grid--2" style={{ gap: 'var(--space-12)' }}>
+          <div className="grid grid-two-columns" style={{ gap: 'var(--space-12)' }}>
             {/* Observatie Details Card */}
             <div className="card" style={{ height: "fit-content", padding: 'var(--space-10)' }}>
-              <h2 style={{ 
+              <h2 className="heading-secondary" style={{ 
                 fontFamily: "var(--font-display)",
                 fontSize: "1.5rem",
                 fontWeight: "400",

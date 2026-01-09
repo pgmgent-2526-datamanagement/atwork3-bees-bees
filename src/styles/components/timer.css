@@ -2,189 +2,149 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: var(--space-12);
-  margin-bottom: var(--space-10);
   padding: var(--space-12);
-  background: #fafafa;
-  border-radius: 2px;
-  border: 1px solid #e5e5e5;
-  max-width: 100%;
-  width: 100%;
+  background: white;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  margin-bottom: var(--space-12);
+}
+
+.timer--active {
+  border-color: var(--color-accent);
 }
 
 .timer__display {
+  font-family: var(--font-display);
+  color: var(--color-text-light);
+  text-align: center;
+  margin-bottom: var(--space-8);
+  min-height: 120px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: var(--space-4);
-  font-family: var(--font-mono);
-  transition: all 0.3s ease;
+  justify-content: center;
+  width: 100%;
 }
 
-.timer__time {
-  font-size: 4.5rem;
-  font-weight: 300;
-  color: var(--color-text);
-  line-height: 1;
-  letter-spacing: 0.1em;
-  transition: all 0.3s ease;
-}
-
-.timer__time--warning {
+.timer__display--active {
   color: var(--color-accent);
-  animation: timeWarning 1s ease-in-out infinite;
-}
-
-@keyframes timeWarning {
-  0%, 100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.6;
-  }
-}
-
-.timer__text {
-  font-family: var(--font-body);
-  font-size: 1rem;
-  color: var(--color-text-light);
-  text-align: center;
-  line-height: 1.6;
-  max-width: 420px;
-  margin: 0;
-  letter-spacing: 0.02em;
-}
-
-.timer__text--active {
-  color: var(--color-text);
-  font-weight: 500;
-  font-size: 1.0625rem;
-}
-
-.timer__text--complete {
-  color: var(--color-text);
-  font-weight: 500;
-  font-size: 1.125rem;
 }
 
 .timer__countdown {
   font-size: 6rem;
   font-weight: 300;
-  color: var(--color-text);
   line-height: 1;
-  animation: pulse 1s ease-in-out infinite;
+  letter-spacing: -0.02em;
 }
 
-@keyframes pulse {
-  0%, 100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.7;
-  }
+.timer__time {
+  font-size: 4rem;
+  font-weight: 300;
+  line-height: 1;
+  letter-spacing: -0.05em;
+  margin-top: var(--space-4);
+}
+
+.timer__label {
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.6;
+  color: var(--color-text-light);
+  text-align: center;
+  max-width: 400px;
 }
 
 .timer__button {
-  position: relative;
-  width: 200px;
-  height: 200px;
-  border-radius: 50%;
-  border: 1px solid var(--color-text);
-  background: transparent;
-  color: var(--color-text);
-  font-family: var(--font-display);
-  font-size: 0.875rem;
-  font-weight: 400;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+  font-family: var(--font-body);
+  font-size: 0.9375rem;
+  font-weight: 500;
+  padding: var(--space-4) var(--space-10);
+  background: var(--color-text);
+  color: white;
+  border: none;
   cursor: pointer;
-  transition: none;
-  overflow: hidden;
+  transition: all 0.2s ease;
+  letter-spacing: 0.01em;
+  width: 100%;
+  max-width: 300px;
 }
 
 .timer__button:hover:not(:disabled) {
-  /* No hover effects */
-}
-
-.timer__button:active:not(:disabled) {
-  opacity: 0.7;
+  background: var(--color-accent);
 }
 
 .timer__button:disabled {
-  border-color: #d4d4d4;
-  color: #a3a3a3;
+  background: rgba(0, 0, 0, 0.1);
+  color: var(--color-text-light);
   cursor: not-allowed;
-  opacity: 0.5;
-}
-
-.timer__button--running {
-  /* No animation */
 }
 
 @media (max-width: 768px) {
   .timer {
-    padding: var(--space-10);
-    gap: var(--space-10);
-  }
-
-  .timer__button {
-    width: 180px;
-    height: 180px;
-    font-size: 0.8125rem;
-  }
-
-  .timer__countdown {
-    font-size: 5rem;
-  }
-
-  .timer__time {
-    font-size: 3.5rem;
-  }
-
-  .timer__text {
-    font-size: 0.9375rem;
-    max-width: 340px;
-  }
-
-  .timer__text--active {
-    font-size: 1rem;
-  }
-
-  .timer__text--complete {
-    font-size: 1.0625rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .timer {
     padding: var(--space-8);
-    gap: var(--space-8);
   }
-
-  .timer__button {
-    width: 160px;
-    height: 160px;
-    font-size: 0.75rem;
-  }
-
+  
   .timer__countdown {
-    font-size: 4.5rem;
+    font-size: 4rem;
   }
-
+  
   .timer__time {
     font-size: 3rem;
   }
+  
+  .timer__label {
+    font-size: 0.8125rem;
+  }
+}
 
-  .timer__text {
-    font-size: 0.875rem;
-    max-width: 300px;
+/* Bee Counter */
+.bee-counter {
+  display: flex;
+  gap: var(--space-4);
+  align-items: stretch;
+}
+
+.bee-counter__input {
+  flex: 1;
+}
+
+.bee-counter__button {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 300;
+  padding: 0 var(--space-8);
+  background: var(--color-text);
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-width: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bee-counter__button:hover {
+  background: var(--color-accent);
+}
+
+.bee-counter__button:active {
+  transform: scale(0.95);
+}
+
+@media (max-width: 1024px) {
+  .bee-counter {
+    flex-direction: column;
   }
 
-  .timer__text--active {
-    font-size: 0.9375rem;
+  .bee-counter__input {
+    order: -1;
   }
 
-  .timer__text--complete {
-    font-size: 1rem;
+  .bee-counter__button {
+    width: 100%;
+    min-width: unset;
+    font-size: 1.75rem;
+    padding: var(--space-4);
   }
 }

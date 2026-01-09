@@ -12,10 +12,14 @@
 }
 
 .display-number--lg {
-  font-size: clamp(4rem, 12vw, 7rem);
+  display: block;
+  font-size: 7rem;
+  font-family: var(--font-display);
   font-weight: 300;
   letter-spacing: -0.02em;
-  color: var(--color-text-muted);
+  color: var(--color-accent);
+  line-height: 1;
+  margin-bottom: var(--space-8);
 }
 
 .display-number--md {

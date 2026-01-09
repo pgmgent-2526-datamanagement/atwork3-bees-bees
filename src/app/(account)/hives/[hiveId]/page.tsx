@@ -44,7 +44,7 @@ export default async function AccountApiaryHivePage({
     <>
       <section className="page-header">
         <div className="container">
-          <h1 className="page-header__title">{hive.name}</h1>
+          <h1 className="heading-primary">{hive.name}</h1>
           <p className="page-header__subtitle">
             Bijenstand: {hive.apiary.name}
           </p>
@@ -82,17 +82,17 @@ export default async function AccountApiaryHivePage({
         </div>
       </section>
 
-      <section className="section section--default">
+      <section className="section ">
         <div className="container">
           <div className="section-header">
-            <h2 className="section-header__title">
+            <h2 className="heading-secondary">
               Observaties
             </h2>
           </div>
 
           {observations.length > 0 ? (
             <>
-              <div className="grid grid--3">
+              <div className="grid grid-three-columns">
                 {observations.map(obs => (
                   <Link
                     key={obs.id}
@@ -103,7 +103,7 @@ export default async function AccountApiaryHivePage({
                       <p className="card__category">
                         Observatie
                       </p>
-                      <h3 className="card__title">
+                      <h3 className="heading-tertiary">
                         {new Date(obs.createdAt).toLocaleDateString('nl-BE', {
                           day: 'numeric',
                           month: 'long',

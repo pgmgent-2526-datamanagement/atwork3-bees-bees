@@ -1,21 +1,13 @@
 export default function ContactPage() {
   return (
     <>
-      <section className="page-header" data-page="03">
-        <div className="container">
-          <h1 className="page-header__title">Contact</h1>
-          <p className="page-header__subtitle">Vragen of feedback? We horen graag van je</p>
-        </div>
-      </section>
-
-      <section className="section section--default">
+      <section className="section section-first">
         <div className="container container--narrow">
-          <div className="section__header section__header--center">
-            <h2 className="section__title">Neem contact op</h2>
-            <p className="section__description">
-              Heb je vragen over het platform, suggesties voor verbeteringen of
-              wil je gewoon hallo zeggen? Vul het formulier in en we nemen zo snel
-              mogelijk contact met je op.
+          <div className="section-header section-header">
+            <h1 className="heading-primary">Stel uw vraag</h1>
+            <p className="section-description">
+              Vragen over het platform, suggesties voor verbeteringen of
+              wil je gewoon hallo zeggen?
             </p>
           </div>
 
@@ -82,11 +74,11 @@ export default function ContactPage() {
         </div>
       </section>
 
-      <section className="section section--alt">
+      <section className="section section-alternate">
         <div className="container">
-          <div className="grid grid--3">
+          <div className="grid grid-three-columns">
             <div className="text-center">
-              <h3 className="card__title">E-mail</h3>
+              <h3 className="heading-tertiary">E-mail</h3>
               <p className="card__description">
                 <a href="mailto:info@bees-platform.be">
                   info@bees-platform.be
@@ -95,14 +87,14 @@ export default function ContactPage() {
             </div>
 
             <div className="text-center">
-              <h3 className="card__title">Reactietijd</h3>
+              <h3 className="heading-tertiary">Reactietijd</h3>
               <p className="card__description">
                 Binnen 24 uur op werkdagen
               </p>
             </div>
 
             <div className="text-center">
-              <h3 className="card__title">Support</h3>
+              <h3 className="heading-tertiary">Support</h3>
               <p className="card__description">
                 Maandag t/m vrijdag
                 <br />

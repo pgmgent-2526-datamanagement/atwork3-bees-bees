@@ -10,11 +10,11 @@ export default async function AccountNewApiaryPage() {
     <>
       <section className="page-header" data-page="—">
         <div className="container">
-          <h1 className="page-header__title">Nieuwe bijenstand</h1>
+          <h1 className="heading-primary">Nieuwe bijenstand</h1>
         </div>
       </section>
 
-      <section className="section section--default">
+      <section className="section ">
         <div className="container container--narrow">
           <ApiaryForm />
         </div>

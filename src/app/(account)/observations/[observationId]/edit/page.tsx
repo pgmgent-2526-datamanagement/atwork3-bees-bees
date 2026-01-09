@@ -27,11 +27,11 @@ export default async function EditObservationPage({
     <>
       <section className="page-header">
         <div className="container">
-          <h1 className="page-header__title">Observatie bewerken</h1>
+          <h1 className="heading-primary">Observatie bewerken</h1>
         </div>
       </section>
 
-      <section className="section section--default">
+      <section className="section ">
         <div className="container container--narrow">
           <ObservationForm 
             initialObservation={observationId} 

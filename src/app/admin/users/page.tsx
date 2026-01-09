@@ -2,8 +2,7 @@ import { getServerSession } from 'next-auth';
 import { redirect } from 'next/navigation';
 import prisma from '@/lib/client';
 import { authOptions } from '@/lib/auth-options';
-import UsersFilter from '@/components/admin/UsersFilter';
-import Link from 'next/link';
+import UsersPageClient from '@/components/admin/UsersPageClient';
 
 export const dynamic = 'force-dynamic';
 
@@ -49,29 +48,20 @@ export default async function UsersPage({
     <>
       <section className="page-header">
         <div className="container">
-          <h1 className="page-header__title">Alle gebruikers</h1>
-          <p className="page-header__subtitle">
-            Totaal: {totalUsers} {totalUsers === 1 ? 'gebruiker' : 'gebruikers'}
-          </p>
+          <div className="page-header__top">
+            <h1 className="heading-primary">Alle gebruikers</h1>
+            <p className="page-header__subtitle">
+              Totaal: {totalUsers} {totalUsers === 1 ? "gebruiker" : "gebruikers"}
+            </p>
+          </div>
         </div>
       </section>
 
-      <section className="section section--default">
-        <div className="container">
-          <div className="section-header">
-            <Link href="/admin">
-              <button className="btn btn--secondary">
-                ← Terug naar dashboard
-              </button>
-            </Link>
-          </div>
-          <UsersFilter
-            users={users}
-            currentPage={currentPage}
-            totalPages={totalPages}
-          />
-        </div>
-      </section>
+      <UsersPageClient
+        users={users}
+        currentPage={currentPage}
+        totalPages={totalPages}
+      />
     </>
   );
 }

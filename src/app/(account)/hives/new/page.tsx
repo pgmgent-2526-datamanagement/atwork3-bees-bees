@@ -21,14 +21,14 @@ export default async function AccountApiaryNewHivePage({
     <>
       <section className="page-header" data-page="—">
         <div className="container">
-          <h1 className="page-header__title">Nieuwe kast toevoegen</h1>
+          <h1 className="heading-primary">Nieuwe kast toevoegen</h1>
           <p className="page-header__subtitle">
             {apiaryName ? `Aan bijenstand: ${apiaryName}` : 'Registreer een nieuwe bijenkast'}
           </p>
         </div>
       </section>
 
-      <section className="section section--default">
+      <section className="section ">
         <div className="container container--narrow">
           <HiveForm apiaryId={apiaryId} apiaryName={apiaryName} />
         </div>

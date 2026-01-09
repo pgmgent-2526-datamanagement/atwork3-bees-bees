@@ -153,46 +153,30 @@ export default function ObservationForm({
             Aantal bijen *
           </label>
           <div className="bee-counter">
+            <button
+              type="button"
+              className="bee-counter__button"
+              onClick={() => setBeeCount(prev => Math.max(0, parseInt(prev || '0') - 1).toString())}
+            >
+              −1
+            </button>
             <input
               type="number"
               id="beeCount"
               value={beeCount}
               onChange={e => setBeeCount(e.target.value)}
               className="form__input bee-counter__input"
-              placeholder="0"
+              placeholder="Geschat aantal bijen"
               required
               min="0"
             />
-            <div className="bee-counter__buttons">
-              <button
-                type="button"
-                className="bee-counter__btn"
-                onClick={() => setBeeCount(prev => String(Number(prev || 0) + 1))}
-              >
-                +1
-              </button>
-              <button
-                type="button"
-                className="bee-counter__btn"
-                onClick={() => setBeeCount(prev => String(Number(prev || 0) + 5))}
-              >
-                +5
-              </button>
-              <button
-                type="button"
-                className="bee-counter__btn"
-                onClick={() => setBeeCount(prev => String(Number(prev || 0) + 10))}
-              >
-                +10
-              </button>
-              <button
-                type="button"
-                className="bee-counter__btn bee-counter__btn--reset"
-                onClick={() => setBeeCount('0')}
-              >
-                Reset
-              </button>
-            </div>
+            <button
+              type="button"
+              className="bee-counter__button"
+              onClick={() => setBeeCount(prev => (parseInt(prev || '0') + 1).toString())}
+            >
+              +1
+            </button>
           </div>
           <p className="form__help">
             Tel de bijen tijdens de 30 seconden observatie

@@ -76,40 +76,29 @@ export default function Timer() {
   };
 
   return (
-    <div className="timer">
-      <div className="timer__display">
+    <div className={`timer ${countdown !== null || isRunning ? 'timer--active' : ''}`}>
+      <div className={`timer__display ${countdown !== null || isRunning ? 'timer__display--active' : ''}`}>
         {countdown !== null ? (
           <div className="timer__countdown">{countdown}</div>
         ) : time === 0 ? (
-          <>
-            <p className="timer__text timer__text--complete">
-              Observatie voltooid
-            </p>
-            <p className="timer__text">
-              Controleer je waarden en bewaar de observatie
-            </p>
-          </>
+          <p className="timer__label">
+            30 seconden voorbij – controleer je waarden en tik op 'Observatie toevoegen'
+          </p>
         ) : (
           <>
-            <p className="timer__text timer__text--active">
-              {time <= 10 
-                ? `Nog ${time} seconden - Maak je telling compleet!`
-                : 'Tel de bijen en vul de velden in'
-              }
+            <p className="timer__label">
+              Observeer 30 seconden en vul ondertussen de velden in
             </p>
-            <div className={`timer__time ${time <= 10 ? 'timer__time--warning' : ''}`}>
-              00:{time < 10 ? '0' : ''}
-              {time}
+            <div className="timer__time">
+              00:{time < 10 ? '0' : ''}{time}
             </div>
           </>
         )}
       </div>
 
-      <button
-        className={`timer__button ${
-          isRunning || countdown !== null ? 'timer__button--running' : ''
-        }`}
-        onClick={handleClick}
+      <button 
+        className="timer__button"
+        onClick={handleClick} 
         disabled={isRunning || countdown !== null}
       >
         {countdown !== null

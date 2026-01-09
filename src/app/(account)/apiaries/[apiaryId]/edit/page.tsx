@@ -10,12 +10,12 @@ export default async function EditApiaryPage({
     <>
       <section className="page-header" data-page="—">
         <div className="container">
-          <h1 className="page-header__title">Bijenstand aanpassen</h1>
+          <h1 className="heading-primary">Bijenstand aanpassen</h1>
           <p className="page-header__subtitle">Wijzig naam of locatie</p>
         </div>
       </section>
 
-      <section className="section section--default">
+      <section className="section ">
         <div className="container container--narrow">
           <ApiaryForm initialApiary={apiaryId} />
         </div>

@@ -40,21 +40,17 @@ export default async function AdminHivesPage({
     <>
       <section className="page-header">
         <div className="container">
-          <h1 className="page-header__title">Alle kasten</h1>
-          <p className="page-header__subtitle">
-            Totaal: {totalHives} {totalHives === 1 ? 'kast' : 'kasten'}
-          </p>
+          <div className="page-header__top">
+            <h1 className="heading-primary">Alle kasten</h1>
+            <p className="page-header__subtitle">
+              Totaal: {totalHives} {totalHives === 1 ? "kast" : "kasten"}
+            </p>
+          </div>
         </div>
       </section>
 
       <section className="section section--default">
         <div className="container">
-          <div className="section-header">
-            <Link href="/admin">
-              <button className="btn btn--secondary">← Terug naar dashboard</button>
-            </Link>
-          </div>
-
           <HivesFilter
             hives={hives}
             showApiary={true}
