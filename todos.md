@@ -95,6 +95,7 @@ app/admin/
 - [x] enkel superadmin kan user deleten
 
 - [x] **GET** `/admin/users` → Alle gebruikers tonen (alleen beheerders)
+- [x] **GET** `/admin/users` → debounce toevoegen in de filter in usersPageClient TODO
 - [x] **DELETE** `/admin/users/:id` → Gebruiker verwijderen (alleen beheerders) + cascade toevoegen aan Apiary
 - [x] → filter gebruikers (alleen beheerders)
 - [x] **GET** `/admin/users/:id` → User overview met stats
@@ -139,6 +140,7 @@ app/admin/
 - [ ] unauthorized page nog text en styling geven
 - [ ] ook bij mobiel tabellen niet veranderen in kaartjes (zie gesprek Barend)
 - [ ] 'gebruikers' vervangen door 'leden'
+- [ ] skeletons?
 
 ### 6. Openbare Pagina's
 

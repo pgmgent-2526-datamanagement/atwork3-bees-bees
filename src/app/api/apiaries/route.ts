@@ -3,6 +3,8 @@ import { NextRequest } from 'next/server';
 import { NextResponse } from 'next/server';
 import prisma from '@/lib/client';
 import { authOptions } from '@/lib/auth-options';
+import { z } from 'zod';
+import { apiarySchema } from '@/lib/validators/schemas';
 
 export async function GET() {
   try {
@@ -31,7 +33,7 @@ export async function GET() {
   }
 }
 
-export async function POST(req: NextRequest) {
+export async function POST(req: NextRequest): Promise<NextResponse> {
   try {
     const session = await getServerSession(authOptions);
 
@@ -41,10 +43,17 @@ export async function POST(req: NextRequest) {
 
     const body = await req.json();
     const { name, latitude, longitude } = body;
-
-    if (!name || latitude === undefined || longitude === undefined) {
+    // Valideer input met Zod
+    const validationResult = apiarySchema.safeParse({
+      name,
+      latitude,
+      longitude,
+    });
+    if (!validationResult.success) {
+      const { fieldErrors } = validationResult.error.flatten();
+      // after flatten: fieldErrors has type Record<string, string[]>
       return NextResponse.json(
-        { error: 'Naam, latitude en longitude zijn verplicht' },
+        { ok: false, errors: fieldErrors },
         { status: 400 }
       );
     }

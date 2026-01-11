@@ -16,3 +16,15 @@ export const loginSchema = z.object({
     .email('Voer een geldig e-mailadres in.'),
   password: z.string().min(8, 'Wachtwoord moet minstens 8 tekens zijn.'),
 });
+
+export const apiarySchema = z.object({
+  name: z.string().min(1, 'Naam is vereist.'),
+  latitude: z
+    .number()
+    .optional() // needed to allow refine to work properly
+    .refine(val => val !== undefined, { message: 'Latitude is vereist.' }),
+  longitude: z
+    .number()
+    .optional()
+    .refine(val => val !== undefined, { message: 'Longitude is vereist.' }),
+});
