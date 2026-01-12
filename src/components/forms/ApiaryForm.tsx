@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useEffect } from 'react';
-
+import { apiarySchema } from '@/lib/validators/schemas';
 export default function ApiaryForm({
   initialApiary,
 }: {
@@ -36,6 +36,10 @@ export default function ApiaryForm({
 
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
+  const [fieldErrors, setFieldErrors] = useState<Record<
+    string,
+    string[]
+  > | null>(null);
   const [geocodingError, setGeocodingError] = useState(''); // Adres-specifieke fouten
   const [gpsError, setGpsError] = useState(''); // GPS-specifieke fouten
   const router = useRouter();
@@ -177,7 +181,33 @@ export default function ApiaryForm({
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     setError('');
+    setFieldErrors({});
+    setGeocodingError('');
     setLoading(true);
+
+    // Valideer input met Zod
+    const validationResult = apiarySchema.safeParse({
+      name,
+      latitude: parseFloat(latitude),
+      longitude: parseFloat(longitude),
+    });
+
+    // Check of gebruiker locatie heeft ingevuld via gekozen methode
+    const hasLocationError =
+      locationMethod === 'address' && (!latitude || !longitude);
+
+    // Als er validatiefouten zijn OF locatiefouten, toon alles tegelijk
+    if (!validationResult.success || hasLocationError) {
+      if (!validationResult.success) {
+        const { fieldErrors } = validationResult.error.flatten();
+        setFieldErrors(fieldErrors);
+      }
+      if (hasLocationError) {
+        setGeocodingError('Vul een adres in en klik op "Zoek locatie".');
+      }
+      setLoading(false);
+      return;
+    }
     const apiaryData = {
       name,
       latitude: parseFloat(latitude),
@@ -200,6 +230,7 @@ export default function ApiaryForm({
       router.push(`/apiaries`);
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Er ging iets mis');
+      setFieldErrors({}); // reset veldfouten in geval van algemene fout
       setLoading(false);
     }
   }
@@ -220,11 +251,23 @@ export default function ApiaryForm({
           type="text"
           id="name"
           value={name}
-          onChange={e => setName(e.target.value)}
+          onChange={e => {
+            setName(e.target.value);
+            if (fieldErrors?.name) {
+              setFieldErrors(prev => {
+                if (!prev) return null;
+                const { name, ...rest } = prev;
+                return Object.keys(rest).length ? rest : null;
+              });
+            }
+          }}
           className="form__input"
           placeholder="bv. Tuin achteraan, Bij de beek"
           required
         />
+        {fieldErrors?.name && (
+          <span className="form-error">{fieldErrors.name[0]}</span>
+        )}
       </div>
       {/* Locatie methode selectie */}
       <div className="form__group">
@@ -270,6 +313,13 @@ export default function ApiaryForm({
               onChange={e => {
                 setAddress(e.target.value);
                 if (geocodingError) setGeocodingError('');
+                if (fieldErrors?.address) {
+                  setFieldErrors(prev => {
+                    if (!prev) return null;
+                    const { address, ...rest } = prev;
+                    return Object.keys(rest).length ? rest : null;
+                  });
+                }
               }}
               className="form__input"
               placeholder="Straat nummer, Stad"
@@ -364,13 +414,18 @@ export default function ApiaryForm({
             <span>Lat: {parseFloat(latitude).toFixed(6)}</span>
             <span>Lng: {parseFloat(longitude).toFixed(6)}</span>
           </div>
+          {(fieldErrors?.latitude || fieldErrors?.longitude) && (
+            <span className="form-error">
+              {fieldErrors?.latitude?.[0] || fieldErrors?.longitude?.[0]}
+            </span>
+          )}
         </div>
       )}
 
       <div className="form__actions">
         <button
           type="submit"
-          disabled={loading || !latitude || !longitude}
+          disabled={loading}
           className="btn btn--primary btn--large"
         >
           {loading

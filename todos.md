@@ -48,7 +48,7 @@
 - [x] **GET** `/api/apiaries` → Overzicht eigen bijenstanden
 - [x] **GET** `/api/apiaries` → paginering van het overzicht
 - [x] **POST** `/api/apiaries/new` → Nieuwe bijenstand aanmaken
-- [x] **GET** `/api/apiaries/:id` → Bijenstand details ophalen TODO foutafhandeling met try-catch voorzien voor als de fetch mislukt!
+- [x] **GET** `/api/apiaries/:id` → Bijenstand details ophalen
 - [x] **UPDATE** `/api/apiaries/:id` → Bijenstand aanpassen
 - [x] **DELETE** `/api/apiaries/:id` → Bijenstand verwijderen
 
@@ -61,7 +61,7 @@
 - [x] **GET** `/api/observations` → Observaties lijst
 - [x] **GET** `/api/observations` → paginering van het overzicht
 - [x] **GET** `/api/observations/:id` → Observatie detail
-- [x] **POST** `/api/observations/new` → Nieuwe observatie registreren TODO: het uurverschil eruithalen
+- [x] **POST** `/api/observations/new` → Nieuwe observatie registreren
 - [x] **UPDATE** `/api/hives/:id` → Bijenkast aanpassen
 - [x] **DELETE** `/api/hives/:id` → Bijenkast verwijderen
 - [x] **UPDATE** `/api/observations/:id` → Observatie aanpassen
@@ -95,6 +95,7 @@ app/admin/
 - [x] enkel superadmin kan user deleten
 
 - [x] **GET** `/admin/users` → Alle gebruikers tonen (alleen beheerders)
+- [ ] **GET** `/admin/users` → debounce toevoegen in de filter in usersPageClient TODO
 - [x] **DELETE** `/admin/users/:id` → Gebruiker verwijderen (alleen beheerders) + cascade toevoegen aan Apiary
 - [x] → filter gebruikers (alleen beheerders)
 - [x] **GET** `/admin/users/:id` → User overview met stats
@@ -138,7 +139,8 @@ app/admin/
 - [ ] mobiele breakpoints
 - [ ] unauthorized page nog text en styling geven
 - [ ] ook bij mobiel tabellen niet veranderen in kaartjes (zie gesprek Barend)
-- [ ] 'gebruikers' vervangen door 'leden'
+- [ ] de app/not-found.tsx pagina stylen
+- [ ] skeletons?
 
 ### 6. Openbare Pagina's
 
@@ -176,11 +178,11 @@ app/admin/
 
 ## ✨ FASE 5: Gebruikerservaring & Optimalisatie
 
-### 10. Formulier Validatie & Feedback TODO
+### 10. Formulier Validatie & Feedback
 
-- [ ] **Server-side Validatie**: Zod bibliotheek of custom validatie
-- [ ] **Real-time Feedback**: Client-side validatie
-- [ ] **Gebruiksvriendelijke Meldingen**: Duidelijke foutboodschappen per veld
+- [x] **Server-side Validatie**: Zod bibliotheek of custom validatie
+- [x] **Real-time Feedback**: Client-side validatie
+- [x] **Gebruiksvriendelijke Meldingen**: Duidelijke foutboodschappen per veld
 
 ### 11. Media & Visuele Elementen
 
@@ -191,8 +193,7 @@ app/admin/
 ### 12. Foutafhandeling & Gebruikerservaring
 
 - [ ] **Globale Foutafhandeling** (`src/app/error.tsx`): Algemene error fallback
-- [ ] **404 Pagina** (`src/app/not-found.tsx`): Aangepaste niet-gevonden pagina
-- [ ] **Catch-all Route** (`src/app/[...slug]/page.tsx`): Onbekende routes afvangen
+- [x] **404 Pagina** (`src/app/not-found.tsx`): Aangepaste niet-gevonden pagina
 - [ ] **Rolgebaseerde Foutmeldingen**: 403/401 berichten per gebruikerstype
 
 ### 13. Prestatie & Laadstatus
@@ -254,3 +255,4 @@ Een volledig functionele bijenstandbeheer applicatie met robuuste backend, gebru
 TODO
 
 - [] bespreken met docent, deployment voor klant met eigen account enz.
+- [] bespreken met docent, snelheid van de renders

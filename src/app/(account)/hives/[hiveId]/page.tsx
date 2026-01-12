@@ -4,7 +4,7 @@ import Link from 'next/link';
 import prisma from '@/lib/client';
 import { authOptions } from '@/lib/auth-options';
 import DeleteEntityButton from '@/components/shared/DeleteEntityButton';
-
+import { notFound } from 'next/navigation';
 export const dynamic = 'force-dynamic';
 
 export default async function AccountApiaryHivePage({
@@ -25,7 +25,9 @@ export default async function AccountApiaryHivePage({
     },
   });
 
-  if (!hive) redirect('/apiaries');
+  if (!hive) {
+    notFound();
+  }
   const apiaryId = hive.apiary.id;
   const searchParamsResult = await searchParams;
   const currentPage = parseInt(searchParamsResult?.page ?? '1', 10);
@@ -48,7 +50,7 @@ export default async function AccountApiaryHivePage({
           <p className="page-header__subtitle">
             Bijenstand: {hive.apiary.name}
           </p>
-          
+
           <div className="page-header__meta">
             <div className="page-header__meta-item">
               <span className="page-header__meta-label">Type kast</span>
@@ -60,23 +62,25 @@ export default async function AccountApiaryHivePage({
             </div>
             <div className="page-header__meta-item">
               <span className="page-header__meta-label">Observaties</span>
-              <span className="page-header__meta-value">{totalObservations}</span>
+              <span className="page-header__meta-value">
+                {totalObservations}
+              </span>
             </div>
           </div>
 
           <div className="page-header__actions">
-            <Link href={`/observations/new?hiveId=${hiveId}&hiveName=${hive.name}`}>
-              <button className="btn btn--primary">+ Observatie toevoegen</button>
+            <Link
+              href={`/observations/new?hiveId=${hiveId}&hiveName=${hive.name}`}
+            >
+              <button className="btn btn--primary">
+                + Observatie toevoegen
+              </button>
             </Link>
             <Link href={`/hives/${hive.id}/edit`}>
               <button className="btn btn--secondary">Wijzig kast</button>
             </Link>
             {hive && (
-              <DeleteEntityButton
-                id={hive.id}
-                type="hive"
-                label="Verwijder"
-              />
+              <DeleteEntityButton id={hive.id} type="hive" label="Verwijder" />
             )}
           </div>
         </div>
@@ -85,9 +89,7 @@ export default async function AccountApiaryHivePage({
       <section className="section ">
         <div className="container">
           <div className="section-header">
-            <h2 className="heading-secondary">
-              Observaties
-            </h2>
+            <h2 className="heading-secondary">Observaties</h2>
           </div>
 
           {observations.length > 0 ? (
@@ -100,14 +102,12 @@ export default async function AccountApiaryHivePage({
                     style={{ textDecoration: 'none' }}
                   >
                     <div className="card">
-                      <p className="card__category">
-                        Observatie
-                      </p>
+                      <p className="card__category">Observatie</p>
                       <h3 className="heading-tertiary">
                         {new Date(obs.createdAt).toLocaleDateString('nl-BE', {
                           day: 'numeric',
                           month: 'long',
-                          year: 'numeric'
+                          year: 'numeric',
                         })}
                       </h3>
                       <p className="card__date">
