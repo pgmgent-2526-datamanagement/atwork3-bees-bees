@@ -3,6 +3,7 @@ import { NextResponse } from 'next/server';
 import prisma from '@/lib/client';
 import { authOptions } from '@/lib/auth-options';
 import { NextRequest } from 'next/server';
+import { updateObservationSchema } from '@/lib/validators/schemas';
 
 export async function GET(
   _req: NextRequest,
@@ -39,9 +40,16 @@ export async function PUT(
     }
     const body = await req.json();
     const { beeCount, pollenColor, notes } = body;
-    if (beeCount === undefined || !pollenColor) {
+
+    const validationResult = updateObservationSchema.safeParse({
+      beeCount: parseInt(beeCount),
+      pollenColor,
+      notes,
+    });
+    if (!validationResult.success) {
+      const { fieldErrors } = validationResult.error.flatten();
       return NextResponse.json(
-        { error: 'aantal bijen en pollenkleur zijn verplicht' },
+        { ok: false, errors: fieldErrors },
         { status: 400 }
       );
     }
