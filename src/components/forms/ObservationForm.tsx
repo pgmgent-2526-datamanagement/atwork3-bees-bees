@@ -8,6 +8,7 @@ import {
   newObservationSchema,
   updateObservationSchema,
 } from '@/lib/validators/schemas';
+import { hex } from 'zod';
 
 interface ObservationFormProps {
   hiveId?: string | undefined;
@@ -33,6 +34,54 @@ export default function ObservationForm({
     string[]
   > | null>(null);
   const router = useRouter();
+
+  const pollenColors = [
+    {
+      species: ['hazelaar', 'els', 'peer', 'meidoorn', 'winderlinde', 'heide'],
+      hex: '#d8b769',
+    },
+    {
+      species: [
+        'sneeuwklokje',
+        'paardenbloem',
+        'kers',
+        'brem',
+        'koningskaars',
+        'aster',
+      ],
+      hex: '#e56e59',
+    },
+    {
+      species: [
+        'esdoorn',
+        'aalbes',
+        'stekelbes',
+        'sneeuwbes',
+        'mais',
+        'zomerlinde',
+      ],
+      hex: '#fdfe97',
+    },
+    {
+      species: [
+        'wilgensoorten',
+        'koolzaad',
+        'raapzaad',
+        'zonnebloem',
+        'helenium',
+        'guldenroede',
+      ],
+      hex: '#ffff32',
+    },
+    { species: ['appel', 'tulp', 'meidoorn', 'aardbei'], hex: '#cfbf62' },
+    { species: ['paardenkastanje'], hex: '#a72744' },
+    { species: ['framboos'], hex: '#d6c49c' },
+    { species: ['klaproos'], hex: '#37255d' },
+    { species: ['klaver', 'witte steenklaver', 'akelei'], hex: '#37255d' },
+    { species: ['bernagie', 'braam'], hex: '#e7dfbd' },
+    { species: ['facelia', 'kogeldistel'], hex: '#3e65ee' },
+  ];
+
   useEffect(() => {
     if (!initialObservation) return;
     async function fetchHive() {

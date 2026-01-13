@@ -248,6 +248,33 @@ app/admin/
 }
 ```
 
+### Wijzigingen en toevoegingen observatieformulier
+
+- [ ] Veld 'kast' boven de teller
+- [ ] Vanuit snelle acties/observaties: tekstje 'Welke kast wil je observeren'
+- [ ] Vanuit kast: geen inputveld, gewoon tekst bovenaan
+- [ ] Kleurkiezer voor het stuifmeelveld
+  - [x] Array van kleuren definieren: met objecten: string van bloemen, hexcode
+  - [ ] Color picker maken
+    - [ ] voor laptop (klik) en mobiel (touchscreen) (HTML <input type="color">)
+    - [ ] Grid van klikbare kleurvlakken
+    - [ ] Geselecteerde kleuren worden gemarkeerd (checkmark of border)
+  - [ ] inputveld limiteren tot drie
+  - [ ] pollenColor in DB aanpassen naar array van strings (max 3)
+  - [ ] De geselecteerde kleuren tonen in het observatiekaartje, bijvoorbeeld als gekleurde bolletjes of blokjes.
+  - [ ] Hover-functionaliteit voor desktop
+  - [ ] Voor mobiel een klikbare legende of een infoknop die de plantenlijst per kleur uitlegt.
+- [ ] Uitleg tussen de velden
+- [ ] Bijenteller met de velden versmelten
+- [ ] Enkel binnenkomende bijen
+- [ ] Tijd en datum bovenaan het formulier: 'Deze waarneming wordt gedaan op [uur en dag]'
+- [ ] Stuifmeel in drie maten: weinig, gemiddeld of veel
+- [ ] Bij veel bijen, die niet te tellen zijn: klik op optie 'teveel om te tellen'
+- [ ] Knop: 'Geen stuifmeel waargenomen'
+- [ ] Algemene waarnemingen: mini text
+- [ ] Het weer toevoegen: weerbericht automatisch opnemen + lokale observatie mogelijk maken (regen, bewolkt, halfzon, zon en temperatuur)
+- [ ] Automatische recording bij de notities
+
 ### 🎯 Eindresultaat
 
 Een volledig functionele bijenstandbeheer applicatie met robuuste backend, gebruikersvriendelijke interface en professionele codebase, klaar voor styling door een frontend specialist!
