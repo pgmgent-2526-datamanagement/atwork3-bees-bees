@@ -32,18 +32,23 @@ export default function ObservationsTable({
         <table className="table">
           <thead>
             <tr>
+              <th>Datum</th>
               <th>Aantal bijen</th>
               <th>Stuifmeel kleur</th>
               <th>Notities</th>
               {showHive && <th>Kast</th>}
               {showApiary && <th>Bijenstand</th>}
               {showUser && <th>Eigenaar</th>}
-              <th>Aangemaakt</th>
             </tr>
           </thead>
           <tbody>
             {observations.map(observation => (
               <tr key={observation.id}>
+                <td data-label="Datum">
+                  <Link href={`/observations/${observation.id}`}>
+                    {new Date(observation.createdAt).toLocaleDateString('nl-BE')}
+                  </Link>
+                </td>
                 <td data-label="Aantal bijen">{observation.beeCount}</td>
                 <td data-label="Stuifmeel kleur">
                   <div
@@ -95,9 +100,6 @@ export default function ObservationsTable({
                     </Link>
                   </td>
                 )}
-                <td data-label="Aangemaakt">
-                  {new Date(observation.createdAt).toLocaleDateString('nl-BE')}
-                </td>
               </tr>
             ))}
           </tbody>
