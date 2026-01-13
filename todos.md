@@ -141,6 +141,7 @@ app/admin/
 - [ ] alle lijsten van kasten en observaties in een tabel met paginatie stoppen
 - [ ] ook bij mobiel tabellen niet veranderen in kaartjes (zie gesprek Barend)
 - [ ] de app/not-found.tsx pagina stylen
+- [ ] links in de tabellen gebruiksvriendelijk maken (kleur?, vet?)
 - [ ] de inline styles nog vervangen
 - [ ] skeletons?
 
@@ -262,8 +263,8 @@ app/admin/
     - [x] Grid van klikbare kleurvlakken
     - [x] Geselecteerde kleuren worden gemarkeerd (checkmark of border)
   - [x] inputveld limiteren tot drie kleuren
-  - [ ] De geselecteerde kleuren tonen in het observatiekaartje, bijvoorbeeld als gekleurde bolletjes of blokjes.
-  - [ ] Hover-functionaliteit voor desktop
+  - [x] De geselecteerde kleuren tonen in het observatiekaartje, bijvoorbeeld als gekleurde bolletjes of blokjes.
+  - [ ] Hover-functionaliteit voor desktop?
   - [ ] Voor mobiel een klikbare legende of een infoknop die de plantenlijst per kleur uitlegt.
 - [ ] Uitleg tussen de velden
 - [ ] Bijenteller met de velden versmelten

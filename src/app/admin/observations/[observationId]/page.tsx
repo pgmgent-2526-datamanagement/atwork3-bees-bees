@@ -359,20 +359,15 @@ export default async function Observation({
                     >
                       Kast
                     </p>
-                    <Link
-                      href={`/hives/${observation.hive.id}`}
+                    <p
                       style={{
                         fontFamily: 'var(--font-display)',
                         fontSize: '1.125rem',
                         color: 'var(--color-text)',
-                        textDecoration: 'underline',
-                        textDecorationColor: 'rgba(0, 0, 0, 0.2)',
-                        textUnderlineOffset: '4px',
-                        transition: 'text-decoration-color 0.3s',
                       }}
                     >
                       {observation.hive.name}
-                    </Link>
+                    </p>
                   </div>
                   <div>
                     <p
@@ -387,20 +382,15 @@ export default async function Observation({
                     >
                       Bijenstand
                     </p>
-                    <Link
-                      href={`/apiaries/${observation.hive.apiary.id}`}
+                    <p
                       style={{
                         fontFamily: 'var(--font-display)',
                         fontSize: '1.125rem',
                         color: 'var(--color-text)',
-                        textDecoration: 'underline',
-                        textDecorationColor: 'rgba(0, 0, 0, 0.2)',
-                        textUnderlineOffset: '4px',
-                        transition: 'text-decoration-color 0.3s',
                       }}
                     >
                       {observation.hive.apiary.name}
-                    </Link>
+                    </p>
                   </div>
                 </div>
               </div>
