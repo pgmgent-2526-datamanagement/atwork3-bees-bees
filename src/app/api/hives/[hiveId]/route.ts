@@ -3,6 +3,7 @@ import { NextResponse } from 'next/server';
 import prisma from '@/lib/client';
 import { authOptions } from '@/lib/auth-options';
 import { NextRequest } from 'next/server';
+import { hiveSchema } from '@/lib/validators/schemas';
 
 export async function GET(
   _req: NextRequest,
@@ -39,9 +40,17 @@ export async function PUT(
     }
     const body = await req.json();
     const { name, type, colonyType, apiaryId } = body;
-    if (type === undefined || colonyType === undefined) {
+    const validationResult = hiveSchema.safeParse({
+      type,
+      name,
+      colonyType,
+      apiaryId: parseInt(apiaryId),
+    });
+    if (!validationResult.success) {
+      const { fieldErrors } = validationResult.error.flatten();
+      // after flatten: fieldErrors has type Record<string, string[]>
       return NextResponse.json(
-        { error: 'Type en Kolonietype zijn verplicht' },
+        { ok: false, errors: fieldErrors },
         { status: 400 }
       );
     }

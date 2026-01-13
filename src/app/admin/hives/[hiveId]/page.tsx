@@ -38,7 +38,9 @@ export default async function AdminHiveDetailPage({
     },
   });
 
-  if (!hive) notFound();
+  if (!hive) {
+    notFound();
+  }
 
   return (
     <>
@@ -49,7 +51,10 @@ export default async function AdminHiveDetailPage({
             Type: {hive.type} | Volk: {hive.colonyType}
           </p>
           <p className="page-header__subtitle">
-            Bijenstand: <Link href={`/admin/apiaries/${hive.apiary.id}`}>{hive.apiary.name}</Link>
+            Bijenstand:{' '}
+            <Link href={`/admin/apiaries/${hive.apiary.id}`}>
+              {hive.apiary.name}
+            </Link>
           </p>
         </div>
       </section>
@@ -62,7 +67,7 @@ export default async function AdminHiveDetailPage({
               <button className="btn btn--secondary">← Terug</button>
             </Link>
           </div>
-          
+
           <ObservationsTable
             observations={hive.observations}
             showUser={false}

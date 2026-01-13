@@ -1,9 +1,9 @@
-"use client";
-import type { RegisterResult } from "@/app/actions/register";
-import { FormEvent, useState } from "react";
-import { useRouter } from "next/navigation";
-import { registerSchema } from "@/lib/validators/schemas";
-import Button from "@/components/magazine/Button";
+'use client';
+import type { RegisterResult } from '@/app/actions/register';
+import { FormEvent, useState } from 'react';
+import { useRouter } from 'next/navigation';
+import { registerSchema } from '@/lib/validators/schemas';
+import Button from '@/components/magazine/Button';
 
 type FormProps = {
   createItem: (formData: Record<string, unknown>) => Promise<RegisterResult>;
@@ -40,16 +40,16 @@ export function RegisterForm({ createItem }: FormProps) {
     try {
       const res = await createItem(rawFormData);
       if (!res.ok) {
-        console.log("Registration errors:", res.errors);
+        console.log('Registration errors:', res.errors);
         setErrors(res.errors);
         setLoading(false);
         return;
       }
       // success: redirect to login
-      router.push("/auth/login");
+      router.push('/auth/login');
     } catch (err) {
       console.error(err);
-      setErrors({ form: ["Er is iets misgegaan. Probeer later opnieuw."] });
+      setErrors({ form: ['Er is iets misgegaan. Probeer later opnieuw.'] });
       setLoading(false);
     }
   }
@@ -74,9 +74,9 @@ export function RegisterForm({ createItem }: FormProps) {
           name="name"
           className="form__input"
           placeholder="Voornaam Achternaam"
-          onChange={(e) => {
+          onChange={e => {
             if (errors?.name) {
-              setErrors((prev) => {
+              setErrors(prev => {
                 if (!prev) return null;
                 const { name, ...rest } = prev;
                 return Object.keys(rest).length ? rest : null;
@@ -103,9 +103,9 @@ export function RegisterForm({ createItem }: FormProps) {
           name="email"
           className="form__input"
           placeholder="uw.naam@voorbeeld.be"
-          onChange={(e) => {
+          onChange={e => {
             if (errors?.email) {
-              setErrors((prev) => {
+              setErrors(prev => {
                 if (!prev) return null;
                 const { email, ...rest } = prev;
                 return Object.keys(rest).length ? rest : null;
@@ -132,9 +132,9 @@ export function RegisterForm({ createItem }: FormProps) {
           name="password"
           className="form__input"
           placeholder="Minimaal 8 tekens"
-          onChange={(e) => {
+          onChange={e => {
             if (errors?.password) {
-              setErrors((prev) => {
+              setErrors(prev => {
                 if (!prev) return null;
                 const { password, ...rest } = prev;
                 return Object.keys(rest).length ? rest : null;
@@ -156,9 +156,9 @@ export function RegisterForm({ createItem }: FormProps) {
         variant="primary"
         size="lg"
         disabled={loading}
-        style={{ width: "100%" }}
+        style={{ width: '100%' }}
       >
-        {loading ? "Account aanmaken..." : "Account aanmaken"}
+        {loading ? 'Account aanmaken...' : 'Account aanmaken'}
       </Button>
     </form>
   );
