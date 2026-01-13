@@ -309,8 +309,8 @@ export default function ObservationForm({
           />
           {fieldErrors?.pollenColor && (
             <div className="form-error">
-              {fieldErrors.pollenColor.map((error, idx) => (
-                <p key={idx}>{error}</p>
+              {fieldErrors.pollenColor.map((error, i) => (
+                <p key={i}>{error}</p>
               ))}
             </div>
           )}

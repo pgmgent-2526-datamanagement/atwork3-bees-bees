@@ -310,14 +310,31 @@ export default async function Observation({
                     >
                       Stuifmeelkleur
                     </p>
-                    <p
+                    <div
                       style={{
-                        fontFamily: 'var(--font-display)',
-                        fontSize: '1.125rem',
+                        display: 'flex',
+                        gap: 'var(--space-3)',
+                        alignItems: 'center',
+                        flexWrap: 'wrap',
                       }}
                     >
-                      {observation.pollenColor}
-                    </p>
+                      {observation.pollenColor
+                        .split(', ')
+                        .map((color, index) => (
+                          <div
+                            key={index}
+                            style={{
+                              width: '24px',
+                              height: '24px',
+                              borderRadius: '50%',
+                              backgroundColor: color,
+                              border: '2px solid rgba(0, 0, 0, 0.1)',
+                              boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
+                            }}
+                            title={color}
+                          />
+                        ))}
+                    </div>
                   </div>
                 </div>
               </div>

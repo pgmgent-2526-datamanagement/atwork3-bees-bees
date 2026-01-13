@@ -140,6 +140,7 @@ app/admin/
 - [ ] unauthorized page nog text en styling geven
 - [ ] ook bij mobiel tabellen niet veranderen in kaartjes (zie gesprek Barend)
 - [ ] de app/not-found.tsx pagina stylen
+- [ ] de inline styles nog vervangen
 - [ ] skeletons?
 
 ### 6. Openbare Pagina's
