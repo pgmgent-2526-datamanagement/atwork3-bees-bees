@@ -26,7 +26,7 @@ export default async function Observation({
   if (!observation) {
     notFound();
   }
-  if (observation.hive.apiary.userId !== session?.user.id) {
+  if (session?.user.role !== 'ADMIN' && session?.user.role !== 'SUPERADMIN') {
     redirect('/unauthorized');
   }
 
@@ -49,26 +49,6 @@ export default async function Observation({
                 {observation.hive.name} • {observation.hive.apiary.name} •{' '}
                 {new Date(observation.createdAt).toLocaleDateString('nl-BE')}
               </p>
-            </div>
-            <div
-              style={{
-                display: 'flex',
-                gap: 'var(--space-3)',
-                flexWrap: 'wrap',
-              }}
-            >
-              <Link href={`/observations/${observationId}/edit`}>
-                <button className="btn btn--secondary">
-                  Wijzig observatie
-                </button>
-              </Link>
-              {observation && (
-                <DeleteEntityButton
-                  id={observation.id}
-                  type="observation"
-                  label="Verwijder"
-                />
-              )}
             </div>
           </div>
         </div>

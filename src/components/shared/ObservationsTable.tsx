@@ -26,6 +26,13 @@ export default function ObservationsTable({
   currentPage,
   totalPages,
 }: ObservationsTableProps) {
+  const getObservationLink = (id: number) => {
+    if (currentPath?.includes('/admin')) {
+      return `/admin/observations/${id}`;
+    }
+    return `/observations/${id}`;
+  };
+
   return (
     <>
       <div className="table-wrapper">
@@ -45,8 +52,10 @@ export default function ObservationsTable({
             {observations.map(observation => (
               <tr key={observation.id}>
                 <td data-label="Datum">
-                  <Link href={`/observations/${observation.id}`}>
-                    {new Date(observation.createdAt).toLocaleDateString('nl-BE')}
+                  <Link href={getObservationLink(observation.id)}>
+                    {new Date(observation.createdAt).toLocaleDateString(
+                      'nl-BE'
+                    )}
                   </Link>
                 </td>
                 <td data-label="Aantal bijen">{observation.beeCount}</td>
