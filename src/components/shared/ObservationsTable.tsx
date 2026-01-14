@@ -1,6 +1,8 @@
 import { Observation, Hive, Apiary, User } from '@prisma/client';
 import Link from 'next/link';
 
+import { pollenColors } from '@/lib/pollenColors';
+
 interface ObservationsTableProps {
   observations: Array<
     Observation & {
@@ -67,20 +69,25 @@ export default function ObservationsTable({
                       alignItems: 'center',
                     }}
                   >
-                    {observation.pollenColor.split(', ').map((color, index) => (
-                      <div
-                        key={index}
-                        style={{
-                          width: '16px',
-                          height: '16px',
-                          borderRadius: '50%',
-                          backgroundColor: color,
-                          border: '1px solid rgba(0, 0, 0, 0.2)',
-                          flexShrink: 0,
-                        }}
-                        title={color}
-                      />
-                    ))}
+                    {observation.pollenColor.split(', ').map((color, index) => {
+                      const colorData = pollenColors.find(c => c.hex === color);
+                      const plantNames =
+                        colorData?.species.join(', ') || 'Onbekend';
+                      return (
+                        <div
+                          key={index}
+                          style={{
+                            width: '16px',
+                            height: '16px',
+                            borderRadius: '50%',
+                            backgroundColor: color,
+                            border: '1px solid rgba(0, 0, 0, 0.2)',
+                            flexShrink: 0,
+                          }}
+                          title={`Mogelijke planten: ${plantNames}`}
+                        />
+                      );
+                    })}
                   </div>
                 </td>
                 <td data-label="Notities">{observation.notes || '-'}</td>

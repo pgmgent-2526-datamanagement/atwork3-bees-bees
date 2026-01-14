@@ -341,7 +341,7 @@ export default async function Observation({
                                 border: '2px solid rgba(0, 0, 0, 0.1)',
                                 boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
                               }}
-                              title={`Kleur: ${color}\nMogelijke planten: ${plantNames}`}
+                              title={`Mogelijke planten: ${plantNames}`}
                             />
                           );
                         })}

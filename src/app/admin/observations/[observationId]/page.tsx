@@ -2,8 +2,6 @@ import prisma from '@/lib/client';
 import { getServerSession } from 'next-auth';
 import { authOptions } from '@/lib/auth-options';
 import { redirect } from 'next/navigation';
-import DeleteEntityButton from '@/components/shared/DeleteEntityButton';
-import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import PollenColorLegend from '@/components/shared/PollenColorLegend';
 import { pollenColors } from '@/lib/pollenColors';
@@ -47,7 +45,7 @@ export default async function Observation({
             }}
           >
             <div style={{ flex: '1', minWidth: '300px' }}>
-              <h1 className="heading-primary">Observatie</h1>
+              <h1 className="heading-primary">Waarneming</h1>
               <p className="page-header__subtitle">
                 {observation.hive.name} • {observation.hive.apiary.name} •{' '}
                 {new Date(observation.createdAt).toLocaleDateString('nl-BE')}
@@ -80,7 +78,7 @@ export default async function Observation({
                   borderBottom: '1px solid rgba(0, 0, 0, 0.06)',
                 }}
               >
-                Observatie gegevens
+                Details
               </h2>
 
               <div
@@ -318,7 +316,7 @@ export default async function Observation({
                                 border: '2px solid rgba(0, 0, 0, 0.1)',
                                 boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
                               }}
-                              title={`Kleur: ${color}\nMogelijke planten: ${plantNames}`}
+                              title={`Mogelijke planten: ${plantNames}`}
                             />
                           );
                         })}
