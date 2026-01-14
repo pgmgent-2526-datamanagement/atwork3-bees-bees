@@ -5,6 +5,7 @@ import { redirect } from 'next/navigation';
 import DeleteEntityButton from '@/components/shared/DeleteEntityButton';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
+import { formatBeeCount } from '@/lib/utils/formatBeeCount';
 import PollenColorLegend from '@/components/shared/PollenColorLegend';
 import { pollenColors } from '@/lib/pollenColors';
 
@@ -65,7 +66,7 @@ export default async function Observation({
             >
               <Link href={`/observations/${observationId}/edit`}>
                 <button className="btn btn--secondary">
-                  Wijzig observatie
+                  Wijzig waarneming
                 </button>
               </Link>
               {observation && (
@@ -258,7 +259,7 @@ export default async function Observation({
                         lineHeight: '1',
                       }}
                     >
-                      {observation.beeCount.toLocaleString('nl-BE')}
+                      {formatBeeCount(observation.beeCount)}
                     </p>
                   </div>
                 </div>

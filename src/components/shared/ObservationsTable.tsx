@@ -1,5 +1,6 @@
 import { Observation, Hive, Apiary, User } from '@prisma/client';
 import Link from 'next/link';
+import { formatBeeCount } from '@/lib/utils/formatBeeCount';
 
 import { pollenColors } from '@/lib/pollenColors';
 
@@ -60,7 +61,7 @@ export default function ObservationsTable({
                     )}
                   </Link>
                 </td>
-                <td data-label="Aantal bijen">{observation.beeCount}</td>
+                <td data-label="Aantal bijen">{formatBeeCount(observation.beeCount)}</td>
                 <td data-label="Stuifmeel kleur">
                   <div
                     style={{

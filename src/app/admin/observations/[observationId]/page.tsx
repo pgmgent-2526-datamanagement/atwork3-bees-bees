@@ -3,6 +3,7 @@ import { getServerSession } from 'next-auth';
 import { authOptions } from '@/lib/auth-options';
 import { redirect } from 'next/navigation';
 import { notFound } from 'next/navigation';
+import { formatBeeCount } from '@/lib/utils/formatBeeCount';
 import PollenColorLegend from '@/components/shared/PollenColorLegend';
 import { pollenColors } from '@/lib/pollenColors';
 
@@ -233,7 +234,7 @@ export default async function Observation({
                         lineHeight: '1',
                       }}
                     >
-                      {observation.beeCount.toLocaleString('nl-BE')}
+                      {formatBeeCount(observation.beeCount)}
                     </p>
                   </div>
                 </div>

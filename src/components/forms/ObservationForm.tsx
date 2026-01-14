@@ -21,6 +21,7 @@ export default function ObservationForm({
   initialObservation,
 }: ObservationFormProps) {
   const [beeCount, setBeeCount] = useState('');
+  const [tooManyBees, setTooManyBees] = useState(false);
   const [pollenColor, setPollenColor] = useState('');
   const [selectedColors, setSelectedColors] = useState<string[]>([]);
   const [notes, setNotes] = useState('');
@@ -42,7 +43,13 @@ export default function ObservationForm({
       const res = await fetch(`/api/observations/${initialObservation}`);
       if (res.ok) {
         const data = await res.json();
-        setBeeCount(data.beeCount.toString());
+        if (data.beeCount === -1) {
+          setBeeCount('');
+          setTooManyBees(true);
+        } else {
+          setBeeCount(data.beeCount.toString());
+          setTooManyBees(false);
+        }
         setPollenColor(data.pollenColor);
         setNotes(data.notes || '');
       } else {
@@ -125,8 +132,8 @@ export default function ObservationForm({
     }
 
     // Check required fields
-    if (!beeCount || parseInt(beeCount) === 0) {
-      setError('Voer een aantal bijen in');
+    if (!tooManyBees && (!beeCount || parseInt(beeCount) === 0)) {
+      setError('Voer een aantal bijen in of selecteer "Te veel om te tellen"');
       setLoading(false);
       return;
     }
@@ -138,7 +145,7 @@ export default function ObservationForm({
     }
 
     const observationData = {
-      beeCount: parseInt(beeCount),
+      beeCount: tooManyBees ? -1 : parseInt(beeCount),
       pollenColor,
       notes: notes || '',
       ...(!initialObservation && { hiveId: parseInt(finalHiveId) }),
@@ -245,6 +252,7 @@ export default function ObservationForm({
               <button
                 type="button"
                 className="bee-counter__button bee-counter__button--mobile-only"
+                disabled={tooManyBees}
                 onClick={e => {
                   e.preventDefault();
                   e.stopPropagation();
@@ -262,6 +270,7 @@ export default function ObservationForm({
               <button
                 type="button"
                 className="bee-counter__button bee-counter__button--mobile-only"
+                disabled={tooManyBees}
                 onClick={e => {
                   e.preventDefault();
                   e.stopPropagation();
@@ -278,6 +287,7 @@ export default function ObservationForm({
               type="number"
               id="beeCount"
               value={beeCount}
+              disabled={tooManyBees}
               onChange={e => {
                 const value = e.target.value;
                 // Only allow numbers (and empty string for clearing)
@@ -315,11 +325,25 @@ export default function ObservationForm({
                 e.preventDefault(); // Block everything else
               }}
               className="form__input bee-counter__input"
-              placeholder="Geschat aantal bijen"
+              placeholder={tooManyBees ? "Te veel om te tellen" : "Geschat aantal bijen"}
               required
               inputMode="numeric"
             />
           </div>
+          <label className="form__checkbox-label">
+            <input
+              type="checkbox"
+              checked={tooManyBees}
+              onChange={(e) => {
+                setTooManyBees(e.target.checked);
+                if (e.target.checked) {
+                  setBeeCount(''); // Clear input when too many is selected
+                }
+              }}
+              className="form__checkbox"
+            />
+            Te veel bijen om te tellen
+          </label>
           <p className="form__help">
             Tel de bijen tijdens de 30 seconden observatie
           </p>
