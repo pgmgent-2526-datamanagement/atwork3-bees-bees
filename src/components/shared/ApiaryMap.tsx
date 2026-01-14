@@ -131,7 +131,7 @@ export default function ApiaryMap({ latitude, longitude, showFullscreen = true }
       
       {showFullscreen && (
         <button 
-          className="map-fullscreen-btn"
+          className="btn btn--secondary map-fullscreen-btn"
           onClick={handleFullscreen}
           type="button"
         >

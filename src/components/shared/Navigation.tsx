@@ -169,7 +169,7 @@ export default function Navigation() {
                       onClick={() => setIsDropdownOpen(false)}
                     >
                       <Eye size={16} />
-                      <span>Observaties</span>
+                      <span>Waarnemingen</span>
                     </Link>
                     {(session.user.role === 'ADMIN' ||
                       session.user.role === 'SUPERADMIN') && (
@@ -224,7 +224,7 @@ export default function Navigation() {
                           onClick={() => setIsDropdownOpen(false)}
                         >
                           <Eye size={16} />
-                          <span>Alle observaties</span>
+                          <span>Alle waarnemingen</span>
                         </Link>
                       </>
                     )}

@@ -213,7 +213,7 @@ export default async function AccountApiaryPage({
             </h2>
             {hives.length > 0 && (
               <Link href={`/hives/new?apiaryId=${apiary?.id}&apiaryName=${apiary?.name}`}>
-                <button className="btn btn--primary">
+                <button className="btn btn--secondary">
                   + Nieuwe kast
                 </button>
               </Link>
@@ -243,7 +243,7 @@ export default async function AccountApiaryPage({
                         <p className="card__value">{hive.type}</p>
                         <p className="card__label">Type volk</p>
                         <p className="card__value">{hive.colonyType}</p>
-                        <p className="card__label">Observaties</p>
+                        <p className="card__label">Waarnemingen</p>
                         <p className="card__value">{hive.observations.length}</p>
                       </div>
                     </div>
@@ -292,7 +292,7 @@ export default async function AccountApiaryPage({
                 Voeg uw eerste bijenkast toe aan deze stand
               </p>
               <Link href={`/hives/new?apiaryId=${apiary?.id}&apiaryName=${apiary?.name}`}>
-                <button className="btn btn--primary btn--lg">
+                <button className="btn btn--secondary btn--lg">
                   + Eerste kast toevoegen
                 </button>
               </Link>

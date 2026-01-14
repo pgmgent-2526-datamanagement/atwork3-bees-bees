@@ -7,7 +7,7 @@
   margin-bottom: 1rem;
   border-radius: 8px;
   overflow: hidden;
-  background: rgba(0, 0, 0, 0.05);
+  background: white;
   border: 1px solid rgba(0, 0, 0, 0.08);
 }
 
@@ -49,30 +49,12 @@
   background-color: var(--color-soft-gray) !important;
 }
 
-/* Fullscreen button */
+/* Fullscreen button positioning */
 .map-fullscreen-btn {
   position: absolute;
   top: 10px;
   right: 10px;
   z-index: 10;
-  background: white;
-  border: none;
-  padding: 8px 16px;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 14px;
-  font-weight: 600;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
-  transition: all 0.2s ease;
-}
-
-.map-fullscreen-btn:hover {
-  background: var(--color-soft-gray);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-}
-
-.map-fullscreen-btn:active {
-  transform: scale(0.98);
 }
 
 /* Fullscreen mode adjustments */

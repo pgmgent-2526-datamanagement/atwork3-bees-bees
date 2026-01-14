@@ -1,59 +1,43 @@
 export default function ContactPage() {
   return (
-    <>
-      <section className="section section-first">
-        <div className="container container--narrow">
-          <div className="section-header section-header text-center">
-            <h1 className="heading-primary">Contact</h1>
-            <p className="section-description">
-              Vragen over het platform, suggesties voor verbeteringen of
-              wil je gewoon hallo zeggen?
-            </p>
-          </div>
+    <section className="section section-first" style={{ background: 'white' }}>
+      <div className="container container--narrow">
+        <div className="text-center" style={{ maxWidth: '800px', margin: '0 auto' }}>
+          <h1 className="heading-primary" style={{ marginBottom: 'var(--space-6)' }}>
+            Neem contact met ons op
+          </h1>
+          
+          <p className="text-large" style={{ 
+            marginBottom: 'var(--space-8)',
+            color: 'var(--color-text-light)',
+            lineHeight: '1.8'
+          }}>
+            Heeft u vragen over het platform, suggesties voor verbeteringen of 
+            wilt u graag meer informatie? Wij staan klaar om u te helpen.
+          </p>
 
-          <div className="text-center margin-top-large">
-            <p className="text-large margin-bottom-small">
-              Stuur ons een e-mail en we nemen zo snel mogelijk contact met je op.
+          <div style={{ 
+            padding: 'var(--space-12)',
+            background: 'white',
+            borderRadius: 'var(--border-radius-lg)',
+            marginTop: 'var(--space-12)',
+            border: '1px solid rgba(0, 0, 0, 0.1)'
+          }}>
+            <p className="text-large" style={{ marginBottom: 'var(--space-4)' }}>
+              Stuur ons een e-mail en we nemen zo snel mogelijk contact met u op
             </p>
             <p className="text-extra-large">
-              <a href="mailto:info@bees-platform.be" className="color-accent">
+              <a 
+                href="mailto:info@bees-platform.be" 
+                className="color-accent"
+                style={{ fontWeight: '600' }}
+              >
                 info@bees-platform.be
               </a>
             </p>
           </div>
         </div>
-      </section>
-
-      <section className="section section-alternate">
-        <div className="container">
-          <div className="grid grid-three-columns">
-            <div className="text-center">
-              <h3 className="heading-tertiary">E-mail</h3>
-              <p className="card__description">
-                <a href="mailto:info@bees-platform.be">
-                  info@bees-platform.be
-                </a>
-              </p>
-            </div>
-
-            <div className="text-center">
-              <h3 className="heading-tertiary">Reactietijd</h3>
-              <p className="card__description">
-                Binnen 24 uur op werkdagen
-              </p>
-            </div>
-
-            <div className="text-center">
-              <h3 className="heading-tertiary">Support</h3>
-              <p className="card__description">
-                Maandag t/m vrijdag
-                <br />
-                9:00 - 17:00
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-    </>
+      </div>
+    </section>
   );
 }
