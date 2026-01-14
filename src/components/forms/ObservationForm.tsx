@@ -156,10 +156,23 @@ export default function ObservationForm({
       return;
     }
 
+    // Check required fields
+    if (!beeCount || parseInt(beeCount) === 0) {
+      setError('Voer een aantal bijen in');
+      setLoading(false);
+      return;
+    }
+
+    if (selectedColors.length === 0) {
+      setError('Selecteer tenminste één stuifmeelkleur');
+      setLoading(false);
+      return;
+    }
+
     const observationData = {
       beeCount: parseInt(beeCount),
       pollenColor,
-      notes: notes || null,
+      notes: notes || '',
       ...(!initialObservation && { hiveId: parseInt(finalHiveId) }),
     };
 
@@ -328,6 +341,13 @@ export default function ObservationForm({
             placeholder="Extra opmerkingen over de kast..."
             rows={4}
           />
+          {fieldErrors?.notes && (
+            <div className="form-error">
+              {fieldErrors.notes.map((error, i) => (
+                <p key={i}>{error}</p>
+              ))}
+            </div>
+          )}
         </div>
         <div className="form__actions">
           <button

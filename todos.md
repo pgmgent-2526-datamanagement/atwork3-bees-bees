@@ -138,7 +138,7 @@ app/admin/
 - [ ] API aanvragen via waarnemingen
 - [ ] mobiele breakpoints
 - [ ] unauthorized page nog text en styling geven
-- [ ] alle lijsten van kasten en observaties in een tabel met paginatie stoppen
+- [ ] ook alle lijsten van kasten in een tabel met paginatie stoppen?
 - [ ] ook bij mobiel tabellen niet veranderen in kaartjes (zie gesprek Barend)
 - [ ] de app/not-found.tsx pagina stylen
 - [ ] links in de tabellen gebruiksvriendelijk maken (kleur?, vet?)
@@ -258,14 +258,13 @@ app/admin/
 - [ ] Vanuit kast: geen inputveld, gewoon tekst bovenaan
 - [ ] Kleurkiezer voor het stuifmeelveld
   - [x] Array van kleuren definieren: met objecten: string van bloemen, hexcode
-  - [ ] Color picker maken
-    - [ ] voor laptop (klik) en mobiel (touchscreen) (HTML <input type="color">)
+  - [x] Color picker maken
     - [x] Grid van klikbare kleurvlakken
-    - [x] Geselecteerde kleuren worden gemarkeerd (checkmark of border)
+    - [x] Geselecteerde kleuren worden gemarkeerd (checkmark en border)
   - [x] inputveld limiteren tot drie kleuren
   - [x] De geselecteerde kleuren tonen in het observatiekaartje, bijvoorbeeld als gekleurde bolletjes of blokjes.
   - [ ] Hover-functionaliteit voor desktop?
-  - [ ] Voor mobiel een klikbare legende of een infoknop die de plantenlijst per kleur uitlegt.
+  - [ ] Voor mobiel een klikbare legende of een infoknop die de plantenlijst per kleur uitlegt.TODO
 - [ ] Uitleg tussen de velden
 - [ ] Bijenteller met de velden versmelten
 - [ ] Enkel binnenkomende bijen
@@ -276,6 +275,7 @@ app/admin/
 - [ ] Algemene waarnemingen: mini text
 - [ ] Het weer toevoegen: weerbericht automatisch opnemen + lokale observatie mogelijk maken (regen, bewolkt, halfzon, zon en temperatuur)
 - [ ] Automatische recording bij de notities
+- [ ] Alle namen 'observatie(s)' veranderen door waarneming(en)
 
 ### 🎯 Eindresultaat
 

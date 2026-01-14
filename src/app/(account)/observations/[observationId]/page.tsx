@@ -49,6 +49,9 @@ export default async function Observation({
                 {observation.hive.name} • {observation.hive.apiary.name} •{' '}
                 {new Date(observation.createdAt).toLocaleDateString('nl-BE')}
               </p>
+              <a className="back-link" href="/observations">
+                ←
+              </a>
             </div>
             <div
               style={{
