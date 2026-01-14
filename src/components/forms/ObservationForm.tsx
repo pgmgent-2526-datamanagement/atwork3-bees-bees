@@ -76,15 +76,29 @@ export default function ObservationForm({
   }, [selectedColors]);
 
   const handleColorToggle = (hex: string) => {
+    const isNoPollenOption = pollenColors.find(
+      color => color.hex === hex
+    )?.isNoPollenOption;
+
     setSelectedColors(prev => {
-      if (prev.includes(hex)) {
-        // Remove color
-        return prev.filter(color => color !== hex);
-      } else if (prev.length < 3) {
-        // Add color
-        return [...prev, hex];
+      if (isNoPollenOption) {
+        // If selecting "no pollen", clear all other selections
+        return prev.includes(hex) ? [] : [hex];
+      } else {
+        // If selecting a regular color, remove "no pollen" if present and handle normally
+        const filteredPrev = prev.filter(
+          color => !pollenColors.find(c => c.hex === color)?.isNoPollenOption
+        );
+
+        if (filteredPrev.includes(hex)) {
+          // Remove color
+          return filteredPrev.filter(color => color !== hex);
+        } else if (filteredPrev.length < 3) {
+          // Add color
+          return [...filteredPrev, hex];
+        }
+        return filteredPrev;
       }
-      return prev;
     });
 
     // Clear field errors if any
@@ -314,7 +328,8 @@ export default function ObservationForm({
           <h3 className="form__section-title">Observatie - Stuifmeelkleur</h3>
           <p className="form__instructions">
             Start opnieuw de timer en observeer 30 seconden de stuifmeelkleuren
-            op de bijen. Selecteer maximaal 3 verschillende kleuren.
+            op de bijen. Selecteer maximaal 3 verschillende kleuren, of kies
+            'Geen' indien geen stuifmeel zichtbaar is.
           </p>
           <Timer />
           <label className="form__label">Stuifmeelkleur *</label>

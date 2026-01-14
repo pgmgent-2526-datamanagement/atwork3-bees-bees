@@ -1,6 +1,7 @@
 interface PollenColor {
   species: string[];
   hex: string;
+  isNoPollenOption?: boolean;
 }
 
 export const pollenColors: PollenColor[] = [
@@ -48,4 +49,9 @@ export const pollenColors: PollenColor[] = [
   { species: ['klaver', 'witte steenklaver', 'akelei'], hex: '#bb832b' },
   { species: ['bernagie', 'braam'], hex: '#e7dfbd' },
   { species: ['facelia', 'kogeldistel'], hex: '#3e65ee' },
+  {
+    species: ['geen stuifmeel zichtbaar'],
+    hex: '#6b7280',
+    isNoPollenOption: true,
+  },
 ];

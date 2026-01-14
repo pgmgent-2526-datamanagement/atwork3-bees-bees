@@ -47,7 +47,7 @@ export default async function Observation({
             }}
           >
             <div style={{ flex: '1', minWidth: '300px' }}>
-              <h1 className="heading-primary">Observatie</h1>
+              <h1 className="heading-primary">Waarneming</h1>
               <p className="page-header__subtitle">
                 {observation.hive.name} • {observation.hive.apiary.name} •{' '}
                 {new Date(observation.createdAt).toLocaleDateString('nl-BE')}
