@@ -72,7 +72,7 @@ export default function Navigation() {
               alt="Logo"
               className="nav__logo-image"
             />
-            <span className="nav__logo-text">Biodynamische Imkers</span>
+            <span className="nav__logo-text">Biodynamische Imkers Vlaanderen</span>
           </Link>
 
           <button

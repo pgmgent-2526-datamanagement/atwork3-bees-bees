@@ -173,9 +173,6 @@ export default function PlatformPage() {
               <a href="/auth/register" className="btn btn--primary">
                 Gratis account aanmaken
               </a>
-              <a href="/contact" className="btn btn--secondary">
-                Eerst contact opnemen
-              </a>
             </div>
           </div>
         </div>
