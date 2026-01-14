@@ -5,10 +5,10 @@
 
 .color-picker__grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(48px, 1fr));
+  grid-template-columns: repeat(12, 1fr);
   gap: 12px;
   margin-bottom: 16px;
-  max-width: 600px;
+  max-width: 100%;
 }
 
 .color-picker__color {
@@ -109,7 +109,7 @@
     border-width: 2px;
     border-color: var(--color-gray-800);
   }
-  
+
   .color-picker__color--selected {
     border-width: 4px;
   }
