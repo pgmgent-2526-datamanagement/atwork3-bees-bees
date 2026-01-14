@@ -53,6 +53,13 @@
   color: white;
 }
 
+/* Hide +/- buttons on larger screens (tablets and up) */
+@media (min-width: 768px) {
+  .bee-counter__button--mobile-only {
+    display: none;
+  }
+}
+
 @media (max-width: 640px) {
   .bee-counter__buttons {
     grid-template-columns: repeat(2, 1fr);

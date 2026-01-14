@@ -165,7 +165,6 @@ export default function ObservationForm({
 
   return (
     <>
-      <Timer />
       <form onSubmit={handleSubmit} className="form">
         {error && (
           <div className="form-error form-error--general">
@@ -218,13 +217,18 @@ export default function ObservationForm({
           </div>
         )}
         <div className="form__group">
+          <h3 className="form__section-title">Observatie</h3>
+          <p className="form__instructions">
+            Neem 30 seconden de tijd om de bijen te observeren en tel het aantal bijen dat je ziet.
+          </p>
+          <Timer />
           <label htmlFor="beeCount" className="form__label">
             Aantal bijen *
           </label>
           <div className="bee-counter">
             <button
               type="button"
-              className="bee-counter__button"
+              className="bee-counter__button bee-counter__button--mobile-only"
               onClick={e => {
                 e.preventDefault();
                 e.stopPropagation();
@@ -275,7 +279,7 @@ export default function ObservationForm({
             />
             <button
               type="button"
-              className="bee-counter__button"
+              className="bee-counter__button bee-counter__button--mobile-only"
               onClick={e => {
                 e.preventDefault();
                 e.stopPropagation();
@@ -293,6 +297,9 @@ export default function ObservationForm({
           </p>
         </div>
         <div className="form__group">
+          <p className="form__instructions">
+            Selecteer de kleuren van het stuifmeel dat je op de bijen ziet (maximaal 3 kleuren).
+          </p>
           <label className="form__label">Stuifmeelkleur *</label>
           <ColorPicker
             pollenColors={pollenColors}
