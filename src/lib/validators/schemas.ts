@@ -55,6 +55,10 @@ export const newObservationSchema = z.object({
     message: 'Pollen amount is vereist.',
   }),
   pollenColor: z.string().min(1, 'Pollen color is vereist.'),
+  weatherCondition: z.enum(['SUNNY', 'PARTLY_CLOUDY', 'CLOUDY', 'RAINY'], {
+    message: 'Weersomstandigheden zijn vereist.',
+  }),
+  temperature: z.number().nullable().optional(),
   notes: z.string().optional(),
 });
 export const updateObservationSchema = z.object({
@@ -66,5 +70,9 @@ export const updateObservationSchema = z.object({
     message: 'Pollen amount is vereist.',
   }),
   pollenColor: z.string().min(1, 'Pollen color is vereist.'),
+  weatherCondition: z.enum(['SUNNY', 'PARTLY_CLOUDY', 'CLOUDY', 'RAINY'], {
+    message: 'Weersomstandigheden zijn vereist.',
+  }),
+  temperature: z.number().nullable().optional(),
   notes: z.string().optional(),
 });
