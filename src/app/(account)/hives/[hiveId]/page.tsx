@@ -71,7 +71,7 @@ export default async function AccountApiaryHivePage({
                 </button>
               </Link>
               <Link href={`/hives/${hive.id}/edit`}>
-                <button className="btn btn--secondary">Wijzig kast</button>
+                <button className="btn btn--secondary">Bewerk</button>
               </Link>
               {hive && (
                 <DeleteEntityButton id={hive.id} type="hive" label="Verwijder" />

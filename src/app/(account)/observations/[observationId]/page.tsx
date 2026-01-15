@@ -66,7 +66,7 @@ export default async function Observation({
             >
               <Link href={`/observations/${observationId}/edit`}>
                 <button className="btn btn--secondary">
-                  Wijzig waarneming
+                  Bewerk
                 </button>
               </Link>
               {observation && (

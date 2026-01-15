@@ -70,7 +70,7 @@ export default async function AccountApiaryPage({
             <div className="page-header__actions">
               <Link href={`/apiaries/${apiary?.id}/edit`}>
                 <button className="btn btn--secondary">
-                  Wijzig bijenstand
+                  Bewerk
                 </button>
               </Link>
               {apiary && (
