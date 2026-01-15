@@ -129,12 +129,12 @@ app/admin/
 - [x] **Navigatiecomponent** (`src/components/Navbar.tsx`): Rolgebaseerde links
 - [x] **Globale stijlen** (`src/app/globals.css`): Alleen écht globale CSS
 - [x] **Configuratie** (`next.config.ts`): Lettertype optimalisatie
-- [ ] scrollbare nav
+- [x] scrollbare nav
 - [ ] fotos comprimeren
 - [ ] alt teksten
 - [ ] responsief design
 - [ ] website consistent
-- [ ] leaflet kaart
+- [ ] kaart
 - [ ] API aanvragen via waarnemingen
 - [ ] mobiele breakpoints
 - [ ] unauthorized page nog text en styling geven
@@ -143,7 +143,7 @@ app/admin/
 - [ ] de app/not-found.tsx pagina stylen
 - [ ] links in de tabellen gebruiksvriendelijk maken (kleur?, vet?)
 - [ ] de inline styles nog vervangen
-- [ ] skeletons?
+
 
 ### 6. Openbare Pagina's
 
@@ -264,12 +264,12 @@ app/admin/
   - [x] inputveld limiteren tot drie kleuren
   - [x] De geselecteerde kleuren tonen in het observatiekaartje, bijvoorbeeld als gekleurde bolletjes of blokjes.
   - [x] Hover-functionaliteit
-  - [x] Klikbare legende of een infoknop die de plantenlijst per kleur uitlegt.TODO
+  - [x] Klikbare legende of een infoknop die de plantenlijst per kleur uitlegt.
 - [ ] Uitleg tussen de velden in stappen!Layout moet beter!
 - [ ] Bijenteller met de velden versmelten
 - [ ] Enkel binnenkomende bijen
-- [ ] Tijd en datum bovenaan het formulier: 'Deze waarneming wordt gedaan op [uur en dag]'
-- [ ] Stuifmeel in drie maten: weinig, gemiddeld of veel
+- [ ] Tijd en datum bovenaan het formulier: 'Deze waarneming wordt gedaan op [uur en dag]'TODO
+- [ ] Stuifmeel in drie maten: weinig, gemiddeld of veel TODO
 - [x] Bij veel bijen, die niet te tellen zijn: klik op optie 'teveel om te tellen'
 - [x] Knop: 'Geen stuifmeel waargenomen'
 - [ ] Algemene waarnemingen: mini text
@@ -277,6 +277,7 @@ app/admin/
 - [ ] Automatische recording bij de notities
 - [ ] Alle namen 'observatie(s)' veranderen door waarneming(en)
 - [ ] Export functie van data! CSV?
+- [ ] BUG indien geen waarnemingen op http://localhost:3000/admin/hives/34?returnUrl=%2Fadmin%2Fusers%2Fcmij5yzbh0000uks06vvfkvfq%2Fhives : ternary : 'nog geen observaties'
 
 ### 🎯 Eindresultaat
 
