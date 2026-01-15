@@ -12,12 +12,14 @@ export async function POST(request: NextRequest) {
 
   try {
     const body = await request.json();
-    const { hiveId, beeCount, pollenColor, pollenAmount, notes } = body;
+    const { hiveId, beeCount, pollenColor, pollenAmount, weatherCondition, temperature, notes } = body;
     const validationResult = newObservationSchema.safeParse({
       hiveId,
       beeCount,
       pollenAmount,
       pollenColor,
+      weatherCondition,
+      temperature,
       notes,
     });
     if (!validationResult.success) {
@@ -53,6 +55,8 @@ export async function POST(request: NextRequest) {
         beeCount: validationResult.data.beeCount!,
         pollenColor: validationResult.data.pollenColor,
         pollenAmount: validationResult.data.pollenAmount,
+        weatherCondition: validationResult.data.weatherCondition,
+        temperature: validationResult.data.temperature,
         notes: validationResult.data.notes || null,
       },
     });
