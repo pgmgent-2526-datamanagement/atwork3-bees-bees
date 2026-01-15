@@ -8,7 +8,7 @@ import ObservationsFilter from '@/components/shared/ObservationsFilter';
 export const dynamic = 'force-dynamic';
 
 export default async function AccountObservationsPage(searchParams: {
-  searchParams?: Promise<{ page?: string }>;
+  searchParams?: Promise<{ page?: string; search?: string; color?: string }>;
 }) {
   const session = await getServerSession(authOptions);
 
@@ -40,26 +40,62 @@ export default async function AccountObservationsPage(searchParams: {
 
   const searchParamsResult = await searchParams.searchParams;
   const currentPage = parseInt(searchParamsResult?.page ?? '1', 10);
+  const search = searchParamsResult?.search ?? '';
+  const colorFilter = searchParamsResult?.color ?? '';
   const observationsPerPage = 5;
-  const totalObservations = await prisma.observation.count({
-    where: {
-      hive: {
-        apiary: {
-          userId: userId,
-        },
+
+  // Build dynamic where clause based on search parameters
+  const baseWhere = {
+    hive: {
+      apiary: {
+        userId: userId,
       },
     },
+  };
+
+  const whereClause: any = { ...baseWhere };
+
+  // Add search filter
+  if (search) {
+    whereClause.OR = [
+      {
+        notes: {
+          contains: search,
+          mode: 'insensitive',
+        },
+      },
+      {
+        hive: {
+          name: {
+            contains: search,
+            mode: 'insensitive',
+          },
+        },
+      },
+    ];
+  }
+
+  // Add color filter
+  if (colorFilter) {
+    whereClause.pollenColor = colorFilter;
+  }
+
+  const totalObservations = await prisma.observation.count({
+    where: whereClause,
   });
   const totalPages = Math.ceil(totalObservations / observationsPerPage);
-  const observations = await prisma.observation.findMany({
-    where: {
-      hive: {
-        apiary: {
-          userId: userId,
-        },
-      },
-    },
 
+  // Get all unique colors for filter dropdown
+  const allColors = await prisma.observation.findMany({
+    where: baseWhere,
+    select: { pollenColor: true },
+    distinct: ['pollenColor'],
+  });
+
+  const observations = await prisma.observation.findMany({
+    where: whereClause,
+    skip: (currentPage - 1) * observationsPerPage,
+    take: observationsPerPage,
     include: {
       hive: {
         select: {
@@ -82,9 +118,19 @@ export default async function AccountObservationsPage(searchParams: {
     <>
       <section className="page-header" data-page="—">
         <div className="container">
-          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: "var(--space-12)" }}>
+          <div
+            style={{
+              display: 'flex',
+              justifyContent: 'space-between',
+              alignItems: 'flex-start',
+              gap: 'var(--space-12)',
+            }}
+          >
             <div>
-              <h1 className="heading-primary">Mijn waarnemingen ({totalObservations} {totalObservations === 1 ? 'waarneming' : 'waarnemingen'})</h1>
+              <h1 className="heading-primary">
+                Mijn waarnemingen ({totalObservations}{' '}
+                {totalObservations === 1 ? 'waarneming' : 'waarnemingen'})
+              </h1>
             </div>
             <div className="page-header__actions">
               <Link href="/observations/new">
@@ -100,17 +146,20 @@ export default async function AccountObservationsPage(searchParams: {
       <section className="section ">
         <div className="container">
           {observations.length > 0 ? (
-        <>
-          <ObservationsFilter
-            observations={observations}
-            showHive={true}
-            showApiary={true}
-            showUser={false}
-            currentPage={currentPage}
-            totalPages={totalPages}
-            currentPath={`/observations`}
-          />
-        </>
+            <>
+              <ObservationsFilter
+                observations={observations}
+                showHive={true}
+                showApiary={true}
+                showUser={false}
+                currentPage={currentPage}
+                totalPages={totalPages}
+                currentPath={`/observations`}
+                search={search}
+                colorFilter={colorFilter}
+                allColors={allColors.map(c => c.pollenColor)}
+              />
+            </>
           ) : null}
         </div>
       </section>

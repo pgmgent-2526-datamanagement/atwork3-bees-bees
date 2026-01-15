@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { useRouter, useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import ObservationsTable from '../shared/ObservationsTable';
 
@@ -32,6 +33,9 @@ export default function ObservationsFilter({
   showHive = true,
   showApiary = true,
   showUser = true,
+  search: initialSearch = '',
+  colorFilter: initialColorFilter = '',
+  allColors = [],
 }: {
   observations: Observation[];
   currentPage: number;
@@ -40,20 +44,41 @@ export default function ObservationsFilter({
   showHive?: boolean;
   showApiary?: boolean;
   showUser?: boolean;
+  search?: string;
+  colorFilter?: string;
+  allColors?: string[];
 }) {
-  const [search, setSearch] = useState('');
-  const [colorFilter, setColorFilter] = useState('');
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const [search, setSearch] = useState(initialSearch);
+  const [colorFilter, setColorFilter] = useState(initialColorFilter);
 
-  const filteredObservations = observations.filter(obs => {
-    const matchesSearch =
-      obs.notes?.toLowerCase().includes(search.toLowerCase()) ||
-      obs.hive?.name.toLowerCase().includes(search.toLowerCase());
-    const matchesColor = !colorFilter || obs.pollenColor === colorFilter;
+  const handleSearchChange = (value: string) => {
+    setSearch(value);
+    const params = new URLSearchParams(searchParams);
+    if (value) {
+      params.set('search', value);
+    } else {
+      params.delete('search');
+    }
+    params.delete('page'); // Reset to page 1 when filtering
+    router.push(`${currentPath}?${params.toString()}`);
+  };
 
-    return matchesSearch && matchesColor;
-  });
+  const handleColorChange = (value: string) => {
+    setColorFilter(value);
+    const params = new URLSearchParams(searchParams);
+    if (value) {
+      params.set('color', value);
+    } else {
+      params.delete('color');
+    }
+    params.delete('page'); // Reset to page 1 when filtering
+    router.push(`${currentPath}?${params.toString()}`);
+  };
 
-  const colors = [...new Set(observations.map(o => o.pollenColor))];
+  // Get all unique colors for the dropdown - use allColors prop
+  const colors = allColors.length > 0 ? allColors : [...new Set(observations.map(o => o.pollenColor))];
 
   return (
     <>
@@ -66,13 +91,13 @@ export default function ObservationsFilter({
             type="text"
             placeholder="Zoek op notities of kast..."
             value={search}
-            onChange={e => setSearch(e.target.value)}
+            onChange={e => handleSearchChange(e.target.value)}
             className="form__input"
           />
 
           <select
             value={colorFilter}
-            onChange={e => setColorFilter(e.target.value)}
+            onChange={e => handleColorChange(e.target.value)}
             className="form__select"
           >
             <option value="">Alle kleuren</option>
@@ -86,7 +111,7 @@ export default function ObservationsFilter({
       </div>
 
       <ObservationsTable
-        observations={filteredObservations as any}
+        observations={observations as any}
         showHive={showHive}
         showApiary={showApiary}
         showUser={showUser}
