@@ -99,87 +99,83 @@ export default async function AccountApiaryPage({
 
       <section className="section section-alternate">
         <div className="container">
-          <h2 className="heading-secondary" style={{ 
-            fontFamily: "var(--font-display)",
-            fontSize: "1.5rem",
-            fontWeight: "500",
-            marginBottom: "var(--space-6)"
-          }}>
-            Locatie & Foerageergebied
-          </h2>
+          <div className="section-header">
+            <h2 className="heading-secondary">
+              Locatie & Foerageergebied
+            </h2>
+          </div>
           
-          <div className="grid grid-two-columns gap-large">
-            {/* Kaart Links */}
-            <div>
+          <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr', gap: 'var(--space-8)' }}>
+            {/* Kaart Links - Groter */}
+            <div style={{ minHeight: '600px' }}>
               <ApiaryMapWrapper
                 latitude={apiary?.latitude!}
                 longitude={apiary?.longitude!}
+                showGbifData={true}
               />
             </div>
 
-            {/* Info Rechts */}
-            <div style={{ display: "flex", flexDirection: "column", gap: "var(--space-6)" }}>
-              <div className="card">
+            {/* Info Rechts - Compacter */}
+            <div style={{ display: "flex", flexDirection: "column", gap: "var(--space-4)" }}>
+              <Link href="/drachtkalender">
+                <button className="btn btn--primary" style={{ width: '100%' }}>
+                  Drachtkalender
+                </button>
+              </Link>
+              
+              <div className="card" style={{ padding: 'var(--space-4)' }}>
                 <h3 style={{ 
                   fontFamily: "var(--font-body)",
-                  fontSize: "1.125rem",
+                  fontSize: "1rem",
                   fontWeight: 600,
-                  marginBottom: "var(--space-4)"
+                  marginBottom: "var(--space-3)"
                 }}>
                   Foerageergebied
                 </h3>
 
-                <div style={{ marginBottom: "var(--space-6)" }}>
-                  <h4 style={{ 
-                    fontSize: "0.875rem",
-                    fontWeight: 600,
-                    marginBottom: "var(--space-2)",
-                    color: "var(--color-text)"
-                  }}>
-               
-                  </h4>
-                  <div style={{ display: "flex", flexDirection: "column", gap: "var(--space-3)" }}>
-                    <div style={{ display: "flex", alignItems: "center", gap: "var(--space-3)" }}>
+                <div style={{ marginBottom: "var(--space-4)" }}>
+                  <div style={{ display: "flex", flexDirection: "column", gap: "var(--space-2)" }}>
+                    <div style={{ display: "flex", alignItems: "center", gap: "var(--space-2)" }}>
                       <div style={{ 
-                        width: "20px", 
+                        width: "16px", 
                         height: "3px", 
                         background: "#FF0000",
                         borderRadius: "2px",
                         flexShrink: 0
                       }}></div>
-                      <span style={{ fontSize: "0.875rem" }}>200m</span>
+                      <span style={{ fontSize: "0.8rem" }}>200m</span>
                     </div>
-                    <div style={{ display: "flex", alignItems: "center", gap: "var(--space-3)" }}>
+                    <div style={{ display: "flex", alignItems: "center", gap: "var(--space-2)" }}>
                       <div style={{ 
-                        width: "20px", 
+                        width: "16px", 
                         height: "3px", 
                         background: "#0000FF",
                         borderRadius: "2px",
                         flexShrink: 0
                       }}></div>
-                      <span style={{ fontSize: "0.875rem" }}>2 km</span>
+                      <span style={{ fontSize: "0.8rem" }}>2 km</span>
                     </div>
-                    <div style={{ display: "flex", alignItems: "center", gap: "var(--space-3)" }}>
+                    <div style={{ display: "flex", alignItems: "center", gap: "var(--space-2)" }}>
                       <div style={{ 
-                        width: "20px", 
+                        width: "16px", 
                         height: "3px", 
                         background: "#800080",
                         borderRadius: "2px",
                         flexShrink: 0
                       }}></div>
-                      <span style={{ fontSize: "0.875rem" }}>7 km</span>
+                      <span style={{ fontSize: "0.8rem" }}>7 km</span>
                     </div>
                   </div>
                 </div>
 
                 <div style={{ 
-                  padding: "var(--space-4)",
+                  padding: "var(--space-3)",
                   background: "rgba(59, 130, 246, 0.1)",
-                  borderRadius: "8px",
+                  borderRadius: "6px",
                   borderLeft: "3px solid #3b82f6"
                 }}>
                   <h4 style={{ 
-                    fontSize: "0.875rem",
+                    fontSize: "1rem",
                     fontWeight: 600,
                     marginBottom: "var(--space-2)",
                     color: "var(--color-text)"
@@ -187,16 +183,15 @@ export default async function AccountApiaryPage({
                     Kaart bedienen
                   </h4>
                   <ul style={{ 
-                    fontSize: "0.875rem",
-                    color: "var(--color-text-light)",
+                    fontSize: "0.9rem",
+                    color: "var(--color-text)",
                     lineHeight: 1.6,
                     margin: 0,
-                    paddingLeft: "var(--space-5)"
+                    paddingLeft: "var(--space-4)"
                   }}>
-                    <li>Gebruik <strong>+ en -</strong> knoppen om te zoomen</li>
-                    <li><strong>Scroll</strong> met muis om in/uit te zoomen</li>
-                    <li><strong>Sleep</strong> met muis om kaart te verplaatsen</li>
-                    <li>Klik op <strong>Fullscreen</strong> voor groter beeld</li>
+                    <li>Gebruik <strong>+/-</strong> om te zoomen</li>
+                    <li><strong>Sleep</strong> om te verplaatsen</li>
+                    <li>Klik op <strong>Fullscreen</strong> voor groter</li>
                   </ul>
                 </div>
               </div>

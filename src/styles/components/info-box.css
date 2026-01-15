@@ -27,3 +27,21 @@
 .info-box__text--emphasis {
   font-weight: 500;
 }
+
+/* Info box variants */
+.info-box--warning {
+  background: rgba(255, 215, 0, 0.05);
+  border-left: 3px solid #FFD700;
+  border-color: rgba(255, 215, 0, 0.2);
+}
+
+.info-box--warning p {
+  margin: 0;
+  color: var(--color-text);
+  line-height: 1.6;
+}
+
+.info-box--warning strong {
+  color: var(--color-text);
+  font-weight: 600;
+}
