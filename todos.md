@@ -256,26 +256,27 @@ app/admin/
 - [ ] Veld 'kast' boven de teller
 - [ ] Vanuit snelle acties/observaties: tekstje 'Welke kast wil je observeren'
 - [ ] Vanuit kast: geen inputveld, gewoon tekst bovenaan
-- [ ] Kleurkiezer voor het stuifmeelveld
+- [x] Kleurkiezer voor het stuifmeelveld
   - [x] Array van kleuren definieren: met objecten: string van bloemen, hexcode
   - [x] Color picker maken
     - [x] Grid van klikbare kleurvlakken
     - [x] Geselecteerde kleuren worden gemarkeerd (checkmark en border)
   - [x] inputveld limiteren tot drie kleuren
   - [x] De geselecteerde kleuren tonen in het observatiekaartje, bijvoorbeeld als gekleurde bolletjes of blokjes.
-  - [ ] Hover-functionaliteit voor desktop?
-  - [ ] Voor mobiel een klikbare legende of een infoknop die de plantenlijst per kleur uitlegt.TODO
-- [ ] Uitleg tussen de velden
+  - [x] Hover-functionaliteit
+  - [x] Klikbare legende of een infoknop die de plantenlijst per kleur uitlegt.TODO
+- [ ] Uitleg tussen de velden in stappen!Layout moet beter!
 - [ ] Bijenteller met de velden versmelten
 - [ ] Enkel binnenkomende bijen
 - [ ] Tijd en datum bovenaan het formulier: 'Deze waarneming wordt gedaan op [uur en dag]'
 - [ ] Stuifmeel in drie maten: weinig, gemiddeld of veel
-- [ ] Bij veel bijen, die niet te tellen zijn: klik op optie 'teveel om te tellen'
-- [ ] Knop: 'Geen stuifmeel waargenomen'
+- [x] Bij veel bijen, die niet te tellen zijn: klik op optie 'teveel om te tellen'
+- [x] Knop: 'Geen stuifmeel waargenomen'
 - [ ] Algemene waarnemingen: mini text
 - [ ] Het weer toevoegen: weerbericht automatisch opnemen + lokale observatie mogelijk maken (regen, bewolkt, halfzon, zon en temperatuur)
 - [ ] Automatische recording bij de notities
 - [ ] Alle namen 'observatie(s)' veranderen door waarneming(en)
+- [ ] Export functie van data! CSV?
 
 ### 🎯 Eindresultaat
 
