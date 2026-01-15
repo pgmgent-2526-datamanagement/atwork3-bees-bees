@@ -2,6 +2,7 @@ import { Observation, Hive, Apiary, User } from '@prisma/client';
 import Link from 'next/link';
 import { formatBeeCount } from '@/lib/utils/formatBeeCount';
 import { formatPollenAmount } from '@/lib/utils/formatPollenAmount';
+import { formatWeatherCondition, formatTemperature } from '@/lib/utils/formatWeather';
 
 import { pollenColors } from '@/lib/pollenColors';
 
@@ -47,6 +48,8 @@ export default function ObservationsTable({
               <th>Aantal bijen</th>
               <th>Stuifmeel kleur</th>
               <th>Stuifmeel hoeveelheid</th>
+              <th>Weer</th>
+              <th>Temperatuur</th>
               <th>Notities</th>
               {showHive && <th>Kast</th>}
               {showApiary && <th>Bijenstand</th>}
@@ -97,6 +100,12 @@ export default function ObservationsTable({
                 </td>
                 <td data-label="Stuifmeel hoeveelheid">
                   {formatPollenAmount(observation.pollenAmount)}
+                </td>
+                <td data-label="Weer">
+                  {formatWeatherCondition(observation.weatherCondition)}
+                </td>
+                <td data-label="Temperatuur">
+                  {formatTemperature(observation.temperature)}
                 </td>
                 <td data-label="Notities">{observation.notes || '-'}</td>
                 {showHive && observation.hive && (
