@@ -86,6 +86,8 @@ export default async function AccountObservationsPage(searchParams: {
             Mijn waarnemingen ({totalObservations})
           </h1>
           {/* <p className="page-header__subtitle">
+          <h1 className="heading-primary">Mijn waarnemingen</h1>
+          <p className="page-header__subtitle">
             {totalObservations}{' '}
             {totalObservations === 1 ? 'waarneming' : 'waarnemingen'}
           </p> */}
@@ -95,15 +97,17 @@ export default async function AccountObservationsPage(searchParams: {
       <section className="section ">
         <div className="container">
           {observations.length > 0 ? (
-            // <>
-            //   <div className="section-header">
-            //     <h2 className="heading-secondary">Overzicht</h2>
-            //     <Link href="/observations/new">
-            //       <button className="btn btn--primary">
-            //         + Nieuwe observatie
-            //       </button>
-            //     </Link>
-            //   </div>
+            <>
+              <div className="section-header">
+                <h2 className="heading-secondary">
+                  Overzicht
+                </h2>
+                <Link href="/observations/new">
+                  <button className="btn btn--secondary">
+                    + Nieuwe waarneming
+                  </button>
+                </Link>
+              </div>
 
             //   <div className="grid grid-three-columns">
             //     {observations.map(observation => (

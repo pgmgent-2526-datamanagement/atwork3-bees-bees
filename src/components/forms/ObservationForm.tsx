@@ -400,7 +400,7 @@ export default function ObservationForm({
         <div className="form__actions">
           <button
             type="submit"
-            className="btn btn--primary btn--large"
+            className="btn btn--secondary btn--large"
             disabled={loading}
           >
             {loading

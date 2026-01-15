@@ -62,7 +62,7 @@ export default async function AccountApiaryHivePage({
               <span className="page-header__meta-value">{hive.colonyType}</span>
             </div>
             <div className="page-header__meta-item">
-              <span className="page-header__meta-label">Observaties</span>
+              <span className="page-header__meta-label">Waarnemingen</span>
               <span className="page-header__meta-value">
                 {totalObservations}
               </span>
@@ -73,8 +73,8 @@ export default async function AccountApiaryHivePage({
             <Link
               href={`/observations/new?hiveId=${hiveId}&hiveName=${hive.name}`}
             >
-              <button className="btn btn--primary">
-                + Observatie toevoegen
+              <button className="btn btn--secondary">
+                + Waarneming toevoegen
               </button>
             </Link>
             <Link href={`/hives/${hive.id}/edit`}>
@@ -95,6 +95,7 @@ export default async function AccountApiaryHivePage({
               {totalObservations}{' '}
               {totalObservations === 1 ? 'waarneming' : 'waarnemingen'}
             </h2>
+            <h2 className="heading-secondary">Waarnemingen</h2>
           </div>
           <Link href="/hives" className="back-link">
             ←
@@ -187,7 +188,7 @@ export default async function AccountApiaryHivePage({
               style={{ textAlign: 'center', padding: 'var(--space-16)' }}
             >
               <p style={{ color: 'var(--color-text-light)' }}>
-                Nog geen observaties
+                Nog geen waarnemingen
               </p>
             </div>
           )}
