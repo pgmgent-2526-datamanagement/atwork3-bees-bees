@@ -5,6 +5,7 @@ import prisma from '@/lib/client';
 import { authOptions } from '@/lib/auth-options';
 import DeleteEntityButton from '@/components/shared/DeleteEntityButton';
 import { notFound } from 'next/navigation';
+import ObservationsFilter from '@/components/shared/ObservationsFilter';
 export const dynamic = 'force-dynamic';
 
 export default async function AccountApiaryHivePage({
@@ -34,7 +35,7 @@ export default async function AccountApiaryHivePage({
   const totalObservations = await prisma.observation.count({
     where: { hiveId: parseInt(hiveId) },
   });
-  const observationsPerPage = 3;
+  const observationsPerPage = 20;
   const totalPages = Math.ceil(totalObservations / observationsPerPage);
   const observations = await prisma.observation.findMany({
     where: { hiveId: parseInt(hiveId) },
@@ -89,12 +90,20 @@ export default async function AccountApiaryHivePage({
       <section className="section ">
         <div className="container">
           <div className="section-header">
+            <h2 className="heading-secondary">
+              {' '}
+              {totalObservations}{' '}
+              {totalObservations === 1 ? 'waarneming' : 'waarnemingen'}
+            </h2>
             <h2 className="heading-secondary">Waarnemingen</h2>
           </div>
+          <Link href="/hives" className="back-link">
+            ←
+          </Link>
 
           {observations.length > 0 ? (
             <>
-              <div className="grid grid-three-columns">
+              {/* <div className="grid grid-three-columns">
                 {observations.map(obs => (
                   <Link
                     key={obs.id}
@@ -125,9 +134,9 @@ export default async function AccountApiaryHivePage({
                     </div>
                   </Link>
                 ))}
-              </div>
+              </div> */}
 
-              {totalPages > 1 && (
+              {/* {totalPages > 1 && (
                 <div
                   style={{
                     display: 'flex',
@@ -158,7 +167,20 @@ export default async function AccountApiaryHivePage({
                     </Link>
                   )}
                 </div>
-              )}
+              )} */}
+              <section className="section ">
+                <div className="container">
+                  <ObservationsFilter
+                    observations={observations}
+                    showHive={false}
+                    showApiary={false}
+                    showUser={false}
+                    currentPage={currentPage}
+                    totalPages={totalPages}
+                    currentPath={`/hives/${hiveId}`}
+                  />
+                </div>
+              </section>
             </>
           ) : (
             <div

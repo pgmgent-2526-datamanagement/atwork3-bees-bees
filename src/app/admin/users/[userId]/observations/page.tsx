@@ -2,7 +2,7 @@ import prisma from '@/lib/client';
 import { redirect } from 'next/navigation';
 import Link from 'next/link';
 import { requireAdmin } from '@/lib/auth-helpers';
-import ObservationsTable from '@/components/admin/ObservationsTable';
+import ObservationsTable from '@/components/shared/ObservationsTable';
 export default async function AdminUserObservationsPage({
   params,
   searchParams,
@@ -54,7 +54,7 @@ export default async function AdminUserObservationsPage({
     },
     orderBy: { createdAt: 'desc' },
   });
-  
+
   return (
     <>
       <section className="page-header">
@@ -73,7 +73,7 @@ export default async function AdminUserObservationsPage({
               <button className="btn btn--secondary">← Terug naar imker</button>
             </Link>
           </div>
-          
+
           <ObservationsTable
             observations={observations}
             showUser={false}

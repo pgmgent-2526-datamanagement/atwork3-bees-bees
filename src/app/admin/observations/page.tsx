@@ -1,5 +1,5 @@
 import { prisma } from '@/lib/client';
-import ObservationsFilter from '@/components/admin/ObservationsFilter';
+import ObservationsFilter from '@/components/shared/ObservationsFilter';
 import Link from 'next/link';
 
 export default async function AdminObservationsPage({
@@ -9,10 +9,10 @@ export default async function AdminObservationsPage({
 }) {
   const searchParamsResult = await searchParams;
   const currentPage = Number(searchParamsResult?.page ?? '1');
-  const observationsPerPage = 50;
+  const observationsPerPage = 5;
   const totalObservations = await prisma.observation.count();
   const totalPages = Math.ceil(totalObservations / observationsPerPage);
-  
+
   const observations = await prisma.observation.findMany({
     skip: (currentPage - 1) * observationsPerPage,
     take: observationsPerPage,
