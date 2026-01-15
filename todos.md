@@ -144,6 +144,7 @@ app/admin/
 - [ ] links in de tabellen gebruiksvriendelijk maken (kleur?, vet?)
 - [ ] de inline styles nog vervangen
 - [ ] skeletons?
+- [ ] namen van kasten en bijenvolken nog aanpassen
 
 ### 6. Openbare Pagina's
 
@@ -277,6 +278,7 @@ app/admin/
 - [ ] Automatische recording bij de notities
 - [ ] Alle namen 'observatie(s)' veranderen door waarneming(en)
 - [ ] Export functie van data! CSV?
+- [ ] BUG indien geen waarnemingen op http://localhost:3000/admin/hives/34?returnUrl=%2Fadmin%2Fusers%2Fcmij5yzbh0000uks06vvfkvfq%2Fhives : ternary : 'nog geen observaties'
 
 ### 🎯 Eindresultaat
 
