@@ -694,7 +694,7 @@ export default function ObservationForm({
             {loading
               ? 'Bezig met opslaan...'
               : initialObservation
-              ? 'Observatie wijzigen'
+              ? 'Observatie bewerken'
               : 'Observatie toevoegen'}
           </button>
           <Link

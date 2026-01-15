@@ -129,12 +129,12 @@ app/admin/
 - [x] **Navigatiecomponent** (`src/components/Navbar.tsx`): Rolgebaseerde links
 - [x] **Globale stijlen** (`src/app/globals.css`): Alleen écht globale CSS
 - [x] **Configuratie** (`next.config.ts`): Lettertype optimalisatie
-- [ ] scrollbare nav
+- [x] scrollbare nav
 - [ ] fotos comprimeren
 - [ ] alt teksten
 - [ ] responsief design
 - [ ] website consistent
-- [ ] leaflet kaart
+- [ ] kaart
 - [ ] API aanvragen via waarnemingen
 - [ ] mobiele breakpoints
 - [ ] unauthorized page nog text en styling geven
@@ -143,8 +143,7 @@ app/admin/
 - [ ] de app/not-found.tsx pagina stylen
 - [ ] links in de tabellen gebruiksvriendelijk maken (kleur?, vet?)
 - [ ] de inline styles nog vervangen
-- [ ] skeletons?
-- [ ] namen van kasten en bijenvolken nog aanpassen
+
 
 ### 6. Openbare Pagina's
 

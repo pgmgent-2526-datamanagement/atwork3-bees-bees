@@ -11,7 +11,7 @@ export default async function EditApiaryPage({
       <section className="page-header" data-page="—">
         <div className="container">
           <h1 className="heading-primary">Bijenstand aanpassen</h1>
-          <p className="page-header__subtitle">Wijzig naam of locatie</p>
+          <p className="page-header__subtitle">Bewerk naam of locatie</p>
         </div>
       </section>
 

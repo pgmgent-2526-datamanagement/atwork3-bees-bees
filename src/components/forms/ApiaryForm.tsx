@@ -3,6 +3,12 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useEffect } from 'react';
 import { apiarySchema } from '@/lib/validators/schemas';
+import dynamic from 'next/dynamic';
+
+const InteractiveApiaryMap = dynamic(
+  () => import('./InteractiveApiaryMap'),
+  { ssr: false }
+);
 export default function ApiaryForm({
   initialApiary,
 }: {
@@ -420,6 +426,20 @@ export default function ApiaryForm({
             </span>
           )}
         </div>
+      )}
+
+      {/* Interactieve kaart voor fine-tuning */}
+      {latitude && longitude && (
+        <InteractiveApiaryMap
+          latitude={parseFloat(latitude)}
+          longitude={parseFloat(longitude)}
+          onLocationChange={(lat, lng) => {
+            setLatitude(lat.toString());
+            setLongitude(lng.toString());
+            // Wissel naar GPS methode bij handmatige aanpassing
+            setLocationMethod('gps');
+          }}
+        />
       )}
 
       <div className="form__actions">
