@@ -6,6 +6,7 @@ import DeleteEntityButton from '@/components/shared/DeleteEntityButton';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { formatBeeCount } from '@/lib/utils/formatBeeCount';
+import { formatPollenAmount } from '@/lib/utils/formatPollenAmount';
 import PollenColorLegend from '@/components/shared/PollenColorLegend';
 import { pollenColors } from '@/lib/pollenColors';
 
@@ -347,6 +348,64 @@ export default async function Observation({
                           );
                         })}
                     </div>
+                  </div>
+                </div>
+
+                <div
+                  style={{
+                    display: 'flex',
+                    gap: 'var(--space-5)',
+                    alignItems: 'flex-start',
+                  }}
+                >
+                  <div
+                    style={{
+                      padding: 'var(--space-4)',
+                      background: 'rgba(0, 0, 0, 0.04)',
+                      borderRadius: '10px',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      minWidth: '52px',
+                      minHeight: '52px',
+                    }}
+                  >
+                    <svg
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    >
+                      <path d="M12 2v20M8 5l4-3 4 3M8 19l4 3 4-3"></path>
+                    </svg>
+                  </div>
+                  <div style={{ flex: 1 }}>
+                    <p
+                      style={{
+                        fontSize: '0.75rem',
+                        color: 'var(--color-text-light)',
+                        marginBottom: 'var(--space-3)',
+                        textTransform: 'uppercase',
+                        letterSpacing: '0.08em',
+                        fontWeight: '600',
+                      }}
+                    >
+                      Hoeveelheid stuifmeel
+                    </p>
+                    <p
+                      style={{
+                        fontFamily: 'var(--font-display)',
+                        fontSize: '1.5rem',
+                        fontWeight: '400',
+                        lineHeight: '1.5',
+                      }}
+                    >
+                      {formatPollenAmount(observation.pollenAmount)}
+                    </p>
                   </div>
                 </div>
               </div>
