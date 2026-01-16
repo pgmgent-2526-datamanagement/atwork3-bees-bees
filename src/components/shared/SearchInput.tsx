@@ -10,8 +10,8 @@ interface SearchInputProps {
 export default function SearchInput({
   value,
   onChange,
-  placeholder = "Zoeken...",
-  className = "form__input"
+  placeholder = 'Zoeken...',
+  className = 'form__input',
 }: SearchInputProps) {
   return (
     <div className="search-container">

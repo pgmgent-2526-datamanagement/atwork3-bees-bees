@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
+import { useDebouncedCallback } from 'use-debounce';
 import Link from 'next/link';
 import ObservationsTable from '@/components/shared/ObservationsTable';
 import SearchInput from '@/components/shared/SearchInput';
@@ -54,17 +55,28 @@ export default function ObservationsFilter({
   const [search, setSearch] = useState(initialSearch);
   const [colorFilter, setColorFilter] = useState(initialColorFilter);
 
-  const handleSearchChange = (value: string) => {
-    setSearch(value);
-    const params = new URLSearchParams(searchParams);
+  // const handleSearchChange = useDebouncedCallback((value: string) => {
+  //   setSearch(value);
+  //   const params = new URLSearchParams(searchParams);
+  //   if (value) {
+  //     params.set('search', value);
+  //   } else {
+  //     params.delete('search');
+  //   }
+  //   params.delete('page'); // Reset to page 1 when filtering
+  //   router.push(`${currentPath}?${params.toString()}`);
+  // }, 300);
+
+  const debouncedSearchUpdate = useDebouncedCallback((value: string) => {
+    const params = new URLSearchParams(searchParams.toString());
     if (value) {
       params.set('search', value);
     } else {
       params.delete('search');
     }
-    params.delete('page'); // Reset to page 1 when filtering
+    params.delete('page');
     router.push(`${currentPath}?${params.toString()}`);
-  };
+  }, 300);
 
   const handleColorChange = (value: string) => {
     setColorFilter(value);
@@ -78,8 +90,6 @@ export default function ObservationsFilter({
     router.push(`${currentPath}?${params.toString()}`);
   };
 
-  // Get all unique colors for the dropdown - use allColors prop
-  // const colors = allColors.length > 0 ? allColors : [...new Set(observations.map(o => o.pollenColor))];
   const colors = allColors; //
 
   return (
@@ -91,7 +101,10 @@ export default function ObservationsFilter({
         <div className="filters">
           <SearchInput
             value={search}
-            onChange={handleSearchChange}
+            onChange={(value: string) => {
+              setSearch(value);
+              debouncedSearchUpdate(value);
+            }}
             placeholder="Zoek op bijenstand, kast of notities"
           />
           <select
