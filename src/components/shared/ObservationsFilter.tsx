@@ -3,7 +3,8 @@
 import { useState } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import Link from 'next/link';
-import ObservationsTable from '../shared/ObservationsTable';
+import ObservationsTable from '@/components/shared/ObservationsTable';
+import SearchInput from '@/components/shared/SearchInput';
 
 interface Observation {
   id: number;
@@ -46,7 +47,7 @@ export default function ObservationsFilter({
   showUser?: boolean;
   search?: string;
   colorFilter?: string;
-  allColors?: string[];
+  allColors?: { value: string; label: string; hex: string }[];
 }) {
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -78,7 +79,8 @@ export default function ObservationsFilter({
   };
 
   // Get all unique colors for the dropdown - use allColors prop
-  const colors = allColors.length > 0 ? allColors : [...new Set(observations.map(o => o.pollenColor))];
+  // const colors = allColors.length > 0 ? allColors : [...new Set(observations.map(o => o.pollenColor))];
+  const colors = allColors; //
 
   return (
     <>
@@ -87,23 +89,27 @@ export default function ObservationsFilter({
           ←
         </Link> */}
         <div className="filters">
-          <input
-            type="text"
-            placeholder="Zoek op notities of kast..."
+          <SearchInput
             value={search}
-            onChange={e => handleSearchChange(e.target.value)}
-            className="form__input"
+            onChange={handleSearchChange}
+            placeholder="Zoek op notities of kast..."
           />
-
           <select
             value={colorFilter}
             onChange={e => handleColorChange(e.target.value)}
             className="form__select"
           >
             <option value="">Alle kleuren</option>
-            {colors.map(color => (
-              <option key={color} value={color}>
-                {color}
+            {allColors.map(option => (
+              <option
+                key={option.value}
+                value={option.value}
+                style={{
+                  backgroundColor: option.hex,
+                  color: '#000',
+                }}
+              >
+                {option.label}
               </option>
             ))}
           </select>

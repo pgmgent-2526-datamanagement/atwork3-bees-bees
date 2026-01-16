@@ -144,6 +144,8 @@ app/admin/
 - [ ] links in de tabellen gebruiksvriendelijk maken (kleur?, vet?)
 - [ ] de inline styles nog vervangen
 - [ ] de usersfilter nog aanpassen
+- [ ] de observatiefilters zowel in admin als account routes en onder hiveId, dus 3!
+- [ ] in observatiefilter nog debounce en kruisje plaatsen
 
 ### 6. Openbare Pagina's
 
