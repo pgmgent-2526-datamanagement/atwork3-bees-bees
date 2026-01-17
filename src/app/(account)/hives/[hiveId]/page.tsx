@@ -187,37 +187,19 @@ export default async function AccountApiaryHivePage({
           <div className="section-header">
             <h2 className="heading-secondary">Waarnemingen</h2>
           </div>
-
-          {observations.length > 0 ? (
-            <>
-              <section className="section ">
-                <div className="container">
-                  <ObservationsFilter
-                    observations={observations}
-                    showHive={false}
-                    showApiary={false}
-                    showUser={false}
-                    currentPage={currentPage}
-                    totalPages={totalPages}
-                    currentPath={`/hives/${hiveId}`}
-                    search={search}
-                    colorFilter={colorFilter}
-                    allColors={allColors}
-                    placeholder="Zoek op notities"
-                  />
-                </div>
-              </section>
-            </>
-          ) : (
-            <div
-              className="card"
-              style={{ textAlign: 'center', padding: 'var(--space-16)' }}
-            >
-              <p style={{ color: 'var(--color-text-light)' }}>
-                Nog geen waarnemingen
-              </p>
-            </div>
-          )}
+          <ObservationsFilter
+            observations={observations}
+            showHive={false}
+            showApiary={false}
+            showUser={false}
+            currentPage={currentPage}
+            totalPages={totalPages}
+            currentPath={`/hives/${hiveId}`}
+            search={search}
+            colorFilter={colorFilter}
+            allColors={allColors}
+            placeholder="Zoek op notities"
+          />
         </div>
       </section>
     </>
