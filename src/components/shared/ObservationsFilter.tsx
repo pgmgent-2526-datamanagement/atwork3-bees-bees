@@ -38,6 +38,7 @@ export default function ObservationsFilter({
   search: initialSearch = '',
   colorFilter: initialColorFilter = '',
   allColors = [],
+  placeholder = 'Zoek...',
 }: {
   observations: Observation[];
   currentPage: number;
@@ -49,23 +50,12 @@ export default function ObservationsFilter({
   search?: string;
   colorFilter?: string;
   allColors?: { value: string; label: string; hex: string }[];
+  placeholder?: string;
 }) {
   const router = useRouter();
   const searchParams = useSearchParams();
   const [search, setSearch] = useState(initialSearch);
   const [colorFilter, setColorFilter] = useState(initialColorFilter);
-
-  // const handleSearchChange = useDebouncedCallback((value: string) => {
-  //   setSearch(value);
-  //   const params = new URLSearchParams(searchParams);
-  //   if (value) {
-  //     params.set('search', value);
-  //   } else {
-  //     params.delete('search');
-  //   }
-  //   params.delete('page'); // Reset to page 1 when filtering
-  //   router.push(`${currentPath}?${params.toString()}`);
-  // }, 300);
 
   const debouncedSearchUpdate = useDebouncedCallback((value: string) => {
     const params = new URLSearchParams(searchParams.toString());
@@ -105,7 +95,7 @@ export default function ObservationsFilter({
               setSearch(value);
               debouncedSearchUpdate(value);
             }}
-            placeholder="Zoek op bijenstand, kast of notities"
+            placeholder={placeholder}
           />
           <select
             value={colorFilter}

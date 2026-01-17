@@ -133,6 +133,7 @@ export default async function AdminObservationsPage({
             search={search}
             colorFilter={colorFilter}
             allColors={allColors}
+            placeholder="Zoek op bijenstand, kast of notities"
           />
         </div>
       </section>

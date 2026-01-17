@@ -67,7 +67,6 @@ export default async function AccountObservationsPage({
   // search filter toevoegen
   if (search) {
     whereClause.OR = [
-      //OR is prisma variabele voor OR logica
       {
         notes: {
           contains: search,
@@ -79,6 +78,16 @@ export default async function AccountObservationsPage({
           name: {
             contains: search,
             mode: 'insensitive',
+          },
+        },
+      },
+      {
+        hive: {
+          apiary: {
+            name: {
+              contains: search,
+              mode: 'insensitive',
+            },
           },
         },
       },
@@ -169,6 +178,7 @@ export default async function AccountObservationsPage({
             search={search}
             colorFilter={colorFilter}
             allColors={allColors}
+            placeholder="Zoek op bijenstand, kast of notities"
           />
         </div>
       </section>
