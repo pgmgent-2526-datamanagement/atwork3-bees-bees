@@ -1,6 +1,6 @@
 import { prisma } from '@/lib/client';
 import ApiariesFilter from '@/components/admin/ApiariesFilter';
-import Link from 'next/link';
+import { requireAdmin } from '@/lib/auth-helpers';
 
 type SearchParams = {
   page?: string;
@@ -12,6 +12,8 @@ export default async function AdminApiariesPage({
 }: {
   searchParams: Promise<SearchParams>;
 }) {
+ await requireAdmin();
+
   const searchParamsResult = (await searchParams) || {};
   const { page = '1', search = '' } = searchParamsResult;
 
