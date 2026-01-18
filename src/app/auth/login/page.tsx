@@ -1,10 +1,10 @@
-"use client";
-import React from "react";
-import { loginSchema } from "@/lib/validators/schemas";
-import { signIn, getSession } from "next-auth/react";
-import { useRouter } from "next/navigation";
-import { useState } from "react";
-import Link from "next/link";
+'use client';
+import React from 'react';
+import { loginSchema } from '@/lib/validators/schemas';
+import { signIn, getSession } from 'next-auth/react';
+import { useRouter } from 'next/navigation';
+import { useState } from 'react';
+import Link from 'next/link';
 
 export default function Login() {
   type Errors = string | undefined | null;
@@ -47,7 +47,7 @@ export default function Login() {
         console.log('signIn errors:', res?.error);
         if (res?.error === 'CredentialsSignin') {
           setErrors(
-            'Onjuiste inloggegevens. Controleer uw e-mail en wachtwoord.'
+            'Onjuiste inloggegevens. Controleer uw e-mail en wachtwoord.',
           );
         } else if (res?.error) {
           setErrors('Er is iets misgegaan. Probeer later opnieuw.');
@@ -76,7 +76,9 @@ export default function Login() {
       <section className="page-header" data-page="—">
         <div className="container">
           <h1 className="heading-primary">Inloggen</h1>
-          <p className="page-header__subtitle">Welkom terug bij uw bijenwaarnemingen</p>
+          <p className="page-header__subtitle">
+            Welkom terug bij uw bijenwaarnemingen
+          </p>
         </div>
       </section>
 
@@ -99,9 +101,9 @@ export default function Login() {
                 name="email"
                 className="form__input"
                 placeholder="uw.naam@voorbeeld.be"
-                onChange={(e) => {
+                onChange={e => {
                   if (fieldErrors?.email) {
-                    setFieldErrors((prev) => ({ ...prev, email: [] }));
+                    setFieldErrors(prev => ({ ...prev, email: [] }));
                   }
                 }}
               />
@@ -124,9 +126,9 @@ export default function Login() {
                 name="password"
                 className="form__input"
                 placeholder="Uw wachtwoord"
-                onChange={(e) => {
+                onChange={e => {
                   if (fieldErrors?.password) {
-                    setFieldErrors((prev) => ({ ...prev, password: [] }));
+                    setFieldErrors(prev => ({ ...prev, password: [] }));
                   }
                 }}
               />
@@ -143,15 +145,24 @@ export default function Login() {
               type="submit"
               className="btn btn--primary btn--large"
               disabled={loading}
-              style={{ width: "100%" }}
+              style={{ width: '100%' }}
             >
-              {loading ? "Inloggen..." : "Inloggen"}
+              {loading ? 'Inloggen...' : 'Inloggen'}
             </button>
+
+            <div
+              className="text-center"
+              style={{ marginTop: 'var(--space-4)' }}
+            >
+              <Link href="/forgot-password" className="text-link">
+                Wachtwoord vergeten?
+              </Link>
+            </div>
           </form>
 
-          <div className="text-center" style={{ marginTop: "var(--space-8)" }}>
+          <div className="text-center" style={{ marginTop: 'var(--space-8)' }}>
             <p className="card__description">
-              Nog geen account?{" "}
+              Nog geen account?{' '}
               <Link href="/auth/register" className="text-link">
                 Registreer hier
               </Link>
