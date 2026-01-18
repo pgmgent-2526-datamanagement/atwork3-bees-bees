@@ -55,6 +55,8 @@ export default function HivesFilter({
   const [typeFilter, setTypeFilter] = useState(initialType);
   const [colonyFilter, setColonyFilter] = useState(initialColony);
 
+  //functie meer generiek gemaakt zodat die voor meerdere filters gebruikt kan worden
+
   const debouncedUpdateUrl = useDebouncedCallback(
     (key: string, value: string) => {
       const params = new URLSearchParams(searchParams.toString());
@@ -63,7 +65,7 @@ export default function HivesFilter({
       params.delete('page');
       router.push(`${currentPath}?${params.toString()}`);
     },
-    300
+    300,
   );
 
   return (
