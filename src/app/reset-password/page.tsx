@@ -4,7 +4,7 @@ import ResetPasswordForm from '@/components/auth/ResetPasswordForm';
 
 // Server Component that receives searchParams as props
 interface ResetPasswordPageProps {
-  searchParams: { token?: string };
+  searchParams: Promise<{ token?: string }>;
 }
 
 function TokenErrorState() {
@@ -90,10 +90,10 @@ function LoadingState() {
   );
 }
 
-export default function ResetPasswordPage({
+export default async function ResetPasswordPage({
   searchParams,
 }: ResetPasswordPageProps) {
-  const token = searchParams.token;
+  const { token } = await searchParams;
 
   // Show error if no token
   if (!token) {
