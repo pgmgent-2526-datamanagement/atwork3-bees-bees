@@ -35,9 +35,9 @@ export default function AdminPage() {
 
             <Link href="/admin/hives">
               <div className="card">
-                <h3 className="heading-tertiary">Kasten</h3>
+                <h3 className="heading-tertiary">Behuizingen</h3>
                 <p className="card__text">
-                  Overzicht van alle bijenkasten
+                  Overzicht van alle bijenbehuizingen
                 </p>
               </div>
             </Link>

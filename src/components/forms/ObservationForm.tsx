@@ -141,7 +141,7 @@ export default function ObservationForm({
     const finalHiveId = hiveId || selectedHiveId;
 
     if (!finalHiveId) {
-      setError('Selecteer eerst een kast');
+      setError('Selecteer eerst een behuizing');
       setLoading(false);
       return;
     }
@@ -213,7 +213,7 @@ export default function ObservationForm({
         {!hiveId && (
           <div className="form__group">
             <label htmlFor="hiveSelect" className="form__label">
-              Kast *
+              Behuizing *
             </label>
             <select
               id="hiveSelect"
@@ -231,7 +231,7 @@ export default function ObservationForm({
               }}
               required
             >
-              <option value="">-- Selecteer kast --</option>
+              <option value="">-- Selecteer behuizing --</option>
               {hives.map(hive => (
                 <option key={hive.id} value={hive.id}>
                   {hive.apiary.name} - {hive.name}
@@ -242,7 +242,7 @@ export default function ObservationForm({
         )}
         {hiveId && hiveName && (
           <div className="form__group">
-            <label className="form__label">Kast</label>
+            <label className="form__label">Behuizing</label>
             <input
               type="text"
               value={hiveName}
@@ -259,7 +259,7 @@ export default function ObservationForm({
           <h3 className="form__section-title">Observatie - Aantal bijen</h3>
           <p className="form__instructions">
             Druk op 'Start timer' en tel 30 seconden lang hoeveel bijen er
-            binnenkomen in de kast.
+            binnenkomen in de behuizing.
           </p>
           <Timer />
           <label htmlFor="beeCount" className="form__label">
@@ -706,7 +706,7 @@ export default function ObservationForm({
             value={notes}
             onChange={e => setNotes(e.target.value)}
             className="form__textarea"
-            placeholder="Extra opmerkingen over de kast..."
+            placeholder="Extra opmerkingen over de behuizing..."
             rows={4}
           />
           {fieldErrors?.notes && (
