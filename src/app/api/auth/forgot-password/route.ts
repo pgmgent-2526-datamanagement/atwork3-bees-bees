@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import prisma from '@/lib/client';
 import crypto from 'crypto';
+import { sendPasswordResetEmail } from '@/lib/email-service';
 
 export async function POST(request: NextRequest) {
   try {
@@ -32,7 +33,7 @@ export async function POST(request: NextRequest) {
     });
 
     // 3. Create reset token
-    const token = crypto.randomBytes(32).toString('hex');
+    const token = crypto.randomUUID();
     const expiresAt = new Date(Date.now() + 60 * 60 * 1000); // 1 hour
 
     // 4. Save token to database
@@ -44,11 +45,32 @@ export async function POST(request: NextRequest) {
       },
     });
 
-    // 5. TODO: Send email via Supabase SMTP
-    // const resetUrl = `${process.env.NEXTAUTH_URL}/reset-password?token=${token}`
-    // await sendPasswordResetEmail(email, resetUrl)
+    // 5. Send email with reset link
+    const resetUrl = `${process.env.NEXTAUTH_URL}/reset-password?token=${token}`;
 
-    console.log(`Password reset token for ${email}: ${token}`); // Temporary for testing
+    try {
+      await sendPasswordResetEmail({
+        email: user.email,
+        name: user.name,
+        resetUrl,
+      });
+
+      console.log(`Password reset email sent to: ${email}`);
+    } catch (emailError) {
+      console.error('Failed to send reset email:', emailError);
+      // Delete the token if email fails
+      await prisma.passwordResetToken.delete({
+        where: { token },
+      });
+
+      return NextResponse.json(
+        {
+          error:
+            'Er ging iets mis bij het versturen van de email. Probeer het opnieuw.',
+        },
+        { status: 500 },
+      );
+    }
 
     return NextResponse.json({
       message: 'Als het e-mailadres bestaat, is een reset link verstuurd',
