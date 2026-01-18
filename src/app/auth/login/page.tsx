@@ -141,15 +141,14 @@ export default function Login() {
 
             <button
               type="submit"
-              className="btn btn--primary btn--large"
+              className="btn btn--primary btn--large btn--full"
               disabled={loading}
-              style={{ width: "100%" }}
             >
               {loading ? "Inloggen..." : "Inloggen"}
             </button>
           </form>
 
-          <div className="text-center" style={{ marginTop: "var(--space-8)" }}>
+          <div className="text-center margin-top-large">
             <p className="card__description">
               Nog geen account?{" "}
               <Link href="/auth/register" className="text-link">
