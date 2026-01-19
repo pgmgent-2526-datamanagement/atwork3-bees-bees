@@ -20,6 +20,7 @@
 @import "./components/c-modal.css";
 @import "./components/c-footer.css";
 @import "./components/c-misc.css";
+@import "./components/c-home.css";
 
 /* Domain-specific (keep separate) */
 @import "./components/bee-counter.css";
