@@ -95,7 +95,7 @@ app/admin/
 - [x] enkel superadmin kan user deleten
 
 - [x] **GET** `/admin/users` → Alle gebruikers tonen (alleen beheerders)
-- [ ] **GET** `/admin/users` → debounce toevoegen in de filter in usersPageClient TODO
+- [x] **GET** `/admin/users` → debounce toevoegen in de filter in usersPageClient TODO
 - [x] **DELETE** `/admin/users/:id` → Gebruiker verwijderen (alleen beheerders) + cascade toevoegen aan Apiary
 - [x] → filter gebruikers (alleen beheerders)
 - [x] **GET** `/admin/users/:id` → User overview met stats
@@ -138,12 +138,11 @@ app/admin/
 - [ ] API aanvragen via waarnemingen
 - [ ] mobiele breakpoints
 - [ ] unauthorized page nog text en styling geven
-- [ ] ook alle lijsten van kasten in een tabel met paginatie stoppen?
 - [ ] ook bij mobiel tabellen niet veranderen in kaartjes (zie gesprek Barend)
 - [ ] de app/not-found.tsx pagina stylen
 - [ ] links in de tabellen gebruiksvriendelijk maken (kleur?, vet?)
 - [ ] de inline styles nog vervangen
-- [ ] de usersfilter nog aanpassen TODO
+- [x] de usersfilter nog aanpassen
 - [x] de observatiefilters zowel in admin als account routes en onder hiveId, dus 3!
 - [x] in observatiefilter nog debounce en kruisje plaatsen
 - [x] de apiaries en hives filters in de admin route nog aanpassen TODO
@@ -154,9 +153,9 @@ app/admin/
 - [x] **Over Ons** (`/about`): Informatiepagina over het project
 - [x] **Registratie** (`/register`): Aanmeldformulier
 - [x] **Inlogpagina** (`/api/auth/signin`): Login interface
-- [] **Registratie** (`/register`): Aanmeldformulier: paswoord dubbel typen
-- [] **Inlogpagina** (`/api/auth/signin`): Login interface: paswoord zichtbaar maken
-- [] **Inlogpagina** (`/api/auth/signin`): Login interface: "paswoord vergeten?"
+- [x] **Registratie** (`/register`): Aanmeldformulier: paswoord dubbel typen en paswoord zichtbaar maken
+- [x] **Inlogpagina** (`/api/auth/signin`): Login interface: paswoord zichtbaar maken
+- [x] **Inlogpagina** (`/api/auth/signin`): Login interface: "paswoord vergeten?"
 
 ---
 
@@ -198,9 +197,9 @@ app/admin/
 
 ### 12. Foutafhandeling & Gebruikerservaring
 
-- [ ] **Globale Foutafhandeling** (`src/app/error.tsx`): Algemene error fallback
+- [x] **Globale Foutafhandeling** (`src/app/error.tsx`): Algemene error fallback
 - [x] **404 Pagina** (`src/app/not-found.tsx`): Aangepaste niet-gevonden pagina
-- [ ] **Rolgebaseerde Foutmeldingen**: 403/401 berichten per gebruikerstype
+- [x] **Rolgebaseerde Foutmeldingen**: 403/401 berichten per gebruikerstype
 
 ### 13. Prestatie & Laadstatus
 
@@ -268,8 +267,8 @@ app/admin/
   - [x] De geselecteerde kleuren tonen in het observatiekaartje, bijvoorbeeld als gekleurde bolletjes of blokjes.
   - [x] Hover-functionaliteit
   - [x] Klikbare legende of een infoknop die de plantenlijst per kleur uitlegt.
-- [ ] Uitleg tussen de velden in stappen!Layout moet beter!
-- [ ] Bijenteller met de velden versmelten
+- [x] Uitleg tussen de velden in stappen!Layout moet beter!
+- [x] Bijenteller met de velden versmelten
 - [ ] Enkel binnenkomende bijen
 - [ ] Tijd en datum bovenaan het formulier: 'Deze waarneming wordt gedaan op [uur en dag]'TODO
 - [x] Stuifmeel in drie maten: weinig, gemiddeld of veel TODO
@@ -289,6 +288,7 @@ Een volledig functionele bijenstandbeheer applicatie met robuuste backend, gebru
 
 TODO
 
+- [] de temperatuur in observationform weer laten tellen vanaf de placeholderwaarde
 - [] bespreken met docent, deployment voor klant met eigen account enz.
 - [] keys voor mapbox en resend voor klant?
 - [] bespreken met docent, snelheid van de renders
