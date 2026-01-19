@@ -281,6 +281,7 @@ app/admin/
 - [x] Alle namen 'observatie(s)' veranderen door waarneming(en)
 - [ ] Export functie van data! CSV?TODO
 - [ ] BUG indien geen waarnemingen op http://localhost:3000/admin/hives/34?returnUrl=%2Fadmin%2Fusers%2Fcmij5yzbh0000uks06vvfkvfq%2Fhives : ternary : 'nog geen observaties'
+- [ ] paswoord moet complexer worden in zod schema, vereisten ook synchroniseren bij reset password TODO
 
 ### 🎯 Eindresultaat
 
@@ -289,4 +290,6 @@ Een volledig functionele bijenstandbeheer applicatie met robuuste backend, gebru
 TODO
 
 - [] bespreken met docent, deployment voor klant met eigen account enz.
+- [] keys voor mapbox en resend voor klant?
 - [] bespreken met docent, snelheid van de renders
+- [] de prisma-modellen plant en apiaryplant verwijderen?
