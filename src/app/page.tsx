@@ -147,16 +147,12 @@ De locaties van je bijenstanden blijven standaard afgeschermd en zijn enkel zich
       <section className="home-platform">
         <div className="container">
           <div className="home-platform__content">
-            <h2 className="home-platform__title">Ontdek het platform</h2>
-            <p className="home-platform__text">
-              Moderne tools voor professioneel bijenhouden. Ontwikkeld met oog voor detail en gebruiksgemak.
-            </p>
+            <h2 className="home-platform__title">Klaar om te starten?</h2>
+          
             <div className="home-platform__actions">
-              <Button href="/platform" variant="secondary" size="lg">
-                Meer over platform
-              </Button>
+             
               <Button href="/auth/register" variant="primary" size="lg">
-                Maak account
+               Maak een gratis account aan
               </Button>
             </div>
           </div>
