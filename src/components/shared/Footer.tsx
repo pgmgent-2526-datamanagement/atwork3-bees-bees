@@ -18,7 +18,6 @@ export default function Footer() {
             <div className="footer__column">
               <h3 className="heading-tertiary">Platform</h3>
               <nav className="footer__nav">
-                <Link href="/vision" className="footer__link">Onze Visie</Link>
                 <Link href="/platform" className="footer__link">Hoe het werkt</Link>
                 <Link href="/about" className="footer__link">Over ons</Link>
               </nav>
