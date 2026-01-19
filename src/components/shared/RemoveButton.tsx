@@ -1,5 +1,6 @@
 'use client';
 import { useState } from 'react';
+import { createPortal } from 'react-dom';
 
 type RemoveButtonProps = {
   onDelete: () => Promise<void>;
@@ -32,7 +33,7 @@ export default function RemoveButton({
       >
         {label}
       </button>
-      {showConfirm && (
+      {showConfirm && typeof document !== 'undefined' && createPortal(
         <div className="modal-overlay">
           <div className="modal">
             <h3 className="heading-tertiary">
@@ -57,7 +58,8 @@ export default function RemoveButton({
               </button>
             </div>
           </div>
-        </div>
+        </div>,
+        document.body
       )}
     </>
   );
