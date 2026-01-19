@@ -121,14 +121,17 @@
 .form__checkbox-label:hover { background-color: var(--c-gray-50); }
 .form__checkbox { width: 20px; height: 20px; cursor: pointer; accent-color: var(--c-text); }
 .form__input, .form__textarea, .form__select { width: 100%; padding: var(--s-5) var(--s-5); font-family: var(--font-body); font-size: var(--text-base); color: var(--c-text); background-color: var(--c-white); border: 1px solid var(--c-border); border-radius: 4px; transition: all var(--duration-base) var(--ease); }
-.form__input[type="number"]::-webkit-inner-spin-button,
-.form__input[type="number"]::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
-.form__input[type="number"] { -moz-appearance: textfield; appearance: textfield; }
 .form__input:focus, .form__textarea:focus, .form__select:focus { outline: none; border-color: var(--c-text); background-color: var(--c-white); box-shadow: 0 0 0 3px rgba(45, 55, 72, 0.08); }
 .form__textarea { min-height: 150px; resize: vertical; }
 .form__help { font-size: var(--text-sm); color: var(--c-text-muted); margin-top: var(--s-2); }
 .form__actions { display: flex; gap: var(--s-6); flex-direction: column-reverse; }
 .form__actions--center { justify-content: center; }
+
+@media (max-width: 767px) {
+  .form__input[type="number"]::-webkit-inner-spin-button,
+  .form__input[type="number"]::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
+  .form__input[type="number"] { -moz-appearance: textfield; appearance: textfield; }
+}
 
 @media (min-width: 768px) {
   .form__actions { flex-direction: row-reverse; }

@@ -23,19 +23,22 @@ export default async function AccountObservationNewPage({
   }
 
   return (
-    <>
-      <section className="page-header">
+    <div className="platform-page">
+      <section className="platform-hero">
         <div className="container">
-          <h1 className="heading-primary">Nieuwe waarneming toevoegen</h1>
-       
+          <div className="platform-hero__content">
+            <h1 className="platform-hero__title">
+              Nieuwe waarneming toevoegen
+            </h1>
+          </div>
         </div>
       </section>
 
-      <section className="section">
+      <section className="home-features">
         <div className="container container--narrow">
           <ObservationForm hiveId={hiveId} hiveName={hiveName} />
         </div>
       </section>
-    </>
+    </div>
   );
 }
