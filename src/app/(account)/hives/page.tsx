@@ -56,7 +56,7 @@ export default async function AccountHivesPage({
             <span className="platform-hero__label">{totalHives} {totalHives === 1 ? 'behuizing' : 'behuizingen'}</span>
             <h1 className="platform-hero__title">Mijn behuizingen</h1>
             <div className="btn-group">
-              <Link href="/hives/new" className="btn btn--secondary">
+              <Link href="/hives/new" className="btn btn--secondary btn--large">
                 + Nieuwe behuizing
               </Link>
             </div>

@@ -113,9 +113,6 @@ export default async function AccountApiaryHivePage({
             <span className="platform-hero__label">{totalObservations} {totalObservations === 1 ? 'waarneming' : 'waarnemingen'}</span>
             <h1 className="platform-hero__title">{hive.name}</h1>
             <div className="btn-group">
-              <Link href={`/observations/new?hiveId=${hiveId}&hiveName=${hive.name}`} className="btn btn--secondary">
-                + Waarneming toevoegen
-              </Link>
               <Link href={`/hives/${hive.id}/edit`} className="btn btn--secondary">
                 Bewerk
               </Link>
@@ -178,7 +175,15 @@ export default async function AccountApiaryHivePage({
 
       <section className="home-features">
         <div className="container">
-          <h2 className="feature-card__title">Waarnemingen</h2>
+          <div className="section-header">
+            <h2 className="feature-card__title">Waarnemingen in deze behuizing</h2>
+            {observations.length > 0 && (
+              <Link href={`/observations/new?hiveId=${hiveId}&hiveName=${hive.name}`} className="btn btn--secondary">
+                + Waarneming toevoegen
+              </Link>
+            )}
+          </div>
+
           <ObservationsFilter
             observations={observations}
             showHive={false}

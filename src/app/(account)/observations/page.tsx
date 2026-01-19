@@ -145,7 +145,7 @@ export default async function AccountObservationsPage({
             <span className="platform-hero__label">{totalObservations} {totalObservations === 1 ? 'waarneming' : 'waarnemingen'}</span>
             <h1 className="platform-hero__title">Mijn waarnemingen</h1>
             <div className="btn-group">
-              <Link href="/observations/new" className="btn btn--secondary">
+              <Link href="/observations/new" className="btn btn--secondary btn--large">
                 + Nieuwe waarneming
               </Link>
             </div>
