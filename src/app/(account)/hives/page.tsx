@@ -52,9 +52,18 @@ export default async function AccountHivesPage({
       <section className="page-header" data-page="—">
         <div className="container">
           <div className="nav__container" style={{ padding: 0 }}>
-            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", width: "100%" }}>
+            <div
+              style={{
+                display: 'flex',
+                justifyContent: 'space-between',
+                alignItems: 'flex-start',
+                width: '100%',
+              }}
+            >
               <div>
-                <h1 className="heading-primary">Mijn behuizingen ({totalHives})</h1>
+                <h1 className="heading-primary">
+                  Mijn behuizingen ({totalHives})
+                </h1>
               </div>
               <div className="page-header__actions">
                 <Link href="/hives/new">
@@ -80,12 +89,8 @@ export default async function AccountHivesPage({
                     style={{ textDecoration: 'none' }}
                   >
                     <div className="card">
-                      <p className="card__category">
-                        Behuizing
-                      </p>
-                      <h3 className="heading-tertiary">
-                        {hive.name}
-                      </h3>
+                      <p className="card__category">Behuizing</p>
+                      <h3 className="heading-tertiary">{hive.name}</h3>
                       <div className="card__divider">
                         <p className="card__label">Bijenstand</p>
                         <p className="card__value">{hive.apiary.name}</p>
@@ -100,23 +105,35 @@ export default async function AccountHivesPage({
               </div>
 
               {totalPages > 1 && (
-                <div style={{ 
-                  display: "flex", 
-                  justifyContent: "center", 
-                  alignItems: "center",
-                  gap: "var(--space-4)",
-                  marginTop: "var(--space-12)"
-                }}>
-                  <Link href={`/hives?page=${currentPage > 1 ? currentPage - 1 : 1}`}>
-                    <button className="btn btn--secondary" disabled={currentPage === 1}>
+                <div
+                  style={{
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    gap: 'var(--space-4)',
+                    marginTop: 'var(--space-12)',
+                  }}
+                >
+                  <Link
+                    href={`/hives?page=${currentPage > 1 ? currentPage - 1 : 1}`}
+                  >
+                    <button
+                      className="btn btn--secondary"
+                      disabled={currentPage === 1}
+                    >
                       Vorige
                     </button>
                   </Link>
-                  <span style={{ color: "var(--color-text-light)" }}>
+                  <span style={{ color: 'var(--color-text-light)' }}>
                     Pagina {currentPage} van {totalPages}
                   </span>
-                  <Link href={`/hives?page=${currentPage < totalPages ? currentPage + 1 : totalPages}`}>
-                    <button className="btn btn--secondary" disabled={currentPage === totalPages}>
+                  <Link
+                    href={`/hives?page=${currentPage < totalPages ? currentPage + 1 : totalPages}`}
+                  >
+                    <button
+                      className="btn btn--secondary"
+                      disabled={currentPage === totalPages}
+                    >
                       Volgende
                     </button>
                   </Link>
@@ -124,20 +141,25 @@ export default async function AccountHivesPage({
               )}
             </>
           ) : (
-            <div style={{ textAlign: "center", padding: "var(--space-16) 0" }}>
-              <h2 className="heading-secondary" style={{ 
-                fontFamily: "var(--font-display)",
-                fontSize: "2rem",
-                fontWeight: "400",
-                marginBottom: "var(--space-4)"
-              }}>
-                Nog geen bijhuizingen
+            <div style={{ textAlign: 'center', padding: 'var(--space-16) 0' }}>
+              <h2
+                className="heading-secondary"
+                style={{
+                  fontFamily: 'var(--font-display)',
+                  fontSize: '2rem',
+                  fontWeight: '400',
+                  marginBottom: 'var(--space-4)',
+                }}
+              >
+                Nog geen behuizingen toegevoegd
               </h2>
-              <p style={{ 
-                color: "var(--color-text-light)",
-                marginBottom: "var(--space-8)"
-              }}>
-                Voeg eerst een bijenstand toe om bijhuizingen te kunnen aanmaken
+              <p
+                style={{
+                  color: 'var(--color-text-light)',
+                  marginBottom: 'var(--space-8)',
+                }}
+              >
+                Voeg eerst een bijenstand toe om behuizingen te kunnen aanmaken
               </p>
               <Link href="/apiaries/new">
                 <button className="btn btn--secondary btn--lg">
