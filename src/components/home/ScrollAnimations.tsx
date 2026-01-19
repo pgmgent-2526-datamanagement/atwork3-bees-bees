@@ -19,7 +19,7 @@ export default function ScrollAnimations() {
 
     // Observe all elements that should animate
     const elements = document.querySelectorAll(
-      '.home-content__title, .home-content__intro, .home-content__stats, .home-content__cta, .feature-card, .home-platform__content'
+      '.home-content__title, .home-content__intro, .home-content__stats, .home-content__cta, .feature-card, .home-platform__content, .animate-on-scroll'
     );
 
     elements.forEach((el) => observer.observe(el));

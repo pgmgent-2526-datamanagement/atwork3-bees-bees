@@ -12,7 +12,13 @@ export default function ScrollCursor() {
       
       // Show only in hero section
       const heroHeight = window.innerHeight * 0.75;
-      setIsVisible(e.clientY < heroHeight && e.clientY > 100);
+      const inHeroSection = e.clientY < heroHeight && e.clientY > 100;
+      
+      // Check if hovering over footer
+      const target = e.target as HTMLElement;
+      const isInFooter = target.closest('footer');
+      
+      setIsVisible(inHeroSection && !isInFooter);
     };
 
     window.addEventListener('mousemove', handleMouseMove);

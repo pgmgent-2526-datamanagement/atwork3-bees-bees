@@ -58,7 +58,7 @@
 
 /* Content Section - H1, intro, stats */
 .home-content {
-  padding: 120px 0 100px;
+  padding: 60px 0 60px;
   background-color: #ffffff;
 }
 
@@ -116,6 +116,17 @@
 }
 
 .home-content__intro.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.animate-on-scroll.in-view {
   opacity: 1;
   transform: translateY(0);
 }
@@ -195,8 +206,7 @@
 .home-features__grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 0.5px;
-  background-color: rgba(14, 97, 93, 0.04);
+  gap: 24px;
   max-width: 1400px;
   margin: 0 auto;
 }
@@ -212,7 +222,7 @@
   text-align: center;
   position: relative;
   transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
-  border: 1px solid rgba(14, 97, 93, 0.04);
+  border: 1px solid rgb(14, 97, 93);
   opacity: 0;
   transform: translateY(40px);
 }
@@ -236,6 +246,13 @@
 
 .feature-card:hover .feature-card__title {
   color: rgb(14, 97, 93);
+}
+
+/* Account page - no animations */
+.platform-page .feature-card {
+  opacity: 1;
+  transform: none;
+  transition: all 0.3s ease;
 }
 
 .feature-card__title {
