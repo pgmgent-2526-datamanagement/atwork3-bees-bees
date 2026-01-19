@@ -71,8 +71,8 @@
 .hero { min-height: 60vh; display: flex; align-items: center; justify-content: center; text-align: center; padding: var(--s-16) var(--s-12); margin-top: 100px; }
 .hero-home { min-height: 90vh; display: flex; flex-direction: column; justify-content: center; align-items: center; gap: var(--s-12); padding: var(--s-12) var(--s-12); max-width: 1600px; width: 100%; margin: 0 auto; margin-top: 100px; overflow-x: hidden; }
 .hero .hero__content, .hero-home .hero__content { text-align: center; max-width: 900px; }
-.hero .hero__title { font-family: var(--font-display); font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 300; line-height: 1.2; letter-spacing: -0.03em; margin-bottom: var(--s-10); color: var(--c-text); }
-.hero-home .hero__title { font-family: var(--font-display); font-size: clamp(3rem, 6vw, 5rem); font-weight: 300; line-height: 1.1; letter-spacing: -0.03em; margin-bottom: var(--s-10); color: var(--c-text); }
+.hero .hero__title { font-family: var(--font-display); font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 300; line-height: 1.2; letter-spacing: -0.03em; margin-bottom: var(--s-10); }
+.hero-home .hero__title { font-family: var(--font-display); font-size: clamp(3rem, 6vw, 5rem); font-weight: 300; line-height: 1.1; letter-spacing: -0.03em; margin-bottom: var(--s-10); }
 .hero .hero__subtitle, .hero-home .hero__subtitle { font-family: var(--font-body); font-size: 1.125rem; line-height: 1.8; color: var(--c-text-light); margin-bottom: var(--s-10); max-width: 700px; margin-left: auto; margin-right: auto; }
 .hero__actions { display: flex; gap: var(--s-4); align-items: center; justify-content: center; }
 .hero .hero__actions { justify-content: center; margin-top: var(--s-8); }
@@ -101,7 +101,6 @@
   font-weight: 300;
   line-height: 1.1;
   letter-spacing: -0.02em;
-  color: var(--c-text);
   margin: 0 0 var(--s-4) 0;
 }
 
@@ -152,7 +151,7 @@
 .page-header { position: relative; margin-top: 100px; padding: var(--s-24) 0 var(--s-20); border-bottom: 1px solid rgba(0, 0, 0, 0.08); width: 100%; overflow-x: hidden; }
 .page-header .container { position: relative; max-width: var(--container-max); width: 100%; padding: 0 var(--container-padding); }
 .page-header .heading-primary { margin-bottom: 0; }
-.page-header__title { font-family: var(--font-display); font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 300; line-height: 1.1; letter-spacing: -0.02em; color: var(--c-text); margin: 0 0 var(--s-4) 0; }
+.page-header__title { font-family: var(--font-display); font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 300; line-height: 1.1; letter-spacing: -0.02em; margin: 0 0 var(--s-4) 0; }
 .page-header__top { display: flex; justify-content: space-between; align-items: flex-start; gap: var(--s-12); }
 .page-header__subtitle { font-family: var(--font-body); font-size: 1rem; line-height: 1.6; color: var(--c-text-light); max-width: 600px; margin: 0; }
 .page-header__actions { display: flex; gap: var(--s-4); flex-wrap: wrap; margin-top: var(--s-4); }

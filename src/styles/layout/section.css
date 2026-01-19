@@ -45,4 +45,4 @@
 .section { padding: var(--s-24) 0; width: 100%; }
 .section-first { margin-top: calc(var(--nav-height) + var(--s-16)); padding-top: var(--s-20); }
 .section-default { background: var(--c-white); }
-.section-alternate { background: var(--c-gray-50); }
+.section-alternate { background: rgb(14, 97, 93); color: var(--c-white); }
