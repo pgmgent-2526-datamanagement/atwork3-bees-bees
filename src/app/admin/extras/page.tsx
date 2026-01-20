@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
+import Breadcrumbs from '@/components/shared/Breadcrumbs';
 
 const MAX_FILE_SIZE = 800 * 1024; // 800KB
 const RECOMMENDED_WIDTH = 1920;
@@ -226,14 +227,22 @@ export default function ExtrasPage() {
   }
 
   return (
-    <>
-      <section className="page-header">
+    <div className="platform-page">
+      <section className="platform-hero">
         <div className="container">
-          <h1 className="heading-primary">Hero Afbeelding</h1>
+          <div className="platform-hero__content">
+            <span className="platform-hero__label">Admin</span>
+            <h1 className="platform-hero__title">Extra's</h1>
+            <p style={{ fontSize: '1.125rem', color: 'rgba(255, 255, 255, 0.9)', marginTop: '12px' }}>
+              Beheer de hero afbeelding op de homepage
+            </p>
+          </div>
         </div>
       </section>
 
-      <section className="section">
+      <Breadcrumbs items={[{ label: 'Admin', href: '/admin' }, { label: "Extra's" }]} />
+
+      <section className="home-features">
         <div className="container container--narrow">
           <div>
 
@@ -429,6 +438,6 @@ export default function ExtrasPage() {
           </div>
         </div>
       </section>
-    </>
+    </div>
   );
 }

@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { requireAdmin } from '@/lib/auth-helpers';
 import HivesTable from '@/components/admin/HivesTable';
+import Breadcrumbs from '@/components/shared/Breadcrumbs';
 export default async function ApiaryDetailPage({
   params,
   searchParams,
@@ -15,7 +16,7 @@ export default async function ApiaryDetailPage({
 
   await requireAdmin();
   const { returnUrl } = (await searchParams) || '/admin/apiaries';
-  const hivesPerPage = 5;
+  const hivesPerPage = 20;
   const currentPage = Number(page ?? '1');
   const totalHives = await prisma.hive.count({
     where: { apiaryId: parseInt(apiaryId) },
@@ -39,37 +40,50 @@ export default async function ApiaryDetailPage({
   if (!apiary) notFound();
 
   return (
-    <>
-      <section className="page-header">
+    <div className="platform-page">
+      <section className="platform-hero">
         <div className="container">
-          <h1 className="heading-primary">{apiary.name}</h1>
-          <p className="page-header__subtitle">
-            Eigenaar: <Link href={`/admin/users/${apiary.user.id}`}>{apiary.user.name}</Link>
-          </p>
-          <p className="page-header__subtitle">
-            Locatie: {apiary.latitude}, {apiary.longitude}
-          </p>
+          <div className="platform-hero__content">
+            <span className="platform-hero__label">
+              Eigenaar: <Link href={`/admin/users/${apiary.user.id}`} style={{ color: 'inherit', textDecoration: 'underline' }}>{apiary.user.name}</Link>
+            </span>
+            <h1 className="platform-hero__title">{apiary.name}</h1>
+            <p style={{ fontSize: '1rem', color: 'rgba(255, 255, 255, 0.85)', marginTop: '8px' }}>
+              Locatie: {apiary.latitude && apiary.longitude ? (
+                <a 
+                  href={`https://www.google.com/maps?q=${apiary.latitude},${apiary.longitude}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{ color: 'inherit', textDecoration: 'underline' }}
+                >
+                  {apiary.latitude}, {apiary.longitude}
+                </a>
+              ) : (
+                'Niet ingesteld'
+              )}
+            </p>
+          </div>
         </div>
       </section>
 
-      <section className="section ">
+      <Breadcrumbs items={[{ label: 'Admin', href: '/admin' }, { label: 'Bijenstanden', href: '/admin/apiaries' }, { label: apiary.name }]} />
+
+      <section className="home-features">
         <div className="container">
-          <div className="section-header">
-            <h2 className="heading-secondary">Behuizingen in deze bijenstand</h2>
-            <Link href={returnUrl ?? '/admin/apiaries'}>
-              <button className="btn btn--secondary">← Terug</button>
-            </Link>
-          </div>
+          <h2 style={{ fontSize: '1.5rem', fontWeight: '400', marginBottom: 'var(--s-8)', color: 'rgb(14, 97, 93)' }}>
+            Behuizingen in deze bijenstand
+          </h2>
           
           <HivesTable
             hives={apiary.hives}
             showApiary={false}
+            showUser={false}
             currentPath={`/admin/apiaries/${apiaryId}`}
             totalPages={totalPages}
             currentPage={currentPage}
           />
         </div>
       </section>
-    </>
+    </div>
   );
 }

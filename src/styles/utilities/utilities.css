@@ -79,9 +79,9 @@
    ============================================ */
 
 /* Headings (legacy) */
-.heading-primary { font-family: var(--font-display); font-size: clamp(2rem, 4vw, 3rem); font-weight: 400; line-height: 1.2; letter-spacing: -0.02em; margin-bottom: var(--s-6); color: var(--c-text); }
-.heading-secondary { font-family: var(--font-display); font-size: clamp(1.5rem, 3vw, 2.25rem); font-weight: 400; line-height: 1.2; letter-spacing: -0.02em; margin-bottom: var(--s-6); color: var(--c-text); }
-.heading-tertiary { font-family: var(--font-display); font-size: clamp(1.25rem, 2.5vw, 1.75rem); font-weight: 400; line-height: 1.2; letter-spacing: -0.02em; margin-bottom: var(--s-4); color: var(--c-text); }
+.heading-primary { font-family: var(--font-display); font-size: clamp(2rem, 4vw, 3rem); font-weight: 400; line-height: 1.2; letter-spacing: -0.02em; margin-bottom: var(--s-6); }
+.heading-secondary { font-family: var(--font-display); font-size: clamp(1.5rem, 3vw, 2.25rem); font-weight: 400; line-height: 1.2; letter-spacing: -0.02em; margin-bottom: var(--s-6); }
+.heading-tertiary { font-family: var(--font-display); font-size: clamp(1.25rem, 2.5vw, 1.75rem); font-weight: 400; line-height: 1.2; letter-spacing: -0.02em; margin-bottom: var(--s-4); color: #ffffff; }
 
 /* Text utilities (legacy) */
 .text-center { text-align: center; }

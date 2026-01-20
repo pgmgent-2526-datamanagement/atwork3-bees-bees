@@ -71,9 +71,6 @@ export default function HivesFilter({
   return (
     <>
       <div className="section-header">
-        <Link href="/admin" className="back-link">
-          ←
-        </Link>
         <div className="filters">
           <input
             type="text"
@@ -96,7 +93,7 @@ export default function HivesFilter({
             }}
             className="form__select"
           >
-            <option value="">Alle behuizing</option>
+            <option value="">Alle behuizingen</option>
             {types.map(type => (
               <option key={type} value={type}>
                 {type}

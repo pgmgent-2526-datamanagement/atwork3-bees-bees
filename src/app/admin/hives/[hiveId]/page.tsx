@@ -3,6 +3,7 @@ import { requireAdmin } from '@/lib/auth-helpers';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import ObservationsFilter from '@/components/shared/ObservationsFilter';
+import Breadcrumbs from '@/components/shared/Breadcrumbs';
 
 import { pollenColors } from '@/lib/pollenColors';
 type SearchParams = {
@@ -31,7 +32,7 @@ export default async function AdminHiveDetailPage({
   } = searchParamsResult;
 
   const currentPage = Number(page);
-  const observationsPerPage = 10;
+  const observationsPerPage = 20;
   const baseWhere = {
     hiveId: parseInt(hiveId, 10),
   };
@@ -114,30 +115,29 @@ export default async function AdminHiveDetailPage({
     orderBy: { createdAt: 'desc' },
   });
   return (
-    <>
-      <section className="page-header">
+    <div className="platform-page">
+      <section className="platform-hero">
         <div className="container">
-          <h1 className="heading-primary">{hive.name}</h1>
-          <p className="page-header__subtitle">
-            Type: {hive.type} | Volk: {hive.colonyType}
-          </p>
-          <p className="page-header__subtitle">
-            Bijenstand:{' '}
-            <Link href={`/admin/apiaries/${hive.apiary.id}`}>
-              {hive.apiary.name}
-            </Link>
-          </p>
+          <div className="platform-hero__content">
+            <span className="platform-hero__label">
+              {hive.type} • {hive.colonyType}
+            </span>
+            <h1 className="platform-hero__title">{hive.name}</h1>
+            <p style={{ fontSize: '1.125rem', color: 'rgba(255, 255, 255, 0.9)', marginTop: '12px' }}>
+              Bijenstand:{' '}
+              <Link href={`/admin/apiaries/${hive.apiary.id}`} style={{ color: 'inherit', textDecoration: 'underline' }}>
+                {hive.apiary.name}
+              </Link>
+            </p>
+          </div>
         </div>
       </section>
 
-      <section className="section ">
+      <Breadcrumbs items={[{ label: 'Admin', href: '/admin' }, { label: 'Behuizingen', href: '/admin/hives' }, { label: hive.name }]} />
+
+      <section className="home-features">
         <div className="container">
-          <div className="section-header">
-            <h2 className="heading-secondary">Waarnemingen</h2>
-            <Link href={returnUrl ?? '/admin/hives'}>
-              <button className="btn btn--secondary">← Terug</button>
-            </Link>
-          </div>
+          <h2 className="heading-secondary" style={{ marginBottom: 'var(--space-8)' }}>Waarnemingen</h2>
 
           <ObservationsFilter
             observations={observations}
@@ -154,6 +154,6 @@ export default async function AdminHiveDetailPage({
           />
         </div>
       </section>
-    </>
+    </div>
   );
 }

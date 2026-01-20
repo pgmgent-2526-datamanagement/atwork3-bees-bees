@@ -3,6 +3,7 @@ import { redirect } from 'next/navigation';
 import Link from 'next/link';
 import prisma from '@/lib/client';
 import { authOptions } from '@/lib/auth-options';
+import Breadcrumbs from '@/components/shared/Breadcrumbs';
 import ObservationsFilter from '@/components/shared/ObservationsFilter';
 import { pollenColors } from '@/lib/pollenColors';
 
@@ -51,7 +52,7 @@ export default async function AccountObservationsPage({
   const currentPage = parseInt(searchParamsResult?.page ?? '1', 10);
   const search = searchParamsResult?.search ?? '';
   const colorFilter = searchParamsResult?.color ?? '';
-  const observationsPerPage = 5;
+  const observationsPerPage = 20;
 
   // Build dynamic where clause based on search parameters
   const baseWhere = {
@@ -137,29 +138,27 @@ export default async function AccountObservationsPage({
     },
   });
   return (
-    <>
-      <section className="page-header" data-page="—">
+    <div className="platform-page">
+      <section className="platform-hero">
         <div className="container">
-          <div className="nav__container" style={{ padding: 0 }}>
-            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", width: "100%" }}>
-              <div>
-                <h1 className="heading-primary">
-                  Mijn waarnemingen ({totalObservations})
-                </h1>
-              </div>
-              <div className="page-header__actions">
-                <Link href="/observations/new">
-                  <button className="btn btn--secondary">
-                    + Nieuwe waarneming
-                  </button>
-                </Link>
-              </div>
+          <div className="platform-hero__content">
+            <span className="platform-hero__label">{totalObservations} {totalObservations === 1 ? 'waarneming' : 'waarnemingen'}</span>
+            <h1 className="platform-hero__title">Mijn waarnemingen</h1>
+            <div className="btn-group">
+              <Link href="/observations/new" className="btn btn--secondary btn--large">
+                + Nieuwe waarneming
+              </Link>
             </div>
           </div>
         </div>
       </section>
 
-      <section className="section ">
+      <Breadcrumbs items={[
+        { label: 'Account', href: '/account' },
+        { label: 'Waarnemingen' }
+      ]} />
+
+      <section className="home-features">
         <div className="container">
           <ObservationsFilter
             observations={observations}
@@ -176,6 +175,6 @@ export default async function AccountObservationsPage({
           />
         </div>
       </section>
-    </>
+    </div>
   );
 }

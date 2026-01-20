@@ -1,6 +1,8 @@
 import Button from "@/components/magazine/Button";
 import Stats from "@/components/magazine/Stats";
 import HeroImage from "@/components/home/HeroImage";
+import ScrollCursor from "@/components/home/ScrollCursor";
+import ScrollAnimations from "@/components/home/ScrollAnimations";
 import prisma from "@/lib/client";
 import { readFile } from "fs/promises";
 import { join } from "path";
@@ -51,123 +53,107 @@ export default async function Home() {
 
   return (
     <>
-      <section className="hero hero-home">
-        <HeroImage imageUrl={heroData.url} altText={heroData.alt} />
-        <div className="hero__content">
-          <h1 className="heading-primary">Digitaal Bijenhouden - Platform voor Imkers</h1>
-          <p className="hero__subtitle">
-            Uw digitale assistent voor bijenhouden. Modern, overzichtelijk,
-            effectief.
-          </p>
-          <div className="hero__actions">
-            <Button href="/auth/register" variant="primary" size="lg">
-              Start nu
-            </Button>
-            <Button href="/platform" variant="secondary" size="lg">
-              Lees meer
-            </Button>
-          </div>
+      <ScrollCursor />
+      <ScrollAnimations />
+      
+      {/* Hero - Full width image at top */}
+      <section className="home-hero">
+        <div className="home-hero__image">
+          <HeroImage imageUrl={heroData.url} altText={heroData.alt} />
         </div>
       </section>
 
-      <Stats
-        totalObservations={totalObservations}
-        totalUsers={totalUsers}
-        totalHives={totalHives}
-      />
-
-      <section className="section">
+      {/* Content Section - H1, intro text, stats */}
+      <section className="home-content">
         <div className="container">
-          <div className="section-header">
-            <h2 className="heading-secondary">Belangrijkste functies voor imkers</h2>
-            <p className="section-description">
-              Alles wat een moderne imker nodig heeft, zonder overbodige toeters
-              en bellen.
+          <div className="home-content__main">
+            <h1 className="home-content__title">Biodynamische Imkers Vlaanderen</h1>
+            <p className="home-content__intro">
+              
+Een platform waar jij als imker al je bijenstanden, behuizingen en waarnemingen op één plek registreert en beheert.
+De locaties van je bijenstanden blijven standaard afgeschermd en zijn enkel zichtbaar voor jou.
+          
             </p>
+            <div className="home-content__cta">
+              <Button href="/platform" variant="secondary" size="lg">
+                Ontdek platform
+              </Button>
+            </div>
           </div>
-
-          <div className="grid grid-three-columns">
-            <div className="card">
-              <div className="card__header">
-                <h3 className="heading-tertiary">Bijenstanden beheren</h3>
-              </div>
-              <div className="card__content">
-                <p className="card__description">
-                  Voeg onbeperkt bijenstanden toe met GPS-coördinaten. Alleen
-                  jij ziet waar je standen zich bevinden.
-                </p>
-              </div>
+          <div className="home-content__stats">
+            <div className="home-content__stat">
+              <span className="home-content__stat-value">+{totalHives}</span>
+              <span className="home-content__stat-label">Bijenstanden</span>
             </div>
-            <div className="card">
-              <div className="card__header">
-                <h3 className="heading-tertiary">Behuizingen registreren</h3>
-              </div>
-              <div className="card__content">
-                <p className="card__description">
-                  Houd per behuizing bij welk type het is, sinds wanneer het er staat
-                  en wat de huidige status is.
-                </p>
-              </div>
-            </div>
-            <div className="card">
-              <div className="card__header">
-                <h3 className="heading-tertiary">Observaties loggen</h3>
-              </div>
-              <div className="card__content">
-                <p className="card__description">
-                  Registreer waarnemingen met datum, notities, foto's en acties.
-                  Altijd en overal toegankelijk.
-                </p>
-              </div>
-            </div>
-            <div className="card">
-              <div className="card__header">
-                <h3 className="heading-tertiary">Drachtkalender</h3>
-              </div>
-              <div className="card__content">
-                <p className="card__description">
-                  Zie welke planten binnen 2-7 km van je standen bloeien. Handig
-                  voor drachtplanning.
-                </p>
-              </div>
-            </div>
-            <div className="card">
-              <div className="card__header">
-                <h3 className="heading-tertiary">Privacybescherming</h3>
-              </div>
-              <div className="card__content">
-                <p className="card__description">
-                  Jouw locaties blijven privé. Andere imkers zien alleen
-                  observaties, nooit je exacte standplaatsen.
-                </p>
-              </div>
-            </div>
-            <div className="card">
-              <div className="card__header">
-                <h3 className="heading-tertiary">Multi-device synchronisatie</h3>
-              </div>
-              <div className="card__content">
-                <p className="card__description">
-                  Werk op je telefoon, tablet of computer. Al je gegevens worden
-                  gesynchroniseerd.
-                </p>
-              </div>
+            <div className="home-content__stat">
+              <span className="home-content__stat-value">+{totalObservations}</span>
+              <span className="home-content__stat-label">Waarnemingen</span>
             </div>
           </div>
         </div>
       </section>
 
-     <section className="section section-alternate">
+      {/* Features Grid - Refined luxury layout */}
+      <section className="home-features">
         <div className="container">
-          <div className="text-center">
-            <h2 className="heading-secondary">Gratis account aanmaken</h2>
-            <p className="text-large margin-bottom-large">
-              Registreer nu gratis en begin met het digitaliseren van je imkerij
-            </p>
-            <div className="flex justify-center gap-small">
-              <a href="/auth/register" className="btn btn--secondary">
-                Gratis account aanmaken
-              </a>
+          <div className="home-features__grid">
+            <div className="feature-card">
+              <h3 className="feature-card__title">Bijenstanden beheren</h3>
+              <p className="feature-card__text">
+                Registreer met GPS-coördinaten. 
+                Jouw locaties blijven 100% privé.
+              </p>
+            </div>
+
+            <div className="feature-card">
+              <h3 className="feature-card__title">Waarnemingen loggen</h3>
+              <p className="feature-card__text">
+                Observeer, reken en noteer alles wat je ziet bij je behuizing.
+              </p>
+            </div>
+
+            <div className="feature-card">
+              <h3 className="feature-card__title">Drachtkalender</h3>
+              <p className="feature-card__text">
+                Zie welke planten binnen 200m-7 km van je standen bloeien.
+              </p>
+            </div>
+
+            <div className="feature-card">
+              <h3 className="feature-card__title">Behuizingen volgen</h3>
+              <p className="feature-card__text">
+                Houd per behuizing bij welk type het is en wat de status is.
+              </p>
+            </div>
+
+            <div className="feature-card">
+              <h3 className="feature-card__title">Multi-device sync</h3>
+              <p className="feature-card__text">
+                Automatisch gesynchroniseerd op al je apparaten.
+              </p>
+            </div>
+
+            <div className="feature-card">
+              <h3 className="feature-card__title">Data-analyse</h3>
+              <p className="feature-card__text">
+                Krijg inzicht in je imkerpraktijken met overzichtelijke statistieken.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Platform CTA */}
+      <section className="home-platform">
+        <div className="container">
+          <div className="home-platform__content">
+            <h2 className="home-platform__title">Klaar om te starten?</h2>
+          
+            <div className="home-platform__actions">
+             
+              <Button href="/auth/register" variant="primary" size="lg">
+               Maak een gratis account aan
+              </Button>
             </div>
           </div>
         </div>

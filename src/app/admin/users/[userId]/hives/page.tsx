@@ -3,6 +3,7 @@ import { redirect } from 'next/navigation';
 import Link from 'next/link';
 import { requireAdmin } from '@/lib/auth-helpers';
 import HivesTable from '@/components/admin/HivesTable';
+import Breadcrumbs from '@/components/shared/Breadcrumbs';
 
 export default async function UserHivesPage({
   params,
@@ -15,7 +16,7 @@ export default async function UserHivesPage({
 
   const { userId } = await params;
   const searchParamsResult = await searchParams;
-  const hivesPerPage = 5;
+  const hivesPerPage = 20;
   const currentPage = Number(searchParamsResult?.page ?? '1');
   const totalHives = await prisma.hive.count({
     where: {
@@ -56,24 +57,22 @@ export default async function UserHivesPage({
   });
 
   return (
-    <>
-      <section className="page-header">
+    <div className="platform-page">
+      <section className="platform-hero">
         <div className="container">
-          <h1 className="heading-primary">Behuizingen van {user.name}</h1>
-          <p className="page-header__subtitle">
-            Totaal: {totalHives} {totalHives === 1 ? 'behuizing' : 'behuizingen'}
-          </p>
+          <div className="platform-hero__content">
+            <span className="platform-hero__label">
+              Totaal: {totalHives} {totalHives === 1 ? 'behuizing' : 'behuizingen'}
+            </span>
+            <h1 className="platform-hero__title">Behuizingen van {user.name}</h1>
+          </div>
         </div>
       </section>
 
-      <section className="section ">
-        <div className="container">
-          <div className="section-header">
-            <Link href={`/admin/users/${userId}`}>
-              <button className="btn btn--secondary">← Terug naar imker</button>
-            </Link>
-          </div>
+      <Breadcrumbs items={[{ label: 'Admin', href: '/admin' }, { label: 'Gebruikers', href: '/admin/users' }, { label: user.name, href: `/admin/users/${userId}` }, { label: 'Behuizingen' }]} />
 
+      <section className="home-features">
+        <div className="container">
           <HivesTable
             hives={hives}
             showApiary={true}
@@ -84,6 +83,6 @@ export default async function UserHivesPage({
           />
         </div>
       </section>
-    </>
+    </div>
   );
 }

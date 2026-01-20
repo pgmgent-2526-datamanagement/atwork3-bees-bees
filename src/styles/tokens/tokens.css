@@ -68,8 +68,8 @@
   --space-24: var(--s-24);
 
   /* -------------------- TYPOGRAPHY -------------------- */
-  --font-sans: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-serif: "Playfair Display", Georgia, serif;
+  --font-sans: 'Rework', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-serif: 'Gestura', Georgia, serif;
   --font-body: var(--font-sans);
   --font-display: var(--font-serif);
   --font-heading: var(--font-serif);

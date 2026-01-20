@@ -2,6 +2,7 @@ import prisma from '@/lib/client';
 import ApiariesTable from '@/components/admin/ApiariesTable';
 import { requireAdmin } from '@/lib/auth-helpers';
 import Link from 'next/link';
+import Breadcrumbs from '@/components/shared/Breadcrumbs';
 export default async function AdminUserApiariesPage({
   params,
   searchParams,
@@ -13,7 +14,7 @@ export default async function AdminUserApiariesPage({
 
   const { userId } = await params;
   const searchParamsResult = await searchParams;
-  const apiariesPerPage = 5;
+  const apiariesPerPage = 20;
   const currentPage = Number(searchParamsResult?.page ?? '1');
   const totalApiaries = await prisma.apiary.count();
   const totalPages = Math.ceil(totalApiaries / apiariesPerPage);
@@ -30,24 +31,22 @@ export default async function AdminUserApiariesPage({
   });
 
   return (
-    <>
-      <section className="page-header">
+    <div className="platform-page">
+      <section className="platform-hero">
         <div className="container">
-          <h1 className="heading-primary">Bijenstanden van {user?.name}</h1>
-          <p className="page-header__subtitle">
-            Totaal: {apiaries.length} {apiaries.length === 1 ? 'bijenstand' : 'bijenstanden'}
-          </p>
+          <div className="platform-hero__content">
+            <span className="platform-hero__label">
+              Totaal: {apiaries.length} {apiaries.length === 1 ? 'bijenstand' : 'bijenstanden'}
+            </span>
+            <h1 className="platform-hero__title">Bijenstanden van {user?.name}</h1>
+          </div>
         </div>
       </section>
 
-      <section className="section ">
+      <Breadcrumbs items={[{ label: 'Admin', href: '/admin' }, { label: 'Gebruikers', href: '/admin/users' }, { label: user?.name || '', href: `/admin/users/${userId}` }, { label: 'Bijenstanden' }]} />
+
+      <section className="home-features">
         <div className="container">
-          <div className="section-header">
-            <Link href={`/admin/users/${userId}`}>
-              <button className="btn btn--secondary">← Terug naar imker</button>
-            </Link>
-          </div>
-          
           <ApiariesTable
             apiaries={apiaries}
             showUser={false}
@@ -57,6 +56,6 @@ export default async function AdminUserApiariesPage({
           />
         </div>
       </section>
-    </>
+    </div>
   );
 }
