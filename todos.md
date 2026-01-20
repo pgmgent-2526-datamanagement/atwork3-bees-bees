@@ -288,6 +288,41 @@ Een volledig functionele bijenstandbeheer applicatie met robuuste backend, gebru
 
 TODO
 
+### Tests
+
+- [x]BUG? nieuwe bijenstand toegevoegd vanuit /account
+- [x] nieuwe bijenstand toegevoegd vanuit /apiaries ok
+  - [x]BUG in /apiaries/new
+  - [x] de bijenstand bewerkt ok
+  - [x] de bijenstand verwijderd ok
+
+- [x]BUG? nieuwe kast toegevoegd vanuit /account
+- [x] nieuwe kast toegevoegd vanuit /apiaries/[id]
+  - [x] BUG in /hives/[id]/edit
+
+- [x] waarneming toegevoegd vanuit hives/[id] ok
+- [x] waarneming toegevoegd vanuit /account -[x]BUG in observations/new
+
+- [] waarneming bewerkt
+  - [] BUG in observations/[id]/edit
+
+- []
+- []
+- []
+- []
+- []
+
+### Bugs gevonden
+
+- [] /apiaries/new: bij toevoegen nieuwe bijenstand, als je via adres gaat,en je vult een adres in zonder op locatie te drukken en dan op de 'bijenstand toevoegen drukt, krijg je terecht de melding 'Vul een adres in en klik op "Zoek locatie".' Als je dat dan onmiddellijk doet, krijg je de melding 'Invalid input: expected number, received NaN'. Maar als je toch weer op 'bijenstand toevoegen' klikt, wordt hij wel toegevoegd
+- [] na toevoegen bijenstanden en kasten vanuit /account gaat de redirect respectievelijk naar /apiaries en /apiaries[id], dus waar ze zijn toegevoegd
+- [] /hives/[id]/edit: het type behuizing staat niet voorgeselecteerd
+- [] /observations/[id]/edit: redirect niet naar /observations/[id] maar naar /hives/id
+- [] /observations/[id]/edit: krijg foutmelding 'Invalid input: expected number, received string' als ik geen wijziging doe
+- [] observations/new: bij geen stuifmeelkleur moet ik toch nog een hoeveelheid pollen invullen, zal "GEEN" in de enum moeten toevoegen en voorselecteren als er geen stuifmeelkleur is, of veld optioneel maken en 'GEEN' als default value maken
+
+TODO
+
 - [] de temperatuur in observationform weer laten tellen vanaf de placeholderwaarde
 - [] bespreken met docent, deployment voor klant met eigen account enz.
 - [] keys voor mapbox en resend voor klant?

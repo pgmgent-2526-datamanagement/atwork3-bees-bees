@@ -51,7 +51,7 @@ export default async function AccountObservationsPage({
   const currentPage = parseInt(searchParamsResult?.page ?? '1', 10);
   const search = searchParamsResult?.search ?? '';
   const colorFilter = searchParamsResult?.color ?? '';
-  const observationsPerPage = 20;
+  const observationsPerPage = 2;
 
   // Build dynamic where clause based on search parameters
   const baseWhere = {
