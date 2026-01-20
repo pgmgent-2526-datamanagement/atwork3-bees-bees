@@ -78,9 +78,7 @@ export default function Login() {
       <section className="page-header" data-page="—">
         <div className="container">
           <h1 className="heading-primary">Inloggen</h1>
-          <p className="page-header__subtitle">
-            Welkom terug bij uw bijenwaarnemingen
-          </p>
+    
         </div>
       </section>
 
@@ -122,28 +120,30 @@ export default function Login() {
               <label htmlFor="password" className="form__label">
                 Wachtwoord
               </label>
-              <input
-                id="password"
-                type={showPassword ? 'text' : 'password'}
-                name="password"
-                className="form__input"
-                placeholder="Uw wachtwoord"
-                onChange={e => {
-                  if (fieldErrors?.password) {
-                    setFieldErrors(prev => ({ ...prev, password: [] }));
+              <div className="form__input-wrapper">
+                <input
+                  id="password"
+                  type={showPassword ? 'text' : 'password'}
+                  name="password"
+                  className="form__input form__input--with-icon"
+                  placeholder="Uw wachtwoord"
+                  onChange={e => {
+                    if (fieldErrors?.password) {
+                      setFieldErrors(prev => ({ ...prev, password: [] }));
+                    }
+                  }}
+                />
+                <button
+                  type="button"
+                  className="form__toggle-password"
+                  onClick={() => setShowPassword(!showPassword)}
+                  aria-label={
+                    showPassword ? 'Verberg wachtwoord' : 'Toon wachtwoord'
                   }
-                }}
-              />
-              <button
-                type="button"
-                className="toggle-button"
-                onClick={() => setShowPassword(!showPassword)}
-                aria-label={
-                  showPassword ? 'Verberg wachtwoord' : 'Toon wachtwoord'
-                }
-              >
-                {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
-              </button>
+                >
+                  {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+                </button>
+              </div>
               {fieldErrors?.password && (
                 <div className="form-error">
                   {fieldErrors.password.map((error, index) => (
@@ -153,6 +153,8 @@ export default function Login() {
               )}
             </div>
 
+         
+
             <button
               type="submit"
               className="btn btn--primary btn--large btn--full"
@@ -161,24 +163,21 @@ export default function Login() {
               {loading ? 'Inloggen...' : 'Inloggen'}
             </button>
 
-            <div
-              className="text-center"
-              style={{ marginTop: 'var(--space-4)' }}
-            >
-              <Link href="/forgot-password" className="text-link">
+
+
+            <p className="form__footer-text">
+              Nog geen account?{' '}
+              <Link href="/auth/register" className="form__link form__link--primary">
+                Registreer hier
+              </Link>
+    <div className="form__group">
+              <Link href="/forgot-password" className="form__link">
                 Wachtwoord vergeten?
               </Link>
             </div>
-          </form>
-
-          <div className="text-center margin-top-large">
-            <p className="card__description">
-              Nog geen account?{' '}
-              <Link href="/auth/register" className="text-link">
-                Registreer hier
-              </Link>
+             
             </p>
-          </div>
+          </form>
         </div>
       </section>
     </>

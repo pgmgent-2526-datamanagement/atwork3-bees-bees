@@ -127,12 +127,12 @@ export function RegisterForm({ createItem }: FormProps) {
         <label htmlFor="password" className="form__label">
           Wachtwoord
         </label>
-        <div className="input-wrapper">
+        <div className="form__input-wrapper">
           <input
             id="password"
             type={showPassword ? 'text' : 'password'}
             name="password"
-            className="form__input password-input" // Extra class voor padding
+            className="form__input form__input--with-icon"
             placeholder="Minimaal 8 tekens"
             onChange={e => {
               if (errors?.password) {
@@ -146,7 +146,7 @@ export function RegisterForm({ createItem }: FormProps) {
           />
           <button
             type="button"
-            className="toggle-button"
+            className="form__toggle-password"
             onClick={() => setShowPassword(!showPassword)}
             aria-label={showPassword ? 'Verberg wachtwoord' : 'Toon wachtwoord'}
           >
@@ -166,12 +166,12 @@ export function RegisterForm({ createItem }: FormProps) {
         <label htmlFor="confirmPassword" className="form__label">
           Bevestig wachtwoord
         </label>
-        <div className="input-wrapper">
+        <div className="form__input-wrapper">
           <input
             id="confirmPassword"
             type={showConfirmPassword ? 'text' : 'password'}
             name="confirmPassword"
-            className="form__input password-input"
+            className="form__input form__input--with-icon"
             placeholder="Herhaal wachtwoord"
             onChange={e => {
               if (errors?.confirmPassword) {
@@ -185,7 +185,7 @@ export function RegisterForm({ createItem }: FormProps) {
           />
           <button
             type="button"
-            className="toggle-button"
+            className="form__toggle-password"
             onClick={() => setShowConfirmPassword(!showConfirmPassword)}
             aria-label={
               showConfirmPassword ? 'Verberg bevestiging' : 'Toon bevestiging'
@@ -211,6 +211,13 @@ export function RegisterForm({ createItem }: FormProps) {
       >
         {loading ? 'Account aanmaken...' : 'Account aanmaken'}
       </Button>
+
+      <p className="form__footer-text">
+        Al een account?{' '}
+        <a href="/auth/login" className="form__link form__link--primary">
+          Login hier
+        </a>
+      </p>
     </form>
   );
 }

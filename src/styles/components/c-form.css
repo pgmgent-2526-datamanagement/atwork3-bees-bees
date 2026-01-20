@@ -148,6 +148,61 @@
 .form__input-group .form__input { flex: 1; }
 .form__input-group .btn { flex-shrink: 0; margin-top: 0; }
 
+/* Password toggle styling */
+.form__input-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.form__input--with-icon {
+  padding-right: 48px;
+}
+
+.form__toggle-password {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: rgba(14, 97, 93, 0.6);
+  cursor: pointer;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.2s ease;
+}
+
+.form__toggle-password:hover {
+  color: rgb(14, 97, 93);
+}
+
+/* Form footer text and links */
+.form__footer-text {
+  text-align: center;
+  margin-top: var(--s-6);
+  font-size: 14px;
+  color: rgba(14, 97, 93, 0.7);
+}
+
+.form__link {
+  color: rgba(14, 97, 93, 0.8);
+  text-decoration: none;
+  font-size: 14px;
+  transition: color 0.2s ease;
+}
+
+.form__link:hover {
+  color: rgb(14, 97, 93);
+  text-decoration: underline;
+}
+
+.form__link--primary {
+  color: rgb(14, 97, 93);
+  font-weight: 500;
+}
+
 @media (max-width: 768px) {
   .form__actions { flex-direction: column-reverse; gap: var(--s-4); }
 }

@@ -298,7 +298,8 @@
   margin-top: 32px;
 }
 
-.section-header {
+.section-header:has(h2),
+.section-header:has(.btn) {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -464,6 +465,12 @@ a.feature-card:hover .feature-card__title {
   color: rgb(14, 97, 93);
 }
 
+/* Feature card icon styling */
+.feature-card__icon {
+  color: rgb(14, 97, 93);
+  margin-bottom: 24px;
+}
+
 /* Account page - no animations */
 .platform-page .feature-card {
   opacity: 1;
@@ -507,8 +514,7 @@ a.feature-card:hover .feature-card__title {
 /* Platform CTA - Prestige section */
 .home-platform {
   padding: 80px 0 140px;
-  background: linear-gradient(180deg, #ffffff 0%, rgb(254, 252, 244) 100%);
-  border-top: 1px solid rgba(14, 97, 93, 0.04);
+  border-top: 1px solid rgba(14, 97, 93, 0.6);
 }
 
 .home-platform__content {
