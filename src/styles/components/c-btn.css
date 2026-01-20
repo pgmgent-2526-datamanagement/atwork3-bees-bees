@@ -88,18 +88,44 @@
 .btn--lg, .btn--large { padding: var(--s-5) var(--s-12); font-size: var(--text-lg); }
 .btn--full { width: 100%; }
 .btn:disabled, .btn--disabled { opacity: 0.5; cursor: not-allowed; pointer-events: none; }
-.btn--primary, .btn--secondary { background: var(--c-white); border-color: var(--c-border); color: var(--c-text); }
-.btn--primary:hover, .btn--secondary:hover { border-color: var(--c-text); background: var(--c-gray-50); color: var(--c-text); box-shadow: var(--shadow-sm); }
+
+/* Primary: Teal background with white text (active state) */
+.btn--primary { 
+  background: rgb(14, 97, 93); 
+  border-color: rgb(14, 97, 93); 
+  color: #ffffff; 
+}
+.btn--primary:hover { 
+  background: rgb(11, 78, 75); 
+  border-color: rgb(11, 78, 75); 
+  color: #ffffff; 
+  box-shadow: 0 4px 12px rgba(14, 97, 93, 0.2); 
+}
+
+/* Secondary: White background with lower opacity (inactive state) */
+.btn--secondary { 
+  background: var(--c-white); 
+  border-color: var(--c-border); 
+  color: var(--c-text); 
+  opacity: 0.6;
+}
+.btn--secondary:hover { 
+  opacity: 0.8;
+  border-color: var(--c-text); 
+  background: var(--c-gray-50); 
+  color: var(--c-text); 
+  box-shadow: var(--shadow-sm); 
+}
 
 @media (max-width: 768px) {
   .c-btn { padding: var(--s-4) var(--s-6); }
 }
 
 /* ============================================
-button Two variants
+   Modern Button Styles - Two variants
    ============================================ */
 
-/* Primary - Filled button (selected state) */
+/* Primary - Filled teal button */
 .btn--primary {
   display: inline-flex;
   align-items: center;
@@ -108,11 +134,11 @@ button Two variants
   padding: 12px 24px;
   font-family: var(--font-body);
   font-size: 15px;
-  font-weight: 600;
+  font-weight: 500;
   line-height: 1.2;
-  border: 2px solid #1F2937;
+  border: 1px solid rgb(14, 97, 93);
   border-radius: 6px;
-  background: #1F2937;
+  background: rgb(14, 97, 93);
   color: #ffffff;
   cursor: pointer;
   transition: all 0.2s ease;
@@ -121,17 +147,17 @@ button Two variants
 }
 
 .btn--primary:hover {
- 
-  border-color: #111827;
+  background: rgb(11, 78, 75);
+  border-color: rgb(11, 78, 75);
   transform: translateY(-1px);
-
+  box-shadow: 0 4px 12px rgba(14, 97, 93, 0.2);
 }
 
 .btn--primary:active {
   transform: translateY(0);
 }
 
-/* Secondary - Outline button (unselected state) */
+/* Secondary - Outline teal button */
 .btn--secondary {
   display: inline-flex;
   align-items: center;
@@ -142,21 +168,18 @@ button Two variants
   font-size: 15px;
   font-weight: 500;
   line-height: 1.2;
-  border: 1px solid #E5E7EB;
+  border: 1px solid rgb(14, 97, 93);
   border-radius: 6px;
-  background: #FFFFFF;
-  color: #9CA3AF;
+  background: transparent;
+  color: rgb(14, 97, 93);
   cursor: pointer;
   transition: all 0.2s ease;
   text-decoration: none;
   white-space: nowrap;
-  opacity: 0.6;
 }
 
 .btn--secondary:hover {
-  border-color: #D1D5DB;
-  color: #6b7280a0;
-  opacity: 1;
+  background: rgba(14, 97, 93, 0.05);
   transform: translateY(-1px);
 }
 
