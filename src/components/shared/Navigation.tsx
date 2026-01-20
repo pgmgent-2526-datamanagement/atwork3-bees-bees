@@ -50,7 +50,6 @@ export default function Navigation() {
 
   const navItems = [
     { href: '/', label: 'Home' },
-    { href: '/vision', label: 'Visie' },
     { href: '/platform', label: 'Platform' },
     { href: '/contact', label: 'Contact' },
   ];

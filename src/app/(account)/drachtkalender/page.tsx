@@ -1,22 +1,30 @@
 import DrachtkalenderSection from '@/components/shared/DrachtkalenderSection';
+import Breadcrumbs from '@/components/shared/Breadcrumbs';
 
 export const dynamic = 'force-dynamic';
 
 export default function DrachtkalenderPage() {
   return (
-    <>
-      <section className="page-header" data-page="—">
+    <div className="platform-page">
+      <section className="platform-hero">
         <div className="container">
-          <h1 className="heading-primary">Drachtkalender</h1>
-          <p className="page-header__subtitle">
-            Bloeiperiodes van belangrijke bijenplanten door het jaar heen
-          </p>
+          <div className="platform-hero__content">
+            <h1 className="platform-hero__title">Drachtkalender</h1>
+            <p style={{ fontSize: '1.125rem', color: 'rgba(255, 255, 255, 0.9)', marginTop: '12px' }}>
+              Bloeiperiodes van belangrijke bijenplanten door het jaar heen
+            </p>
+          </div>
         </div>
       </section>
 
-      <section className="section">
+      <Breadcrumbs items={[
+        { label: 'Account', href: '/account' },
+        { label: 'Drachtkalender' }
+      ]} />
+
+      <section className="home-features">
         <div className="container">
-          <div className="info-box info-box--warning">
+          <div className="info-box info-box--warning" style={{ marginBottom: 'var(--s-10)' }}>
             <p>
               <strong>Let op:</strong> Dit is een algemene drachtkalender voor België/Nederland. 
               De exacte bloeiperiodes kunnen variëren per locatie en weersomstandigheden.
@@ -25,6 +33,6 @@ export default function DrachtkalenderPage() {
           <DrachtkalenderSection />
         </div>
       </section>
-    </>
+    </div>
   );
 }

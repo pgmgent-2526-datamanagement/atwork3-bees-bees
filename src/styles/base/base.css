@@ -1,4 +1,60 @@
-@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@300;400;500&family=Inter:wght@300;400;500&display=swap");
+/* Rework Font - Body/Text */
+@font-face {
+  font-family: 'Rework';
+  src: url('/fonts/rework-font-family-1768805289-0/ReworkTextTRIAL-Light.otf') format('opentype');
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Rework';
+  src: url('/fonts/rework-font-family-1768805289-0/ReworkTextTRIAL-Regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Rework';
+  src: url('/fonts/rework-font-family-1768805289-0/ReworkTextTRIAL-Semibold.otf') format('opentype');
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Rework';
+  src: url('/fonts/rework-font-family-1768805289-0/ReworkTextTRIAL-Bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+}
+
+/* Gestura Font - Headings */
+@font-face {
+  font-family: 'Gestura';
+  src: url('/fonts/gestura-font-family/GesturaHeadlineTRIAL-Light-BF64b75504226bf.otf') format('opentype');
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Gestura';
+  src: url('/fonts/gestura-font-family/GesturaHeadlineTRIAL-Regular-BF64b755042170c.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Gestura';
+  src: url('/fonts/gestura-font-family/GesturaHeadlineTRIAL-Semibold-BF64b755043bff0.otf') format('opentype');
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Gestura';
+  src: url('/fonts/gestura-font-family/GesturaHeadlineTRIAL-Bold-BF64b7550428366.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+}
 
 body {
   font-family: var(--font-body);
@@ -6,7 +62,7 @@ body {
   font-weight: 400;
   line-height: 1.8;
   color: var(--c-text);
-  background-color: var(--c-white);
+  background-color: rgb(255, 255, 255);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -23,6 +79,14 @@ h6 {
   letter-spacing: -0.01em;
   color: var(--c-text);
   margin: 0;
+}
+
+h1 {
+  color: rgb(14, 97, 93);
+}
+
+h2 {
+  color: rgb(14, 97, 93);
 }
 
 a {
