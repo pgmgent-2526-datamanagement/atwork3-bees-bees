@@ -177,11 +177,9 @@ export default async function AccountApiaryHivePage({
         <div className="container">
           <div className="section-header">
             <h2 className="feature-card__title">Waarnemingen in deze behuizing</h2>
-            {observations.length > 0 && (
-              <Link href={`/observations/new?hiveId=${hiveId}&hiveName=${hive.name}`} className="btn btn--secondary">
-                + Waarneming toevoegen
-              </Link>
-            )}
+            <Link href={`/observations/new?hiveId=${hiveId}&hiveName=${hive.name}`} className="btn btn--secondary">
+              + Waarneming toevoegen
+            </Link>
           </div>
 
           <ObservationsFilter
