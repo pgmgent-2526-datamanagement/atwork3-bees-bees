@@ -85,38 +85,6 @@ export default function ObservationsFilter({
   return (
     <>
       <div className="section-header">
-        {/* <Link href="/admin" className="back-link">
-          ←
-        </Link> */}
-        {/* <div className="filters">
-          <SearchInput
-            value={search}
-            onChange={(value: string) => {
-              setSearch(value);
-              debouncedSearchUpdate(value);
-            }}
-            placeholder={placeholder}
-          />
-          <select
-            value={colorFilter}
-            onChange={e => handleColorChange(e.target.value)}
-            className="form__select"
-          >
-            <option value="">Alle kleuren</option>
-            {allColors.map(option => (
-              <option
-                key={option.value}
-                value={option.value}
-                style={{
-                  backgroundColor: option.hex,
-                  color: '#000',
-                }}
-              >
-                {option.label}
-              </option>
-            ))}
-          </select>
-        </div> */}
         <div className="filters">
           <SearchInput
             value={search}

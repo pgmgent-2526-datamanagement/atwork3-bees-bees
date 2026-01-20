@@ -314,7 +314,7 @@ TODO
 
 ### Bugs gevonden
 
-- [] /apiaries/new: bij toevoegen nieuwe bijenstand, als je via adres gaat,en je vult een adres in zonder op locatie te drukken en dan op de 'bijenstand toevoegen drukt, krijg je terecht de melding 'Vul een adres in en klik op "Zoek locatie".' Als je dat dan onmiddellijk doet, krijg je de melding 'Invalid input: expected number, received NaN'. Maar als je toch weer op 'bijenstand toevoegen' klikt, wordt hij wel toegevoegd
+- [x] /apiaries/new: bij toevoegen nieuwe bijenstand, als je via adres gaat,en je vult een adres in zonder op locatie te drukken en dan op de 'bijenstand toevoegen drukt, krijg je terecht de melding 'Vul een adres in en klik op "Zoek locatie".' Als je dan onmiddellijk drukt op locatie, krijg je de melding 'Invalid input: expected number, received NaN'. Maar als je toch weer op 'bijenstand toevoegen' klikt, wordt hij wel toegevoegd
 - [] na toevoegen bijenstanden en kasten vanuit /account gaat de redirect respectievelijk naar /apiaries en /apiaries[id], dus waar ze zijn toegevoegd
 - [] /hives/[id]/edit: het type behuizing staat niet voorgeselecteerd
 - [] /observations/[id]/edit: redirect niet naar /observations/[id] maar naar /hives/id
