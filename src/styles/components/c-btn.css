@@ -98,7 +98,7 @@
 .btn--primary:hover { 
   background: rgb(11, 78, 75); 
   border-color: rgb(11, 78, 75); 
-  color: #ffffff; 
+  color: rgb(11, 78, 75);
   box-shadow: 0 4px 12px rgba(14, 97, 93, 0.2); 
 }
 
@@ -248,4 +248,36 @@
   opacity: 0.4;
   cursor: not-allowed;
   pointer-events: none;
+}
+
+/* Button group */
+.btn-group {
+  display: flex;
+  gap: var(--s-4);
+  flex-wrap: wrap;
+}
+
+@media (max-width: 768px) {
+  .btn-group {
+    flex-direction: column;
+    width: 100%;
+  }
+  
+  .btn-group .btn,
+  .btn-group .btn--primary,
+  .btn-group .btn--secondary {
+    width: 100%;
+  }
+}
+
+/* Danger variant */
+.btn--danger {
+  background: #dc3545;
+  border-color: #dc3545;
+  color: #ffffff;
+}
+
+.btn--danger:hover {
+  background: #c82333;
+  border-color: #bd2130;
 }

@@ -2,7 +2,9 @@
    Legacy support - map old names
    ============================================ */
 .nav { position: fixed; top: 0; left: 0; right: 0; background: var(--c-white); border-bottom: 1px solid var(--c-border-light); z-index: var(--z-fixed); }
-.nav__container { min-height: var(--nav-height); display: flex; align-items: center; justify-content: space-between; padding: var(--s-8) 0; max-width: var(--container-max); width: 100%; margin: 0 auto; }
+
+.nav__container { min-height: var(--nav-height); display: flex; align-items: center; justify-content: space-between; padding: 2rem 0;
+ max-width: var(--container-max); width: 100%; margin: 0 auto; }
 .nav__logo { display: flex; align-items: center; gap: var(--s-3); font-family: var(--font-display); font-size: 1.125rem; font-weight: 400; letter-spacing: 0.05em; color: var(--c-text); }
 .nav__logo-image { height: 40px; width: auto; }
 .nav__logo-text { font-size: 1rem; }
@@ -32,5 +34,12 @@
 @media (max-width: 968px) {
   .nav__menu { display: none; }
   .nav__hamburger { display: flex; }
-  .nav__container { padding: 0 var(--s-6); height: var(--nav-height); }
+  .nav__container { padding: 2rem 0; height: var(--nav-height); }
+  .nav__dropdown-menu { right: var(--s-6); min-width: calc(100vw - var(--s-12)); max-width: calc(100vw - var(--s-12)); }
+  .nav__logo-text { font-size: 0.875rem; }
+}
+
+@media (max-width: 640px) {
+  .nav__logo-text { display: none; }
+  .nav__logo-image { height: 32px; }
 }

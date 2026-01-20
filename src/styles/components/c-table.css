@@ -1,5 +1,5 @@
 /* Legacy table support */
-.table-wrapper { width: 100%; overflow-x: auto; border: 1px solid rgba(63, 66, 46, 0.15); background: white; border-radius: 4px; margin-top: var(--s-8); }
+.table-wrapper { width: 100%; max-width: 100%; overflow-x: auto; border: 1px solid rgba(63, 66, 46, 0.15); background: white; border-radius: 4px; margin-top: var(--s-8); box-sizing: border-box; }
 .table { width: 100%; border-collapse: collapse; font-size: 0.8125rem; background: white; }
 .table thead { background-color: rgba(63, 66, 46, 0.04); border-bottom: 2px solid rgba(63, 66, 46, 0.15); }
 .table th { padding: var(--s-4) var(--s-5); text-align: left; font-size: 0.6875rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--c-text); }

@@ -1,5 +1,5 @@
 /* Legacy support */
-.form { width: 100%; max-width: 900px; overflow-x: hidden; }
+.form { width: 100%; max-width: 900px; overflow-x: hidden; box-sizing: border-box; }
 .form__section { margin-bottom: var(--s-24); padding: var(--s-12) var(--s-12) var(--s-6) var(--s-12); background-color: var(--c-gray-50); border: 1px solid var(--c-border-light); border-radius: 8px; }
 .form__section:last-of-type { margin-bottom: 0; }
 .form__group { margin-bottom: var(--s-12); padding-bottom: var(--s-4); }
@@ -11,7 +11,7 @@
 .form__checkbox-label { display: flex; align-items: center; gap: var(--s-4); font-family: var(--font-body); font-size: var(--text-base); color: var(--c-text); margin: var(--s-6) 0; cursor: pointer; padding: var(--s-4); border-radius: 4px; transition: background-color var(--duration-fast) var(--ease); }
 .form__checkbox-label:hover { background-color: var(--c-gray-50); }
 .form__checkbox { width: 20px; height: 20px; cursor: pointer; accent-color: var(--c-text); }
-.form__input, .form__textarea, .form__select { width: 100%; padding: var(--s-5) var(--s-5); font-family: var(--font-body); font-size: var(--text-base); color: rgba(0, 0, 0, 0.581); background-color: var(--c-white); border: 1px solid var(--c-border); border-radius: 4px; transition: all var(--duration-base) var(--ease); }
+.form__input, .form__textarea, .form__select { width: 100%; max-width: 100%; padding: var(--s-5) var(--s-5); font-family: var(--font-body); font-size: var(--text-base); color: rgba(0, 0, 0, 0.581); background-color: var(--c-white); border: 1px solid var(--c-border); border-radius: 4px; transition: all var(--duration-base) var(--ease); box-sizing: border-box; }
 .form__input::placeholder, .form__textarea::placeholder { color: #9CA3AF; opacity: 1; }
 .form__input:focus, .form__textarea:focus, .form__select:focus { outline: none; border-color: var(--c-text); background-color: var(--c-white); box-shadow: 0 0 0 3px rgba(147, 155, 170, 0.536); }
 .form__textarea { min-height: 150px; resize: vertical; }
@@ -25,6 +25,10 @@
   .form__input[type="number"]::-webkit-inner-spin-button,
   .form__input[type="number"]::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
   .form__input[type="number"] { -moz-appearance: textfield; appearance: textfield; }
+  
+  .form__section { padding: var(--s-8) var(--s-6) var(--s-4) var(--s-6); }
+  .form__group { margin-bottom: var(--s-8); }
+  .form__input, .form__textarea, .form__select { font-size: 16px; }
 }
 
 @media (min-width: 768px) {
