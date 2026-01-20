@@ -636,8 +636,23 @@ a.feature-card:hover .feature-card__title {
     font-size: 17px;
   }
   
+  .home-platform__actions {
+    flex-direction: column;
+  }
+  
   .home-content__cta {
     margin-top: 40px;
+  }
+  
+  .section-header:has(h2),
+  .section-header:has(.btn) {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+  
+  .section-header .btn {
+    width: 100%;
   }
   
   .map-layout {
@@ -727,11 +742,9 @@ a.feature-card:hover .feature-card__title {
   
   .home-platform__actions {
     flex-direction: column;
-    width: 100%;
   }
   
   .home-platform__actions .btn {
-    width: 100%;
     padding: 15px 32px;
   }
   
