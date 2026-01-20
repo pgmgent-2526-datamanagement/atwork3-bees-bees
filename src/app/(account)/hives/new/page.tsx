@@ -22,9 +22,7 @@ export default async function AccountApiaryNewHivePage({
       <section className="page-header" data-page="—">
         <div className="container">
           <h1 className="heading-primary">Nieuwe behuizing</h1>
-          <p className="page-header__subtitle">
-
-          </p>
+          <p className="page-header__subtitle"></p>
         </div>
       </section>
 
