@@ -165,6 +165,7 @@ export default async function AccountPage() {
 
             <section className="home-features section-spacing">
               <div className="container">
+                <h2 className="platform-section__title">Snelle acties</h2>
                 <div className="home-features__grid">
                   <Link href="/apiaries/new" className="feature-card">
                     <div className="add-card__label">Toevoegen</div>

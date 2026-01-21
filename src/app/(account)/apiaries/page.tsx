@@ -82,11 +82,15 @@ export default async function AccountApiariesPage({
             <>
               {/* Overzichtskaart */}
               <div className="map-section">
-                <h2 className="feature-card__title map-section__title">
+                <h2 className="platform-section__title">
                   Overzicht locaties
                 </h2>
                 <ApiariesOverviewMap apiaries={allApiaries} />
               </div>
+
+<h2 className="platform-section__title">
+                  Overzicht bijenstanden
+                </h2>
 
               {/* Bijenstanden grid */}
               <div className="home-features__grid">

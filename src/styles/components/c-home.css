@@ -232,10 +232,15 @@
 }
 
 .meta-value {
-  font-size: 3rem;
+  font-size: 2rem;
   color: rgb(14, 97, 93);
   font-weight: 300;
   line-height: 1.4;
+}
+
+.meta-value--small {
+  font-size: 1rem;
+  font-weight: 400;
 }
 
 .legend-item {
@@ -514,7 +519,7 @@ a.feature-card:hover .feature-card__title {
 
 /* Apiaries page specific */
 .map-section {
-  margin-bottom: 60px;
+  margin-bottom: 80px;
 }
 
 .map-section__title {

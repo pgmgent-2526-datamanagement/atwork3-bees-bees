@@ -85,7 +85,7 @@ export default async function Observation({
               <div className="feature-card__meta">
                 <div className="meta-item">
                   <span className="meta-label">Datum</span>
-                  <span className="meta-value">
+                  <span className="meta-value meta-value--small">
                     {new Date(observation.createdAt).toLocaleDateString('nl-BE', {
                       weekday: 'long',
                       year: 'numeric',
@@ -96,7 +96,7 @@ export default async function Observation({
                 </div>
                 <div className="meta-item">
                   <span className="meta-label">Tijd</span>
-                  <span className="meta-value">
+                  <span className="meta-value meta-value--small">
                     {new Date(observation.createdAt).toLocaleTimeString('nl-BE', {
                       hour: '2-digit',
                       minute: '2-digit',
@@ -111,7 +111,7 @@ export default async function Observation({
               <div className="feature-card__meta">
                 <div className="meta-item">
                   <span className="meta-label">Aantal bijen (geschat)</span>
-                  <span className="meta-value">
+                  <span className="meta-value meta-value--small">
                     {formatBeeCount(observation.beeCount)}
                   </span>
                 </div>
@@ -140,7 +140,7 @@ export default async function Observation({
                 </div>
                 <div className="meta-item">
                   <span className="meta-label">Hoeveelheid stuifmeel</span>
-                  <span className="meta-value">{formatPollenAmount(observation.pollenAmount)}</span>
+                  <span className="meta-value meta-value--small">{formatPollenAmount(observation.pollenAmount)}</span>
                 </div>
               </div>
             </div>
@@ -150,11 +150,11 @@ export default async function Observation({
               <div className="feature-card__meta">
                 <div className="meta-item">
                   <span className="meta-label">Weersomstandigheden</span>
-                  <span className="meta-value">{formatWeatherCondition(observation.weatherCondition)}</span>
+                  <span className="meta-value meta-value--small">{formatWeatherCondition(observation.weatherCondition)}</span>
                 </div>
                 <div className="meta-item">
                   <span className="meta-label">Temperatuur</span>
-                  <span className="meta-value">{formatTemperature(observation.temperature)}</span>
+                  <span className="meta-value meta-value--small">{formatTemperature(observation.temperature)}</span>
                 </div>
               </div>
             </div>
@@ -164,13 +164,13 @@ export default async function Observation({
               <div className="feature-card__meta">
                 <div className="meta-item">
                   <span className="meta-label">Behuizing</span>
-                  <Link href={`/hives/${observation.hive.id}`} className="meta-value">
+                  <Link href={`/hives/${observation.hive.id}`} className="meta-value meta-value--small">
                     {observation.hive.name}
                   </Link>
                 </div>
                 <div className="meta-item">
                   <span className="meta-label">Bijenstand</span>
-                  <Link href={`/apiaries/${observation.hive.apiary.id}`} className="meta-value">
+                  <Link href={`/apiaries/${observation.hive.apiary.id}`} className="meta-value meta-value--small">
                     {observation.hive.apiary.name}
                   </Link>
                 </div>
@@ -183,7 +183,7 @@ export default async function Observation({
                 <div className="feature-card__meta">
                   <div className="meta-item">
                     <span className="meta-label">Notities</span>
-                    <p className="meta-value observation-detail__notes-text">
+                    <p className="meta-value meta-value--small observation-detail__notes-text">
                       {observation.notes}
                     </p>
                   </div>
