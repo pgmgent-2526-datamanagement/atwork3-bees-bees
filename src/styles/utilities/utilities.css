@@ -13,6 +13,7 @@
 .margin-bottom-medium { margin-bottom: var(--s-8); }
 .margin-bottom-large { margin-bottom: var(--s-12); }
 .margin-top-medium { margin-top: var(--s-8); }
+.mt-8 { margin-top: 32px; }
 
 /* Flexbox */
 .flex { display: flex; }

@@ -91,7 +91,7 @@ export default async function AdminStatsPage() {
               {totalHives} korven · {totalObservations} waarnemingen
             </span>
             <h1 className="platform-hero__title">Statistieken</h1>
-            <div style={{ marginTop: '32px' }}>
+            <div className="mt-8">
               <ExportButton />
             </div>
           </div>
