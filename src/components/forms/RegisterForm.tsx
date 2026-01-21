@@ -201,15 +201,18 @@ export function RegisterForm({ createItem }: FormProps) {
           </div>
         )}
       </div>
-      <Button
-        type="submit"
-        variant="primary"
-        size="lg"
-        disabled={loading}
-        style={{ width: '100%' }}
-      >
-        {loading ? 'Account aanmaken...' : 'Account aanmaken'}
-      </Button>
+      
+      <div className="form__submit-wrapper">
+        <Button
+          type="submit"
+          variant="primary"
+          size="lg"
+          disabled={loading}
+          style={{ width: '100%' }}
+        >
+          {loading ? 'Account aanmaken...' : 'Account aanmaken'}
+        </Button>
+      </div>
 
       <p className="form__footer-text">
         Al een account?{' '}

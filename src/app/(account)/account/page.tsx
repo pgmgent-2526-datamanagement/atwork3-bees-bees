@@ -137,7 +137,7 @@ export default async function AccountPage() {
                     <p className="feature-card__title" style={{ marginBottom: '16px' }}>
                       {totalApiaries === 1 ? 'Bijenstand' : 'Bijenstanden'}
                     </p>
-                    <span className="btn btn--secondary btn--small">Bekijk alle</span>
+            
                   </Link>
 
                   <Link href="/hives" className="feature-card" style={{ textDecoration: 'none' }}>
@@ -147,7 +147,7 @@ export default async function AccountPage() {
                     <p className="feature-card__title" style={{ marginBottom: '16px' }}>
                       {totalHives === 1 ? 'Behuizing' : 'Behuizingen'}
                     </p>
-                    <span className="btn btn--secondary btn--small">Bekijk alle</span>
+            
                   </Link>
 
                   <Link href="/observations" className="feature-card" style={{ textDecoration: 'none' }}>
@@ -157,7 +157,7 @@ export default async function AccountPage() {
                     <p className="feature-card__title" style={{ marginBottom: '16px' }}>
                       {totalObservations === 1 ? 'Waarneming' : 'Waarnemingen'}
                     </p>
-                    <span className="btn btn--secondary btn--small">Bekijk alle</span>
+                   
                   </Link>
                 </div>
               </div>

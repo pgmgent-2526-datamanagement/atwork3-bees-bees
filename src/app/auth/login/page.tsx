@@ -151,13 +151,15 @@ export default function Login() {
               )}
             </div>
 
-            <button
-              type="submit"
-              className="btn btn--primary btn--large btn--full"
-              disabled={loading}
-            >
-              {loading ? 'Inloggen...' : 'Inloggen'}
-            </button>
+            <div className="form__submit-wrapper">
+              <button
+                type="submit"
+                className="btn btn--primary btn--large btn--full"
+                disabled={loading}
+              >
+                {loading ? 'Inloggen...' : 'Inloggen'}
+              </button>
+            </div>
 
             <p className="form__footer-text">
               Nog geen account?{' '}
@@ -167,11 +169,12 @@ export default function Login() {
               >
                 Registreer hier
               </Link>
-              <div className="form__group">
-                <Link href="/forgot-password" className="form__link">
-                  Wachtwoord vergeten?
-                </Link>
-              </div>
+            </p>
+            
+            <p className="form__footer-text">
+              <Link href="/forgot-password" className="form__link">
+                Wachtwoord vergeten?
+              </Link>
             </p>
           </form>
         </div>

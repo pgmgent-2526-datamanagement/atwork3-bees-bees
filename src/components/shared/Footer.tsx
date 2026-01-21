@@ -43,7 +43,7 @@ export default function Footer() {
         </div>
 
         <div className="footer__bottom">
-          <p className="footer__copyright">© {currentYear} BEES Platform. Alle rechten voorbehouden.</p>
+          <p className="footer__copyright">© {currentYear} Platform. Alle rechten voorbehouden.</p>
           <div className="footer__legal">
             <Link href="#">Privacy</Link>
             <Link href="#">Cookies</Link>
