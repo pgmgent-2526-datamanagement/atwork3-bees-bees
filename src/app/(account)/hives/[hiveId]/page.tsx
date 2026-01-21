@@ -9,6 +9,7 @@ import ObservationsFilter from '@/components/shared/ObservationsFilter';
 import { pollenColors } from '@/lib/pollenColors';
 import Breadcrumbs from '@/components/shared/Breadcrumbs';
 import EmptyState from '@/components/shared/EmptyState';
+import ScrollToSection from '@/components/shared/ScrollToSection';
 
 export const dynamic = 'force-dynamic';
 type SearchParams = {
@@ -108,6 +109,7 @@ export default async function AccountApiaryHivePage({
 
   return (
     <div className="platform-page">
+      <ScrollToSection />
       <section className="platform-hero">
         <div className="container">
           <div className="platform-hero__content">
@@ -176,7 +178,7 @@ export default async function AccountApiaryHivePage({
         </div>
       </section>
 
-      <section className="home-features">
+      <section className="home-features" id="observations-section">
         <div className="container">
           <div className="section-header">
             <h2 className="feature-card__title">

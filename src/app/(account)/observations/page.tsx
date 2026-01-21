@@ -7,6 +7,7 @@ import Breadcrumbs from '@/components/shared/Breadcrumbs';
 import ObservationsFilter from '@/components/shared/ObservationsFilter';
 import { pollenColors } from '@/lib/pollenColors';
 import EmptyState from '@/components/shared/EmptyState';
+import ScrollToSection from '@/components/shared/ScrollToSection';
 
 export const dynamic = 'force-dynamic';
 
@@ -141,6 +142,7 @@ export default async function AccountObservationsPage({
 
   return (
     <div className="platform-page">
+      <ScrollToSection />
       <section className="platform-hero">
         <div className="container">
           <div className="platform-hero__content">
@@ -168,7 +170,7 @@ export default async function AccountObservationsPage({
         ]}
       />
 
-      <section className="home-features">
+      <section className="home-features" id="observations-section">
         <div className="container">
           {observations.length === 0 ? (
             // Check if any filters are applied to determine which EmptyState to show
