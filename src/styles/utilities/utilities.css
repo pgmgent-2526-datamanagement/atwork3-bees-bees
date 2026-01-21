@@ -24,7 +24,7 @@
 .mt-lg { margin-top: var(--s-12); }
 .mt-xl { margin-top: var(--s-16); }
 .margin-bottom-extra-small { margin-bottom: var(--s-2); }
-.margin-bottom-small { margin-bottom: var(--s-4); }
+.margin-bottom-small { margin-bottom: var(--s-4); color: rgba(0, 0, 0, 0.71); }
 .margin-bottom-medium { margin-bottom: var(--s-8); }
 .margin-bottom-large { margin-bottom: var(--s-12); }
 .margin-bottom-extra-large { margin-bottom: var(--s-16); }
@@ -65,3 +65,18 @@
 .color-text { color: var(--c-text); }
 .color-text-light { color: var(--c-text-light); }
 .color-accent { color: var(--c-accent); }
+
+/* Success/Error States */
+.status-icon { 
+  font-size: 3rem; 
+  margin-bottom: var(--s-6); 
+  text-align: center;
+}
+
+.status-icon--success { 
+  color: var(--c-success, #136f34); 
+}
+
+.status-icon--error { 
+  color: var(--c-error, #731822); 
+}

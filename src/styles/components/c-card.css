@@ -1,6 +1,5 @@
 /* Legacy card support */
 .card, .card-static {
-  background: rgb(66, 125, 120);
   padding: var(--s-12);
   border: 1px solid var(--c-border-light);
   border-radius: 0;
@@ -13,7 +12,7 @@
   width: 100%;
   box-sizing: border-box;
 }
-.card:hover { border-color: var(--c-border); box-shadow: var(--shadow-md); }
+.
 .card--stat { text-align: center; display: flex; flex-direction: column; align-items: center; gap: var(--s-6); }
 .card--stat .number-large { margin: 0; }
 .card--stat .card__label { color: var(--c-text-light); font-size: var(--text-sm); text-transform: none; letter-spacing: 0; font-weight: 400; margin: 0; }
@@ -32,7 +31,7 @@
 .card__icon { width: 48px; height: 48px; display: flex; align-items: center; justify-content: center; margin-bottom: var(--s-8); font-size: 1.5rem; color: var(--c-text-light); }
 .card__text { font-size: var(--text-base); line-height: 1.6; color: var(--c-text-light); margin: var(--s-4) 0 0; }
 .card__content { padding: var(--s-8); }
-.card__description { font-size: var(--text-base); line-height: 1.65; color: #ffffff; margin: 0; }
+.card__description { font-size: var(--text-base); line-height: 1.65; color: rgba(14, 97, 93, 0.6); margin: 0; }
 .card__image-wrapper { width: 100%; aspect-ratio: 16 / 9; overflow: hidden; margin-bottom: var(--s-8); }
 .card__image { width: 100%; height: 100%; object-fit: cover; }
 .card__footer { padding: var(--s-6) var(--s-8); border-top: 1px solid var(--c-border-light); display: flex; align-items: center; justify-content: space-between; margin-top: var(--s-6); }

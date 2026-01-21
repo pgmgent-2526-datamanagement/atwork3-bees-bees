@@ -12,7 +12,7 @@
 .form__checkbox-label:hover { background-color: var(--c-gray-50); }
 .form__checkbox { width: 20px; height: 20px; cursor: pointer; accent-color: var(--c-text); }
 .form__input, .form__textarea, .form__select { width: 100%; max-width: 100%; padding: var(--s-5) var(--s-5); font-family: var(--font-body); font-size: var(--text-base); color: rgba(0, 0, 0, 0.581); background-color: var(--c-white); border: 1px solid var(--c-border); border-radius: 4px; transition: all var(--duration-base) var(--ease); box-sizing: border-box; }
-.form__input::placeholder, .form__textarea::placeholder { color: #9CA3AF; opacity: 1; }
+.form__input::placeholder, .form__textarea::placeholder { color: #9e9e9eab; opacity: 1; }
 .form__input:focus, .form__textarea:focus, .form__select:focus { outline: none; border-color: var(--c-text); background-color: var(--c-white); box-shadow: 0 0 0 3px rgba(147, 155, 170, 0.536); }
 .form__textarea { min-height: 150px; resize: vertical; }
 .form__help { font-size: var(--text-sm); color: var(--c-text-muted); margin-top: var(--s-2); }
