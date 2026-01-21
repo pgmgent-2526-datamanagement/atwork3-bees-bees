@@ -126,37 +126,50 @@ export default function HiveForm({
         </div>
       )}
 
-      <div className="form__group">
-        <label htmlFor="apiarySelect" className="form__label">
-          Bijenstand *
-        </label>
-        <select
-          id="apiarySelect"
-          className="form__select"
-          value={selectedApiaryId}
-          onChange={e => {
-            setSelectedApiaryId(e.target.value);
-            if (fieldErrors?.apiaryId) {
-              setFieldErrors(prev => {
-                if (!prev) return null;
-                const { apiaryId, ...rest } = prev;
-                return Object.keys(rest).length ? rest : null;
-              });
-            }
-          }}
-          required
-        >
-          <option value="">-- Selecteer bijenstand --</option>
-          {apiaries.map(apiary => (
-            <option key={apiary.id} value={apiary.id}>
-              {apiary.name}
-            </option>
-          ))}
-        </select>
-        {fieldErrors?.apiaryId && (
-          <span className="form-error">{fieldErrors.apiaryId[0]}</span>
-        )}
-      </div>
+      {!apiaryId && (
+        <div className="form__group">
+          <label htmlFor="apiarySelect" className="form__label">
+            Bijenstand *
+          </label>
+          <select
+            id="apiarySelect"
+            className="form__select"
+            value={selectedApiaryId}
+            onChange={e => {
+              setSelectedApiaryId(e.target.value);
+              if (fieldErrors?.apiaryId) {
+                setFieldErrors(prev => {
+                  if (!prev) return null;
+                  const { apiaryId, ...rest } = prev;
+                  return Object.keys(rest).length ? rest : null;
+                });
+              }
+            }}
+            required
+          >
+            <option value="">-- Selecteer bijenstand --</option>
+            {apiaries.map(apiary => (
+              <option key={apiary.id} value={apiary.id}>
+                {apiary.name}
+              </option>
+            ))}
+          </select>
+          {fieldErrors?.apiaryId && (
+            <span className="form-error">{fieldErrors.apiaryId[0]}</span>
+          )}
+        </div>
+      )}
+      {apiaryId && apiaryName && (
+        <div className="form__group">
+          <label className="form__label">Behuizing</label>
+          <input
+            type="text"
+            value={apiaryName}
+            className="form__input"
+            disabled
+          />
+        </div>
+      )}
 
       <div className="form__group">
         <label htmlFor="name" className="form__label">
