@@ -138,15 +138,22 @@ export default async function AccountObservationsPage({
       createdAt: 'desc',
     },
   });
+
   return (
     <div className="platform-page">
       <section className="platform-hero">
         <div className="container">
           <div className="platform-hero__content">
-            <span className="platform-hero__label">{totalObservations} {totalObservations === 1 ? 'waarneming' : 'waarnemingen'}</span>
+            <span className="platform-hero__label">
+              {totalObservations}{' '}
+              {totalObservations === 1 ? 'waarneming' : 'waarnemingen'}
+            </span>
             <h1 className="platform-hero__title">Mijn waarnemingen</h1>
             <div className="btn-group">
-              <Link href="/observations/new" className="btn btn--secondary btn--large">
+              <Link
+                href="/observations/new"
+                className="btn btn--secondary btn--large"
+              >
                 + Nieuwe waarneming
               </Link>
             </div>
@@ -154,14 +161,33 @@ export default async function AccountObservationsPage({
         </div>
       </section>
 
-      <Breadcrumbs items={[
-        { label: 'Account', href: '/account' },
-        { label: 'Waarnemingen' }
-      ]} />
+      <Breadcrumbs
+        items={[
+          { label: 'Account', href: '/account' },
+          { label: 'Waarnemingen' },
+        ]}
+      />
 
       <section className="home-features">
         <div className="container">
-          {observations.length > 0 ? (
+          {observations.length === 0 ? (
+            // Check if any filters are applied to determine which EmptyState to show
+            search || colorFilter ? (
+              <EmptyState
+                title="Geen waarnemingen gevonden"
+                description="Er zijn geen waarnemingen die voldoen aan de huidige filters. Probeer je zoekcriteria aan te passen."
+                buttonText="Filters wissen"
+                buttonHref="/observations"
+              />
+            ) : (
+              <EmptyState
+                title="Nog geen waarnemingen"
+                description="Voeg eerst een bijenstand en behuizing toe om waarnemingen te kunnen registreren."
+                buttonText="+ Voeg je eerste bijenstand toe"
+                buttonHref="/apiaries/new"
+              />
+            )
+          ) : (
             <ObservationsFilter
               observations={observations}
               showHive={true}
@@ -174,13 +200,6 @@ export default async function AccountObservationsPage({
               colorFilter={colorFilter}
               allColors={allColors}
               placeholder="Zoek op bijenstand, behuizing of notities"
-            />
-          ) : (
-            <EmptyState
-              title="Nog geen waarnemingen"
-              description="Voeg eerst een bijenstand en behuizing toe om waarnemingen te kunnen registreren."
-              buttonText="+ Voeg je eerste bijenstand toe"
-              buttonHref="/apiaries/new"
             />
           )}
         </div>
