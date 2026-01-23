@@ -123,9 +123,18 @@ export default async function AdminHiveDetailPage({
               {hive.type} • {hive.colonyType}
             </span>
             <h1 className="platform-hero__title">{hive.name}</h1>
-            <p style={{ fontSize: '1.125rem', color: 'rgba(255, 255, 255, 0.9)', marginTop: '12px' }}>
+            <p
+              style={{
+                fontSize: '1.125rem',
+                color: 'rgba(255, 255, 255, 0.9)',
+                marginTop: '12px',
+              }}
+            >
               Bijenstand:{' '}
-              <Link href={`/admin/apiaries/${hive.apiary.id}`} style={{ color: 'inherit', textDecoration: 'underline' }}>
+              <Link
+                href={`/admin/apiaries/${hive.apiary.id}`}
+                style={{ color: 'inherit', textDecoration: 'underline' }}
+              >
                 {hive.apiary.name}
               </Link>
             </p>
@@ -133,11 +142,22 @@ export default async function AdminHiveDetailPage({
         </div>
       </section>
 
-      <Breadcrumbs items={[{ label: 'Admin', href: '/admin' }, { label: 'Behuizingen', href: '/admin/hives' }, { label: hive.name }]} />
+      <Breadcrumbs
+        items={[
+          { label: 'Admin', href: '/admin' },
+          { label: 'Behuizingen', href: '/admin/hives' },
+          { label: hive.name },
+        ]}
+      />
 
       <section className="home-features">
         <div className="container">
-          <h2 className="heading-secondary" style={{ marginBottom: 'var(--space-8)' }}>Waarnemingen</h2>
+          <h2
+            className="heading-secondary"
+            style={{ marginBottom: 'var(--space-8)' }}
+          >
+            Waarnemingen
+          </h2>
 
           <ObservationsFilter
             observations={observations}

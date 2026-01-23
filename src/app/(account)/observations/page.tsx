@@ -195,6 +195,7 @@ export default async function AccountObservationsPage({
               showHive={true}
               showApiary={true}
               showUser={false}
+              basePath={''}
               currentPage={currentPage}
               totalPages={totalPages}
               currentPath={`/observations`}

@@ -34,6 +34,7 @@ export default function ObservationsFilter({
   showHive = true,
   showApiary = true,
   showUser = true,
+  basePath = '',
   search: initialSearch = '',
   colorFilter: initialColorFilter = '',
   allColors = [],
@@ -46,6 +47,7 @@ export default function ObservationsFilter({
   showHive?: boolean;
   showApiary?: boolean;
   showUser?: boolean;
+  basePath?: string;
   search?: string;
   colorFilter?: string;
   allColors?: { value: string; label: string; hex: string }[];
@@ -137,6 +139,7 @@ export default function ObservationsFilter({
         showHive={showHive}
         showApiary={showApiary}
         showUser={showUser}
+        basePath={basePath}
         currentPage={currentPage}
         totalPages={totalPages}
         currentPath={currentPath}

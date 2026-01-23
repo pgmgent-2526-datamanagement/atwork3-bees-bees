@@ -44,6 +44,7 @@ interface ObservationsTableProps {
   showHive?: boolean;
   showApiary?: boolean;
   showUser?: boolean;
+  basePath?: string;
   currentPath?: string;
   currentPage: number;
   totalPages: number;
@@ -54,6 +55,7 @@ export default function ObservationsTable({
   showHive = true,
   showApiary = true,
   showUser = true,
+  basePath = '',
   currentPath,
   currentPage,
   totalPages,
@@ -148,7 +150,7 @@ export default function ObservationsTable({
                 </td>
                 {showHive && observation.hive && (
                   <td data-label="Behuizing">
-                    <Link href={`/admin/hives/${observation.hive.id}`}>
+                    <Link href={`${basePath}/hives/${observation.hive.id}`}>
                       {observation.hive.name}
                     </Link>
                   </td>
@@ -156,7 +158,7 @@ export default function ObservationsTable({
                 {showApiary && observation.hive?.apiary && (
                   <td data-label="Bijenstand">
                     <Link
-                      href={`/admin/apiaries/${observation.hive.apiary.id}`}
+                      href={`${basePath}/apiaries/${observation.hive.apiary.id}`}
                     >
                       {observation.hive.apiary.name}
                     </Link>
@@ -165,7 +167,7 @@ export default function ObservationsTable({
                 {showUser && observation.hive?.apiary?.user && (
                   <td data-label="Eigenaar">
                     <Link
-                      href={`/admin/users/${observation.hive.apiary.userId}`}
+                      href={`${basePath}/users/${observation.hive.apiary.userId}`}
                     >
                       {observation.hive.apiary.user.name}
                     </Link>

@@ -120,7 +120,9 @@ export default async function AdminObservationsPage({
         </div>
       </section>
 
-      <Breadcrumbs items={[{ label: 'Admin', href: '/admin' }, { label: 'Waarnemingen' }]} />
+      <Breadcrumbs
+        items={[{ label: 'Admin', href: '/admin' }, { label: 'Waarnemingen' }]}
+      />
 
       <section className="home-features">
         <div className="container">
@@ -129,6 +131,7 @@ export default async function AdminObservationsPage({
             showHive={true}
             showApiary={true}
             showUser={true}
+            basePath="/admin"
             currentPage={currentPage}
             totalPages={totalPages}
             currentPath={'/admin/observations'}
