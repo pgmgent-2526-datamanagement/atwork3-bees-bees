@@ -3,7 +3,6 @@
 import { useState } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useDebouncedCallback } from 'use-debounce';
-import Link from 'next/link';
 import ObservationsTable from '@/components/shared/ObservationsTable';
 import SearchInput from '@/components/shared/SearchInput';
 
@@ -65,6 +64,7 @@ export default function ObservationsFilter({
       params.delete('search');
     }
     params.delete('page');
+    params.set('scrollTo', 'observations');
     router.push(`${currentPath}?${params.toString()}`);
   }, 300);
 
@@ -76,7 +76,9 @@ export default function ObservationsFilter({
     } else {
       params.delete('color');
     }
+
     params.delete('page'); // Reset to page 1 when filtering
+    params.set('scrollTo', 'observations');
     router.push(`${currentPath}?${params.toString()}`);
   };
 
@@ -94,12 +96,10 @@ export default function ObservationsFilter({
             }}
             placeholder={placeholder}
           />
-          
+
           {allColors.length > 0 && (
             <div className="filter-group">
-              <label className="filter-group__label">
-                Stuifmeelkleur
-              </label>
+              <label className="filter-group__label">Stuifmeelkleur</label>
               <div className="filter-colors">
                 <button
                   type="button"

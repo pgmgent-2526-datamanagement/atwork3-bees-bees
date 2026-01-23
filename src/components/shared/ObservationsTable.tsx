@@ -2,11 +2,16 @@ import { Observation, Hive, Apiary, User } from '@prisma/client';
 import Link from 'next/link';
 import { formatBeeCount } from '@/lib/utils/formatBeeCount';
 import { formatPollenAmount } from '@/lib/utils/formatPollenAmount';
-import { formatWeatherCondition, formatTemperature } from '@/lib/utils/formatWeather';
+import {
+  formatWeatherCondition,
+  formatTemperature,
+} from '@/lib/utils/formatWeather';
 
 import { pollenColors } from '@/lib/pollenColors';
 
-const getWeatherEmoji = (weatherCondition: string | null | undefined): string => {
+const getWeatherEmoji = (
+  weatherCondition: string | null | undefined,
+): string => {
   switch (weatherCondition) {
     case 'SUNNY':
       return '☀️';
@@ -85,7 +90,7 @@ export default function ObservationsTable({
                 <td data-label="Datum">
                   <Link href={getObservationLink(observation.id)}>
                     {new Date(observation.createdAt).toLocaleDateString(
-                      'nl-BE'
+                      'nl-BE',
                     )}
                   </Link>
                 </td>
@@ -119,13 +124,17 @@ export default function ObservationsTable({
                   {formatTemperature(observation.temperature)}
                 </td>
                 <td data-label="Notities">
-                  <Link href={getObservationLink(observation.id)} className="table__notes-link">
+                  <Link
+                    href={getObservationLink(observation.id)}
+                    className="table__notes-link"
+                  >
                     {truncateNotes(observation.notes)}
                   </Link>
                 </td>
                 <td data-label="Locatie">
-                  {observation.hive?.apiary?.latitude && observation.hive?.apiary?.longitude ? (
-                    <a 
+                  {observation.hive?.apiary?.latitude &&
+                  observation.hive?.apiary?.longitude ? (
+                    <a
                       href={`https://www.google.com/maps?q=${observation.hive.apiary.latitude},${observation.hive.apiary.longitude}`}
                       target="_blank"
                       rel="noopener noreferrer"

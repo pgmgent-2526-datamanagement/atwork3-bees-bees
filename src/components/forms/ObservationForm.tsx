@@ -100,7 +100,7 @@ export default function ObservationForm({
   const handleColorToggle = (hex: string) => {
     const isNoPollenOption = pollenColors.find(
       color => color.hex === hex,
-    )?.isNoPollenOption;
+    )?.isNoPollenOption; //boolean
 
     setSelectedColors(prev => {
       if (isNoPollenOption) {
@@ -115,7 +115,7 @@ export default function ObservationForm({
 
         //als een reguliere kleur wordt geselecteerd, verwijder "geen stuifmeel" indien aanwezig en handel normaal af
         const filteredPrev = prev.filter(
-          color => !pollenColors.find(c => c.hex === color)?.isNoPollenOption,
+          color => !pollenColors.find(c => c.hex === color)?.isNoPollenOption, //als het effectief geen stuifmeel is, filteren we het eruit want true wordt false
         );
 
         if (filteredPrev.includes(hex)) {
@@ -125,7 +125,7 @@ export default function ObservationForm({
           // Add color
           return [...filteredPrev, hex];
         }
-        return filteredPrev;
+        return filteredPrev; //
       }
     });
 

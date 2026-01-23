@@ -21,7 +21,7 @@ export default async function AccountObservationsPage({
 }: {
   searchParams?: Promise<SearchParams>;
 }) {
-  const session = await getServerSession(authOptions);
+  const session = await getServerSession(authOptions); //functie uit het next-auth pakket
 
   if (!session?.user?.id) {
     redirect('/auth/login');
