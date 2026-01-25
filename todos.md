@@ -323,12 +323,12 @@ TODO
 - [x] observations/new: bij geen stuifmeelkleur moet ik toch nog een hoeveelheid pollen invullen, zal "GEEN" in de enum moeten toevoegen en voorselecteren als er geen stuifmeelkleur is, of veld optioneel maken en 'GEEN' als default value maken, is dat niet het eenvoudigste?
 - []temperatuur in het observationform is optioneel, maar geeft 20 graden terug.
 
-- [] drachtkalender op nieuwe pagina of terugkeerbutton?
-
 TODO
 
-- [] de temperatuur in observationform weer laten tellen vanaf de placeholderwaarde
-- [] bespreken met docent, deployment voor klant met eigen account enz.
+- [x] de temperatuur in observationform weer laten tellen vanaf de placeholderwaarde
 - [] keys voor mapbox en resend voor klant?
-- [] bespreken met docent, snelheid van de renders
 - [] de prisma-modellen plant en apiaryplant verwijderen?
+- [] in admin/hives/[id] nog een EmptyState component toevoegen maar met tekst voor admin als prop (bvb 'deze gebruiker heeft nog een waarnemingen toegevoegd'), ook zo voor als er nog geen kast of apiary is?
+- [] een moeilijker paswoord laten aanmaken
+- [] kleuren van stuifmeel toevoegen in observationId
+- [] een scrolltTo toevoegen aan admin/hives/[hiveId]?

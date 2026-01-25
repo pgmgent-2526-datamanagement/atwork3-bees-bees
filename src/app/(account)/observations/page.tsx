@@ -7,8 +7,6 @@ import Breadcrumbs from '@/components/shared/Breadcrumbs';
 import ObservationsFilter from '@/components/shared/ObservationsFilter';
 import { pollenColors } from '@/lib/pollenColors';
 import EmptyState from '@/components/shared/EmptyState';
-import ScrollToSection from '@/components/shared/ScrollToSection';
-
 export const dynamic = 'force-dynamic';
 
 type SearchParams = {
@@ -142,7 +140,6 @@ export default async function AccountObservationsPage({
 
   return (
     <div className="platform-page">
-      <ScrollToSection />
       <section className="platform-hero">
         <div className="container">
           <div className="platform-hero__content">

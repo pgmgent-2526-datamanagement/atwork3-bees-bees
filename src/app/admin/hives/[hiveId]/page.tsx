@@ -4,8 +4,10 @@ import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import ObservationsFilter from '@/components/shared/ObservationsFilter';
 import Breadcrumbs from '@/components/shared/Breadcrumbs';
-
 import { pollenColors } from '@/lib/pollenColors';
+import EmptyState from '@/components/shared/EmptyState';
+
+export const dynamic = 'force-dynamic';
 type SearchParams = {
   page?: string;
   search?: string;
@@ -28,7 +30,7 @@ export default async function AdminHiveDetailPage({
     page = '1',
     search = '',
     color = '',
-    returnUrl = '/admin/hives',
+    returnUrl = '',
   } = searchParamsResult;
 
   const currentPage = Number(page);
@@ -158,20 +160,38 @@ export default async function AdminHiveDetailPage({
           >
             Waarnemingen
           </h2>
-
-          <ObservationsFilter
-            observations={observations}
-            showUser={false}
-            showHive={false}
-            showApiary={false}
-            currentPage={currentPage}
-            totalPages={totalPages}
-            currentPath={`/admin/hives/${hiveId}`}
-            search={search}
-            colorFilter={color}
-            allColors={allColors}
-            placeholder="Zoek op behuizing of notities"
-          />
+          {observations.length === 0 ? (
+            // Check if any filters are applied to determine which EmptyState to show
+            search || color ? (
+              <EmptyState
+                title="Geen waarnemingen gevonden"
+                description="Er zijn geen waarnemingen die voldoen aan de huidige filters. Probeer je zoekcriteria aan te passen."
+                buttonText="Filters wissen"
+                buttonHref={`/admin/hives/${hiveId}`}
+              />
+            ) : (
+              <EmptyState
+                title="Nog geen waarnemingen"
+                description="Deze lijst is nog leeg. Zodra er waarnemingen zijn toegevoegd, verschijnen ze hier."
+                buttonText="terug naar de bijenstand"
+                buttonHref={returnUrl}
+              />
+            )
+          ) : (
+            <ObservationsFilter
+              observations={observations}
+              showUser={false}
+              showHive={false}
+              showApiary={false}
+              currentPage={currentPage}
+              totalPages={totalPages}
+              currentPath={`/admin/hives/${hiveId}`}
+              search={search}
+              colorFilter={color}
+              allColors={allColors}
+              placeholder="Zoek op behuizing of notities"
+            />
+          )}
         </div>
       </section>
     </div>
