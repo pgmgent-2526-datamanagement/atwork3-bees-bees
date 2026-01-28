@@ -147,7 +147,11 @@ export default async function AdminHiveDetailPage({
       <Breadcrumbs
         items={[
           { label: 'Admin', href: '/admin' },
-          { label: 'Behuizingen', href: '/admin/hives' },
+          returnUrl && returnUrl.includes('users')
+            ? { label: 'Gebruiker', href: returnUrl }
+            : returnUrl && returnUrl.includes('apiaries')
+              ? { label: 'Bijenstand', href: returnUrl }
+              : { label: 'Behuizingen', href: '/admin/hives' },
           { label: hive.name },
         ]}
       />
