@@ -157,20 +157,16 @@ export default async function Observation({
                       const colorData = pollenColors.find(c => c.hex === color);
                       const plantNames =
                         colorData?.species.join(', ') || 'Onbekend';
-                      return (
+                      return colorData ? (
                         <div
                           key={index}
+                          className="pollen-color-dot"
                           style={{
-                            width: '24px',
-                            height: '24px',
-                            borderRadius: '50%',
-                            backgroundColor: color,
-                            border: '2px solid rgba(0, 0, 0, 0.1)',
-                            boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
+                            backgroundColor: colorData?.hex,
                           }}
                           title={`Mogelijke planten: ${plantNames}`}
                         />
-                      );
+                      ) : null;
                     })}
                   </div>
                 </div>

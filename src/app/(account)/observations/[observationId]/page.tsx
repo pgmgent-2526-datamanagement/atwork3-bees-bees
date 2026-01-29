@@ -155,23 +155,6 @@ export default async function Observation({
                         />
                       ) : null;
                     })}
-                    {/* {observation.pollenColor.split(', ').map(color => {
-                      const colorData = pollenColors.find(c => c.hex === color);
-                      return colorData ? (
-                        <span
-                          key={color}
-                          style={{
-                            display: 'inline-block',
-                            width: 16,
-                            height: 16,
-                            backgroundColor: colorData.hex,
-                            border: '1px solid #ccc',
-                            marginRight: 4,
-                          }}
-                          title={colorData.species.join(', ')}
-                        />
-                      ) : null;
-                    })} */}
                   </div>
                 </div>
                 <div className="meta-item">
