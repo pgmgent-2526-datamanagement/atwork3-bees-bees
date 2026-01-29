@@ -6,6 +6,7 @@ import ObservationsFilter from '@/components/shared/ObservationsFilter';
 import Breadcrumbs from '@/components/shared/Breadcrumbs';
 import { pollenColors } from '@/lib/pollenColors';
 import EmptyState from '@/components/shared/EmptyState';
+import ScrollToSection from '@/components/shared/ScrollToSection';
 
 export const dynamic = 'force-dynamic';
 type SearchParams = {
@@ -118,6 +119,7 @@ export default async function AdminHiveDetailPage({
   });
   return (
     <div className="platform-page">
+      <ScrollToSection />
       <section className="platform-hero">
         <div className="container">
           <div className="platform-hero__content">
@@ -157,7 +159,7 @@ export default async function AdminHiveDetailPage({
         ]}
       />
 
-      <section className="home-features">
+      <section className="home-features" id="observations-section">
         <div className="container">
           <h2
             className="heading-secondary"
