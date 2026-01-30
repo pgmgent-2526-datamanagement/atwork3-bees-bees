@@ -321,7 +321,7 @@ TODO
 
 - [x] de temperatuur in observationform weer laten tellen vanaf de placeholderwaarde
 - [] een moeilijker paswoord laten aanmaken
-- [] kleuren van stuifmeel toevoegen in observationId TODO
+- [x] kleuren van stuifmeel toevoegen in observationId
 - [] mobiele versie titels volledig leesbaar?
 
 - [x] in admin route: emptyState toevoegen:
