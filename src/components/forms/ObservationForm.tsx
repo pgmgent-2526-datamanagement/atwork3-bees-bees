@@ -386,9 +386,9 @@ export default function ObservationForm({
               <span className="form__step-badge">Stap 2</span> Stuifmeelkleur
             </h3>
             <p className="form__instructions">
-              Neem even de tij om de stuifmeelkleuren op de bijen te observeren.
-              Selecteer maximaal 3 verschillende kleuren, of kies 'Geen' indien
-              geen stuifmeel zichtbaar is.
+              Neem even de tijd om de stuifmeelkleuren op de bijen te
+              observeren. Selecteer maximaal 3 verschillende kleuren, of kies
+              'Geen' indien geen stuifmeel zichtbaar is.
             </p>
             <label className="form__label">Stuifmeelkleur *</label>
             <ColorPicker

@@ -347,6 +347,8 @@ TODO
       - [x] waarneming vanuit /hives/[hiveId]
       - [x] waarneming vanuit /observations
 
+    - [x] labels op de kaart in apiaryId
+
 ### Overdracht
 
 - [] keys voor mapbox en resend voor klant
